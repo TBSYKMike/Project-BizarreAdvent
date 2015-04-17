@@ -31,14 +31,14 @@ public class FXMLScene2Controller implements Initializable {
             try {
 
                 Node node = (Node) event.getSource();
-                Stage stage1 = (Stage) node.getScene().getWindow();
+                Stage stage2 = (Stage) node.getScene().getWindow();
 
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
                 Parent root = loader.load();
 
                 Scene scene = new Scene(root);
-                stage1.setScene(scene);
-                stage1.show();
+                stage2.setScene(scene);
+                stage2.show();
 
             } catch (IOException ex) {
                 System.out.println("Scene change error1");

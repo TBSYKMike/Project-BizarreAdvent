@@ -17,7 +17,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 /**
@@ -26,25 +29,26 @@ import javafx.stage.Stage;
  */
 public class FXMLDocumentController implements Initializable {
 
-    
     @FXML
     private Label labelMessage;
-    
+
     @FXML
     private TextField textfieldUsername, textfieldPassword;
     
+    @FXML
+    private Button button;
 
     @FXML
     private void handleButtonActionLogin(ActionEvent event) {
         boolean login = false;
-        
-        if (checkLogin()){
+
+        if (checkLogin()) {
             login = true;
-        }else {
+        } else {
             System.out.println("failed login");
             labelMessage.setText("failed login");
         }
-        
+
         if (login) {
             try {
 
@@ -67,12 +71,9 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        
-
     }
-    
-    
-    private boolean checkLogin(){
+
+    private boolean checkLogin() {
         boolean correct = false;
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -81,10 +82,10 @@ public class FXMLDocumentController implements Initializable {
             Connection c = DriverManager.getConnection(URL);
             Statement st = c.createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM login");
-            
+
             String name0 = textfieldUsername.getText();
             String password0 = textfieldPassword.getText();
-            
+
             while (rs.next()) {
                 String name = rs.getString("name");
                 String password = rs.getString("password");
@@ -95,14 +96,18 @@ public class FXMLDocumentController implements Initializable {
                 }
             }
             c.close();
-        } catch (Exception e) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException e) {
             System.err.println("ERROR: " + e);
         }
         return correct;
     }
-    
-    
-    
-    
+
+    @FXML
+    public void handle(KeyEvent ke) {
+        if (ke.getCode().equals(KeyCode.ENTER)) {
+            System.out.println("enter");
+            button.fire();
+        }
+    }
 
 }
