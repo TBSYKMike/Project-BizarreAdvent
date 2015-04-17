@@ -15,7 +15,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 /**
@@ -24,6 +27,9 @@ import javafx.stage.Stage;
  * @author Mike
  */
 public class FXMLScene2Controller implements Initializable {
+    
+    @FXML
+    private Button buttonBack;
     
     @FXML
     private void handleButtonActionBack(ActionEvent event) {
@@ -47,11 +53,13 @@ public class FXMLScene2Controller implements Initializable {
     }
     
     
-    
-    
-    
-    
-    
+    @FXML
+    public void handleKeyEvent(KeyEvent ke) {
+        if (ke.getCode().equals(KeyCode.ENTER)) {
+            System.out.println("back button");
+            buttonBack.fire();
+        }
+    }
     
     
     @Override

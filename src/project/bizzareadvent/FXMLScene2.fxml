@@ -14,6 +14,6 @@
             <Font size="64.0" />
          </font>
       </Label>
-      <Button layoutX="280.0" layoutY="303.0" mnemonicParsing="false" onAction="#handleButtonActionBack" text="Back" />
+      <Button fx:id="buttonBack" layoutX="280.0" layoutY="303.0" mnemonicParsing="false" onAction="#handleButtonActionBack" onKeyPressed="#handleKeyEvent" text="Back" />
    </children>
 </AnchorPane>

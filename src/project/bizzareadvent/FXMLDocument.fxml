@@ -14,8 +14,8 @@
          </cursor>
       </TextField>
         <Button fx:id="button" layoutX="351.0" layoutY="186.0" onAction="#handleButtonActionLogin" text="Log-in" />
-      <TextField fx:id="textfieldUsername" layoutX="185.0" layoutY="161.0" onKeyReleased="#handle" promptText="Username" />
-      <TextField fx:id="textfieldPassword" layoutX="185.0" layoutY="214.0" onKeyReleased="#handle" promptText="Password" />
+      <TextField fx:id="textfieldUsername" layoutX="185.0" layoutY="161.0" onKeyReleased="#handleKeyEvent" onMouseClicked="#handleMouseEvent" promptText="Username" />
+      <TextField fx:id="textfieldPassword" layoutX="185.0" layoutY="214.0" onKeyReleased="#handleKeyEvent" onMouseClicked="#handleMouseEvent" promptText="Password" />
       <Label fx:id="labelMessage" layoutX="185.0" layoutY="262.0" prefHeight="17.0" prefWidth="149.0" />
     </children>
 </AnchorPane>

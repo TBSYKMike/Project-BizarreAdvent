@@ -21,6 +21,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
@@ -103,11 +104,20 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    public void handle(KeyEvent ke) {
+    public void handleKeyEvent(KeyEvent ke) {
         if (ke.getCode().equals(KeyCode.ENTER)) {
             System.out.println("enter");
             button.fire();
+            labelMessage.requestFocus();
         }
+    }
+    
+    @FXML
+    public void handleMouseEvent(MouseEvent ke) {
+        
+            
+            labelMessage.setText(null);
+        
     }
 
 }
