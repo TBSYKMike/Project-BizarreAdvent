@@ -11,13 +11,13 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
 import java.sql.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -25,80 +25,61 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
+ * FXML Controller class
  *
  * @author Mike
  */
-public class FXMLDocumentController implements Initializable {
+public class FXMLNewAccountController implements Initializable {
 
     @FXML
     private Label labelMessage;
 
     @FXML
-    private TextField textfieldUsername, textfieldPassword;
+    private TextField textfieldUsername, textfieldPassword1, textfieldPassword2;
 
     @FXML
     private Button button;
 
-    @FXML
-    private void handleButtonActionLogin(ActionEvent event) {
-        boolean login = false;
-
-        if (checkLogin()) {
-            login = true;
-        } else {
-            System.out.println("failed login");
-            labelMessage.setText("failed login");
-        }
-
-        if (login) {
-            try {
-
-                Node node = (Node) event.getSource();
-                Stage stage1 = (Stage) node.getScene().getWindow();
-
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLScene2.fxml"));
-                Parent root = loader.load();
-
-                Scene scene = new Scene(root);
-                stage1.setScene(scene);
-                stage1.show();
-
-            } catch (IOException ex) {
-                System.out.println("Scene change error1");
-            }
-        }
-    }
-    
-    @FXML
-    private void handleButtonActionNewAccount(ActionEvent event) {
-        
-            try {
-
-                Node node = (Node) event.getSource();
-                Stage stageNewAccount = (Stage) node.getScene().getWindow();
-
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLNewAccount.fxml"));
-                Parent root = loader.load();
-
-                Scene scene = new Scene(root);
-                stageNewAccount.setScene(scene);
-                stageNewAccount.show();
-
-            } catch (IOException ex) {
-                System.out.println("Scene change error1");
-            }
-        
-    }
-    
-    
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        // TODO
     }
 
-    private boolean checkLogin() {
-        boolean correct = false;
+    
+    
+    @FXML
+    private void handleButtonActionBack(ActionEvent event) {
+        
+
+        
+            try {
+
+                Node node = (Node) event.getSource();
+                Stage stageLogin = (Stage) node.getScene().getWindow();
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
+                Parent root = loader.load();
+
+                Scene scene = new Scene(root);
+                stageLogin.setScene(scene);
+                stageLogin.show();
+
+            } catch (IOException ex) {
+                System.out.println("Scene change error1");
+            }
+        
+    }
+    
+    
+    
+    
+    //test of adding new stuff to database
+    private int count;
+    @FXML
+    public void handleButtonActionCreate(ActionEvent event) {
+
+        boolean createYesNo = true;
+
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             // String URL = "jdbc:mysql://194.47.47.18:3306/YOUR_DATABASE_NAME?user=YOUR_USER_NAME&password=YOUR_PASSWORD";
@@ -108,24 +89,46 @@ public class FXMLDocumentController implements Initializable {
             ResultSet rs = st.executeQuery("SELECT * FROM login");
 
             String name0 = textfieldUsername.getText();
-            String password0 = textfieldPassword.getText();
+            String password1 = textfieldPassword1.getText();
+            String password2 = textfieldPassword2.getText();
 
-            while (rs.next()) {
-                String name = rs.getString("name");
-                String password = rs.getString("password");
-                //System.out.println("Customer Name: " + name + " \nand customer number " + password + "\n\n");
-                if (name.equals(name0) && password.equals(password0)) {
-                    System.out.println("Clear");
-                    correct = true;
+            if (name0.length()>0 && password1.equals(password2) && password1.length()>0) {
+
+                while (rs.next()) {
+                    String nameDB = rs.getString("name");
+                    String passwordDB = rs.getString("password");
+                    System.out.println("Customer Name: " + nameDB + " \nand customer number " + passwordDB + "\n\n");
+                    count = rs.getInt("idtable1");
+                    count++;
+                    
+                    if(nameDB.equalsIgnoreCase(name0)){
+                        createYesNo = false;
+                        labelMessage.setText("name exists");
+                    }
+
+                }
+
+                if (createYesNo) {
+                    st.execute("INSERT INTO login (idtable1, name, password) VALUES ('" + count + "', '"+name0+"', '"+password1+"')");
+                    labelMessage.setText("new account created");
+                    textfieldUsername.clear();
+                    textfieldPassword1.clear();
+                    textfieldPassword2.clear();
+                    labelMessage.requestFocus();
                 }
             }
+            else {
+                labelMessage.setText("error");
+            }
+
             c.close();
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException e) {
             System.err.println("ERROR: " + e);
         }
-        return correct;
-    }
 
+    }
+    
+    
     @FXML
     public void handleKeyEvent(KeyEvent ke) {
         if (ke.getCode().equals(KeyCode.ENTER)) {
@@ -142,5 +145,5 @@ public class FXMLDocumentController implements Initializable {
         labelMessage.setText(null);
 
     }
-    
+
 }
