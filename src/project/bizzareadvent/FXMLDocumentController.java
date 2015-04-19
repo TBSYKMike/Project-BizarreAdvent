@@ -32,6 +32,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private Label labelMessage;
+    //***********************************Commit test /Kim**************************
 
     @FXML
     private TextField textfieldUsername, textfieldPassword;
