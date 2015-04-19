@@ -5,6 +5,7 @@
  */
 package project.bizzareadvent;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -19,6 +20,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -39,6 +42,8 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private Button button;
+    @FXML
+    private ImageView imageView;
 
     @FXML
     private void handleButtonActionLogin(ActionEvent event) {
@@ -95,7 +100,9 @@ public class FXMLDocumentController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        File file = new File("src/login_dragon.jpg");
+        Image image = new Image(file.toURI().toString());
+        imageView.setImage(image);
     }
 
     private boolean checkLogin() {
