@@ -5,6 +5,7 @@
  */
 package project.bizzareadvent;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -17,6 +18,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
@@ -30,6 +33,18 @@ public class FXMLScene2Controller implements Initializable {
     
     @FXML
     private Button buttonBack;
+    @FXML
+    private Button NewGame;
+    @FXML
+    private Button Continue;
+    @FXML
+    private Button Load;
+    @FXML
+    private Button HighScore;
+    @FXML
+    private Button Exit;
+    @FXML
+    private ImageView imageView;
     
     @FXML
     private void handleButtonActionBack(ActionEvent event) {
@@ -60,11 +75,20 @@ public class FXMLScene2Controller implements Initializable {
             buttonBack.fire();
         }
     }
+    @FXML
+    public void HandleButtonExit(ActionEvent event){
+        Stage stage2 = (Stage) Exit.getScene().getWindow();
+        
+        stage2.close();
+    }
     
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+        File file = new File("src/MenuCastle.jpg");
+        Image image = new Image(file.toURI().toString());
+        imageView.setImage(image);
+    }
+    
     
 }
