@@ -8,19 +8,19 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.bizzareadvent.FXMLScene2Controller">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.bizzareadvent.FXMLScene2Controller">
    <children>
-      <ImageView fx:id="imageView" fitHeight="400.0" fitWidth="606.0" layoutX="-2.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true" />
-      <Label layoutX="191.0" layoutY="14.0" text="Success">
+      <ImageView fx:id="imageView" fitHeight="500.0" fitWidth="750.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="255.0" layoutY="68.0" text="Success">
          <font>
             <Font size="64.0" />
          </font>
       </Label>
-      <Button fx:id="buttonBack" layoutX="14.0" layoutY="354.0" mnemonicParsing="false" onAction="#handleButtonActionBack" onKeyPressed="#handleKeyEvent" prefHeight="25.0" prefWidth="75.0" text="Back" />
-      <Button layoutX="274.0" layoutY="304.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" text="High Score" />
-      <Button layoutX="274.0" layoutY="272.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" text="Load" />
-      <Button layoutX="275.0" layoutY="240.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" text="Continue" />
-      <Button layoutX="275.0" layoutY="208.0" mnemonicParsing="false" text="New Game" />
-      <Button fx:id="Exit" layoutX="274.0" layoutY="335.0" mnemonicParsing="false" onAction="#HandleButtonExit" prefHeight="25.0" prefWidth="75.0" text="Exit" />
+      <Button fx:id="buttonBack" layoutX="78.0" layoutY="408.0" mnemonicParsing="false" onAction="#handleButtonActionBack" onKeyPressed="#handleKeyEvent" prefHeight="25.0" prefWidth="75.0" text="Back" />
+      <Button layoutX="338.0" layoutY="358.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" text="High Score" />
+      <Button layoutX="338.0" layoutY="326.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" text="Load" />
+      <Button layoutX="339.0" layoutY="294.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" text="Continue" />
+      <Button layoutX="339.0" layoutY="262.0" mnemonicParsing="false" text="New Game" />
+      <Button fx:id="Exit" layoutX="338.0" layoutY="389.0" mnemonicParsing="false" onAction="#HandleButtonExit" prefHeight="25.0" prefWidth="75.0" text="Exit" />
    </children>
 </AnchorPane>
