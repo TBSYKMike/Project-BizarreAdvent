@@ -35,6 +35,9 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private Label labelMessage;
+    
+    @FXML
+    private Label forgotPassword;
     //***********************************Commit test /Kim**************************
 
     @FXML
@@ -144,9 +147,15 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    public void handleMouseEvent(MouseEvent ke) {
+    public void handleForgottPassword (){
+        forgotPassword.setText("Contact admin at: kim_krok@hotmail.com");
+    }
+    
 
-            
+    @FXML
+    public void handleMouseEvent(MouseEvent ke) {
+        
+        forgotPassword.setText("Forgot password?");
         labelMessage.setText(null);
 
     }

@@ -11,7 +11,7 @@
 <AnchorPane id="AnchorPane" focusTraversable="true" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.bizzareadvent.FXMLDocumentController">
     <children>
       <ImageView fx:id="imageView" fitHeight="500.0" fitWidth="750.0" pickOnBounds="true" preserveRatio="true" />
-      <TextField editable="false" layoutX="2.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.0" prefHeight="500.0" prefWidth="750.0" text="Deselect Handling">
+      <TextField editable="false" layoutX="2.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleMouseEvent" opacity="0.0" prefHeight="500.0" prefWidth="750.0" text="Deselect Handling">
          <cursor>
             <Cursor fx:constant="DEFAULT" />
          </cursor>
@@ -21,5 +21,6 @@
       <Button layoutX="413.0" layoutY="241.0" mnemonicParsing="false" onAction="#handleButtonActionNewAccount" text="New Account" />
       <TextField fx:id="textfieldUsername" layoutX="254.0" layoutY="205.0" onKeyReleased="#handleKeyEvent" onMouseClicked="#handleMouseEvent" promptText="Username" />
       <PasswordField fx:id="textfieldPassword" layoutX="254.0" layoutY="241.0" onKeyReleased="#handleKeyEvent" onMouseClicked="#handleMouseEvent" promptText="Password" />
+      <Label fx:id="forgotPassword" layoutX="254.0" layoutY="273.0" onMouseClicked="#handleForgottPassword" prefHeight="14.0" prefWidth="241.0" text="Forgot password?" />
     </children>
 </AnchorPane>
