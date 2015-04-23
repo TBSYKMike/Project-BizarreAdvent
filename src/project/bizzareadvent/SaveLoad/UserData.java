@@ -37,7 +37,7 @@ public class UserData {
 
     public void makeChar() {
         if (loadOnce) {
-            //ArrList.add( new Characters(String Name, int CharSlot, int HPcurrent, int HPcase, int Attack, int Defense, int Damage, int Upgrades));
+            //ArrList.add( new Characters(int CharSlot, String Name, int HPcurrent, int HPBase, int Attack, int Defense, int Damage, int Upgrades));
             ArrList.add(new Characters(1, "Char1Warrior", 100, 100, 50, 50, 50, 0));
             ArrList.add(new Characters(2, "Char2Mage", 100, 100, 50, 50, 50, 0));
             ArrList.add(new Characters(3, "Char3Assassin", 100, 100, 50, 50, 50, 0));
@@ -48,11 +48,34 @@ public class UserData {
     /**
      * Set slot must be done to Load correct Character, Slot input should be 1,
      * 2 or 3.
-    *
      */
+    
+    public void setUsername(String Username) {
+        this.Username = Username;
+    }
+    
+    // Set slot must be done to Load correct Character, Slot input should be 1, 2 or 3.
     public void setSelectedSlot(int slot) {
         selectedSlot = slot - 1;
     }
+    
+    
+    // Use this method to reset the current user to change to another.
+    public void reset(){
+        ArrList.clear();
+        loadOnce = true;
+        Username = "";
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    // Getter and Setter Method to set or get Character Stats
 
     public String getName() {
         return ArrList.get(selectedSlot).getName();

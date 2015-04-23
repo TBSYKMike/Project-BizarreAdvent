@@ -116,7 +116,7 @@ public class FXMLDocumentController implements Initializable {
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             // String URL = "jdbc:mysql://194.47.47.18:3306/YOUR_DATABASE_NAME?user=YOUR_USER_NAME&password=YOUR_PASSWORD";
-            String URL = "jdbc:mysql://127.0.0.1:3306/testdb0001?user=root&password=root";
+            String URL = "jdbc:mysql://127.0.0.1:3306/gamedb?user=root&password=root";
             Connection c = DriverManager.getConnection(URL);
             Statement st = c.createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM login");
@@ -125,7 +125,7 @@ public class FXMLDocumentController implements Initializable {
             String password0 = textfieldPassword.getText();
 
             while (rs.next()) {
-                String name = rs.getString("name");
+                String name = rs.getString("userName");
                 String password = rs.getString("password");
                 //System.out.println("Customer Name: " + name + " \nand customer number " + password + "\n\n");
                 if (name.equals(name0) && password.equals(password0)) {

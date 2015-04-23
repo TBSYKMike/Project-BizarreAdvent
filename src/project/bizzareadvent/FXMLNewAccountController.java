@@ -83,7 +83,7 @@ public class FXMLNewAccountController implements Initializable {
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             // String URL = "jdbc:mysql://194.47.47.18:3306/YOUR_DATABASE_NAME?user=YOUR_USER_NAME&password=YOUR_PASSWORD";
-            String URL = "jdbc:mysql://127.0.0.1:3306/testdb0001?user=root&password=root";
+            String URL = "jdbc:mysql://127.0.0.1:3306/gamedb?user=root&password=root";
             Connection c = DriverManager.getConnection(URL);
             Statement st = c.createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM login");
@@ -95,10 +95,10 @@ public class FXMLNewAccountController implements Initializable {
             if (name0.length()>0 && password1.equals(password2) && password1.length()>0) {
 
                 while (rs.next()) {
-                    String nameDB = rs.getString("name");
+                    String nameDB = rs.getString("userName");
                     String passwordDB = rs.getString("password");
                     System.out.println("Customer Name: " + nameDB + " \nand customer number " + passwordDB + "\n\n");
-                    count = rs.getInt("idtable1");
+                    count = rs.getInt("idNr");
                     count++;
                     
                     if(nameDB.equalsIgnoreCase(name0)){
@@ -109,7 +109,7 @@ public class FXMLNewAccountController implements Initializable {
                 }
 
                 if (createYesNo) {
-                    st.execute("INSERT INTO login (idtable1, name, password) VALUES ('" + count + "', '"+name0+"', '"+password1+"')");
+                    st.execute("INSERT INTO login (idNr, userName, password) VALUES ('" + count + "', '"+name0+"', '"+password1+"')");
                     labelMessage.setText("new account created");
                     textfieldUsername.clear();
                     textfieldPassword1.clear();

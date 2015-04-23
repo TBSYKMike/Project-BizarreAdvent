@@ -20,11 +20,11 @@ public class Characters {
     private int Damage;
     private int Upgrades;
 
-    public Characters(int CharSlot, String Name, int HPcurrent, int HPcase, int Attack, int Defense, int Damage, int Upgrades) {
+    public Characters(int CharSlot, String Name, int HPcurrent, int HPbase, int Attack, int Defense, int Damage, int Upgrades) {
         this.Name = Name;
         this.CharSlot = CharSlot;
         this.HPcurrent = HPcurrent;
-        this.HPbase = HPcase;
+        this.HPbase = HPbase;
         this.Attack = Attack;
         this.Defense = Defense;
         this.Damage = Damage;
