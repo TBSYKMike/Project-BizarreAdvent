@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package project.bizzareadvent;
+package project.bizzareadvent.SaveLoad;
 
 /**
  *
@@ -11,4 +11,5 @@ package project.bizzareadvent;
  */
 public class DatabaseServer {
     //kod för att inloggning och skapa ny konto och andra koder för att spara information
+    
 }

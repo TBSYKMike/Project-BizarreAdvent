@@ -26,6 +26,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import project.bizzareadvent.SaveLoad.UserData;
 
 /**
  *
@@ -106,6 +107,8 @@ public class FXMLDocumentController implements Initializable {
         File file = new File("src/login_dragon.jpg");
         Image image = new Image(file.toURI().toString());
         imageView.setImage(image);
+        
+        UserData.getInstance().makeChar();
     }
 
     private boolean checkLogin() {

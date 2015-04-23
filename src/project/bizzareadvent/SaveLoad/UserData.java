@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package project.bizzareadvent;
+package project.bizzareadvent.SaveLoad;
 
 import java.util.ArrayList;
+import project.bizzareadvent.Characters;
 
 
 /**
