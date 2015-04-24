@@ -8,6 +8,8 @@ package project.bizzareadvent.SaveLoad;
 import java.util.ArrayList;
 import project.bizzareadvent.Characters1TEMP;
 import project.bizzareadvent.Mage;
+import project.bizzareadvent.Rogue;
+import project.bizzareadvent.Warrior;
 
 /**
  *
@@ -51,9 +53,9 @@ public class UserData {
     
     private boolean loadOnce = true;
     private ArrayList<Characters1TEMP> ArrList = new ArrayList<>();
+    private ArrayList<Warrior> warriorArrList = new ArrayList<>();
     private ArrayList<Mage> mageArrList = new ArrayList<>();
-    private ArrayList<Mage> warriorArrList = new ArrayList<>();
-    private ArrayList<Mage> assassinArrList = new ArrayList<>();
+    private ArrayList<Rogue> assassinArrList = new ArrayList<>();
 
     
     
@@ -68,9 +70,9 @@ public class UserData {
            //   mageArrList.add(new Mage(100, 50, 50, 50, 1, "Mage", 100, 50, 50, 50, 0, 0, 0, 0));
              // warriorArrList.add(new Mage(100, 50, 50, 50, 2, "Warrior", 100, 50, 50, 50, 0, 0, 0, 0));
             //  assassinArrList.add(new Mage(100, 50, 50, 50, 3, "Assassin", 100, 50, 50, 50, 0, 0, 0, 0));
-            warriorArrList.add(new Mage(0, 0, 0, 0, 1, null, 0, 0, 0, 0, 0, 0, 0, 0));  
+            warriorArrList.add(new Warrior(0, 0, 0, 0, 1, null, 0, 0, 0, 0, 0, 0, 0, 0));  
             mageArrList.add(new Mage(0, 0, 0, 0, 2, null, 0, 0, 0, 0, 0, 0, 0, 0));
-            assassinArrList.add(new Mage(0, 0, 0, 0, 3, null, 0, 0, 0, 0, 0, 0, 0, 0));
+            assassinArrList.add(new Rogue(0, 0, 0, 0, 3, null, 0, 0, 0, 0, 0, 0, 0, 0));
               
             
             loadOnce = false;
@@ -125,7 +127,7 @@ public class UserData {
         
         
         if(selectedSlot==1){
-            for (Mage warriorArrList1 : warriorArrList) {
+            for (Warrior warriorArrList1 : warriorArrList) {
                 
                     baseHp = warriorArrList1.getHp();
                     baseDef = warriorArrList1.getDef();
@@ -169,7 +171,7 @@ public class UserData {
             }
         }    
         if(selectedSlot==3){
-            for (Mage assassinArrList1 : assassinArrList) {
+            for (Rogue assassinArrList1 : assassinArrList) {
                 
                     baseHp = assassinArrList1.getHp();
                     baseDef = assassinArrList1.getDef();
@@ -200,7 +202,7 @@ public class UserData {
         boolean slotempty = true;
         
         if(selectedSlot==1){
-            for (Mage warriorArrList1 : warriorArrList) {
+            for (Warrior warriorArrList1 : warriorArrList) {
                 
                     warriorArrList1.setCharSlot(selectedSlot);
                     warriorArrList1.setCharacterName(characterName);
@@ -235,7 +237,7 @@ public class UserData {
             }
         }    
         if(selectedSlot==3){
-            for (Mage assassinArrList1 : assassinArrList) {
+            for (Rogue assassinArrList1 : assassinArrList) {
                
                     assassinArrList1.setCharSlot(selectedSlot);
                     assassinArrList1.setCharacterName(characterName);

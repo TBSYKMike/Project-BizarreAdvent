@@ -23,6 +23,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import project.bizzareadvent.SaveLoad.DatabaseServer;
+import project.bizzareadvent.SaveLoad.UserData;
 
 /**
  * FXML Controller class
@@ -105,6 +107,34 @@ public class FXMLScene2Controller implements Initializable {
         }catch(IOException ex){
             System.out.println("Scene change error1");
         }
+    }
+    
+    @FXML
+    private void handleButtonActionSave(ActionEvent event) {
+        
+            DatabaseServer.getInstance().testWriteToUSERDATA();
+        
+    }
+    
+    @FXML
+    private void handleButtonActionLoad(ActionEvent event) {
+        
+            DatabaseServer.getInstance().testLoadFromUSERDATA();
+        
+    }
+    @FXML
+    private void handleButtonActiontest(ActionEvent event) {
+         UserData.getInstance().loadFromSlot(2);
+        
+            UserData.getInstance().setCharacterName("bob");
+            UserData.getInstance().saveToSlot();
+        
+    }
+    
+    @FXML
+    private void handleButtonActionSavetoDB(ActionEvent event) {
+         DatabaseServer.getInstance().saveToDB();
+        
     }
     
 }
