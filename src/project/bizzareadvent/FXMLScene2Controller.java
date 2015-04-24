@@ -95,7 +95,7 @@ public class FXMLScene2Controller implements Initializable {
                 Node node = (Node) event.getSource();
                 Stage stageLogin = (Stage) node.getScene().getWindow();
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("NewGameController.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("newGame.fxml"));
                 Parent root = loader.load();
 
                 Scene scene = new Scene(root);
