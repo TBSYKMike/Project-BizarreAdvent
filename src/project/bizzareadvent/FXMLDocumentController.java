@@ -26,6 +26,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import project.bizzareadvent.SaveLoad.DatabaseServer;
 import project.bizzareadvent.SaveLoad.UserData;
 
 /**
@@ -108,33 +109,16 @@ public class FXMLDocumentController implements Initializable {
         Image image = new Image(file.toURI().toString());
         imageView.setImage(image);
         
-        UserData.getInstance().makeChar();
+        
     }
 
     private boolean checkLogin() {
         boolean correct = false;
         try {
-            Class.forName("com.mysql.jdbc.Driver").newInstance();
-            // String URL = "jdbc:mysql://194.47.47.18:3306/YOUR_DATABASE_NAME?user=YOUR_USER_NAME&password=YOUR_PASSWORD";
-            String URL = "jdbc:mysql://127.0.0.1:3306/gamedb?user=root&password=root";
-            Connection c = DriverManager.getConnection(URL);
-            Statement st = c.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM login");
-
-            String name0 = textfieldUsername.getText();
-            String password0 = textfieldPassword.getText();
-
-            while (rs.next()) {
-                String name = rs.getString("userName");
-                String password = rs.getString("password");
-                //System.out.println("Customer Name: " + name + " \nand customer number " + password + "\n\n");
-                if (name.equals(name0) && password.equals(password0)) {
-                    System.out.println("Clear");
-                    correct = true;
-                }
-            }
-            c.close();
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException e) {
+            
+                    correct = correct = DatabaseServer.getInstance().loginToDB(textfieldUsername.getText(), textfieldPassword.getText());
+                
+        } catch (Exception e) {
             System.err.println("ERROR: " + e);
         }
         return correct;

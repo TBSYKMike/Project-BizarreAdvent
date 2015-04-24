@@ -106,5 +106,5 @@ public class FXMLScene2Controller implements Initializable {
             System.out.println("Scene change error1");
         }
     }
- 
+    
 }
