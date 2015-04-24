@@ -10,29 +10,29 @@ package project.bizzareadvent;
  * @author Jocke
  */
 public abstract class Creature {
-    private int hp;
-    private int def;
-    private int attack;
-    private int dmg;
+    private int baseHp;
+    private int baseDef;
+    private int baseAttack;
+    private int baseDmg;
     
-    public Creature(int hp, int def, int attack, int dmg){
-        this.hp = hp;
-        this.def = def;
-        this.attack = attack;
-        this.dmg = dmg;
+    public Creature(int baseHp, int baseDef, int baseAttack, int baseDmg){
+        this.baseHp = baseHp;
+        this.baseDef = baseDef;
+        this.baseAttack = baseAttack;
+        this.baseDmg = baseDmg;
         
     }
     public int getHp(){
-        return hp;
+        return baseHp;
     }
     public int getDef(){
-        return def;
+        return baseDef;
     }
     public int getAttack(){
-        return attack;
+        return baseAttack;
     }
     public int getDmg(){
-        return dmg;
+        return baseDmg;
     }
     
 }

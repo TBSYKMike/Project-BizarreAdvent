@@ -13,8 +13,8 @@ public abstract class Monster extends Creature {
     private int amountScore;                                                    //How much score they will give
     private int amountGold;                                                     //How much gold they will give
     
-    public Monster(int hp, int def, int attack, int dmg, int amountScore, int amountGold) {
-        super(hp, def, attack, dmg);
+    public Monster(int baseHp, int baseDef, int baseAttack, int baseDmg, int amountScore, int amountGold) {
+        super(baseHp, baseDef, baseAttack, baseDmg);
     }
     public void setAmountScore(int amountScore){
         this.amountScore = amountScore;

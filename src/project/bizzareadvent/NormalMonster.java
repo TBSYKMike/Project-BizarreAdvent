@@ -11,8 +11,8 @@ package project.bizzareadvent;
  */
 public class NormalMonster extends Monster {
 
-    public NormalMonster(int hp, int def, int attack, int dmg, int amountScore, int amountGold) {
-        super(hp, def, attack, dmg, amountScore, amountGold);
+    public NormalMonster(int baseHp, int baseDef, int baseAttack, int baseDmg, int amountScore, int amountGold) {
+        super(baseHp, baseDef, baseAttack, baseDmg, amountScore, amountGold);
     }
     
 }

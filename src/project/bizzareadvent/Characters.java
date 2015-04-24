@@ -9,95 +9,122 @@ package project.bizzareadvent;
  *
  * @author Mike
  */
-public class Characters {
+public abstract class Characters extends Creature {
     
-    private int CharSlot;
-    private String Name;
-    private int HPcurrent;
-    private int HPbase;
-    private int Attack;
-    private int Defense;
-    private int Damage;
+    private int charSlot;
+    private String characterName;
+    private int currentHp;
+    private int currentDef;
+    private int currentAttack;
+    private int currentDmg;
+    private int currentArmorUpgrade;
+    private int currentWeaponUpgrade;
+    private int currentScore;
+    private int currentGold;
+   
     private int Upgrades;
 
-    public Characters(int CharSlot, String Name, int HPcurrent, int HPbase, int Attack, int Defense, int Damage, int Upgrades) {
-        this.Name = Name;
-        this.CharSlot = CharSlot;
-        this.HPcurrent = HPcurrent;
-        this.HPbase = HPbase;
-        this.Attack = Attack;
-        this.Defense = Defense;
-        this.Damage = Damage;
-        this.Upgrades = Upgrades;
-    }
-
-    public String getName() {
-        return Name;
-    }
-
-    public void setName(String Name) {
-        this.Name = Name;
+    public Characters(int baseHp, int baseDef, int baseAttack, int baseDmg, int charSlot, String characterName, int currentHp, int currentDef, int currentAttack, int currentDmg, int currentArmorUpgrade, int currentWeaponUpgrade, int currentScore, int currentGold) {
+        super(baseHp, baseDef, baseAttack, baseDmg);
+ 
     }
 
     public int getCharSlot() {
-        return CharSlot;
+        return charSlot;
     }
 
-    public void CharSlot(int CharSlot) {
-        this.CharSlot = CharSlot;
-    }
-    
-    public int getHPcurrent() {
-        return HPcurrent;
+    public void setCharSlot(int charSlot) {
+        this.charSlot = charSlot;
     }
 
-    public void setHPcurrent(int HPcurrent) {
-        this.HPcurrent = HPcurrent;
+    public String getCharacterName() {
+        return characterName;
     }
 
-    public int getHPbase() {
-        return HPbase;
+    public void setCharacterName(String characterName) {
+        this.characterName = characterName;
     }
 
-    public void setHPbase(int HPbase) {
-        this.HPbase = HPbase;
+    public int getCurrentHp() {
+        return currentHp;
     }
 
-    public int getAttack() {
-        return Attack;
+    public void setCurrentHp(int currentHp) {
+        this.currentHp = currentHp;
     }
 
-    public void setAttack(int Attack) {
-        this.Attack = Attack;
+    public int getCurrentDef() {
+        return currentDef;
     }
 
-    public int getDefense() {
-        return Defense;
+    public void setCurrentDef(int currentDef) {
+        this.currentDef = currentDef;
     }
 
-    public void setDefense(int Defense) {
-        this.Defense = Defense;
+
+    public int getCurrentAttack() {
+        return currentAttack;
     }
 
-    public int getDamage() {
-        return Damage;
+
+    public void setCurrentAttack(int currentAttack) {
+        this.currentAttack = currentAttack;
     }
 
-    public void setDamage(int Damage) {
-        this.Damage = Damage;
+    public int getCurrentDmg() {
+        return currentDmg;
+    }
+
+
+    public void setCurrentDmg(int currentDmg) {
+        this.currentDmg = currentDmg;
+    }
+
+
+    public int getCurrentArmorUpgrade() {
+        return currentArmorUpgrade;
+    }
+
+
+    public void setCurrentArmorUpgrade(int currentArmorUpgrade) {
+        this.currentArmorUpgrade = currentArmorUpgrade;
+    }
+
+
+    public int getCurrentWeaponUpgrade() {
+        return currentWeaponUpgrade;
+    }
+
+
+    public void setCurrentWeaponUpgrade(int currentWeaponUpgrade) {
+        this.currentWeaponUpgrade = currentWeaponUpgrade;
+    }
+
+    public int getCurrentScore() {
+        return currentScore;
+    }
+
+    public void setCurrentScore(int currentScore) {
+        this.currentScore = currentScore;
+    }
+
+    public int getCurrentGold() {
+        return currentGold;
+    }
+
+    public void setCurrentGold(int currentGold) {
+        this.currentGold = currentGold;
     }
 
     public int getUpgrades() {
         return Upgrades;
     }
-
+ 
     public void setUpgrades(int Upgrades) {
         this.Upgrades = Upgrades;
     }
-    
-    
-    
-    
+   
+
     
     
 }
