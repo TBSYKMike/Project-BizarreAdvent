@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.bizzareadvent.FXMLAdventureController">
+   <children>
+      <ImageView fitHeight="250.0" fitWidth="450.0" layoutX="22.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" />
+      <TextArea fx:id="adventureLog" layoutX="22.0" layoutY="288.0" prefHeight="190.0" prefWidth="450.0" />
+      <Button layoutX="505.0" layoutY="339.0" mnemonicParsing="false" onAction="#handleButtonAttack" prefHeight="40.0" prefWidth="67.0" text="Attack!" />
+      <Button layoutX="600.0" layoutY="339.0" mnemonicParsing="false" onAction="#handleButtonSecondary" prefHeight="40.0" prefWidth="67.0" text="Secondary" />
+      <Button layoutX="505.0" layoutY="404.0" mnemonicParsing="false" onAction="#handleButtonRun" prefHeight="40.0" prefWidth="67.0" text="Run" />
+      <Button layoutX="600.0" layoutY="404.0" mnemonicParsing="false" onAction="#handleButtonContinue" prefHeight="40.0" prefWidth="67.0" text="Continue" />
+      <Separator layoutX="486.0" layoutY="391.0" prefWidth="200.0" />
+      <Separator layoutX="583.0" layoutY="310.0" orientation="VERTICAL" prefHeight="168.0" prefWidth="0.0" />
+      <Button layoutX="619.0" layoutY="13.0" mnemonicParsing="false" onAction="#handleButtonMenu" prefHeight="22.0" prefWidth="67.0" text="Menu" />
+      <Label layoutX="518.0" layoutY="107.0" prefHeight="14.0" prefWidth="28.0" text="HP:" />
+      <Label layoutX="518.0" layoutY="156.0" prefHeight="14.0" prefWidth="28.0" text="DEF:" />
+      <Label layoutX="518.0" layoutY="132.0" prefHeight="14.0" prefWidth="28.0" text="ATT:" />
+      <Label layoutX="518.0" layoutY="183.0" prefHeight="14.0" prefWidth="42.0" text="GOLD:" />
+      <Label layoutX="518.0" layoutY="207.0" prefHeight="14.0" prefWidth="42.0" text="SCORE:" />
+      <Label fx:id="hpLabel" layoutX="575.0" layoutY="107.0" prefHeight="14.0" prefWidth="28.0" />
+      <Label fx:id="attackLabel" layoutX="575.0" layoutY="132.0" prefHeight="14.0" prefWidth="28.0" />
+      <Label fx:id="defenceLabel" layoutX="575.0" layoutY="156.0" prefHeight="14.0" prefWidth="28.0" />
+      <Label fx:id="goldLabel" layoutX="575.0" layoutY="183.0" prefHeight="14.0" prefWidth="28.0" />
+      <Label fx:id="scoreLabel" layoutX="575.0" layoutY="207.0" prefHeight="14.0" prefWidth="28.0" />
+   </children>
+</AnchorPane>
