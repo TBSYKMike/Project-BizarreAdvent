@@ -68,6 +68,26 @@ public class FXMLAdventureController implements Initializable {
         
     }
     
+    public void plains(){
+        
+    }
+    
+    public void mountains(){
+        
+    }
+    
+    public void forest(){
+        
+    }
+    
+    public void swamp(){
+        
+    }
+    
+    public void castle(){
+        
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
