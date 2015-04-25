@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  *
@@ -93,6 +94,8 @@ public class DatabaseServer {
                     LOGINTABLE_idNr = rs1.getInt("idNr");
                     LOGINTABLE_userName = rs1.getString("userName");
                     LOGINTABLE_password = rs1.getString("password");
+                    
+                    info1Login.add(new DBTable1Login(rs1.getInt("idNr"), rs1.getString("userName"), rs1.getString("password")));
                 }
 
             }
@@ -100,12 +103,15 @@ public class DatabaseServer {
 
             while (rs2.next()) {
                 if (rs2.getInt("idNr") == 1) {
+                    
                     CHARACTERSTABLE1_idNr = rs2.getInt("idNr");
                     CHARACTERSTABLE1_characterType = rs2.getString("characterType");
                     CHARACTERSTABLE1_baseHp = rs2.getInt("baseHp");
                     CHARACTERSTABLE1_baseDmg = rs2.getInt("baseDmg");
                     CHARACTERSTABLE1_baseDef = rs2.getInt("baseDef");
                     CHARACTERSTABLE1_baseAttack = rs2.getInt("baseAttack");
+                    info3Characters.add(new DBTable3Characters(rs2.getInt("idNr"), rs2.getString("characterType"), rs2.getInt("baseHp"), rs2.getInt("baseDmg"), rs2.getInt("baseDef"), rs2.getInt("baseAttack")));
+
 
                 } else if (rs2.getInt("idNr") == 2) {
                     CHARACTERSTABLE2_idNr = rs2.getInt("idNr");
@@ -114,6 +120,8 @@ public class DatabaseServer {
                     CHARACTERSTABLE2_baseDmg = rs2.getInt("baseDmg");
                     CHARACTERSTABLE2_baseDef = rs2.getInt("baseDef");
                     CHARACTERSTABLE2_baseAttack = rs2.getInt("baseAttack");
+                    info3Characters.add(new DBTable3Characters(rs2.getInt("idNr"), rs2.getString("characterType"), rs2.getInt("baseHp"), rs2.getInt("baseDmg"), rs2.getInt("baseDef"), rs2.getInt("baseAttack")));
+
 
                 } else if (rs2.getInt("idNr") == 3) {
                     CHARACTERSTABLE3_idNr = rs2.getInt("idNr");
@@ -122,6 +130,8 @@ public class DatabaseServer {
                     CHARACTERSTABLE3_baseDmg = rs2.getInt("baseDmg");
                     CHARACTERSTABLE3_baseDef = rs2.getInt("baseDef");
                     CHARACTERSTABLE3_baseAttack = rs2.getInt("baseAttack");
+                    info3Characters.add(new DBTable3Characters(rs2.getInt("idNr"), rs2.getString("characterType"), rs2.getInt("baseHp"), rs2.getInt("baseDmg"), rs2.getInt("baseDef"), rs2.getInt("baseAttack")));
+
 
                 }
             }
@@ -141,6 +151,12 @@ public class DatabaseServer {
                     LOGINHASCHARACTERSTABLE1_currentDmg = rs3.getInt("currentDmg");
                     LOGINHASCHARACTERSTABLE1_currentDef = rs3.getInt("currentDef");
                     LOGINHASCHARACTERSTABLE1_currentAttack = rs3.getInt("currentAttack");
+                    
+                    info2LoginHasCharacters.add(new DBTable2LoginHasCharacters(rs3.getInt("Login_idNr"), rs3.getInt("charSlot"), rs3.getInt("Characters_idNr"), rs3.getInt("score"), rs3.getString("characterName"), rs3.getInt("armorUpgrade"), rs3.getInt("weaponUpgrade"), rs3.getInt("currentHp"), rs3.getInt("gold"), rs3.getInt("currentDmg"), rs3.getInt("currentDef"), rs3.getInt("currentAttack")));
+                    
+                    
+                    
+                    
 
                 } else if (LOGINTABLE_idNr == rs3.getInt("Login_idNr") && rs3.getInt("charSlot") == 2) {
                     LOGINHASCHARACTERSTABLE2_Login_idNr = rs3.getInt("Login_idNr");
@@ -155,6 +171,8 @@ public class DatabaseServer {
                     LOGINHASCHARACTERSTABLE2_currentDmg = rs3.getInt("currentDmg");
                     LOGINHASCHARACTERSTABLE2_currentDef = rs3.getInt("currentDef");
                     LOGINHASCHARACTERSTABLE2_currentAttack = rs3.getInt("currentAttack");
+                    info2LoginHasCharacters.add(new DBTable2LoginHasCharacters(rs3.getInt("Login_idNr"), rs3.getInt("charSlot"), rs3.getInt("Characters_idNr"), rs3.getInt("score"), rs3.getString("characterName"), rs3.getInt("armorUpgrade"), rs3.getInt("weaponUpgrade"), rs3.getInt("currentHp"), rs3.getInt("gold"), rs3.getInt("currentDmg"), rs3.getInt("currentDef"), rs3.getInt("currentAttack")));
+                    
 
                 }
                 if (LOGINTABLE_idNr == rs3.getInt("Login_idNr") && rs3.getInt("charSlot") == 3) {
@@ -170,6 +188,9 @@ public class DatabaseServer {
                     LOGINHASCHARACTERSTABLE3_currentDmg = rs3.getInt("currentDmg");
                     LOGINHASCHARACTERSTABLE3_currentDef = rs3.getInt("currentDef");
                     LOGINHASCHARACTERSTABLE3_currentAttack = rs3.getInt("currentAttack");
+                    
+                    info2LoginHasCharacters.add(new DBTable2LoginHasCharacters(rs3.getInt("Login_idNr"), rs3.getInt("charSlot"), rs3.getInt("Characters_idNr"), rs3.getInt("score"), rs3.getString("characterName"), rs3.getInt("armorUpgrade"), rs3.getInt("weaponUpgrade"), rs3.getInt("currentHp"), rs3.getInt("gold"), rs3.getInt("currentDmg"), rs3.getInt("currentDef"), rs3.getInt("currentAttack")));
+                    
 
                 }
 
@@ -185,12 +206,61 @@ public class DatabaseServer {
             System.out.println(LOGINHASCHARACTERSTABLE2_Login_idNr + " " + LOGINHASCHARACTERSTABLE2_charSlot + " " + LOGINHASCHARACTERSTABLE2_Characters_idNr + " " + LOGINHASCHARACTERSTABLE2_score + " " + LOGINHASCHARACTERSTABLE2_characterName + " " + LOGINHASCHARACTERSTABLE2_armorUpgrade + " " + LOGINHASCHARACTERSTABLE2_weaponUpgrade + " " + LOGINHASCHARACTERSTABLE2_currentHp + " " + LOGINHASCHARACTERSTABLE2_gold + " " + LOGINHASCHARACTERSTABLE2_currentDmg + " " + LOGINHASCHARACTERSTABLE2_currentDef + " " + LOGINHASCHARACTERSTABLE2_currentAttack);
             System.out.println(LOGINHASCHARACTERSTABLE3_Login_idNr + " " + LOGINHASCHARACTERSTABLE3_charSlot + " " + LOGINHASCHARACTERSTABLE3_Characters_idNr + " " + LOGINHASCHARACTERSTABLE3_score + " " + LOGINHASCHARACTERSTABLE3_characterName + " " + LOGINHASCHARACTERSTABLE3_armorUpgrade + " " + LOGINHASCHARACTERSTABLE3_weaponUpgrade + " " + LOGINHASCHARACTERSTABLE3_currentHp + " " + LOGINHASCHARACTERSTABLE3_gold + " " + LOGINHASCHARACTERSTABLE3_currentDmg + " " + LOGINHASCHARACTERSTABLE3_currentDef + " " + LOGINHASCHARACTERSTABLE3_currentAttack);
 
+            if(true){
+                System.out.println("\n\n\n");
+                System.out.println("DBTable1Login");
+                for (DBTable1Login info1Login1 : info1Login){
+                    System.out.println(info1Login1.getIdNr()+" "+info1Login1.getUserName()+" "+info1Login1.getPassword());
+                }
+                System.out.println("DBTable2LoginHasCharacters");
+                for (DBTable2LoginHasCharacters info2LoginHasCharacters1 : info2LoginHasCharacters){
+                    System.out.println(info2LoginHasCharacters1.getLogin_idNr()+" "+ info2LoginHasCharacters1.getCharSlot()+" "+ info2LoginHasCharacters1.getCharacters_idNr()+" "+ info2LoginHasCharacters1.getScore()+" "+ info2LoginHasCharacters1.getCharacterName()+" "+ info2LoginHasCharacters1.getArmorUpgrade()+" "+ info2LoginHasCharacters1.getWeaponUpgrade()+" "+ info2LoginHasCharacters1.getCurrentHp()+" "+ info2LoginHasCharacters1.getGold()+" "+ info2LoginHasCharacters1.getCurrentDmg() + " " + info2LoginHasCharacters1.getCurrentDef() + " " + info2LoginHasCharacters1.getCurrentAttack());
+                    
+                }
+                System.out.println("DBTable3Characters");
+                for (DBTable3Characters info3Characters1 : info3Characters){
+                    System.out.println(info3Characters1.getIdNr() + " " + info3Characters1.getCharacterType() + " " + info3Characters1.getBaseHp() + " " + info3Characters1.getBaseDmg() + " " + info3Characters1.getBaseDef()+ " " + info3Characters1.getBaseAttack());
+            
+                }
+                
+            }
+            
+            
+            
+            
+            
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException e) {
             System.err.println("ERROR: " + e);
         }
         return correct;
     }
 
+    
+    
+    
+    private ArrayList<DBTable1Login> info1Login = new ArrayList<>();
+
+    private ArrayList<DBTable2LoginHasCharacters> info2LoginHasCharacters = new ArrayList<>();
+
+    private ArrayList<DBTable3Characters> info3Characters = new ArrayList<>();
+
+    private void testingADDINFO() {
+
+        //info1Login.add(new DBTable1Login(idNr, userName, password));
+
+        //info2LoginHasCharacters.add(new DBTable2LoginHasCharacters(Login_idNr, charSlot, Characters_idNr, score, userName, armorUpgrade, weaponUpgrade, currentHp, gold, currentDmg, currentDef, currentAttack));
+
+        //info3Characters.add(new DBTable3Characters(idNr, characterType, baseHp, baseDmg, baseDef, baseAttack));
+
+    }
+    
+    
+    
+    
+    
+    
+    
+    
     private int LOGINTABLE_idNr;
     private String LOGINTABLE_userName;
     private String LOGINTABLE_password;
@@ -254,6 +324,29 @@ public class DatabaseServer {
     private int LOGINHASCHARACTERSTABLE3_currentDmg;
     private int LOGINHASCHARACTERSTABLE3_currentDef;
     private int LOGINHASCHARACTERSTABLE3_currentAttack;
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     public void testLoadFromUSERDATA() {
         int currentSlot = UserData.getInstance().getSelectedSlot();
@@ -541,11 +634,12 @@ public class DatabaseServer {
                         counter++;
                         System.out.println(counter);
                         if (charSlotDB==1){
-                            st.execute("UPDATE `gamedb`.`login_has_characters` SET `characterName`='p2Change1', `score`='11', `armorUpgrade`='1', `weaponUpgrade`='2', `currentHp`='3', `gold`='4', `currentDmg`='5', `currentDef`='6', `currentAttack`='7' WHERE `Login_idNr`='2' and`charSlot`='1'");
+                            
+                            st.execute("UPDATE `gamedb`.`login_has_characters` SET `characterName`='p2Change1', `armorUpgrade`='1', `weaponUpgrade`='2', `currentHp`='3', `gold`='4', `currentDmg`='5', `currentDef`='6', `currentAttack`='7' WHERE `Login_idNr`='"+LOGINTABLE_idNr+"' and`charSlot`='1'");
 
-                            st.execute("UPDATE `gamedb`.`login_has_characters` SET `characterName`='p2Change2', `score`='11', `armorUpgrade`='1', `weaponUpgrade`='2', `currentHp`='3', `gold`='4', `currentDmg`='5', `currentDef`='3', `currentAttack`='7' WHERE `Login_idNr`='2' and`charSlot`='2'");
+                            st.execute("UPDATE `gamedb`.`login_has_characters` SET `characterName`='p2Change2', `score`='11', `armorUpgrade`='1', `weaponUpgrade`='2', `currentHp`='3', `gold`='4', `currentDmg`='5', `currentDef`='3', `currentAttack`='7' WHERE `Login_idNr`='"+LOGINTABLE_idNr+"' and`charSlot`='2'");
 
-                            st.execute("UPDATE `gamedb`.`login_has_characters` SET `score`='11', `characterName`='p2Change3lol', `armorUpgrade`='2', `weaponUpgrade`='3', `currentHp`='4', `gold`='5', `currentDmg`='6', `currentDef`='7', `currentAttack`='13' WHERE `Login_idNr`='2' and`charSlot`='3'");
+                            st.execute("UPDATE `gamedb`.`login_has_characters` SET `score`='11', `characterName`='p2Change3lol', `armorUpgrade`='2', `weaponUpgrade`='3', `currentHp`='4', `gold`='5', `currentDmg`='6', `currentDef`='7', `currentAttack`='13' WHERE `Login_idNr`='"+LOGINTABLE_idNr+"' and`charSlot`='3'");
                             
                            
                         }
@@ -555,10 +649,10 @@ public class DatabaseServer {
 
                 }
                 
-                if(false){
-                    st.execute("INSERT INTO `gamedb`.`login_has_characters` (`Login_idNr`, `charSlot`, `Characters_idNr`, `score`, `characterName`, `armorUpgrade`, `weaponUpgrade`, `currentHp`, `gold`, `currentDmg`, `currentDef`, `currentAttack`) VALUES ('2', '1', '1', '111', 'p1 char3', '1', '2', '3', '4', '5', '6', '7');");
-                        st.execute("INSERT INTO `gamedb`.`login_has_characters` (`Login_idNr`, `charSlot`, `Characters_idNr`, `score`, `characterName`, `armorUpgrade`, `weaponUpgrade`, `currentHp`, `gold`, `currentDmg`, `currentDef`, `currentAttack`) VALUES ('2', '2', '2', '111', 'p1 char3', '1', '2', '3', '4', '5', '6', '7');");
-                        st.execute("INSERT INTO `gamedb`.`login_has_characters` (`Login_idNr`, `charSlot`, `Characters_idNr`, `score`, `characterName`, `armorUpgrade`, `weaponUpgrade`, `currentHp`, `gold`, `currentDmg`, `currentDef`, `currentAttack`) VALUES ('2', '3', '3', '111', 'p1 char3', '1', '2', '3', '4', '5', '6', '7');");
+                if(true){
+                    st.execute("INSERT INTO `gamedb`.`login_has_characters` (`Login_idNr`, `charSlot`, `Characters_idNr`, `score`, `characterName`, `armorUpgrade`, `weaponUpgrade`, `currentHp`, `gold`, `currentDmg`, `currentDef`, `currentAttack`) VALUES ('"+LOGINTABLE_idNr+"', '1', '1', '111', 'p1 char3', '1', '2', '3', '4', '5', '6', '7');");
+                        st.execute("INSERT INTO `gamedb`.`login_has_characters` (`Login_idNr`, `charSlot`, `Characters_idNr`, `score`, `characterName`, `armorUpgrade`, `weaponUpgrade`, `currentHp`, `gold`, `currentDmg`, `currentDef`, `currentAttack`) VALUES ('"+LOGINTABLE_idNr+"', '2', '2', '111', 'p1 char3', '1', '2', '3', '4', '5', '6', '7');");
+                        st.execute("INSERT INTO `gamedb`.`login_has_characters` (`Login_idNr`, `charSlot`, `Characters_idNr`, `score`, `characterName`, `armorUpgrade`, `weaponUpgrade`, `currentHp`, `gold`, `currentDmg`, `currentDef`, `currentAttack`) VALUES ('"+LOGINTABLE_idNr+"', '3', '3', '111', 'p1 char3', '1', '2', '3', '4', '5', '6', '7');");
                         
                 }
                 
