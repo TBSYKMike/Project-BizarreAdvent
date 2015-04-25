@@ -22,9 +22,6 @@
       <Button layoutX="339.0" layoutY="294.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" text="Continue" />
       <Button layoutX="339.0" layoutY="262.0" mnemonicParsing="false" onAction="#handleButtonActionNewGame" text="New Game" />
       <Button fx:id="Exit" layoutX="338.0" layoutY="389.0" mnemonicParsing="false" onAction="#HandleButtonExit" prefHeight="25.0" prefWidth="75.0" text="Exit" />
-      <Button layoutX="52.0" layoutY="115.0" mnemonicParsing="false" onAction="#handleButtonActionSavetoDB" text="save to database test" />
-      <Button layoutX="35.0" layoutY="229.0" mnemonicParsing="false" onAction="#handleButtonActionSave" text="Write Data To USERDATA" />
-      <Button layoutX="35.0" layoutY="277.0" mnemonicParsing="false" onAction="#handleButtonActionLoad" text="Load Data From USERDATA" />
-      <Button layoutX="24.0" layoutY="321.0" mnemonicParsing="false" text="change slot 2 char name to bob" />
+      <Button layoutX="35.0" layoutY="229.0" mnemonicParsing="false" onAction="#handleButtonActionChangeTestScene" text="testing Scene" />
    </children>
 </AnchorPane>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.bizzareadvent.YYFXMLTestingMethodsController">
+   <children>
+      <Button layoutX="26.0" layoutY="337.0" mnemonicParsing="false" onAction="#handleButtonActionSavetoDB" text="Save to Database" />
+      <TextField fx:id="characterType" layoutX="26.0" layoutY="42.0" prefHeight="25.0" prefWidth="101.0" />
+      <Label layoutX="26.0" layoutY="25.0" prefHeight="17.0" prefWidth="101.0" text="characterType" />
+      <Label layoutX="26.0" layoutY="79.0" prefHeight="17.0" prefWidth="101.0" text="baseHp" />
+      <TextField fx:id="baseHp" layoutX="26.0" layoutY="96.0" prefHeight="25.0" prefWidth="101.0" />
+      <TextField fx:id="baseDmg" layoutX="26.0" layoutY="153.0" prefHeight="25.0" prefWidth="101.0" />
+      <Label layoutX="26.0" layoutY="136.0" prefHeight="17.0" prefWidth="101.0" text="baseDmg" />
+      <Label layoutX="26.0" layoutY="193.0" prefHeight="17.0" prefWidth="101.0" text="baseDef" />
+      <TextField fx:id="baseDef" layoutX="26.0" layoutY="210.0" prefHeight="25.0" prefWidth="101.0" />
+      <Label layoutX="26.0" layoutY="254.0" prefHeight="17.0" prefWidth="101.0" text="baseAttack" />
+      <TextField fx:id="baseAttack" layoutX="26.0" layoutY="271.0" prefHeight="25.0" prefWidth="101.0" />
+      <TextField fx:id="currentAttack" layoutX="344.0" layoutY="275.0" prefHeight="25.0" prefWidth="101.0" />
+      <Label layoutX="344.0" layoutY="258.0" prefHeight="17.0" prefWidth="101.0" text="currentAttack" />
+      <TextField fx:id="currentHp" layoutX="344.0" layoutY="214.0" prefHeight="25.0" prefWidth="101.0" />
+      <Label layoutX="344.0" layoutY="197.0" prefHeight="17.0" prefWidth="101.0" text="currentHp" />
+      <Label layoutX="344.0" layoutY="140.0" prefHeight="17.0" prefWidth="101.0" text="armorUpgrade" />
+      <TextField fx:id="armorUpgrade" layoutX="344.0" layoutY="157.0" prefHeight="25.0" prefWidth="101.0" />
+      <TextField fx:id="score" layoutX="344.0" layoutY="100.0" prefHeight="25.0" prefWidth="101.0" />
+      <Label layoutX="344.0" layoutY="83.0" prefHeight="17.0" prefWidth="101.0" text="score" />
+      <Label layoutX="344.0" layoutY="29.0" prefHeight="17.0" prefWidth="101.0" text="charSlot" />
+      <TextField fx:id="charSlot" layoutX="344.0" layoutY="46.0" prefHeight="25.0" prefWidth="101.0" />
+      <TextField fx:id="currentDef" layoutX="469.0" layoutY="280.0" prefHeight="25.0" prefWidth="101.0" />
+      <Label layoutX="469.0" layoutY="263.0" prefHeight="17.0" prefWidth="101.0" text="currentDef" />
+      <TextField fx:id="gold" layoutX="469.0" layoutY="219.0" prefHeight="25.0" prefWidth="101.0" />
+      <Label layoutX="469.0" layoutY="202.0" prefHeight="17.0" prefWidth="101.0" text="gold" />
+      <Label layoutX="469.0" layoutY="145.0" prefHeight="17.0" prefWidth="101.0" text="weaponUpgrade" />
+      <TextField fx:id="weaponUpgrade" layoutX="469.0" layoutY="162.0" prefHeight="25.0" prefWidth="101.0" />
+      <TextField fx:id="characterName" layoutX="469.0" layoutY="105.0" prefHeight="25.0" prefWidth="101.0" />
+      <Label layoutX="469.0" layoutY="88.0" prefHeight="17.0" prefWidth="101.0" text="characterName" />
+      <Label layoutX="469.0" layoutY="34.0" prefHeight="17.0" prefWidth="101.0" text="Characters_idNr" />
+      <TextField fx:id="Characters_idNr" editable="false" layoutX="469.0" layoutY="51.0" prefHeight="25.0" prefWidth="101.0" />
+      <Label layoutX="344.0" layoutY="315.0" prefHeight="17.0" prefWidth="101.0" text="currentDmg" />
+      <TextField fx:id="currentDmg" layoutX="344.0" layoutY="332.0" prefHeight="25.0" prefWidth="101.0" />
+      <Button layoutX="198.0" layoutY="152.0" mnemonicParsing="false" onAction="#LoadSlot2" text="LoadSlot2" />
+      <Button layoutX="198.0" layoutY="109.0" mnemonicParsing="false" onAction="#LoadSlot1" text="LoadSlot1" />
+      <Button layoutX="198.0" layoutY="197.0" mnemonicParsing="false" onAction="#LoadSlot3" text="LoadSlot3" />
+      <Button layoutX="177.0" layoutY="235.0" mnemonicParsing="false" onAction="#SaveToCurrentSlot" text="SaveToCurrentSlot" />
+      <Button layoutX="165.0" layoutY="54.0" mnemonicParsing="false" onAction="#LoadFromAllLocalData" text="LoadFromAllLocalData" />
+      <Button layoutX="173.0" layoutY="288.0" mnemonicParsing="false" onAction="#SaveToAllLocalData" text="SaveToAllLocalData" />
+   </children>
+</AnchorPane>

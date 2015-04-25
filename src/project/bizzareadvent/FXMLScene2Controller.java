@@ -109,32 +109,29 @@ public class FXMLScene2Controller implements Initializable {
         }
     }
     
-    @FXML
-    private void handleButtonActionSave(ActionEvent event) {
-        
-            DatabaseServer.getInstance().testWriteToUSERDATA();
-        
-    }
+    
     
     @FXML
-    private void handleButtonActionLoad(ActionEvent event) {
+    private void handleButtonActionChangeTestScene(ActionEvent event){
+        try{
+                Node node = (Node) event.getSource();
+                Stage stageLogin = (Stage) node.getScene().getWindow();
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("YYFXMLTestingMethods.fxml"));
+                Parent root = loader.load();
+
+                Scene scene = new Scene(root);
+                stageLogin.setScene(scene);
+                stageLogin.show();
         
-            DatabaseServer.getInstance().testLoadFromUSERDATA();
-        
-    }
-    @FXML
-    private void handleButtonActiontest(ActionEvent event) {
-         UserData.getInstance().loadFromSlot(2);
-        
-            UserData.getInstance().setCharacterName("bob");
-            UserData.getInstance().saveToSlot();
-        
+        }catch(IOException ex){
+            System.out.println("Scene change error1rrr");
+        }
     }
     
-    @FXML
-    private void handleButtonActionSavetoDB(ActionEvent event) {
-         DatabaseServer.getInstance().saveToDB();
-        
-    }
+    
+    
+    
+    
     
 }

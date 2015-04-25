@@ -11,6 +11,24 @@ package project.bizzareadvent.SaveLoad;
  */
 public class DBTable2LoginHasCharacters {
     
+    //**************************************************************************
+    //**************************************************************************
+    //**************************************************************************
+    //
+    // This CLASS is to save all the data FROM the DATABASE
+    // And The Data must save here before saving Before saving to the Database
+    //
+    // DO NOT EDIT* THIS CLASS, ONLY USE THE METHODS FROM THIS CLASS 
+    // OR IT WILL F*CK OFF ALL THE CODES
+    //
+    //
+    //
+    // *IF YOU DO EDIT YOU'LL ARE RESPOSIBLE TO FIX ALL THE COMMING PROBLEMS
+    //
+    //**************************************************************************
+    //**************************************************************************
+    //**************************************************************************
+    
     private int Login_idNr;
     private int charSlot;
     private int Characters_idNr;
