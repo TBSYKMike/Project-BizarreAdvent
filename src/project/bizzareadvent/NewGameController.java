@@ -64,6 +64,9 @@ public class NewGameController implements Initializable {
 
     @FXML
     public void handleButtonActionDone(ActionEvent event) {
+        boolean slotEmpty = true;
+        if (chosenCharacter){
+            
         String charName = characterName.getText();
         try {
             if (warriorChosen == true) {
@@ -78,10 +81,18 @@ public class NewGameController implements Initializable {
 
                     }
                 }
-                UserData.getInstance().testSaveFromUSERDATAToALLLOCALDATA();
+                //UserData.getInstance().testSaveFromUSERDATAToALLLOCALDATA();
+
+                //DatabaseServer.getInstance().saveToDB();
+                //UserData.getInstance().testLoadAllDataFromALLLOCALDATAToUSERDATA();
+                
+                
 
                 DatabaseServer.getInstance().saveToDB();
                 UserData.getInstance().testLoadAllDataFromALLLOCALDATAToUSERDATA();
+                
+                
+                
             } else if (mageChosen == true) {
 
                 boolean controllData = true;
@@ -91,14 +102,14 @@ public class NewGameController implements Initializable {
                         AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCharacterName(charName);
                         controllData = false;
                     } else {
-                        System.out.println("not emtpy");
-
-                    }
+                System.out.println("All Slots full");
+                slotEmpty = false;
+            }
                 }
-                UserData.getInstance().testSaveFromUSERDATAToALLLOCALDATA();
+               // UserData.getInstance().testSaveFromUSERDATAToALLLOCALDATA();
 
-                DatabaseServer.getInstance().saveToDB();
-                UserData.getInstance().testLoadAllDataFromALLLOCALDATAToUSERDATA();
+              //  DatabaseServer.getInstance().saveToDB();
+              //  UserData.getInstance().testLoadAllDataFromALLLOCALDATAToUSERDATA();
             } else if (assassinChosen == true) {
 
                 boolean controllData = true;
@@ -108,16 +119,28 @@ public class NewGameController implements Initializable {
                         AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCharacterName(charName);
                         controllData = false;
                     } else {
-                        System.out.println("not emtpy");
-
-                    }
-                }
-                UserData.getInstance().testSaveFromUSERDATAToALLLOCALDATA();
-
-                DatabaseServer.getInstance().saveToDB();
-                UserData.getInstance().testLoadAllDataFromALLLOCALDATAToUSERDATA();
+                System.out.println("All Slots full");
+                slotEmpty = false;
             }
+                }
+           //     UserData.getInstance().testSaveFromUSERDATAToALLLOCALDATA();
 
+             //   DatabaseServer.getInstance().saveToDB();
+             //   UserData.getInstance().testLoadAllDataFromALLLOCALDATAToUSERDATA();
+            }
+            
+
+            DatabaseServer.getInstance().saveToDB();
+                UserData.getInstance().testLoadAllDataFromALLLOCALDATAToUSERDATA();
+            
+            
+            
+             }catch (Exception ex) {
+            System.out.println(ex.getClass() + "new game error");
+        }
+        
+        if(slotEmpty){
+            try{
             if (chosenCharacter = true && charName.length() != 0) {
                 Node node = (Node) event.getSource();
                 Stage stageLogin = (Stage) node.getScene().getWindow();
@@ -135,6 +158,15 @@ public class NewGameController implements Initializable {
         }catch (Exception ex) {
             System.out.println("Scene change error1");
         }
+            
+            
+        }
+        }else {
+            System.out.println("no character selected, FFS select someting!!!!!!!!!! ERIK I KNOW THAT WHAT YOU DID...!!!!!! YOU FORGOT THE CHECK IF BUTTON WAS PUSHED METHOD!!!!!!!!");
+        
+        
+        }
+        
     }
 
     @FXML

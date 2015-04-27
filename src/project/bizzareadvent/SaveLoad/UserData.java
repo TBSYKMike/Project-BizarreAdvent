@@ -262,7 +262,7 @@ public class UserData {
     public void testsaveCharToArrayLists() {
         for (Warrior warriorArrList1 : warriorArrList) {
             if (warriorArrList1.getCharSlot() == charSlot) {
-                warriorArrList1.setCharSlot(charSlot);
+                //warriorArrList1.setCharSlot(charSlot);
                 warriorArrList1.setCurrentScore(currentScore);
                 warriorArrList1.setCharacterName(characterName);
                 warriorArrList1.setCurrentArmorUpgrade(currentArmorUpgrade);
@@ -278,7 +278,7 @@ public class UserData {
         }
         for (Mage mageArrList1 : mageArrList) {
             if (mageArrList1.getCharSlot() == charSlot) {
-                mageArrList1.setCharSlot(charSlot);
+                //mageArrList1.setCharSlot(charSlot);
                 mageArrList1.setCurrentScore(currentScore);
                 mageArrList1.setCharacterName(characterName);
                 mageArrList1.setCurrentArmorUpgrade(currentArmorUpgrade);
@@ -292,7 +292,7 @@ public class UserData {
         }
         for (Rogue rogueArrList1 : rogueArrList) {
             if (rogueArrList1.getCharSlot() == charSlot) {
-                rogueArrList1.setCharSlot(charSlot);
+                //rogueArrList1.setCharSlot(charSlot);
                 rogueArrList1.setCurrentScore(currentScore);
                 rogueArrList1.setCharacterName(characterName);
                 rogueArrList1.setCurrentArmorUpgrade(currentArmorUpgrade);
@@ -448,5 +448,5 @@ public class UserData {
     public void setCurrentGold(int currentGold) {
         this.currentGold = currentGold;
     }
-
+    
 }
