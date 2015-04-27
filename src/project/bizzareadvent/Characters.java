@@ -26,7 +26,16 @@ public abstract class Characters extends Creature {
 
     public Characters(int baseHp, int baseDef, int baseAttack, int baseDmg, int charSlot, String characterName, int currentHp, int currentDef, int currentAttack, int currentDmg, int currentArmorUpgrade, int currentWeaponUpgrade, int currentScore, int currentGold) {
         super(baseHp, baseDef, baseAttack, baseDmg);
- 
+        this.charSlot = charSlot;
+        this.characterName = characterName;
+        this.currentHp = currentHp;
+        this.currentDef = currentDef;
+        this.currentAttack = currentAttack;
+        this.currentDmg = currentDmg;
+        this.currentArmorUpgrade = currentArmorUpgrade;
+        this.currentWeaponUpgrade = currentWeaponUpgrade;
+        this.currentScore = currentScore;
+        this.currentGold = currentGold;
     }
 
     public int getCharSlot() {
