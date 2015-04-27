@@ -22,16 +22,16 @@ public abstract class Creature {
         this.baseDmg = baseDmg;
         
     }
-    public int getHp(){
+    public int getBaseHp(){
         return baseHp;
     }
-    public int getDef(){
+    public int getBaseDef(){
         return baseDef;
     }
-    public int getAttack(){
+    public int getBaseAttack(){
         return baseAttack;
     }
-    public int getDmg(){
+    public int getBaseDmg(){
         return baseDmg;
     }
     

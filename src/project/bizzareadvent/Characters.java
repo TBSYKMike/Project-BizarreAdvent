@@ -22,7 +22,6 @@ public abstract class Characters extends Creature {
     private int currentScore;
     private int currentGold;
    
-    private int Upgrades;
 
     public Characters(int baseHp, int baseDef, int baseAttack, int baseDmg, int charSlot, String characterName, int currentHp, int currentDef, int currentAttack, int currentDmg, int currentArmorUpgrade, int currentWeaponUpgrade, int currentScore, int currentGold) {
         super(baseHp, baseDef, baseAttack, baseDmg);
@@ -124,16 +123,5 @@ public abstract class Characters extends Creature {
     public void setCurrentGold(int currentGold) {
         this.currentGold = currentGold;
     }
-
-    public int getUpgrades() {
-        return Upgrades;
-    }
- 
-    public void setUpgrades(int Upgrades) {
-        this.Upgrades = Upgrades;
-    }
-   
-
-    
     
 }
