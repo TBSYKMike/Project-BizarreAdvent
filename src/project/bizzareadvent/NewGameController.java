@@ -71,6 +71,7 @@ public class NewGameController implements Initializable {
                 for (int i = 0; i < 3; i++) {
                     if (AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).getCharacters_idNr() == 0 && controllData) {
                         AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCharacters_idNr(1);
+                        AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCharacterName(charName);
                         controllData = false;
                     } else {
                         System.out.println("not emtpy");
@@ -87,6 +88,7 @@ public class NewGameController implements Initializable {
                 for (int i = 0; i < 3; i++) {
                     if (AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).getCharacters_idNr() == 0 && controllData) {
                         AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCharacters_idNr(1);
+                        AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCharacterName(charName);
                         controllData = false;
                     } else {
                         System.out.println("not emtpy");
@@ -103,6 +105,7 @@ public class NewGameController implements Initializable {
                 for (int i = 0; i < 3; i++) {
                     if (AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).getCharacters_idNr() == 0 && controllData) {
                         AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCharacters_idNr(1);
+                        AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCharacterName(charName);
                         controllData = false;
                     } else {
                         System.out.println("not emtpy");
