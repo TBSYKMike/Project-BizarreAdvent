@@ -100,7 +100,7 @@ public class DatabaseServer {
                 }
 
             }
-            ResultSet rs2 = st.executeQuery("SELECT * FROM characters");
+         /*   ResultSet rs2 = st.executeQuery("SELECT * FROM characters");
 
             while (rs2.next()) {
                 if (rs2.getInt("idNr") == 1) {
@@ -135,8 +135,20 @@ public class DatabaseServer {
 
 
                 }
-            }
+            }*/
+   //         for (int CHARidNr = 1; CHARidNr <= 3; CHARidNr++) {
+   //             ResultSet rs2alternative = st.executeQuery("SELECT * FROM characters");
+   //             while (rs2alternative.next()) {
+   //                 if (rs2alternative.getInt("idNr") == CHARidNr) {
 
+//                        AllLocalData.getInstance().getInfo3Characters().add(new DBTable3Characters(rs2alternative.getInt("idNr"), rs2alternative.getString("characterType"), rs2alternative.getInt("baseHp"), rs2alternative.getInt("baseDmg"), rs2alternative.getInt("baseDef"), rs2alternative.getInt("baseAttack")));
+
+  //                  }
+    //            }
+      //      }
+            
+            
+            /*
             ResultSet rs3 = st.executeQuery("SELECT * FROM login_has_characters");
             while (rs3.next()) {
                 if (LOGINTABLE_idNr == rs3.getInt("Login_idNr") && rs3.getInt("charSlot") == 1) {
@@ -159,7 +171,7 @@ public class DatabaseServer {
                     
                     
 
-                } else if (LOGINTABLE_idNr == rs3.getInt("Login_idNr") && rs3.getInt("charSlot") == 2) {
+                } if (LOGINTABLE_idNr == rs3.getInt("Login_idNr") && rs3.getInt("charSlot") == 2) {
                     LOGINHASCHARACTERSTABLE2_Login_idNr = rs3.getInt("Login_idNr");
                     LOGINHASCHARACTERSTABLE2_charSlot = rs3.getInt("charSlot");
                     LOGINHASCHARACTERSTABLE2_Characters_idNr = rs3.getInt("Characters_idNr");
@@ -195,15 +207,57 @@ public class DatabaseServer {
 
                 }
 
+            }*/
+            
+            
+         /*   
+            // alternative codes2
+            ResultSet rs3alt1 = st.executeQuery("SELECT * FROM login_has_characters");
+            while (rs3alt1.next()) {
+                if (LOGINTABLE_idNr == rs3alt1.getInt("Login_idNr") && rs3alt1.getInt("charSlot") == 1) {
+
+                    AllLocalData.getInstance().getInfo2LoginHasCharacters().add(new DBTable2LoginHasCharacters(rs3alt1.getInt("Login_idNr"), rs3alt1.getInt("charSlot"), rs3alt1.getInt("Characters_idNr"), rs3alt1.getInt("score"), rs3alt1.getString("characterName"), rs3alt1.getInt("armorUpgrade"), rs3alt1.getInt("weaponUpgrade"), rs3alt1.getInt("currentHp"), rs3alt1.getInt("gold"), rs3alt1.getInt("currentDmg"), rs3alt1.getInt("currentDef"), rs3alt1.getInt("currentAttack")));
+
+                } 
             }
             
-            
-            if(AllLocalData.getInstance().getInfo2LoginHasCharacters().isEmpty()){
-                    st.execute("INSERT INTO `gamedb`.`login_has_characters` (`Login_idNr`, `charSlot`, `Characters_idNr`, `score`, `characterName`, `armorUpgrade`, `weaponUpgrade`, `currentHp`, `gold`, `currentDmg`, `currentDef`, `currentAttack`) VALUES ('"+LOGINTABLE_idNr+"', '1', '0', '0', 'null1 ', '0', '0', '0', '0', '0', '0', '0');");
-                    st.execute("INSERT INTO `gamedb`.`login_has_characters` (`Login_idNr`, `charSlot`, `Characters_idNr`, `score`, `characterName`, `armorUpgrade`, `weaponUpgrade`, `currentHp`, `gold`, `currentDmg`, `currentDef`, `currentAttack`) VALUES ('"+LOGINTABLE_idNr+"', '2', '0', '0', 'null1', '0', '0', '0', '0', '0', '0', '0');");
-                    st.execute("INSERT INTO `gamedb`.`login_has_characters` (`Login_idNr`, `charSlot`, `Characters_idNr`, `score`, `characterName`, `armorUpgrade`, `weaponUpgrade`, `currentHp`, `gold`, `currentDmg`, `currentDef`, `currentAttack`) VALUES ('"+LOGINTABLE_idNr+"', '3', '0', '0', 'null1', '0', '0', '0', '0', '0', '0', '0');");
-                        
+            ResultSet rs3alt2 = st.executeQuery("SELECT * FROM login_has_characters");
+            while (rs3alt2.next()) {
+                if (LOGINTABLE_idNr == rs3alt2.getInt("Login_idNr") && rs3alt2.getInt("charSlot") == 2) {
+
+                    AllLocalData.getInstance().getInfo2LoginHasCharacters().add(new DBTable2LoginHasCharacters(rs3alt2.getInt("Login_idNr"), rs3alt2.getInt("charSlot"), rs3alt2.getInt("Characters_idNr"), rs3alt2.getInt("score"), rs3alt2.getString("characterName"), rs3alt2.getInt("armorUpgrade"), rs3alt2.getInt("weaponUpgrade"), rs3alt2.getInt("currentHp"), rs3alt2.getInt("gold"), rs3alt2.getInt("currentDmg"), rs3alt2.getInt("currentDef"), rs3alt2.getInt("currentAttack")));
+
                 }
+            }
+            
+            ResultSet rs3alt3 = st.executeQuery("SELECT * FROM login_has_characters");
+            while (rs3alt3.next()) {
+                if (LOGINTABLE_idNr == rs3alt3.getInt("Login_idNr") && rs3alt3.getInt("charSlot") == 3) {
+
+                    AllLocalData.getInstance().getInfo2LoginHasCharacters().add(new DBTable2LoginHasCharacters(rs3alt3.getInt("Login_idNr"), rs3alt3.getInt("charSlot"), rs3alt3.getInt("Characters_idNr"), rs3alt3.getInt("score"), rs3alt3.getString("characterName"), rs3alt3.getInt("armorUpgrade"), rs3alt3.getInt("weaponUpgrade"), rs3alt3.getInt("currentHp"), rs3alt3.getInt("gold"), rs3alt3.getInt("currentDmg"), rs3alt3.getInt("currentDef"), rs3alt3.getInt("currentAttack")));
+
+                } 
+            }
+            */
+            
+            // alternative 3
+ //           for (int slot = 1; slot <= 3; slot++) {
+  //              ResultSet rs3alternative = st.executeQuery("SELECT * FROM login_has_characters");
+    //            while (rs3alternative.next()) {
+    //                if (LOGINTABLE_idNr == rs3alternative.getInt("Login_idNr") && rs3alternative.getInt("charSlot") == slot) {
+
+    //                    AllLocalData.getInstance().getInfo2LoginHasCharacters().add(new DBTable2LoginHasCharacters(rs3alternative.getInt("Login_idNr"), rs3alternative.getInt("charSlot"), rs3alternative.getInt("Characters_idNr"), rs3alternative.getInt("score"), rs3alternative.getString("characterName"), rs3alternative.getInt("armorUpgrade"), rs3alternative.getInt("weaponUpgrade"), rs3alternative.getInt("currentHp"), rs3alternative.getInt("gold"), rs3alternative.getInt("currentDmg"), rs3alternative.getInt("currentDef"), rs3alternative.getInt("currentAttack")));
+
+    //                }
+     //           }
+    //        }
+            
+            
+            
+            
+            
+            
+            
             
             
             
@@ -474,10 +528,9 @@ public class DatabaseServer {
     
     
     
-    public int counter = 0;
-    
-    public void saveToDB(){
         
+    public void saveToDB(){
+        int counter = 0;
         try {
             
             
@@ -506,10 +559,12 @@ public class DatabaseServer {
                             //st.execute("UPDATE `gamedb`.`login_has_characters` SET `characterName`='p2Change2', `score`='11', `armorUpgrade`='1', `weaponUpgrade`='2', `currentHp`='3', `gold`='4', `currentDmg`='5', `currentDef`='3', `currentAttack`='7' WHERE `Login_idNr`='"+LOGINTABLE_idNr+"' and`charSlot`='2'");
 
                             //st.execute("UPDATE `gamedb`.`login_has_characters` SET `score`='11', `characterName`='p2Change3lol', `armorUpgrade`='2', `weaponUpgrade`='3', `currentHp`='4', `gold`='5', `currentDmg`='6', `currentDef`='7', `currentAttack`='13' WHERE `Login_idNr`='"+LOGINTABLE_idNr+"' and`charSlot`='3'");
-                            
+                            int counting = 0;
                             for (DBTable2LoginHasCharacters info2LoginHasCharacter1 : AllLocalData.getInstance().getInfo2LoginHasCharacters()) {
-                                
-                                st.execute("UPDATE `gamedb`.`login_has_characters` SET `Characters_idNr`='"+info2LoginHasCharacter1.getCharacters_idNr()+"', `score`='"+info2LoginHasCharacter1.getScore()+"', `characterName`='"+info2LoginHasCharacter1.getCharacterName()+"', `armorUpgrade`='"+info2LoginHasCharacter1.getArmorUpgrade()+"', `weaponUpgrade`='"+info2LoginHasCharacter1.getWeaponUpgrade()+"', `currentHp`='"+info2LoginHasCharacter1.getCurrentHp()+"', `gold`='"+info2LoginHasCharacter1.getGold()+"', `currentDmg`='"+info2LoginHasCharacter1.getCurrentDmg()+"', `currentDef`='"+info2LoginHasCharacter1.getCurrentDef()+"', `currentAttack`='"+info2LoginHasCharacter1.getCurrentAttack()+"' WHERE `Login_idNr`='"+LOGINTABLE_idNr+"' and`charSlot`='"+info2LoginHasCharacter1.getCharSlot()+"'");
+                                counting++;
+                                //st.execute("UPDATE `gamedb`.`login_has_characters` SET `Characters_idNr`='"+info2LoginHasCharacter1.getCharacters_idNr()+"', `score`='"+info2LoginHasCharacter1.getScore()+"', `characterName`='"+info2LoginHasCharacter1.getCharacterName()+"', `armorUpgrade`='"+info2LoginHasCharacter1.getArmorUpgrade()+"', `weaponUpgrade`='"+info2LoginHasCharacter1.getWeaponUpgrade()+"', `currentHp`='"+info2LoginHasCharacter1.getCurrentHp()+"', `gold`='"+info2LoginHasCharacter1.getGold()+"', `currentDmg`='"+info2LoginHasCharacter1.getCurrentDmg()+"', `currentDef`='"+info2LoginHasCharacter1.getCurrentDef()+"', `currentAttack`='"+info2LoginHasCharacter1.getCurrentAttack()+"' WHERE `Login_idNr`='"+LOGINTABLE_idNr+"' and`charSlot`='"+info2LoginHasCharacter1.getCharSlot()+"'");
+
+                                st.execute("UPDATE `gamedb`.`login_has_characters` SET `Characters_idNr`='"+info2LoginHasCharacter1.getCharacters_idNr()+"', `score`='"+info2LoginHasCharacter1.getScore()+"', `characterName`='"+info2LoginHasCharacter1.getCharacterName()+"', `armorUpgrade`='"+info2LoginHasCharacter1.getArmorUpgrade()+"', `weaponUpgrade`='"+info2LoginHasCharacter1.getWeaponUpgrade()+"', `currentHp`='"+info2LoginHasCharacter1.getCurrentHp()+"', `gold`='"+info2LoginHasCharacter1.getGold()+"', `currentDmg`='"+info2LoginHasCharacter1.getCurrentDmg()+"', `currentDef`='"+info2LoginHasCharacter1.getCurrentDef()+"', `currentAttack`='"+info2LoginHasCharacter1.getCurrentAttack()+"' WHERE `Login_idNr`='"+LOGINTABLE_idNr+"' and`charSlot`='"+counting+"'");
 
                                 
                             }
@@ -546,6 +601,99 @@ public class DatabaseServer {
     
         
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    public void loadDATAFromDB(){
+        
+        AllLocalData.getInstance().clearStatsData();
+        try {
+            
+            
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
+            // String URL = "jdbc:mysql://194.47.47.18:3306/YOUR_DATABASE_NAME?user=YOUR_USER_NAME&password=YOUR_PASSWORD";
+            String URL = "jdbc:mysql://127.0.0.1:3306/gamedb?user=root&password=root";
+            Connection c = DriverManager.getConnection(URL);
+            Statement st = c.createStatement();
+            //ResultSet rs = st.executeQuery("SELECT * FROM login_has_characters");
+            
+            
+            
+            for (int CHARidNr = 1; CHARidNr <= 3; CHARidNr++) {
+                ResultSet rs2alternative = st.executeQuery("SELECT * FROM characters");
+                while (rs2alternative.next()) {
+                    if (rs2alternative.getInt("idNr") == CHARidNr) {
+
+                        AllLocalData.getInstance().getInfo3Characters().add(new DBTable3Characters(rs2alternative.getInt("idNr"), rs2alternative.getString("characterType"), rs2alternative.getInt("baseHp"), rs2alternative.getInt("baseDmg"), rs2alternative.getInt("baseDef"), rs2alternative.getInt("baseAttack")));
+
+                    }
+                }
+            }
+            
+            
+            
+                
+            for (int slot = 1; slot <= 3; slot++) {
+                ResultSet rs3alternative = st.executeQuery("SELECT * FROM login_has_characters");
+                while (rs3alternative.next()) {
+                    if (LOGINTABLE_idNr == rs3alternative.getInt("Login_idNr") && rs3alternative.getInt("charSlot") == slot) {
+
+                        AllLocalData.getInstance().getInfo2LoginHasCharacters().add(new DBTable2LoginHasCharacters(rs3alternative.getInt("Login_idNr"), rs3alternative.getInt("charSlot"), rs3alternative.getInt("Characters_idNr"), rs3alternative.getInt("score"), rs3alternative.getString("characterName"), rs3alternative.getInt("armorUpgrade"), rs3alternative.getInt("weaponUpgrade"), rs3alternative.getInt("currentHp"), rs3alternative.getInt("gold"), rs3alternative.getInt("currentDmg"), rs3alternative.getInt("currentDef"), rs3alternative.getInt("currentAttack")));
+
+                    }
+                }
+            }
+            
+               
+            
+            
+            
+            
+            if(AllLocalData.getInstance().getInfo2LoginHasCharacters().isEmpty()){
+                    st.execute("INSERT INTO `gamedb`.`login_has_characters` (`Login_idNr`, `charSlot`, `Characters_idNr`, `score`, `characterName`, `armorUpgrade`, `weaponUpgrade`, `currentHp`, `gold`, `currentDmg`, `currentDef`, `currentAttack`) VALUES ('"+LOGINTABLE_idNr+"', '1', '0', '0', 'null1 ', '0', '0', '0', '0', '0', '0', '0');");
+                    st.execute("INSERT INTO `gamedb`.`login_has_characters` (`Login_idNr`, `charSlot`, `Characters_idNr`, `score`, `characterName`, `armorUpgrade`, `weaponUpgrade`, `currentHp`, `gold`, `currentDmg`, `currentDef`, `currentAttack`) VALUES ('"+LOGINTABLE_idNr+"', '2', '0', '0', 'null1', '0', '0', '0', '0', '0', '0', '0');");
+                    st.execute("INSERT INTO `gamedb`.`login_has_characters` (`Login_idNr`, `charSlot`, `Characters_idNr`, `score`, `characterName`, `armorUpgrade`, `weaponUpgrade`, `currentHp`, `gold`, `currentDmg`, `currentDef`, `currentAttack`) VALUES ('"+LOGINTABLE_idNr+"', '3', '0', '0', 'null1', '0', '0', '0', '0', '0', '0', '0');");
+                        
+                } 
+                
+                
+                
+            if(true){
+                System.out.println("\n\n\n");
+                System.out.println("DBTable1Login");
+                for (DBTable1Login info1Login1 : AllLocalData.getInstance().getInfo1Login()){
+                    System.out.println(info1Login1.getIdNr()+" "+info1Login1.getUserName()+" "+info1Login1.getPassword());
+                }
+                System.out.println("DBTable2LoginHasCharacters");
+                for (DBTable2LoginHasCharacters info2LoginHasCharacters1 : AllLocalData.getInstance().getInfo2LoginHasCharacters()){
+                    System.out.println(info2LoginHasCharacters1.getLogin_idNr()+" "+ info2LoginHasCharacters1.getCharSlot()+" "+ info2LoginHasCharacters1.getCharacters_idNr()+" "+ info2LoginHasCharacters1.getScore()+" "+ info2LoginHasCharacters1.getCharacterName()+" "+ info2LoginHasCharacters1.getArmorUpgrade()+" "+ info2LoginHasCharacters1.getWeaponUpgrade()+" "+ info2LoginHasCharacters1.getCurrentHp()+" "+ info2LoginHasCharacters1.getGold()+" "+ info2LoginHasCharacters1.getCurrentDmg() + " " + info2LoginHasCharacters1.getCurrentDef() + " " + info2LoginHasCharacters1.getCurrentAttack());
+                    
+                }
+                System.out.println("DBTable3Characters");
+                for (DBTable3Characters info3Characters1 : AllLocalData.getInstance().getInfo3Characters()){
+                    System.out.println(info3Characters1.getIdNr() + " " + info3Characters1.getCharacterType() + " " + info3Characters1.getBaseHp() + " " + info3Characters1.getBaseDmg() + " " + info3Characters1.getBaseDef()+ " " + info3Characters1.getBaseAttack());
+            
+                }
+                
+            }
+            
+
+            c.close();
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException e) {
+            System.err.println("ERROR: " + e);
+        }
+        
+        
+    }
     
     
     

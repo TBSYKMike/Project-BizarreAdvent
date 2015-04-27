@@ -61,112 +61,110 @@ public class NewGameController implements Initializable {
     }
 
     // method when done should check if hero is chosen and name is valid before saving to database and sending to worldmap
-
     @FXML
     public void handleButtonActionDone(ActionEvent event) {
-        boolean slotEmpty = true;
-        if (chosenCharacter){
-            
-        String charName = characterName.getText();
-        try {
-            if (warriorChosen == true) {
-                boolean controllData = true;
-                for (int i = 0; i < 3; i++) {
-                    if (AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).getCharacters_idNr() == 0 && controllData) {
-                        AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCharacters_idNr(1);
-                        AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCharacterName(charName);
-                        controllData = false;
-                    } else {
-                        System.out.println("not emtpy");
+        boolean slotEmpty = false;
+        if (chosenCharacter) {
 
+            String charName = characterName.getText();
+            try {
+                if (warriorChosen == true) {
+                    boolean controllData = true;
+                    for (int i = 0; i < 3; i++) {
+                        if (AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).getCharacters_idNr() == 0 && controllData) {
+                            AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCharacters_idNr(1);
+                            AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCharacterName(charName);
+                            controllData = false;
+                            slotEmpty = true;
+                        } else {
+                            System.out.println("slot" + (i + 1) + " is not emtpy ");
+
+                        }
                     }
-                }
                 //UserData.getInstance().testSaveFromUSERDATAToALLLOCALDATA();
 
                 //DatabaseServer.getInstance().saveToDB();
-                //UserData.getInstance().testLoadAllDataFromALLLOCALDATAToUSERDATA();
-                
-                
+                    //UserData.getInstance().testLoadAllDataFromALLLOCALDATAToUSERDATA();
+                    DatabaseServer.getInstance().saveToDB();
+                    UserData.getInstance().testLoadAllDataFromALLLOCALDATAToUSERDATA();
 
-                DatabaseServer.getInstance().saveToDB();
-                UserData.getInstance().testLoadAllDataFromALLLOCALDATAToUSERDATA();
-                
-                
-                
-            } else if (mageChosen == true) {
+                } else if (mageChosen == true) {
 
-                boolean controllData = true;
-                for (int i = 0; i < 3; i++) {
-                    if (AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).getCharacters_idNr() == 0 && controllData) {
-                        AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCharacters_idNr(2);
-                        AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCharacterName(charName);
-                        controllData = false;
-                    } else {
-                System.out.println("All Slots full");
-                slotEmpty = false;
-            }
-                }
+                    boolean controllData = true;
+                    for (int i = 0; i < 3; i++) {
+                        if (AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).getCharacters_idNr() == 0 && controllData) {
+                            AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCharacters_idNr(2);
+                            AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCharacterName(charName);
+                            controllData = false;
+                            slotEmpty = true;
+                        } else {
+                            System.out.println("slot" + (i + 1) + " is not emtpy ");
+
+                        }
+                    }
                // UserData.getInstance().testSaveFromUSERDATAToALLLOCALDATA();
 
               //  DatabaseServer.getInstance().saveToDB();
-              //  UserData.getInstance().testLoadAllDataFromALLLOCALDATAToUSERDATA();
-            } else if (assassinChosen == true) {
+                    //  UserData.getInstance().testLoadAllDataFromALLLOCALDATAToUSERDATA();
+                } else if (assassinChosen == true) {
 
-                boolean controllData = true;
-                for (int i = 0; i < 3; i++) {
-                    if (AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).getCharacters_idNr() == 0 && controllData) {
-                        AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCharacters_idNr(3);
-                        AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCharacterName(charName);
-                        controllData = false;
-                    } else {
-                System.out.println("All Slots full");
-                slotEmpty = false;
-            }
-                }
+                    boolean controllData = true;
+                    for (int i = 0; i < 3; i++) {
+                        if (AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).getCharacters_idNr() == 0 && controllData) {
+                            AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCharacters_idNr(3);
+                            AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCharacterName(charName);
+                            controllData = false;
+                            slotEmpty = true;
+                        } else {
+                            System.out.println("slot" + (i + 1) + " is not emtpy ");
+
+                        }
+                    }
            //     UserData.getInstance().testSaveFromUSERDATAToALLLOCALDATA();
 
              //   DatabaseServer.getInstance().saveToDB();
-             //   UserData.getInstance().testLoadAllDataFromALLLOCALDATAToUSERDATA();
+                    //   UserData.getInstance().testLoadAllDataFromALLLOCALDATAToUSERDATA();
+                }
+
+                if (slotEmpty) {
+                    DatabaseServer.getInstance().saveToDB();
+                    UserData.getInstance().testLoadAllDataFromALLLOCALDATAToUSERDATA();
+                }
+
+            } catch (Exception ex) {
+                System.out.println(ex.getClass() + "new game error");
             }
-            
 
-            DatabaseServer.getInstance().saveToDB();
-                UserData.getInstance().testLoadAllDataFromALLLOCALDATAToUSERDATA();
-            
-            
-            
-             }catch (Exception ex) {
-            System.out.println(ex.getClass() + "new game error");
-        }
-        
-        if(slotEmpty){
-            try{
-            if (chosenCharacter = true && charName.length() != 0) {
-                Node node = (Node) event.getSource();
-                Stage stageLogin = (Stage) node.getScene().getWindow();
+            if (slotEmpty) {
+                try {
+                    if (chosenCharacter = true && charName.length() != 0) {
+                        Node node = (Node) event.getSource();
+                        Stage stageLogin = (Stage) node.getScene().getWindow();
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLWorldMap.fxml"));
-                Parent root = loader.load();
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLWorldMap.fxml"));
+                        Parent root = loader.load();
 
-                Scene scene = new Scene(root);
-                stageLogin.setScene(scene);
-                stageLogin.show();
+                        Scene scene = new Scene(root);
+                        stageLogin.setScene(scene);
+                        stageLogin.show();
+                    } else {
+                        Error1.setText("You have to pick a hero or have a valid name to continue");
+                    }
+
+                } catch (Exception ex) {
+                    System.out.println("Scene change error1");
+                }
+
             } else {
-                Error1.setText("You have to pick a hero or have a valid name to continue");
+                System.out.println("All Slots are Full");
+
             }
 
-        }catch (Exception ex) {
-            System.out.println("Scene change error1");
-        }
-            
-            
-        }
-        }else {
+        } else {
             System.out.println("no character selected, FFS select someting!!!!!!!!!! ERIK I KNOW THAT WHAT YOU DID...!!!!!! YOU FORGOT THE CHECK IF BUTTON WAS PUSHED METHOD!!!!!!!!");
-        
-        
+
         }
-        
+
     }
 
     @FXML
@@ -188,7 +186,6 @@ public class NewGameController implements Initializable {
     }
 
     // methods below for marking hero as chosen
-
     @FXML
     public void warriorChosen(ActionEvent event) {
         warriorChosen = true;
