@@ -87,7 +87,7 @@ public class NewGameController implements Initializable {
                 boolean controllData = true;
                 for (int i = 0; i < 3; i++) {
                     if (AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).getCharacters_idNr() == 0 && controllData) {
-                        AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCharacters_idNr(1);
+                        AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCharacters_idNr(2);
                         AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCharacterName(charName);
                         controllData = false;
                     } else {
@@ -104,7 +104,7 @@ public class NewGameController implements Initializable {
                 boolean controllData = true;
                 for (int i = 0; i < 3; i++) {
                     if (AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).getCharacters_idNr() == 0 && controllData) {
-                        AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCharacters_idNr(1);
+                        AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCharacters_idNr(3);
                         AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCharacterName(charName);
                         controllData = false;
                     } else {
@@ -122,7 +122,7 @@ public class NewGameController implements Initializable {
                 Node node = (Node) event.getSource();
                 Stage stageLogin = (Stage) node.getScene().getWindow();
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLWorldMapController.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLWorldMap.fxml"));
                 Parent root = loader.load();
 
                 Scene scene = new Scene(root);
@@ -132,7 +132,7 @@ public class NewGameController implements Initializable {
                 Error1.setText("You have to pick a hero or have a valid name to continue");
             }
 
-        } catch (IOException ex) {
+        }catch (Exception ex) {
             System.out.println("Scene change error1");
         }
     }
