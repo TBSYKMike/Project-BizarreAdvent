@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package project.bizzareadvent;
 
 import java.io.IOException;
@@ -26,7 +25,7 @@ import project.bizzareadvent.SaveLoad.DatabaseServer;
 import project.bizzareadvent.SaveLoad.UserData;
 
 public class NewGameController implements Initializable {
-    
+
     @FXML
     private Button buttonDone;
     @FXML
@@ -49,72 +48,74 @@ public class NewGameController implements Initializable {
     private TextField characterName;
     @FXML
     private Label Error1;
-    
+
     public boolean chosenCharacter = false;
     // 3 booleans for marking chosen hero
     public boolean warriorChosen = false;
     public boolean mageChosen = false;
     public boolean assassinChosen = false;
-   
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
     }
+
     // method when done should check if hero is chosen and name is valid before saving to database and sending to worldmap
+
     @FXML
-    public void handleButtonActionDone(ActionEvent event){
+    public void handleButtonActionDone(ActionEvent event) {
         String charName = characterName.getText();
-        try{
-            if(warriorChosen == true){
+        try {
+            if (warriorChosen == true) {
                 boolean controllData = true;
                 for (int i = 0; i < 3; i++) {
-                    if(AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).getCharacters_idNr() == 0 && controllData){
+                    if (AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).getCharacters_idNr() == 0 && controllData) {
                         AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCharacters_idNr(1);
                         controllData = false;
-                    }else {
+                    } else {
                         System.out.println("not emtpy");
-                        
-                        }
+
+                    }
                 }
                 UserData.getInstance().testSaveFromUSERDATAToALLLOCALDATA();
-                
+
                 DatabaseServer.getInstance().saveToDB();
                 UserData.getInstance().testLoadAllDataFromALLLOCALDATAToUSERDATA();
-            }else if(mageChosen == true){
-                
+            } else if (mageChosen == true) {
+
                 boolean controllData = true;
                 for (int i = 0; i < 3; i++) {
-                    if(AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).getCharacters_idNr() == 0 && controllData){
+                    if (AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).getCharacters_idNr() == 0 && controllData) {
                         AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCharacters_idNr(1);
                         controllData = false;
-                    }else {
+                    } else {
                         System.out.println("not emtpy");
-                        
-                        }
+
+                    }
                 }
                 UserData.getInstance().testSaveFromUSERDATAToALLLOCALDATA();
-                
+
                 DatabaseServer.getInstance().saveToDB();
                 UserData.getInstance().testLoadAllDataFromALLLOCALDATAToUSERDATA();
-            }else if (assassinChosen == true){
-            
+            } else if (assassinChosen == true) {
+
                 boolean controllData = true;
                 for (int i = 0; i < 3; i++) {
-                    if(AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).getCharacters_idNr() == 0 && controllData){
+                    if (AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).getCharacters_idNr() == 0 && controllData) {
                         AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCharacters_idNr(1);
                         controllData = false;
-                    }else {
+                    } else {
                         System.out.println("not emtpy");
-                        
-                        }
+
+                    }
                 }
                 UserData.getInstance().testSaveFromUSERDATAToALLLOCALDATA();
-                
+
                 DatabaseServer.getInstance().saveToDB();
                 UserData.getInstance().testLoadAllDataFromALLLOCALDATAToUSERDATA();
             }
-            
-            if(chosenCharacter = true && charName.length() != 0){
+
+            if (chosenCharacter = true && charName.length() != 0) {
                 Node node = (Node) event.getSource();
                 Stage stageLogin = (Stage) node.getScene().getWindow();
 
@@ -124,55 +125,60 @@ public class NewGameController implements Initializable {
                 Scene scene = new Scene(root);
                 stageLogin.setScene(scene);
                 stageLogin.show();
-            }else{
-             Error1.setText("You have to pick a hero or have a valid name to continue");
+            } else {
+                Error1.setText("You have to pick a hero or have a valid name to continue");
             }
-        
-        }catch(IOException ex){
+
+        } catch (IOException ex) {
             System.out.println("Scene change error1");
         }
     }
+
     @FXML
-    public void handleButtonActionBack(ActionEvent event){
-        try{
-                Node node = (Node) event.getSource();
-                Stage stageLogin = (Stage) node.getScene().getWindow();
+    public void handleButtonActionBack(ActionEvent event) {
+        try {
+            Node node = (Node) event.getSource();
+            Stage stageLogin = (Stage) node.getScene().getWindow();
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLScene2.fxml"));
-                Parent root = loader.load();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLScene2.fxml"));
+            Parent root = loader.load();
 
-                Scene scene = new Scene(root);
-                stageLogin.setScene(scene);
-                stageLogin.show();
-          
-        }catch(IOException ex){
+            Scene scene = new Scene(root);
+            stageLogin.setScene(scene);
+            stageLogin.show();
+
+        } catch (IOException ex) {
             System.out.println("Scene change error1");
         }
     }
+
     // methods below for marking hero as chosen
+
     @FXML
-    public void warriorChosen(ActionEvent event){
+    public void warriorChosen(ActionEvent event) {
         warriorChosen = true;
         mageChosen = false;
         assassinChosen = false;
-        
+
         chosenCharacter = true;
     }
+
     @FXML
-    public void mageChosen(ActionEvent event){
+    public void mageChosen(ActionEvent event) {
         mageChosen = true;
         warriorChosen = false;
         assassinChosen = false;
-        
+
         chosenCharacter = true;
     }
+
     @FXML
-    public void assassinChosen(ActionEvent event){
+    public void assassinChosen(ActionEvent event) {
         assassinChosen = true;
         warriorChosen = false;
         mageChosen = false;
-        
+
         chosenCharacter = true;
-    }    
-    
+    }
+
 }
