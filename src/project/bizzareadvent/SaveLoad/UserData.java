@@ -208,10 +208,10 @@ public class UserData {
                 currentAttack = warriorArrList1.getCurrentAttack();
 
                 characterType = AllLocalData.getInstance().getInfo3Characters().get(charID - 1).getCharacterType();
-                baseHp = warriorArrList1.getHp();
-                baseDmg = warriorArrList1.getDmg();
-                baseDef = warriorArrList1.getDef();
-                baseAttack = warriorArrList1.getAttack();
+                baseHp = warriorArrList1.getBaseHp();
+                baseDmg = warriorArrList1.getBaseDmg();
+                baseDef = warriorArrList1.getBaseDef();
+                baseAttack = warriorArrList1.getBaseAttack();
             }
         }
         for (Mage mageArrList1 : mageArrList) {
@@ -229,10 +229,10 @@ public class UserData {
                 currentAttack = mageArrList1.getCurrentAttack();
 
                 characterType = AllLocalData.getInstance().getInfo3Characters().get(charID - 1).getCharacterType();
-                baseHp = mageArrList1.getHp();
-                baseDmg = mageArrList1.getDmg();
-                baseDef = mageArrList1.getDef();
-                baseAttack = mageArrList1.getAttack();
+                baseHp = mageArrList1.getBaseHp();
+                baseDmg = mageArrList1.getBaseDmg();
+                baseDef = mageArrList1.getBaseDef();
+                baseAttack = mageArrList1.getBaseAttack();
             }
         }
         for (Rogue rogueArrList1 : rogueArrList) {
@@ -250,10 +250,10 @@ public class UserData {
                 currentAttack = rogueArrList1.getCurrentAttack();
 
                 characterType = AllLocalData.getInstance().getInfo3Characters().get(charID - 1).getCharacterType();
-                baseHp = rogueArrList1.getHp();
-                baseDmg = rogueArrList1.getDmg();
-                baseDef = rogueArrList1.getDef();
-                baseAttack = rogueArrList1.getAttack();
+                baseHp = rogueArrList1.getBaseHp();
+                baseDmg = rogueArrList1.getBaseDmg();
+                baseDef = rogueArrList1.getBaseDef();
+                baseAttack = rogueArrList1.getBaseAttack();
             }
         }
 
