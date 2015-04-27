@@ -21,6 +21,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import project.bizzareadvent.SaveLoad.AllLocalData;
+import project.bizzareadvent.SaveLoad.DatabaseServer;
+import project.bizzareadvent.SaveLoad.UserData;
 
 public class NewGameController implements Initializable {
     
@@ -62,6 +65,55 @@ public class NewGameController implements Initializable {
     public void handleButtonActionDone(ActionEvent event){
         String charName = characterName.getText();
         try{
+            if(warriorChosen == true){
+                boolean controllData = true;
+                for (int i = 0; i < 3; i++) {
+                    if(AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).getCharacters_idNr() == 0 && controllData){
+                        AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCharacters_idNr(1);
+                        controllData = false;
+                    }else {
+                        System.out.println("not emtpy");
+                        
+                        }
+                }
+                UserData.getInstance().testSaveFromUSERDATAToALLLOCALDATA();
+                
+                DatabaseServer.getInstance().saveToDB();
+                UserData.getInstance().testLoadAllDataFromALLLOCALDATAToUSERDATA();
+            }else if(mageChosen == true){
+                
+                boolean controllData = true;
+                for (int i = 0; i < 3; i++) {
+                    if(AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).getCharacters_idNr() == 0 && controllData){
+                        AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCharacters_idNr(1);
+                        controllData = false;
+                    }else {
+                        System.out.println("not emtpy");
+                        
+                        }
+                }
+                UserData.getInstance().testSaveFromUSERDATAToALLLOCALDATA();
+                
+                DatabaseServer.getInstance().saveToDB();
+                UserData.getInstance().testLoadAllDataFromALLLOCALDATAToUSERDATA();
+            }else if (assassinChosen == true){
+            
+                boolean controllData = true;
+                for (int i = 0; i < 3; i++) {
+                    if(AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).getCharacters_idNr() == 0 && controllData){
+                        AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCharacters_idNr(1);
+                        controllData = false;
+                    }else {
+                        System.out.println("not emtpy");
+                        
+                        }
+                }
+                UserData.getInstance().testSaveFromUSERDATAToALLLOCALDATA();
+                
+                DatabaseServer.getInstance().saveToDB();
+                UserData.getInstance().testLoadAllDataFromALLLOCALDATAToUSERDATA();
+            }
+            
             if(chosenCharacter = true && charName.length() != 0){
                 Node node = (Node) event.getSource();
                 Stage stageLogin = (Stage) node.getScene().getWindow();
@@ -80,24 +132,47 @@ public class NewGameController implements Initializable {
             System.out.println("Scene change error1");
         }
     }
+    @FXML
+    public void handleButtonActionBack(ActionEvent event){
+        try{
+                Node node = (Node) event.getSource();
+                Stage stageLogin = (Stage) node.getScene().getWindow();
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLScene2.fxml"));
+                Parent root = loader.load();
+
+                Scene scene = new Scene(root);
+                stageLogin.setScene(scene);
+                stageLogin.show();
+          
+        }catch(IOException ex){
+            System.out.println("Scene change error1");
+        }
+    }
     // methods below for marking hero as chosen
     @FXML
     public void warriorChosen(ActionEvent event){
         warriorChosen = true;
         mageChosen = false;
         assassinChosen = false;
+        
+        chosenCharacter = true;
     }
     @FXML
     public void mageChosen(ActionEvent event){
         mageChosen = true;
         warriorChosen = false;
         assassinChosen = false;
+        
+        chosenCharacter = true;
     }
     @FXML
     public void assassinChosen(ActionEvent event){
         assassinChosen = true;
         warriorChosen = false;
         mageChosen = false;
+        
+        chosenCharacter = true;
     }    
     
 }
