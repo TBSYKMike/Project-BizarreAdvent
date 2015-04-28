@@ -449,4 +449,31 @@ public class UserData {
         this.currentGold = currentGold;
     }
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    private String rememeberLastClass;
+
+    public String getRememeberLastClass() {
+        return rememeberLastClass;
+    }
+
+    public void setRememeberLastClass(String rememeberLastClass) {
+        this.rememeberLastClass = rememeberLastClass;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
 }
