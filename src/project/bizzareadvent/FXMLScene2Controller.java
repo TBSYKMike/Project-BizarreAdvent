@@ -123,6 +123,7 @@ public class FXMLScene2Controller implements Initializable {
                 Scene scene = new Scene(root);
                 stageLogin.setScene(scene);
                 stageLogin.show();
+                UserData.getInstance().setRememeberLastClass(this.getClass().getName());
         
         }catch(IOException ex){
             System.out.println("Scene change error1rrr");
@@ -130,7 +131,23 @@ public class FXMLScene2Controller implements Initializable {
     }
     
     
-    
+    @FXML
+    private void handleButtonActionDeleteScene(ActionEvent event){
+        try{
+                Node node = (Node) event.getSource();
+                Stage stageLogin = (Stage) node.getScene().getWindow();
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDeleteCharacter.fxml"));
+                Parent root = loader.load();
+
+                Scene scene = new Scene(root);
+                stageLogin.setScene(scene);
+                stageLogin.show();
+        
+        }catch(IOException ex){
+            System.out.println("Scene change error1rrr");
+        }
+    }
     
     
     

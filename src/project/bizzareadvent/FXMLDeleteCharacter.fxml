@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.bizzareadvent.FXMLDeleteCharacterController">
+   <children>
+      <Button fx:id="deleteSlot1" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="178.0" layoutY="238.0" mnemonicParsing="false" onAction="#delslot1" text="delete Slot1" AnchorPane.topAnchor="238.0" />
+      <Button fx:id="deleteSlot2" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="336.0" layoutY="238.0" mnemonicParsing="false" onAction="#delslot2" text="delete Slot2" />
+      <Button fx:id="deleteSlot3" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="494.0" layoutY="238.0" mnemonicParsing="false" onAction="#delslot3" text="delete Slot3" />
+      <Button layoutX="66.0" layoutY="358.0" mnemonicParsing="false" onAction="#handleButtonActionBack" text="Back" />
+      <Button fx:id="buttonConfirmDeletion" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="322.0" layoutY="333.0" mnemonicParsing="false" onAction="#handleButtonActionConfirmDeletion" text="Confirm Deletion" />
+      <Button fx:id="buttonCancel" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="349.0" layoutY="371.0" mnemonicParsing="false" onAction="#handleButtonActionCancel" text="Cancel" />
+   </children>
+</AnchorPane>
