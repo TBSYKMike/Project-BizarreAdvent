@@ -15,6 +15,10 @@ public abstract class SpecialMonster extends Monster {
         super(baseHp, baseDef, baseAttack, baseDmg, amountScore, amountGold);
     }
 
+
+
+    
+
     
 
 }

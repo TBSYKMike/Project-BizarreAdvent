@@ -12,9 +12,12 @@ package project.bizzareadvent;
 public abstract class Monster extends Creature {
     private int amountScore;                                                    //How much score they will give
     private int amountGold;                                                     //How much gold they will give
+    private boolean isStunned = false;
     
     public Monster(int baseHp, int baseDef, int baseAttack, int baseDmg, int amountScore, int amountGold) {
         super(baseHp, baseDef, baseAttack, baseDmg);
+        this.amountScore = amountScore;
+        this.amountGold = amountGold;
     }
     public void setAmountScore(int amountScore){
         this.amountScore = amountScore;
@@ -27,6 +30,14 @@ public abstract class Monster extends Creature {
     }
     public int getAmountGold(){
         return amountGold;
+    }
+
+    public boolean isIsStunned() {
+        return isStunned;
+    }
+
+    public void setIsStunned(boolean isStunned) {
+        this.isStunned = isStunned;
     }
    
 }
