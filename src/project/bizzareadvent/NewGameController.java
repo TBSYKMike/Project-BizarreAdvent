@@ -68,7 +68,7 @@ public class NewGameController implements Initializable {
 
             String charName = characterName.getText();
             try {
-                if (warriorChosen == true) {
+                if (warriorChosen == true && charName.length() != 0 ) {
                     boolean controllData = true;
                     for (int i = 0; i < 3; i++) {
                         if (AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).getCharacters_idNr() == 0 && controllData) {
@@ -85,10 +85,10 @@ public class NewGameController implements Initializable {
 
                 //DatabaseServer.getInstance().saveToDB();
                     //UserData.getInstance().testLoadAllDataFromALLLOCALDATAToUSERDATA();
-                    DatabaseServer.getInstance().saveToDB();
-                    UserData.getInstance().testLoadAllDataFromALLLOCALDATAToUSERDATA();
+                   // DatabaseServer.getInstance().saveToDB();
+                   // UserData.getInstance().testLoadAllDataFromALLLOCALDATAToUSERDATA();
 
-                } else if (mageChosen == true) {
+                } else if (mageChosen == true && charName.length() != 0) {
 
                     boolean controllData = true;
                     for (int i = 0; i < 3; i++) {
@@ -106,7 +106,7 @@ public class NewGameController implements Initializable {
 
               //  DatabaseServer.getInstance().saveToDB();
                     //  UserData.getInstance().testLoadAllDataFromALLLOCALDATAToUSERDATA();
-                } else if (assassinChosen == true) {
+                } else if (assassinChosen == true && charName.length() != 0 ) {
 
                     boolean controllData = true;
                     for (int i = 0; i < 3; i++) {
@@ -126,7 +126,7 @@ public class NewGameController implements Initializable {
                     //   UserData.getInstance().testLoadAllDataFromALLLOCALDATAToUSERDATA();
                 }
 
-                if (slotEmpty) {
+                if (slotEmpty && charName.length() != 0 ) {
                     DatabaseServer.getInstance().saveToDB();
                     UserData.getInstance().testLoadAllDataFromALLLOCALDATAToUSERDATA();
                 }
@@ -149,6 +149,7 @@ public class NewGameController implements Initializable {
                         stageLogin.show();
                     } else {
                         Error1.setText("You have to pick a hero or have a valid name to continue");
+                        
                     }
 
                 } catch (Exception ex) {
@@ -156,7 +157,7 @@ public class NewGameController implements Initializable {
                 }
 
             } else {
-                System.out.println("All Slots are Full");
+                System.out.println("All Slots are Full AND/OR TextField is Empty");
 
             }
 
@@ -193,6 +194,7 @@ public class NewGameController implements Initializable {
         assassinChosen = false;
 
         chosenCharacter = true;
+        buttonDone.setDisable(false);
     }
 
     @FXML
@@ -202,6 +204,7 @@ public class NewGameController implements Initializable {
         assassinChosen = false;
 
         chosenCharacter = true;
+        buttonDone.setDisable(false);
     }
 
     @FXML
@@ -211,6 +214,7 @@ public class NewGameController implements Initializable {
         mageChosen = false;
 
         chosenCharacter = true;
+        buttonDone.setDisable(false);
     }
 
 }
