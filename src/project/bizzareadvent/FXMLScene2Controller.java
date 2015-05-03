@@ -69,6 +69,28 @@ public class FXMLScene2Controller implements Initializable {
         
     }
     
+    @FXML
+    private void handleButtonActionWorldMap(ActionEvent event) {
+        
+            try {
+
+                Node node = (Node) event.getSource();
+                Stage stage2 = (Stage) node.getScene().getWindow();
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLWorldMap.fxml"));
+                Parent root = loader.load();
+
+                Scene scene = new Scene(root);
+                stage2.setScene(scene);
+                stage2.show();
+
+            } catch (IOException ex) {
+                System.out.println("Scene change error1");
+            }
+        
+    }
+    
+    
     
     @FXML
     public void handleKeyEvent(KeyEvent ke) {
@@ -138,6 +160,25 @@ public class FXMLScene2Controller implements Initializable {
                 Stage stageLogin = (Stage) node.getScene().getWindow();
 
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDeleteCharacter.fxml"));
+                Parent root = loader.load();
+
+                Scene scene = new Scene(root);
+                stageLogin.setScene(scene);
+                stageLogin.show();
+        
+        }catch(IOException ex){
+            System.out.println("Scene change error1rrr");
+        }
+    }
+    
+    
+    @FXML
+    private void handleButtonActionLoadScene(ActionEvent event){
+        try{
+                Node node = (Node) event.getSource();
+                Stage stageLogin = (Stage) node.getScene().getWindow();
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLLoadCharacter.fxml"));
                 Parent root = loader.load();
 
                 Scene scene = new Scene(root);

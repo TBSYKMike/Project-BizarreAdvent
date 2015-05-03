@@ -27,7 +27,7 @@ import project.bizzareadvent.SaveLoad.UserData;
  *
  * @author Mike
  */
-public class FXMLDeleteCharacterController implements Initializable {
+public class FXMLLoadCharacterController implements Initializable {
 
     /**
      * Initializes the controller class.
@@ -106,9 +106,25 @@ public class FXMLDeleteCharacterController implements Initializable {
     
     @FXML
     private void handleButtonActionConfirmDeletion(ActionEvent event) {// Only delete fromlocal saving to server
-        deleteCharacter();
+        //deleteCharacter();
         enableButtonSlots();
         disableButtonConfirmCancel();
+        
+        try {
+
+            Node node = (Node) event.getSource();
+            Stage stage2 = (Stage) node.getScene().getWindow();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLWorldMap.fxml"));
+            Parent root = loader.load();
+
+            Scene scene = new Scene(root);
+            stage2.setScene(scene);
+            stage2.show();
+
+        } catch (IOException ex) {
+            System.out.println("Scene change error1");
+        }
         
     }
     
@@ -212,6 +228,13 @@ public class FXMLDeleteCharacterController implements Initializable {
         buttonConfirmDeletion.setDisable(true);
         buttonCancel.setDisable(true);
     }
+    
+    
+    
+    
+    
+    
+    
     
 
 }

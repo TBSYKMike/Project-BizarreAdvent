@@ -158,11 +158,11 @@ public class NewGameController implements Initializable {
 
             } else {
                 System.out.println("All Slots are Full AND/OR TextField is Empty");
-
+                Error1.setText("All Slots are Full");
             }
 
         } else {
-            System.out.println("no character selected, FFS select someting!!!!!!!!!! ERIK I KNOW THAT WHAT YOU DID...!!!!!! YOU FORGOT THE CHECK IF BUTTON WAS PUSHED METHOD!!!!!!!!");
+            System.out.println("no character selected, FFS select someting!!!!!!!!!!!!!!!!!");
 
         }
 

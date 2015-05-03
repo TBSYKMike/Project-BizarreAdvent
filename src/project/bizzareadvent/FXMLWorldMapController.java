@@ -81,5 +81,22 @@ public class FXMLWorldMapController implements Initializable {
             System.out.println("Scene change error1");
         }
     }
+    
+    @FXML
+    public void handleButtonActionAdventure(ActionEvent event) {
+        try {
+            Node node = (Node) event.getSource();
+            Stage stageLogin = (Stage) node.getScene().getWindow();
 
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLAdventure.fxml"));
+            Parent root = loader.load();
+
+            Scene scene = new Scene(root);
+            stageLogin.setScene(scene);
+            stageLogin.show();
+
+        } catch (IOException ex) {
+            System.out.println("Scene change error1");
+        }
+    }
 }

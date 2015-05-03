@@ -6,12 +6,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="700.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="project.bizzareadvent.FXMLCityController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.bizzareadvent.FXMLCityController">
    <children>
-      <Button layoutX="547.0" layoutY="125.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="99.0" text="Heal" />
-      <Button layoutX="546.0" layoutY="153.0" mnemonicParsing="false" text="Upgrade weapon" />
-      <Button layoutX="546.0" layoutY="181.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="99.0" text="Upgrade armor" />
-      <Button layoutX="546.0" layoutY="209.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="99.0" text="Back" />
+      <Button layoutX="547.0" layoutY="125.0" mnemonicParsing="false" onAction="#handleButtonActionHeal" prefHeight="22.0" prefWidth="99.0" text="Heal" />
+      <Button layoutX="546.0" layoutY="153.0" mnemonicParsing="false" onAction="#handleButtonActionWeaponUpgrade" text="Upgrade weapon" />
+      <Button layoutX="546.0" layoutY="181.0" mnemonicParsing="false" onAction="#handleButtonActionArmorUpgrade" prefHeight="22.0" prefWidth="99.0" text="Upgrade armor" />
+      <Button layoutX="546.0" layoutY="209.0" mnemonicParsing="false" onAction="#handleButtonActionBack" prefHeight="22.0" prefWidth="99.0" text="Back" />
    </children>
 </AnchorPane>
