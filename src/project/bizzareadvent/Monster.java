@@ -13,11 +13,13 @@ public abstract class Monster extends Creature {
     private int amountScore;                                                    //How much score they will give
     private int amountGold;                                                     //How much gold they will give
     private boolean isStunned = false;
+    private String monsterType;
     
-    public Monster(int baseHp, int baseDef, int baseAttack, int baseDmg, int amountScore, int amountGold) {
+    public Monster(int baseHp, int baseDef, int baseAttack, int baseDmg, int amountScore, int amountGold, String monsterType) {
         super(baseHp, baseDef, baseAttack, baseDmg);
         this.amountScore = amountScore;
         this.amountGold = amountGold;
+        this.monsterType = monsterType;
     }
     public void setAmountScore(int amountScore){
         this.amountScore = amountScore;

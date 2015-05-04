@@ -11,8 +11,8 @@ package project.bizzareadvent;
  */
 public abstract class SpecialMonster extends Monster {
 
-    public SpecialMonster(int baseHp, int baseDef, int baseAttack, int baseDmg, int amountScore, int amountGold) {
-        super(baseHp, baseDef, baseAttack, baseDmg, amountScore, amountGold);
+    public SpecialMonster(int baseHp, int baseDef, int baseAttack, int baseDmg, int amountScore, int amountGold, String monsterType) {
+        super(baseHp, baseDef, baseAttack, baseDmg, amountScore, amountGold, monsterType);
     }
 
 
