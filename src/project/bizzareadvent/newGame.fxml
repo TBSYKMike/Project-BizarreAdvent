@@ -17,8 +17,8 @@
       <Button fx:id="buttonWarrior" layoutX="78.0" layoutY="262.0" mnemonicParsing="false" onAction="#warriorChosen" prefHeight="25.0" prefWidth="66.0" text="Warrior" />
       <Button fx:id="buttonAssassin" layoutX="453.0" layoutY="262.0" mnemonicParsing="false" onAction="#assassinChosen" prefHeight="25.0" prefWidth="66.0" text="Assassin" />
       <TextField fx:id="characterName" layoutX="226.0" layoutY="304.0" promptText="Character Name" />
-      <Button fx:id="buttonDone" layoutX="268.0" layoutY="338.0" mnemonicParsing="false" onAction="#handleButtonActionDone" prefHeight="25.0" prefWidth="66.0" text="Done" />
+      <Button fx:id="buttonDone" disable="true" layoutX="268.0" layoutY="338.0" mnemonicParsing="false" onAction="#handleButtonActionDone" prefHeight="25.0" prefWidth="66.0" text="Done" />
       <Button fx:id="buttonBack" layoutX="78.0" layoutY="338.0" mnemonicParsing="false" onAction="#handleButtonActionBack" prefHeight="25.0" prefWidth="66.0" text="Back" />
-      <Label fx:id="Error1" layoutX="147.0" layoutY="14.0" prefHeight="25.0" prefWidth="310.0" />
+      <Label fx:id="Error1" disable="true" layoutX="147.0" layoutY="14.0" prefHeight="25.0" prefWidth="310.0" />
    </children>
 </AnchorPane>
