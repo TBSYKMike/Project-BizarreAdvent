@@ -14,15 +14,20 @@
       <Button fx:id="buttonBack" layoutX="610.0" layoutY="439.0" mnemonicParsing="false" onAction="#handleButtonActionBack" prefHeight="25.0" prefWidth="88.0" text="Menu" />
       <Button fx:id="buttonCity" layoutX="610.0" layoutY="186.0" mnemonicParsing="false" onAction="#handleButtonActionCity" prefHeight="25.0" prefWidth="88.0" text="City" />
       <Button fx:id="buttonAdventure" layoutX="610.0" layoutY="349.0" mnemonicParsing="false" onAction="#handleButtonActionAdventure" text="GO FORTH!!!!" />
-      <Label layoutX="14.0" layoutY="33.0" text="HP:" />
-      <Label layoutX="90.0" layoutY="33.0" text="ATT:" />
-      <Label layoutX="172.0" layoutY="33.0" text="DEF:" />
-      <Label layoutX="259.0" layoutY="33.0" text="GOLD:" />
-      <Label layoutX="375.0" layoutY="33.0" text="SCORE:" />
+      <Label fx:id="hpLabel" layoutX="14.0" layoutY="33.0" text="HP:" />
+      <Label fx:id="attackLabel" layoutX="90.0" layoutY="33.0" text="ATT:" />
+      <Label fx:id="defensLabel" layoutX="172.0" layoutY="33.0" text="DEF:" />
+      <Label fx:id="goldLabel" layoutX="259.0" layoutY="33.0" text="GOLD:" />
+      <Label fx:id="scoreLabel" layoutX="375.0" layoutY="33.0" text="SCORE:" />
       <Label fx:id="currentHp" layoutX="32.0" layoutY="33.0" prefHeight="17.0" prefWidth="56.0" />
-      <Label fx:id="attack" layoutX="113.0" layoutY="33.0" prefHeight="17.0" prefWidth="56.0" />
-      <Label fx:id="defens" layoutX="195.0" layoutY="33.0" prefHeight="17.0" prefWidth="56.0" />
+      <Label fx:id="currentAttack" layoutX="113.0" layoutY="33.0" prefHeight="17.0" prefWidth="56.0" />
+      <Label fx:id="currentDefens" layoutX="195.0" layoutY="33.0" prefHeight="17.0" prefWidth="56.0" />
       <Label fx:id="currentGold" layoutX="294.0" layoutY="33.0" prefHeight="17.0" prefWidth="81.0" />
       <Label fx:id="currentScore" layoutX="414.0" layoutY="33.0" prefHeight="17.0" prefWidth="81.0" />
+      <ImageView fx:id="mapPosition5" fitHeight="150.0" fitWidth="132.0" layoutX="103.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="mapPosition4" fitHeight="150.0" fitWidth="132.0" layoutX="389.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="mapPosition3" fitHeight="150.0" fitWidth="132.0" layoutX="47.0" layoutY="326.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="mapPosition2" fitHeight="150.0" fitWidth="132.0" layoutX="242.0" layoutY="261.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="mapPosition1" fitHeight="150.0" fitWidth="132.0" layoutX="414.0" layoutY="314.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>
