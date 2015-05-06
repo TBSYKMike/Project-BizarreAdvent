@@ -84,8 +84,6 @@ public class FXMLWorldMapController implements Initializable {
         mapPosition3.setImage(image2);
         mapPosition4.setImage(image2);
         mapPosition5.setImage(image2);
-        
-        
 
     }
 
@@ -144,55 +142,35 @@ public class FXMLWorldMapController implements Initializable {
     }
 
     public void movementAction1(ActionEvent event) {
-
+        falseMethod();
         position1 = true;
-        position2 = false;
-        position3 = false;
-        position4 = false;
-        position5 = false;
 
         updatePosition();
     }
 
     public void movementAction2(ActionEvent event) {
-
-        position1 = false;
+        falseMethod();
         position2 = true;
-        position3 = false;
-        position4 = false;
-        position5 = false;
 
         updatePosition();
     }
 
     public void movementAction3(ActionEvent event) {
-
-        position1 = false;
-        position2 = false;
+        falseMethod();
         position3 = true;
-        position4 = false;
-        position5 = false;
 
         updatePosition();
     }
 
     public void movementAction4(ActionEvent event) {
-
-        position1 = false;
-        position2 = false;
-        position3 = false;
+        falseMethod();
         position4 = true;
-        position5 = false;
 
         updatePosition();
     }
 
     public void movementAction5(ActionEvent event) {
-
-        position1 = false;
-        position2 = false;
-        position3 = false;
-        position4 = false;
+        falseMethod();
         position5 = true;
 
         updatePosition();
@@ -240,4 +218,15 @@ public class FXMLWorldMapController implements Initializable {
 
         }
     }
+
+    public void falseMethod() {
+
+        position1 = false;
+        position2 = false;
+        position3 = false;
+        position4 = false;
+        position5 = false;
+
+    }
+
 }
