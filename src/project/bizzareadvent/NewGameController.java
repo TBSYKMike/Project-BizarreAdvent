@@ -74,6 +74,12 @@ public class NewGameController implements Initializable {
                         if (AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).getCharacters_idNr() == 0 && controllData) {
                             AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCharacters_idNr(1);
                             AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCharacterName(charName);
+                            
+                            
+                            loadSetBaseData(i);  
+                            
+                            
+                            
                             controllData = false;
                             slotEmpty = true;
                         } else {
@@ -95,6 +101,9 @@ public class NewGameController implements Initializable {
                         if (AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).getCharacters_idNr() == 0 && controllData) {
                             AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCharacters_idNr(2);
                             AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCharacterName(charName);
+                            
+                            loadSetBaseData(i); 
+                            
                             controllData = false;
                             slotEmpty = true;
                         } else {
@@ -113,6 +122,9 @@ public class NewGameController implements Initializable {
                         if (AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).getCharacters_idNr() == 0 && controllData) {
                             AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCharacters_idNr(3);
                             AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCharacterName(charName);
+                            
+                            loadSetBaseData(i); 
+                            
                             controllData = false;
                             slotEmpty = true;
                         } else {
@@ -128,7 +140,8 @@ public class NewGameController implements Initializable {
 
                 if (slotEmpty && charName.length() != 0 ) {
                     DatabaseServer.getInstance().saveToDB();
-                    UserData.getInstance().testLoadAllDataFromALLLOCALDATAToUSERDATA();
+                    //UserData.getInstance().testLoadAllDataFromALLLOCALDATAToUSERDATA();
+                    UserData.getInstance().test001LoadCharDataFromALLLOCALDATA();
                 }
 
             } catch (Exception ex) {
@@ -215,6 +228,34 @@ public class NewGameController implements Initializable {
 
         chosenCharacter = true;
         buttonDone.setDisable(false);
+    }
+    
+    
+    
+    
+    private void loadSetBaseData(int i){
+        if (warriorChosen){
+            
+        AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCurrentAttack(    AllLocalData.getInstance().getInfo3Characters().get(0).getBaseAttack()           );
+        AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCurrentDef(    AllLocalData.getInstance().getInfo3Characters().get(0).getBaseDef()     );
+        AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCurrentDmg(   AllLocalData.getInstance().getInfo3Characters().get(0).getBaseDmg()         );
+        AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCurrentHp(    AllLocalData.getInstance().getInfo3Characters().get(0).getBaseHp()       );
+        }
+        if (mageChosen){
+            
+        AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCurrentAttack(    AllLocalData.getInstance().getInfo3Characters().get(1).getBaseAttack()           );
+        AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCurrentDef(    AllLocalData.getInstance().getInfo3Characters().get(1).getBaseDef()     );
+        AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCurrentDmg(   AllLocalData.getInstance().getInfo3Characters().get(1).getBaseDmg()         );
+        AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCurrentHp(    AllLocalData.getInstance().getInfo3Characters().get(1).getBaseHp()       );
+        }
+        if (assassinChosen){
+            
+        AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCurrentAttack(    AllLocalData.getInstance().getInfo3Characters().get(2).getBaseAttack()           );
+        AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCurrentDef(    AllLocalData.getInstance().getInfo3Characters().get(2).getBaseDef()     );
+        AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCurrentDmg(   AllLocalData.getInstance().getInfo3Characters().get(2).getBaseDmg()         );
+        AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCurrentHp(    AllLocalData.getInstance().getInfo3Characters().get(2).getBaseHp()       );
+        }
+        
     }
 
 }

@@ -110,6 +110,8 @@ public class FXMLLoadCharacterController implements Initializable {
         enableButtonSlots();
         disableButtonConfirmCancel();
         
+        UserData.getInstance().test001LoadCharDataFromALLLOCALDATA();
+        
         try {
 
             Node node = (Node) event.getSource();
@@ -149,7 +151,8 @@ public class FXMLLoadCharacterController implements Initializable {
         AllLocalData.getInstance().deleteCharFromSlot(slot);
         }
         DatabaseServer.getInstance().saveToDB();
-        UserData.getInstance().testLoadAllDataFromALLLOCALDATAToUSERDATA();
+        //UserData.getInstance().testLoadAllDataFromALLLOCALDATAToUSERDATA();
+        UserData.getInstance().test001LoadCharDataFromALLLOCALDATA();
     }
     
     

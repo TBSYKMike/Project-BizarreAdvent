@@ -29,5 +29,7 @@
       <ImageView fx:id="mapPosition3" fitHeight="150.0" fitWidth="132.0" layoutX="47.0" layoutY="326.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="mapPosition2" fitHeight="150.0" fitWidth="132.0" layoutX="242.0" layoutY="261.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="mapPosition1" fitHeight="150.0" fitWidth="132.0" layoutX="414.0" layoutY="314.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="88.0" layoutY="63.0" text="name" />
+      <Label fx:id="nameLabel" layoutX="141.0" layoutY="63.0" text="Label" />
    </children>
 </AnchorPane>

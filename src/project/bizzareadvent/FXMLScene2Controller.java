@@ -145,7 +145,7 @@ public class FXMLScene2Controller implements Initializable {
                 Scene scene = new Scene(root);
                 stageLogin.setScene(scene);
                 stageLogin.show();
-                UserData.getInstance().setRememeberLastClass(this.getClass().getName());
+                //UserData.getInstance().setRememeberLastClass(this.getClass().getName());
         
         }catch(IOException ex){
             System.out.println("Scene change error1rrr");

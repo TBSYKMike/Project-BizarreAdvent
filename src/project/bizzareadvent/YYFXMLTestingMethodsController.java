@@ -49,7 +49,7 @@ public class YYFXMLTestingMethodsController implements Initializable {
         
     }
     
-    
+    /*
     @FXML
     private void LoadFromAllLocalData(ActionEvent event) {
          UserData.getInstance().testLoadAllDataFromALLLOCALDATAToUSERDATA();
@@ -135,5 +135,6 @@ public class YYFXMLTestingMethodsController implements Initializable {
      
     }
     
+    */
     
 }

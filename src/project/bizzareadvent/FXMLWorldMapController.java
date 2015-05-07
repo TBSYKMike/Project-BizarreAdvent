@@ -21,9 +21,14 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import project.bizzareadvent.SaveLoad.UserData;
 
 public class FXMLWorldMapController implements Initializable {
 
+    
+    @FXML
+    private Label nameLabel;
+    
     @FXML
     private Button buttonBack;
     @FXML
@@ -86,7 +91,12 @@ public class FXMLWorldMapController implements Initializable {
         mapPosition5.setImage(image2);
         
         
-
+        
+        nameLabel.setText( UserData.getInstance().getWarriorArrList().getCharacterName() );
+        hpLabel.setText( Integer.toString(UserData.getInstance().getMageArrList().getCurrentHp()) );
+        
+        
+        
     }
 
     @FXML
