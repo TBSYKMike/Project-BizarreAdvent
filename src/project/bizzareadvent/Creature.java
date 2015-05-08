@@ -22,6 +22,10 @@ public abstract class Creature {
         this.baseDmg = baseDmg;
         
     }
+    
+    public void setBaseHp(int baseHp){
+        this.baseHp = baseHp;
+    }
     public int getBaseHp(){
         return baseHp;
     }

@@ -37,6 +37,10 @@ public abstract class Monster extends Creature {
     public boolean isIsStunned() {
         return isStunned;
     }
+    
+    public String getMonsterType(){
+        return monsterType;
+    }
 
     public void setIsStunned(boolean isStunned) {
         this.isStunned = isStunned;
