@@ -25,10 +25,8 @@ import project.bizzareadvent.SaveLoad.UserData;
 
 public class FXMLWorldMapController implements Initializable {
 
-    
     @FXML
     private Label nameLabel;
-    
     @FXML
     private Button buttonBack;
     @FXML
@@ -60,21 +58,26 @@ public class FXMLWorldMapController implements Initializable {
     @FXML
     private ImageView worldMap;
     @FXML
-    private ImageView mapPosition1;
+    private ImageView mapCityPosition;
     @FXML
-    private ImageView mapPosition2;
+    private ImageView mapPlainsposition;
     @FXML
-    private ImageView mapPosition3;
+    private ImageView mapForestPosition;
     @FXML
-    private ImageView mapPosition4;
+    private ImageView mapSwampPosition;
     @FXML
-    private ImageView mapPosition5;
+    private ImageView mapMountainPosition;
+    @FXML
+    private ImageView mapCastlePosition;
 
-    boolean position1 = false;
-    boolean position2 = false;
-    boolean position3 = false;
-    boolean position4 = false;
-    boolean position5 = false;
+    boolean cityPosition = false;
+    boolean plainsPosition = false;
+    boolean forestPosition = false;
+    boolean swampPosition = false;
+    boolean mountainPosition = false;
+    boolean castlePosition = false;
+
+    private String adventurePosition;
 
     File file = new File("src/warrior.jpg");
     Image image = new Image(file.toURI().toString());
@@ -84,19 +87,16 @@ public class FXMLWorldMapController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        mapPosition1.setImage(image);
-        mapPosition2.setImage(image2);
-        mapPosition3.setImage(image2);
-        mapPosition4.setImage(image2);
-        mapPosition5.setImage(image2);
-        
-        
-        
-        nameLabel.setText( UserData.getInstance().getWarriorArrList().getCharacterName() );
-        hpLabel.setText( Integer.toString(UserData.getInstance().getMageArrList().getCurrentHp()) );
-        
-        
-        
+        mapCityPosition.setImage(image);
+        mapPlainsposition.setImage(image2);
+        mapForestPosition.setImage(image2);
+        mapSwampPosition.setImage(image2);
+        mapMountainPosition.setImage(image2);
+        mapCastlePosition.setImage(image2);
+
+        nameLabel.setText(UserData.getInstance().getWarriorArrList().getCharacterName());
+        hpLabel.setText(Integer.toString(UserData.getInstance().getMageArrList().getCurrentHp()));
+
     }
 
     @FXML
@@ -155,90 +155,128 @@ public class FXMLWorldMapController implements Initializable {
 
     public void movementAction1(ActionEvent event) {
         falseMethod();
-        position1 = true;
+        cityPosition = true;
 
         updatePosition();
     }
 
     public void movementAction2(ActionEvent event) {
         falseMethod();
-        position2 = true;
+        plainsPosition = true;
+        adventurePosition = "plains";
+
+        UserData.getInstance().setAdventurePosition(adventurePosition);
 
         updatePosition();
     }
 
     public void movementAction3(ActionEvent event) {
         falseMethod();
-        position3 = true;
+        forestPosition = true;
+        adventurePosition = "forest";
+
+        UserData.getInstance().setAdventurePosition(adventurePosition);
 
         updatePosition();
     }
 
     public void movementAction4(ActionEvent event) {
         falseMethod();
-        position4 = true;
+        swampPosition = true;
+        adventurePosition = "swamp";
+
+        UserData.getInstance().setAdventurePosition(adventurePosition);
 
         updatePosition();
     }
 
     public void movementAction5(ActionEvent event) {
         falseMethod();
-        position5 = true;
+        mountainPosition = true;
+        adventurePosition = "mountain";
+
+        UserData.getInstance().setAdventurePosition(adventurePosition);
+
+        updatePosition();
+    }
+
+    public void movementAction6(ActionEvent event) {
+        falseMethod();
+        castlePosition = true;
+        adventurePosition = "castle";
+
+        UserData.getInstance().setAdventurePosition(adventurePosition);
 
         updatePosition();
     }
 
     public void updatePosition() {
-        if (position1 = true) {
-            mapPosition1.setImage(image);
-            mapPosition2.setImage(image2);
-            mapPosition3.setImage(image2);
-            mapPosition4.setImage(image2);
-            mapPosition5.setImage(image2);
+        // method for updating the position picture
+        if (cityPosition = true) {
+            mapCityPosition.setImage(image);
+            mapPlainsposition.setImage(image2);
+            mapForestPosition.setImage(image2);
+            mapSwampPosition.setImage(image2);
+            mapMountainPosition.setImage(image2);
+            mapCastlePosition.setImage(image2);
 
         }
-        if (position2 = true) {
-            mapPosition1.setImage(image2);
-            mapPosition2.setImage(image);
-            mapPosition3.setImage(image2);
-            mapPosition4.setImage(image2);
-            mapPosition5.setImage(image2);
+        if (plainsPosition = true) {
+            mapCityPosition.setImage(image2);
+            mapPlainsposition.setImage(image);
+            mapForestPosition.setImage(image2);
+            mapSwampPosition.setImage(image2);
+            mapMountainPosition.setImage(image2);
+            mapCastlePosition.setImage(image2);
 
         }
-        if (position3 = true) {
-            mapPosition1.setImage(image2);
-            mapPosition2.setImage(image2);
-            mapPosition3.setImage(image);
-            mapPosition4.setImage(image2);
-            mapPosition5.setImage(image2);
+        if (forestPosition = true) {
+            mapCityPosition.setImage(image2);
+            mapPlainsposition.setImage(image2);
+            mapForestPosition.setImage(image);
+            mapSwampPosition.setImage(image2);
+            mapMountainPosition.setImage(image2);
+            mapCastlePosition.setImage(image2);
 
         }
-        if (position4 = true) {
-            mapPosition1.setImage(image2);
-            mapPosition2.setImage(image2);
-            mapPosition3.setImage(image2);
-            mapPosition4.setImage(image);
-            mapPosition5.setImage(image2);
+        if (swampPosition = true) {
+            mapCityPosition.setImage(image2);
+            mapPlainsposition.setImage(image2);
+            mapForestPosition.setImage(image2);
+            mapSwampPosition.setImage(image);
+            mapMountainPosition.setImage(image2);
+            mapCastlePosition.setImage(image2);
 
         }
-        if (position5 = true) {
-            mapPosition1.setImage(image2);
-            mapPosition2.setImage(image2);
-            mapPosition3.setImage(image2);
-            mapPosition4.setImage(image2);
-            mapPosition5.setImage(image);
+        if (mountainPosition = true) {
+            mapCityPosition.setImage(image2);
+            mapPlainsposition.setImage(image2);
+            mapForestPosition.setImage(image2);
+            mapSwampPosition.setImage(image2);
+            mapMountainPosition.setImage(image);
+            mapCastlePosition.setImage(image2);
+
+        }
+        if (castlePosition = true) {
+            mapCityPosition.setImage(image2);
+            mapPlainsposition.setImage(image2);
+            mapForestPosition.setImage(image2);
+            mapSwampPosition.setImage(image2);
+            mapMountainPosition.setImage(image2);
+            mapCastlePosition.setImage(image);
 
         }
     }
 
     public void falseMethod() {
-
-        position1 = false;
-        position2 = false;
-        position3 = false;
-        position4 = false;
-        position5 = false;
+        // sets all positions to false before setting a new one to true 
+        
+        cityPosition = false;
+        plainsPosition = false;
+        forestPosition = false;
+        swampPosition = false;
+        mountainPosition = false;
+        castlePosition = false;
 
     }
-
 }

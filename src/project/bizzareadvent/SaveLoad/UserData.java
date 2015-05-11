@@ -18,6 +18,7 @@ public class UserData {
 
     private static UserData instance;
     //private StringProperty previousScene = new SimpleStringProperty();
+    private String adventurePosition;
 
     private UserData() {
     }
@@ -220,6 +221,18 @@ public class UserData {
         rogueArrList.clear();
         loadOnce = true;
         Username = "";
+    }
+
+    
+    //@return the adventurePosition
+     
+    public String getAdventurePosition() {
+        return adventurePosition;
+    }
+    //set the aadventurePosition
+    
+    public void setAdventurePosition(String adventurePosition) {
+        this.adventurePosition = adventurePosition;
     }
     
     
