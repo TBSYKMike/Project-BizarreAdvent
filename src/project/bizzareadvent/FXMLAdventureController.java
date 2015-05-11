@@ -12,6 +12,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 
@@ -34,6 +35,14 @@ public class FXMLAdventureController implements Initializable {
     private Label goldLabel;
     @FXML
     private Label scoreLabel;
+    @FXML
+    private Button attackButton;
+    @FXML
+    private Button secondaryButton;
+    @FXML
+    private Button continueButton;
+    @FXML
+    private Button runButton;
     
     Random randomGenerator = new Random();
     
@@ -53,8 +62,6 @@ public class FXMLAdventureController implements Initializable {
     private void handleButtonAttack(ActionEvent event) {
         
         randomInt = randomGenerator.nextInt(6) + 1;
-        
-        
         
         if(list.get(0).getCurrentAttack() > monster.getBaseDef()){
             
@@ -83,7 +90,21 @@ public class FXMLAdventureController implements Initializable {
             }    
         }
         
-        monsterAttack();
+        if(monster.getBaseHp() <= 0){
+            adventureLog.appendText("\nYou are victorious! You have slain the " + monster.getMonsterType() + ".");
+            adventureLog.appendText("\nYou add " + monster.getAmountGold() + " gold to your purse and");
+            adventureLog.appendText("\nyou gain " + monster.getAmountScore() + " score.");
+            
+            list.get(0).setCurrentGold(monster.getAmountGold());
+            list.get(0).setCurrentScore(monster.getAmountScore());
+            
+            attackButton.setDisable(true);
+            secondaryButton.setDisable(true);
+            runButton.setDisable(true);
+            continueButton.setDisable(false);
+        }else{
+            monsterAttack();
+        }
     }
     
     @FXML
@@ -112,8 +133,13 @@ public class FXMLAdventureController implements Initializable {
     
     @FXML
     private void handleButtonContinue(ActionEvent event) {
-        if(run == true || deadCharacter == true){
+        if(run == true){
             switchScene();
+        }
+        else if(deadCharacter == true){
+            
+        }else{
+            
         }
     }
     
@@ -209,6 +235,11 @@ public class FXMLAdventureController implements Initializable {
                 adventureLog.appendText("\nYou encounter a " + monster.getMonsterType());
                 adventureLog.appendText("\nIf you wish to fight the monster press the attack button or");
                 adventureLog.appendText("\npress the run button to attempt to run away.");
+                
+                attackButton.setDisable(false);
+                secondaryButton.setDisable(false);
+                runButton.setDisable(false);
+                continueButton.setDisable(true);
             }
         }
         stepCounter++;
@@ -367,7 +398,6 @@ public class FXMLAdventureController implements Initializable {
        
         randomInt = randomGenerator.nextInt(6) + 1;
         
-        
         if(monster.getBaseAttack() > list.get(0).getCurrentDef()){
             
             if(randomInt > 2){
@@ -394,6 +424,25 @@ public class FXMLAdventureController implements Initializable {
                 adventureLog.appendText("\nThe monster misses!");
             }    
         }
+        
+        if(list.get(0).getCurrentHp() <= 0){
+            
+            deadCharacter = true;
+            
+            attackButton.setDisable(true);
+            secondaryButton.setDisable(true);
+            runButton.setDisable(true);
+            continueButton.setDisable(false);
+            
+            adventureLog.appendText("\n\nYou have died. As your spirit leaves your body you can see your enemy");
+            adventureLog.appendText("\nrip your lifeless body limb from limb.");
+            adventureLog.appendText("\nMaybe it will fashion a nice hat from your body.");
+            adventureLog.appendText("\n\nPress continue to enter your score.");
+            
+        }else{
+         
+            showStats();
+        }
     }
     
     public void gameOver(){
@@ -402,7 +451,13 @@ public class FXMLAdventureController implements Initializable {
     
     public void showStats(){
         
+        attackLabel.setText(Integer.toString(list.get(0).getCurrentAttack()));
+        defenceLabel.setText(Integer.toString(list.get(0).getCurrentDef()));
+        hpLabel.setText(Integer.toString(list.get(0).getCurrentHp()));
+        goldLabel.setText(Integer.toString(list.get(0).getCurrentGold()));
+        scoreLabel.setText(Integer.toString(list.get(0).getCurrentScore()));
     }
+    
     
     public void switchScene(){
         
@@ -413,5 +468,12 @@ public class FXMLAdventureController implements Initializable {
         // TODO
         Warrior warr = new Warrior(0,0,0,0,0,"",0,0,0,0,0,0,0,0);
         list.add(warr);
+        
+        attackButton.setDisable(true);
+        secondaryButton.setDisable(true);
+        runButton.setDisable(true);
+        continueButton.setDisable(false);
+        
+        showStats();
     }    
 }
