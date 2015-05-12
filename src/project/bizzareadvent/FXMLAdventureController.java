@@ -15,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import project.bizzareadvent.SaveLoad.UserData;
 
 /**
  * FXML Controller class
@@ -49,6 +50,7 @@ public class FXMLAdventureController implements Initializable {
     private int stepCounter = 0;
     private int randomInt;
     
+    private String position;
     private boolean run = false;
     private boolean deadCharacter = false;
     
@@ -139,7 +141,20 @@ public class FXMLAdventureController implements Initializable {
         else if(deadCharacter == true){
             
         }else{
-            
+            if (position.equals("plains")){
+                plains();
+            }
+            else if(position.equals("forest")){
+                forest();
+            }
+            else if(position.equals("mountain")){
+                mountains();
+            }
+            else if(position.equals("swamp")){
+                swamp();
+            }else{
+                castle();
+            }
         }
     }
     
@@ -329,7 +344,7 @@ public class FXMLAdventureController implements Initializable {
         int gold = 0;
         randomInt = randomGenerator.nextInt(100) + 1;
         
-        if(randomInt == 0){
+        if(randomInt <= 15){
             gold = 50;
             
             adventureLog.appendText("\nYou stumble upon a chest hidden behind some rocks,");
@@ -338,45 +353,50 @@ public class FXMLAdventureController implements Initializable {
             adventureLog.appendText("\nYou ad " + gold + " gold to your purse.");
     
         }
-        else if(randomInt == 0){
-            gold = 50;
+        else if(randomInt > 15 && randomInt <= 40 ){
+            gold = 20;
             
-            adventureLog.appendText("\nYou trip over something and start to curse,");
+            adventureLog.appendText("\nYou trip over something and start to curse.");
             adventureLog.appendText("\nYou look behind you to see it was a small jewel encrusted box.");
             adventureLog.appendText("\n'Hot damn!'");
             adventureLog.appendText("\nYou open it to find that it is empty.");
             adventureLog.appendText("\nYou take it anyway and ad " + gold + " gold to your purse.");
         }
-        else if(randomInt == 0){
-            gold = 50;
+        else if(randomInt > 40 && randomInt <= 65){
+            gold = 20;
             
-            adventureLog.appendText("\nYou stumble upon a chest hidden behind some rocks,");
-            adventureLog.appendText("\nYou open it and find a mustash made of the purest gold.");
-            adventureLog.appendText("\n'It must be worth a fortune!'");
+            adventureLog.appendText("\nYou see something shining in the distance.");
+            adventureLog.appendText("\nYou start to run towards it and find a small pile of gold pieces.");
+            adventureLog.appendText("\n'WOHO!'");
             adventureLog.appendText("\nYou ad " + gold + " gold to your purse.");
         }
-        else if(randomInt == 0){
-            gold = 50;
+        else if(randomInt > 65 && randomInt <= 85){
+            gold = 30;
             
-            adventureLog.appendText("\nYou stumble upon a chest hidden behind some rocks,");
-            adventureLog.appendText("\nYou open it and find a mustash made of the purest gold.");
-            adventureLog.appendText("\n'It must be worth a fortune!'");
+            adventureLog.appendText("\nYou are walking around admiring the enviroment,");
+            adventureLog.appendText("\nwhen all of a sudden something drops on your head.");
+            adventureLog.appendText("\n'WTF!'");
+            adventureLog.appendText("\nYou look around to see what hit you in the head to find a goldnugget");
+            adventureLog.appendText("\n'Ohhh nice!'");
             adventureLog.appendText("\nYou ad " + gold + " gold to your purse.");
         }
-        else if(randomInt == 0){
+        else if(randomInt > 85 && randomInt <= 95){
             gold = 50;
             
-            adventureLog.appendText("\nYou stumble upon a chest hidden behind some rocks,");
-            adventureLog.appendText("\nYou open it and find a mustash made of the purest gold.");
-            adventureLog.appendText("\n'It must be worth a fortune!'");
+            adventureLog.appendText("\nYou hear someone moaning.");
+            adventureLog.appendText("\nYou look around and see an old, fragile and weak man sitting with a bag of gold under his arm.");
+            adventureLog.appendText("\n'That looks heavy old man, you need help with that?'");
+            adventureLog.appendText("\nThe old man looks up to you with an angry look on his face");
+            adventureLog.appendText("\n'PISS OFF YOU SILLY CUNT, IT'S MINE, MY OWN, MY PRECIOUS'");
+            adventureLog.appendText("\nWithout hesitation you suckerpunch the old man and steal his bag of gold");
             adventureLog.appendText("\nYou ad " + gold + " gold to your purse.");
         }
         else if(randomInt >= 96){
             gold = 100;
             
             adventureLog.appendText("\nAn ugly dwarf jumps you from behind and kicks you");
-            adventureLog.appendText("\nin the nuts and steals some of your gold.");
-            adventureLog.appendText("\n'Get rekt son!'");
+            adventureLog.appendText("\nin the groin and steals some of your gold.");
+            adventureLog.appendText("\n'Get rekt noob!'");
             adventureLog.appendText("\nYou lose " + gold + " gold.");
            
         }
@@ -466,7 +486,10 @@ public class FXMLAdventureController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        Warrior warr = new Warrior(0,0,0,0,0,"",0,0,0,0,0,0,0,0);
+        position = UserData.getInstance().getAdventurePosition();
+        
+        
+        Warrior warr = new Warrior(0,0,0,0,0,"",0,0,0,0,0,0,0,0); //test
         list.add(warr);
         
         attackButton.setDisable(true);
