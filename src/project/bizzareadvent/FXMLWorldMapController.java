@@ -20,6 +20,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import project.bizzareadvent.SaveLoad.AllLocalData;
 import project.bizzareadvent.SaveLoad.UserData;
@@ -155,24 +156,25 @@ public class FXMLWorldMapController implements Initializable {
         }
     }
 
-    public void movementAction1(ActionEvent event) {
+    public void movementAction1(MouseEvent event) {
         falseMethod();
         cityPosition = true;
 
         updatePosition();
     }
 
-    public void movementAction2(ActionEvent event) {
+    public void movementAction2(MouseEvent event) {
         falseMethod();
         plainsPosition = true;
         adventurePosition = "plains";
 
         UserData.getInstance().setAdventurePosition(adventurePosition);
 
+
         updatePosition();
     }
 
-    public void movementAction3(ActionEvent event) {
+    public void movementAction3(MouseEvent event) {
         falseMethod();
         forestPosition = true;
         adventurePosition = "forest";
@@ -182,7 +184,7 @@ public class FXMLWorldMapController implements Initializable {
         updatePosition();
     }
 
-    public void movementAction4(ActionEvent event) {
+    public void movementAction4(MouseEvent event) {
         falseMethod();
         swampPosition = true;
         adventurePosition = "swamp";
@@ -214,7 +216,7 @@ public class FXMLWorldMapController implements Initializable {
 
     public void updatePosition() {
         // method for updating the position picture
-        if (cityPosition = true) {
+        if (cityPosition == true) {
             mapCityPosition.setImage(image);
             mapPlainsposition.setImage(image2);
             mapForestPosition.setImage(image2);
@@ -223,7 +225,7 @@ public class FXMLWorldMapController implements Initializable {
             mapCastlePosition.setImage(image2);
 
         }
-        if (plainsPosition = true) {
+        if (plainsPosition == true) {
             mapCityPosition.setImage(image2);
             mapPlainsposition.setImage(image);
             mapForestPosition.setImage(image2);
@@ -232,7 +234,7 @@ public class FXMLWorldMapController implements Initializable {
             mapCastlePosition.setImage(image2);
 
         }
-        if (forestPosition = true) {
+        if (forestPosition == true) {
             mapCityPosition.setImage(image2);
             mapPlainsposition.setImage(image2);
             mapForestPosition.setImage(image);
@@ -241,7 +243,7 @@ public class FXMLWorldMapController implements Initializable {
             mapCastlePosition.setImage(image2);
 
         }
-        if (swampPosition = true) {
+        if (swampPosition == true) {
             mapCityPosition.setImage(image2);
             mapPlainsposition.setImage(image2);
             mapForestPosition.setImage(image2);
@@ -250,7 +252,7 @@ public class FXMLWorldMapController implements Initializable {
             mapCastlePosition.setImage(image2);
 
         }
-        if (mountainPosition = true) {
+        if (mountainPosition == true) {
             mapCityPosition.setImage(image2);
             mapPlainsposition.setImage(image2);
             mapForestPosition.setImage(image2);
@@ -259,7 +261,7 @@ public class FXMLWorldMapController implements Initializable {
             mapCastlePosition.setImage(image2);
 
         }
-        if (castlePosition = true) {
+        if (castlePosition == true) {
             mapCityPosition.setImage(image2);
             mapPlainsposition.setImage(image2);
             mapForestPosition.setImage(image2);
