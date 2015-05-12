@@ -16,6 +16,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import project.bizzareadvent.SaveLoad.AllLocalData;
 import project.bizzareadvent.SaveLoad.DBTable2LoginHasCharacters;
@@ -34,6 +36,9 @@ public class FXMLDeleteCharacterController implements Initializable {
      */
     @FXML
     private Button deleteSlot1, deleteSlot2, deleteSlot3, buttonConfirmDeletion, buttonCancel;
+    
+    @FXML
+    private ImageView chosenCharacter;
     
     private boolean slot1=false, slot2=false, slot3=false;
     private int slot=0;
@@ -81,6 +86,8 @@ public class FXMLDeleteCharacterController implements Initializable {
         deleteSlot1.setDefaultButton(true);
         deleteSlot2.setDefaultButton(false);
         deleteSlot3.setDefaultButton(false);
+        
+        loadCharacterImage(1);
 
     }
 
@@ -92,6 +99,8 @@ public class FXMLDeleteCharacterController implements Initializable {
         deleteSlot1.setDefaultButton(false);
         deleteSlot2.setDefaultButton(true);
         deleteSlot3.setDefaultButton(false);
+        
+        loadCharacterImage(2);
     }
 
     @FXML
@@ -102,6 +111,8 @@ public class FXMLDeleteCharacterController implements Initializable {
         deleteSlot1.setDefaultButton(false);
         deleteSlot2.setDefaultButton(false);
         deleteSlot3.setDefaultButton(true);
+        
+        loadCharacterImage(3);
     }
     
     @FXML
@@ -116,6 +127,8 @@ public class FXMLDeleteCharacterController implements Initializable {
     private void handleButtonActionCancel(ActionEvent event) {// Only delete fromlocal saving to server
         enableButtonSlots();
         disableButtonConfirmCancel();
+        
+        loadCharacterImage(0);
         
     }
     
@@ -212,6 +225,32 @@ public class FXMLDeleteCharacterController implements Initializable {
     private void disableButtonConfirmCancel(){
         buttonConfirmDeletion.setDisable(true);
         buttonCancel.setDisable(true);
+    }
+    
+    
+    
+    
+    
+    private Image characterImage = new Image("chosecharacter.bmp", true);
+    private void loadCharacterImage(int getSlot){
+        int tempCharID=0;
+        for (DBTable2LoginHasCharacters getLHC : AllLocalData.getInstance().getInfo2LoginHasCharacters()) {
+                if(getLHC.getCharSlot() == getSlot){
+                    tempCharID = getLHC.getCharacters_idNr();
+                }
+            }
+        
+        if(tempCharID==1){
+            characterImage = new Image("ms-warrior0.png", true);
+        }else if(tempCharID==2){
+            characterImage = new Image("ms-mage0.png", true);
+        }else if(tempCharID==3){
+            characterImage = new Image("ms-rogue0.png", true);
+        }else{
+            characterImage = new Image("chosecharacter.bmp", true);
+        }
+       
+        chosenCharacter.setImage(characterImage);
     }
     
 

@@ -18,9 +18,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import project.bizzareadvent.SaveLoad.AllLocalData;
+import project.bizzareadvent.SaveLoad.DBTable2LoginHasCharacters;
 import project.bizzareadvent.SaveLoad.DatabaseServer;
 import project.bizzareadvent.SaveLoad.UserData;
 
@@ -41,7 +43,7 @@ public class NewGameController implements Initializable {
     @FXML
     private ImageView imageMage;
     @FXML
-    private ImageView imageAssassin;
+    private ImageView imageRogue;
     @FXML
     private ImageView backGroundImage;
     @FXML
@@ -58,7 +60,7 @@ public class NewGameController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+                loadCharacterImage();
     }
 
     // method when done should check if hero is chosen and name is valid before saving to database and sending to worldmap
@@ -154,6 +156,7 @@ public class NewGameController implements Initializable {
                     DatabaseServer.getInstance().saveToDB();
                     //UserData.getInstance().testLoadAllDataFromALLLOCALDATAToUSERDATA();
                     UserData.getInstance().test001LoadCharDataFromALLLOCALDATA();
+                    setLoadSlot();
                 }
 
             } catch (Exception ex) {
@@ -220,6 +223,7 @@ public class NewGameController implements Initializable {
 
         chosenCharacter = true;
         buttonDone.setDisable(false);
+        loadCharacterImage();
     }
 
     @FXML
@@ -230,6 +234,7 @@ public class NewGameController implements Initializable {
 
         chosenCharacter = true;
         buttonDone.setDisable(false);
+        loadCharacterImage();
     }
 
     @FXML
@@ -240,6 +245,7 @@ public class NewGameController implements Initializable {
 
         chosenCharacter = true;
         buttonDone.setDisable(false);
+        loadCharacterImage();
     }
     
     
@@ -266,6 +272,57 @@ public class NewGameController implements Initializable {
         AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCurrentDef(    AllLocalData.getInstance().getInfo3Characters().get(2).getBaseDef()     );
         AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCurrentDmg(   AllLocalData.getInstance().getInfo3Characters().get(2).getBaseDmg()         );
         AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCurrentHp(    AllLocalData.getInstance().getInfo3Characters().get(2).getBaseHp()       );
+        }
+        
+    }
+    
+    
+    private void setLoadSlot(){
+        int slots=0;
+        
+        for (DBTable2LoginHasCharacters test : AllLocalData.getInstance().getInfo2LoginHasCharacters()) {
+            if (test.getCharacters_idNr() > 0) {
+                slots++;
+                System.out.println(slots);
+            }
+        }
+        
+        UserData.getInstance().setArraylistNumber(slots-1);
+    }
+    
+    
+    
+    
+    
+    
+    //private Image characterImage = new Image("chosecharacter.bmp", true);
+    private void loadCharacterImage(){
+        
+        
+        
+        
+        Image characterImage1 = new Image("ms-warrior0.png", true);
+        Image characterImage2 = new Image("ms-mage0.png", true);
+        Image characterImage3 = new Image("ms-rogue0.png", true);
+       
+        imageWarrior.setImage(  characterImage1 );
+        
+        imageMage.setImage(  characterImage2 );
+        
+        imageRogue.setImage(  characterImage3   );
+        
+        
+        imageWarrior.setOpacity(0.3);
+        imageMage.setOpacity(0.3);
+        imageRogue.setOpacity(0.3);
+        
+        
+        if(warriorChosen == true){
+            imageWarrior.setOpacity(1);
+        }else if(mageChosen == true){
+            imageMage.setOpacity(1);
+        }else if(assassinChosen == true){
+            imageRogue.setOpacity(1);
         }
         
     }

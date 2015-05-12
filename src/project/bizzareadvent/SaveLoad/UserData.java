@@ -37,29 +37,14 @@ public class UserData {
 
     }
 
-    private String Username;
+    
     private int selectedSlot = 1;
 
-    private int charID;
-    private int baseHp;
-    private int baseDef;
-    private int baseAttack;
-    private int baseDmg;
-    private int charSlot=1;
-    private String characterName;
-    private String characterType;
-    private int currentHp;
-    private int currentDef;
-    private int currentAttack;
-    private int currentDmg;
-    private int currentArmorUpgrade;
-    private int currentWeaponUpgrade;
-    private int currentScore;
-    private int currentGold;
+   
 
     private boolean loadOnce = true;
-    private ArrayList<Characters> charactersArrList = new ArrayList<>();
-private ArrayList<Characters> charactersArrList0001 = new ArrayList<>();
+    private ArrayList<Characters> charactersArrList = new ArrayList<>(); // arraylist of the loading from database
+    private ArrayList<Characters> charactersArrList0001 = new ArrayList<>(); // arraylist from makeChar()
 
     
 
@@ -74,15 +59,41 @@ private ArrayList<Characters> charactersArrList0001 = new ArrayList<>();
 
     public Characters getCharactersArrList() {
         
-        if(charactersArrList0001.isEmpty()){
+        if(charactersArrList.isEmpty()){    //byta mellan charactersArrList och charactersArrList0001
             makeChar();
         }
         
-        return charactersArrList0001.get(0);
+        return charactersArrList.get(arraylistNumber);  // byta mellan charactersArrList och charactersArrList0001
     }
     
     
     private int arraylistNumber = 0;
+
+    public int getArraylistNumber() {
+        return arraylistNumber;
+    }
+
+    public void setArraylistNumber(int arraylistNumber) {
+        this.arraylistNumber = arraylistNumber;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     private int loadedSlot = 0;
@@ -149,7 +160,7 @@ private ArrayList<Characters> charactersArrList0001 = new ArrayList<>();
     }
     public void test001LoadCharDataFromALLLOCALDATA(){
         reset();
-        clear();
+        
         
         int slot=0;
         for (DBTable2LoginHasCharacters loadFromInfo2: AllLocalData.getInstance().getInfo2LoginHasCharacters()) {
@@ -189,25 +200,7 @@ private ArrayList<Characters> charactersArrList0001 = new ArrayList<>();
         
     }
     
-    public void clear(){
-        
-                charID = 0;
-                currentScore = 0;
-                characterName = "null";
-                currentArmorUpgrade = 0;
-                currentWeaponUpgrade = 0;
-                currentHp = 0;
-                currentGold = 0;
-                currentDmg = 0;
-                currentDef = 0;
-                currentAttack = 0;
-                charSlot = 0;
-                characterType = "null";
-                baseHp = 0;
-                baseDmg = 0;
-                baseDef = 0;
-                baseAttack = 0;
-    }
+    
     
     
     // Set slot must be done to Load correct Character, Slot input should be 1, 2 or 3.
@@ -215,7 +208,6 @@ private ArrayList<Characters> charactersArrList0001 = new ArrayList<>();
     public void reset() {
         charactersArrList.clear();
         loadOnce = true;
-        Username = "";
     }
 
     
@@ -235,7 +227,42 @@ private ArrayList<Characters> charactersArrList0001 = new ArrayList<>();
     
     
     
-    
+    public void test001SaveCharDataToALLLOCALDATA(){
+        
+        for (int slot = 0; slot < 3; slot++) {
+            
+            for (Characters charactersArrList1: charactersArrList) {
+                int characters_idNr = 0;
+                if (charactersArrList1 instanceof Warrior) {
+                    characters_idNr = 1;
+                }
+                if (charactersArrList1 instanceof Mage) {
+                    characters_idNr = 2;
+                }
+                if (charactersArrList1 instanceof Rogue) {
+                    characters_idNr = 3;
+                }
+                
+                
+                if(charactersArrList1.getCharSlot() == slot+1){
+                    //write data to AllLOCALDATA            
+                    AllLocalData.getInstance().getInfo2LoginHasCharacters().get(slot).setArmorUpgrade(      charactersArrList1.getCurrentArmorUpgrade()   );
+                    //AllLocalData.getInstance().getInfo2LoginHasCharacters().get(slot).setCharSlot(          warriorArrList1.getCurrentArmorUpgrade()   );
+                    AllLocalData.getInstance().getInfo2LoginHasCharacters().get(slot).setCharacterName(     charactersArrList1.getCharacterName()   );
+                    AllLocalData.getInstance().getInfo2LoginHasCharacters().get(slot).setCharacters_idNr(   characters_idNr   );
+                    AllLocalData.getInstance().getInfo2LoginHasCharacters().get(slot).setCurrentAttack(     charactersArrList1.getCurrentAttack()   );
+                    AllLocalData.getInstance().getInfo2LoginHasCharacters().get(slot).setCurrentDef(        charactersArrList1.getCurrentDef()   );
+                    AllLocalData.getInstance().getInfo2LoginHasCharacters().get(slot).setCurrentDmg(        charactersArrList1.getCurrentDmg()   );
+                    AllLocalData.getInstance().getInfo2LoginHasCharacters().get(slot).setCurrentHp(         charactersArrList1.getCurrentHp()   );
+                    AllLocalData.getInstance().getInfo2LoginHasCharacters().get(slot).setGold(              charactersArrList1.getCurrentGold()   );
+                    AllLocalData.getInstance().getInfo2LoginHasCharacters().get(slot).setArmorUpgrade(      charactersArrList1.getCurrentArmorUpgrade()   );
+                    AllLocalData.getInstance().getInfo2LoginHasCharacters().get(slot).setScore(             charactersArrList1.getCurrentScore()   );
+                    AllLocalData.getInstance().getInfo2LoginHasCharacters().get(slot).setWeaponUpgrade(     charactersArrList1.getCurrentWeaponUpgrade()   );
+                }
+            }
+        }
+        
+    }
     
     
     

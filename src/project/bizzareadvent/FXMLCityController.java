@@ -16,6 +16,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import project.bizzareadvent.SaveLoad.DatabaseServer;
+import project.bizzareadvent.SaveLoad.UserData;
 
 /**
  * FXML Controller class
@@ -55,22 +57,28 @@ public class FXMLCityController implements Initializable {
     @FXML
     public void handleButtonActionHeal(ActionEvent event) {
         //check current gold if is enough
-            //if its enough do //get currenthp and reset to basehp
+        UserData.getInstance().getCharactersArrList().setCurrentHp(100);
+        saveToLocalNDb();
     }
     
     @FXML
     public void handleButtonActionWeaponUpgrade(ActionEvent event) {
         //check current gold if is enough
-            //if its enough do //get current weapon upgrade and add 1 to current weapon upgrade
+        UserData.getInstance().getCharactersArrList().setCurrentWeaponUpgrade(   UserData.getInstance().getCharactersArrList().getCurrentWeaponUpgrade()+1   );
+        saveToLocalNDb();
     }
     
     @FXML
     public void handleButtonActionArmorUpgrade(ActionEvent event) {
         //check current gold if is enough
-            //if its enough do //get current armor upgrade and add 1 to current armor upgrade
+        UserData.getInstance().getCharactersArrList().setCurrentArmorUpgrade(UserData.getInstance().getCharactersArrList().getCurrentArmorUpgrade()+1   );
+        saveToLocalNDb();
     }
     
-    
+    private void saveToLocalNDb(){
+        UserData.getInstance().test001SaveCharDataToALLLOCALDATA();
+        DatabaseServer.getInstance().saveToDB();
+    }
     
     
     

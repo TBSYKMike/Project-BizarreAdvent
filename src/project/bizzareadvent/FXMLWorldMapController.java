@@ -50,7 +50,7 @@ public class FXMLWorldMapController implements Initializable {
     @FXML
     private Label currentAttack;
     @FXML
-    private Label currentDefens;
+    private Label currentDef;
     @FXML
     private Label currentGold;
     @FXML
@@ -97,8 +97,14 @@ public class FXMLWorldMapController implements Initializable {
         mapCastlePosition.setImage(image2);
 
         if (AllLocalData.getInstance().getInfo2LoginHasCharacters().isEmpty() == false) {
-            nameLabel.setText(AllLocalData.getInstance().getInfo2LoginHasCharacters().get(0).getCharacterName());
-            hpLabel.setText(Integer.toString(AllLocalData.getInstance().getInfo2LoginHasCharacters().get(0).getCurrentHp()));
+            nameLabel.setText( UserData.getInstance().getCharactersArrList().getCharacterName() );
+            currentHp.setText( Integer.toString( UserData.getInstance().getCharactersArrList().getCurrentHp() ) );
+            currentAttack.setText( Integer.toString( UserData.getInstance().getCharactersArrList().getCurrentDef()) );
+            currentDef.setText( Integer.toString( UserData.getInstance().getCharactersArrList().getCurrentDef()) );
+            currentGold.setText( Integer.toString( UserData.getInstance().getCharactersArrList().getCurrentGold()) );
+            currentScore.setText( Integer.toString( UserData.getInstance().getCharactersArrList().getCurrentScore()) );
+            
+            
         }
     }
 

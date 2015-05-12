@@ -16,6 +16,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import project.bizzareadvent.SaveLoad.AllLocalData;
 import project.bizzareadvent.SaveLoad.DBTable2LoginHasCharacters;
@@ -33,7 +35,10 @@ public class FXMLLoadCharacterController implements Initializable {
      * Initializes the controller class.
      */
     @FXML
-    private Button deleteSlot1, deleteSlot2, deleteSlot3, buttonConfirmDeletion, buttonCancel;
+    private Button loadSlot1, loadSlot2, loadSlot3, buttonConfirmDeletion, buttonCancel;
+    
+    @FXML
+    private ImageView chosenCharacter;
     
     private boolean slot1=false, slot2=false, slot3=false;
     private int slot=0;
@@ -47,7 +52,7 @@ public class FXMLLoadCharacterController implements Initializable {
         enableButtonSlots();
         
         System.out.println(this.getClass().getName());
-        
+        chosenCharacter.setImage(characterImage);
         
 
     }
@@ -74,43 +79,48 @@ public class FXMLLoadCharacterController implements Initializable {
     }
 
     @FXML
-    private void delslot1(ActionEvent event) {// Only delete fromlocal saving to server
+    private void handleButtonActionLoadSlot1(ActionEvent event) {// Only delete fromlocal saving to server
         slot = 1;
         disableButtonSlots();
         enableButtonConfirmCancel();
-        deleteSlot1.setDefaultButton(true);
-        deleteSlot2.setDefaultButton(false);
-        deleteSlot3.setDefaultButton(false);
-
+        loadSlot1.setDefaultButton(true);
+        loadSlot2.setDefaultButton(false);
+        loadSlot3.setDefaultButton(false);
+        loadCharacterImage(1);
     }
 
     @FXML
-    private void delslot2(ActionEvent event) {// Only delete fromlocal saving to server
+    private void handleButtonActionLoadSlot2(ActionEvent event) {// Only delete fromlocal saving to server
         slot = 2;
         disableButtonSlots();
         enableButtonConfirmCancel();
-        deleteSlot1.setDefaultButton(false);
-        deleteSlot2.setDefaultButton(true);
-        deleteSlot3.setDefaultButton(false);
+        loadSlot1.setDefaultButton(false);
+        loadSlot2.setDefaultButton(true);
+        loadSlot3.setDefaultButton(false);
+        loadCharacterImage(2);
     }
 
     @FXML
-    private void delslot3(ActionEvent event) {// Only delete fromlocal saving to server
+    private void handleButtonActionLoadSlot3(ActionEvent event) {// Only delete fromlocal saving to server
         slot = 3;
         disableButtonSlots();
         enableButtonConfirmCancel();
-        deleteSlot1.setDefaultButton(false);
-        deleteSlot2.setDefaultButton(false);
-        deleteSlot3.setDefaultButton(true);
+        loadSlot1.setDefaultButton(false);
+        loadSlot2.setDefaultButton(false);
+        loadSlot3.setDefaultButton(true);
+        loadCharacterImage(3);
     }
     
     @FXML
     private void handleButtonActionConfirmDeletion(ActionEvent event) {// Only delete fromlocal saving to server
         //deleteCharacter();
-        enableButtonSlots();
+        //enableButtonSlots();
         disableButtonConfirmCancel();
         
         UserData.getInstance().test001LoadCharDataFromALLLOCALDATA();
+        
+        System.out.println(slot);
+        UserData.getInstance().setArraylistNumber((slot-1));
         
         try {
 
@@ -135,6 +145,7 @@ public class FXMLLoadCharacterController implements Initializable {
         enableButtonSlots();
         disableButtonConfirmCancel();
         
+        loadCharacterImage(0);
     }
     
 
@@ -180,38 +191,38 @@ public class FXMLLoadCharacterController implements Initializable {
         }
         
         if (slot == 3){
-            deleteSlot1.setText( "delete Slot1" );
-            deleteSlot2.setText( "delete Slot2" );
-            deleteSlot3.setText( "delete Slot3" );
-        deleteSlot1.setDisable(true);
-        deleteSlot2.setDisable(true);
-        deleteSlot3.setDisable(true);
+            loadSlot1.setText( "delete Slot1" );
+            loadSlot2.setText( "delete Slot2" );
+            loadSlot3.setText( "delete Slot3" );
+        loadSlot1.setDisable(true);
+        loadSlot2.setDisable(true);
+        loadSlot3.setDisable(true);
         }
 
         if (slot == 1){
-            deleteSlot1.setText( AllLocalData.getInstance().getInfo2LoginHasCharacters().get(0).getCharacterName() );
-            deleteSlot2.setText( "delete Slot2" );
-            deleteSlot3.setText( "delete Slot3" );
-        deleteSlot1.setDisable(false);
-        deleteSlot2.setDisable(true);
-        deleteSlot3.setDisable(true);
+            loadSlot1.setText( AllLocalData.getInstance().getInfo2LoginHasCharacters().get(0).getCharacterName() );
+            loadSlot2.setText( "delete Slot2" );
+            loadSlot3.setText( "delete Slot3" );
+        loadSlot1.setDisable(false);
+        loadSlot2.setDisable(true);
+        loadSlot3.setDisable(true);
         }
         if (slot == 2){
-            deleteSlot1.setText( AllLocalData.getInstance().getInfo2LoginHasCharacters().get(0).getCharacterName() );
-            deleteSlot2.setText( AllLocalData.getInstance().getInfo2LoginHasCharacters().get(1).getCharacterName() );
-            deleteSlot3.setText( "delete Slot3" );
-        deleteSlot1.setDisable(false);
-        deleteSlot2.setDisable(false);
-        deleteSlot3.setDisable(true);
+            loadSlot1.setText( AllLocalData.getInstance().getInfo2LoginHasCharacters().get(0).getCharacterName() );
+            loadSlot2.setText( AllLocalData.getInstance().getInfo2LoginHasCharacters().get(1).getCharacterName() );
+            loadSlot3.setText( "delete Slot3" );
+        loadSlot1.setDisable(false);
+        loadSlot2.setDisable(false);
+        loadSlot3.setDisable(true);
         }
         
         if (slot == 3){
-            deleteSlot1.setText( AllLocalData.getInstance().getInfo2LoginHasCharacters().get(0).getCharacterName() );
-            deleteSlot2.setText( AllLocalData.getInstance().getInfo2LoginHasCharacters().get(1).getCharacterName() );
-            deleteSlot3.setText( AllLocalData.getInstance().getInfo2LoginHasCharacters().get(2).getCharacterName() );
-        deleteSlot1.setDisable(false);
-        deleteSlot2.setDisable(false);
-        deleteSlot3.setDisable(false);
+            loadSlot1.setText( AllLocalData.getInstance().getInfo2LoginHasCharacters().get(0).getCharacterName() );
+            loadSlot2.setText( AllLocalData.getInstance().getInfo2LoginHasCharacters().get(1).getCharacterName() );
+            loadSlot3.setText( AllLocalData.getInstance().getInfo2LoginHasCharacters().get(2).getCharacterName() );
+        loadSlot1.setDisable(false);
+        loadSlot2.setDisable(false);
+        loadSlot3.setDisable(false);
         }
         
         
@@ -219,9 +230,9 @@ public class FXMLLoadCharacterController implements Initializable {
         
     }
     private void disableButtonSlots(){
-        deleteSlot1.setDisable(true);
-        deleteSlot2.setDisable(true);
-        deleteSlot3.setDisable(true);
+        loadSlot1.setDisable(true);
+        loadSlot2.setDisable(true);
+        loadSlot3.setDisable(true);
     }
     private void enableButtonConfirmCancel(){
         buttonConfirmDeletion.setDisable(false);
@@ -233,8 +244,27 @@ public class FXMLLoadCharacterController implements Initializable {
     }
     
     
-    
-    
+    private Image characterImage = new Image("chosecharacter.bmp", true);
+    private void loadCharacterImage(int getSlot){
+        int tempCharID=0;
+        for (DBTable2LoginHasCharacters getLHC : AllLocalData.getInstance().getInfo2LoginHasCharacters()) {
+                if(getLHC.getCharSlot() == getSlot){
+                    tempCharID = getLHC.getCharacters_idNr();
+                }
+            }
+        
+        if(tempCharID==1){
+            characterImage = new Image("ms-warrior0.png", true);
+        }else if(tempCharID==2){
+            characterImage = new Image("ms-mage0.png", true);
+        }else if(tempCharID==3){
+            characterImage = new Image("ms-rogue0.png", true);
+        }else{
+            characterImage = new Image("chosecharacter.bmp", true);
+        }
+       
+        chosenCharacter.setImage(characterImage);
+    }
     
     
     
