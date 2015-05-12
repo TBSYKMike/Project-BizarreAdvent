@@ -36,7 +36,7 @@ public class YYFXMLTestingMethodsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        UserData.getInstance().makeChar();
+        //UserData.getInstance().makeChar();
         
     }    
     

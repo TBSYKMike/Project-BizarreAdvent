@@ -6,7 +6,9 @@
 package project.bizzareadvent.SaveLoad;
 
 import java.util.ArrayList;
+import project.bizzareadvent.Characters;
 import project.bizzareadvent.Mage;
+import project.bizzareadvent.NewGameController;
 import project.bizzareadvent.Rogue;
 import project.bizzareadvent.Warrior;
 
@@ -56,32 +58,27 @@ public class UserData {
     private int currentGold;
 
     private boolean loadOnce = true;
-    private ArrayList<Warrior> warriorArrList = new ArrayList<>();
-    private ArrayList<Mage> mageArrList = new ArrayList<>();
-    private ArrayList<Rogue> rogueArrList = new ArrayList<>();
+    private ArrayList<Characters> charactersArrList = new ArrayList<>();
+private ArrayList<Characters> charactersArrList0001 = new ArrayList<>();
 
     
 
     public void makeChar(){
-        warriorArrList.add( new Warrior (100, 100, 100, 100, 1, "char1name", 100, 100, 100, 100, 100, 100, 100, 100));
-        mageArrList.add(    new Mage    (102, 102, 102, 102, 3, "char2name", 102, 102, 102, 102, 102, 102, 102, 102));
-        //rogueArrList.add(   new Rogue   (104, 104, 104, 104, 2, "char3name", 104, 104, 104, 104, 104, 104, 104, 104));
-        warriorArrList.add( new Warrior (130, 130, 130, 130, 2, "char1name", 300, 300, 300, 300, 300, 300, 300, 300));
+        charactersArrList0001.add(new Warrior (100, 10, 10, 8, 1, "WarriorKim", 100, 10, 10, 6, 0, 0, 0, 0));
+        //charactersArrList.add(new Mage(100, 6, 10, 12, 3, NewGameController.getInstance().characterName.getText(), 100, 6, 10, 9, 0, 0, 0, 0));
+        //charactersArrList.add(new Rogue(100, 7, 10, 10, 2, NewGameController.getInstance().characterName.getText(), 100, 7, 10, 10, 0, 0, 0, 0));
         
     
     
     }
 
-    public Warrior getWarriorArrList() {
-        return warriorArrList.get(arraylistNumber);
-    }
-
-    public Mage getMageArrList() {
-        return mageArrList.get(arraylistNumber);
-    }
-
-    public Rogue getRogueArrList() {
-        return rogueArrList.get(arraylistNumber);
+    public Characters getCharactersArrList() {
+        
+        if(charactersArrList0001.isEmpty()){
+            makeChar();
+        }
+        
+        return charactersArrList0001.get(0);
     }
     
     
@@ -168,21 +165,21 @@ public class UserData {
                 test001loadBaseStatsFromALLLOCALDATA(1);
                 //warriorArrList.add(new Warrior    (baseHp, baseDef, baseAttack, baseDmg, charSlot, characterName, currentHp, currentDef, currentAttack, currentDmg, currentArmorUpgrade, currentWeaponUpgrade, currentScore, currentGold));
                 //warriorArrList.add( new Warrior (100, 100, 100, 100, slot, "warriorname"+slot , 100, 100, 100, 100, 100, 100, 100, 100));
-                warriorArrList.add( new Warrior (tempbaseHp, tempbaseDef, tempbaseDmg, tempbaseHp, slot, tempcharacterName , tempcurrentHp, tempcurrentDef, tempcurrentAttack, tempcurrentDmg, tempcurrentArmorUpgrade, tempcurrentWeaponUpgrade, tempcurrentScore, tempcurrentGold));
+                charactersArrList.add( new Warrior (tempbaseHp, tempbaseDef, tempbaseDmg, tempbaseHp, slot, tempcharacterName , tempcurrentHp, tempcurrentDef, tempcurrentAttack, tempcurrentDmg, tempcurrentArmorUpgrade, tempcurrentWeaponUpgrade, tempcurrentScore, tempcurrentGold));
             }
             else if (  loadFromInfo2.getCharacters_idNr()  ==  2   ){
                 //make if CharID is 1 make MAGE
                 
                 test001loadBaseStatsFromALLLOCALDATA(2);
                 //mageArrList.add(new Mage          (baseHp, baseDef, baseAttack, baseDmg, charSlot, characterName, currentHp, currentDef, currentAttack, currentDmg, currentArmorUpgrade, currentWeaponUpgrade, currentScore, currentGold));
-                mageArrList.add(    new Mage    (tempbaseHp, tempbaseDef, tempbaseDmg, tempbaseHp, slot, tempcharacterName , tempcurrentHp, tempcurrentDef, tempcurrentAttack, tempcurrentDmg, tempcurrentArmorUpgrade, tempcurrentWeaponUpgrade, tempcurrentScore, tempcurrentGold));
+                charactersArrList.add(    new Mage    (tempbaseHp, tempbaseDef, tempbaseDmg, tempbaseHp, slot, tempcharacterName , tempcurrentHp, tempcurrentDef, tempcurrentAttack, tempcurrentDmg, tempcurrentArmorUpgrade, tempcurrentWeaponUpgrade, tempcurrentScore, tempcurrentGold));
             }
             else if (  loadFromInfo2.getCharacters_idNr()  ==  3   ){
                 //make if CharID is 1 make ROGUE
                 
                 test001loadBaseStatsFromALLLOCALDATA(3);
                 //rogueArrList.add(new Rogue        (baseHp, baseDef, baseAttack, baseDmg, charSlot, characterName, currentHp, currentDef, currentAttack, currentDmg, currentArmorUpgrade, currentWeaponUpgrade, currentScore, currentGold));
-                rogueArrList.add(   new Rogue   (tempbaseHp, tempbaseDef, tempbaseDmg, tempbaseHp, slot, tempcharacterName , tempcurrentHp, tempcurrentDef, tempcurrentAttack, tempcurrentDmg, tempcurrentArmorUpgrade, tempcurrentWeaponUpgrade, tempcurrentScore, tempcurrentGold));
+                charactersArrList.add(   new Rogue   (tempbaseHp, tempbaseDef, tempbaseDmg, tempbaseHp, slot, tempcharacterName , tempcurrentHp, tempcurrentDef, tempcurrentAttack, tempcurrentDmg, tempcurrentArmorUpgrade, tempcurrentWeaponUpgrade, tempcurrentScore, tempcurrentGold));
             }
             else{
                 System.out.println("Error loading slot:"+slot+"is empty");
@@ -216,9 +213,7 @@ public class UserData {
     // Set slot must be done to Load correct Character, Slot input should be 1, 2 or 3.
     // Use this method to reset the current user to change to another.
     public void reset() {
-        mageArrList.clear();
-        warriorArrList.clear();
-        rogueArrList.clear();
+        charactersArrList.clear();
         loadOnce = true;
         Username = "";
     }

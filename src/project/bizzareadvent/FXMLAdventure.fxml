@@ -11,10 +11,10 @@
    <children>
       <ImageView fitHeight="250.0" fitWidth="829.0" layoutX="21.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true" />
       <TextArea fx:id="adventureLog" layoutX="43.0" layoutY="379.0" prefHeight="190.0" prefWidth="787.0" />
-      <Button layoutX="53.0" layoutY="299.0" mnemonicParsing="false" onAction="#handleButtonAttack" prefHeight="40.0" prefWidth="67.0" text="Attack!" />
-      <Button layoutX="290.0" layoutY="299.0" mnemonicParsing="false" onAction="#handleButtonSecondary" prefHeight="40.0" prefWidth="67.0" text="Secondary" />
-      <Button layoutX="532.0" layoutY="299.0" mnemonicParsing="false" onAction="#handleButtonRun" prefHeight="40.0" prefWidth="67.0" text="Run" />
-      <Button layoutX="748.0" layoutY="299.0" mnemonicParsing="false" onAction="#handleButtonContinue" prefHeight="40.0" prefWidth="67.0" text="Continue" />
+      <Button fx:id="attackButton" disable="true" layoutX="53.0" layoutY="299.0" mnemonicParsing="false" onAction="#handleButtonAttack" prefHeight="40.0" prefWidth="67.0" text="Attack!" />
+      <Button fx:id="secondaryButton" disable="true" layoutX="290.0" layoutY="299.0" mnemonicParsing="false" onAction="#handleButtonSecondary" prefHeight="40.0" prefWidth="67.0" text="Secondary" />
+      <Button fx:id="runButton" disable="true" layoutX="532.0" layoutY="299.0" mnemonicParsing="false" onAction="#handleButtonRun" prefHeight="40.0" prefWidth="67.0" text="Run" />
+      <Button fx:id="continueButton" layoutX="748.0" layoutY="299.0" mnemonicParsing="false" onAction="#handleButtonContinue" prefHeight="40.0" prefWidth="67.0" text="Continue" />
       <Button layoutX="781.0" layoutY="13.0" mnemonicParsing="false" onAction="#handleButtonMenu" prefHeight="22.0" prefWidth="67.0" text="Menu" />
       <Label layoutX="39.0" layoutY="17.0" prefHeight="14.0" prefWidth="28.0" text="HP:" />
       <Label layoutX="204.0" layoutY="17.0" prefHeight="14.0" prefWidth="28.0" text="DEF:" />

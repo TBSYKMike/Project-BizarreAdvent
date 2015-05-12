@@ -45,7 +45,7 @@ public class NewGameController implements Initializable {
     @FXML
     private ImageView backGroundImage;
     @FXML
-    private TextField characterName;
+    public TextField characterName;
     @FXML
     private Label Error1;
 
@@ -54,6 +54,7 @@ public class NewGameController implements Initializable {
     public boolean warriorChosen = false;
     public boolean mageChosen = false;
     public boolean assassinChosen = false;
+    private static NewGameController instance;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -61,6 +62,17 @@ public class NewGameController implements Initializable {
     }
 
     // method when done should check if hero is chosen and name is valid before saving to database and sending to worldmap
+    public static NewGameController getInstance() {
+
+        if (instance == null) {
+            instance = new NewGameController();
+            
+            
+        }
+
+        return instance;
+
+    }
     @FXML
     public void handleButtonActionDone(ActionEvent event) {
         boolean slotEmpty = false;

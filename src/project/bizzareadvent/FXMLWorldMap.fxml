@@ -26,7 +26,7 @@
       <Label fx:id="currentScore" layoutX="414.0" layoutY="33.0" prefHeight="17.0" prefWidth="81.0" />
       <ImageView fx:id="mapSwampPosition" fitHeight="56.0" fitWidth="39.0" layoutX="196.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="mapMountainPosition" fitHeight="56.0" fitWidth="39.0" layoutX="482.0" layoutY="165.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="mapForestPosition" fitHeight="56.0" fitWidth="39.0" layoutX="140.0" layoutY="420.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="mapForestPosition" fitHeight="56.0" fitWidth="39.0" layoutX="140.0" layoutY="420.0" onMouseClicked="#movementAction3" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="mapPlainsposition" fitHeight="56.0" fitWidth="39.0" layoutX="335.0" layoutY="355.0" onMouseClicked="#movementAction2" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="mapCityPosition" fitHeight="56.0" fitWidth="39.0" layoutX="507.0" layoutY="408.0" onMouseClicked="#movementAction1" pickOnBounds="true" preserveRatio="true" />
       <Label layoutX="546.0" layoutY="33.0" text="name" />

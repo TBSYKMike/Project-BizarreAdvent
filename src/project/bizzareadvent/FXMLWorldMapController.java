@@ -153,6 +153,7 @@ public class FXMLWorldMapController implements Initializable {
 
         } catch (IOException ex) {
             System.out.println("Scene change error1");
+            ex.printStackTrace();
         }
     }
 

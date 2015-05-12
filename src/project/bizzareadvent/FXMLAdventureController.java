@@ -15,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import org.w3c.dom.UserDataHandler;
 import project.bizzareadvent.SaveLoad.UserData;
 
 /**
@@ -57,7 +58,7 @@ public class FXMLAdventureController implements Initializable {
     NormalMonster monster;
     
     //test arraylist
-    ArrayList<Characters> list = new ArrayList<>();
+    ArrayList<Warrior> list = new ArrayList<>();
     
     
     @FXML
@@ -224,6 +225,9 @@ public class FXMLAdventureController implements Initializable {
     }
     
     public void forest(){
+        
+        randomInt = randomGenerator.nextInt(100) + 1;
+        
         if(stepCounter == 0){
             adventureLog.appendText("\nYou enter the dark, dark forest of Adabûn.");
             adventureLog.appendText("\nStrangely shaped trees grow tall as mountains and wide as rivers.");
@@ -489,13 +493,18 @@ public class FXMLAdventureController implements Initializable {
         position = UserData.getInstance().getAdventurePosition();
         
         
-        Warrior warr = new Warrior(0,0,0,0,0,"",0,0,0,0,0,0,0,0); //test
+        //Warrior warr = new Warrior(0,0,0,0,0,"test",0,0,0,0,0,0,0,0); //test
+        
+        Warrior warr = (Warrior)UserData.getInstance().getCharactersArrList();
+        
         list.add(warr);
         
         attackButton.setDisable(true);
         secondaryButton.setDisable(true);
         runButton.setDisable(true);
         continueButton.setDisable(false);
+        
+        System.out.println(list.get(0).getCharacterName());
         
         showStats();
     }    
