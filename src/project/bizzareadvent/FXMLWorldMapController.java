@@ -21,6 +21,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import project.bizzareadvent.SaveLoad.AllLocalData;
 import project.bizzareadvent.SaveLoad.UserData;
 
 public class FXMLWorldMapController implements Initializable {
@@ -94,9 +95,10 @@ public class FXMLWorldMapController implements Initializable {
         mapMountainPosition.setImage(image2);
         mapCastlePosition.setImage(image2);
 
-        nameLabel.setText(UserData.getInstance().getWarriorArrList().getCharacterName());
-        hpLabel.setText(Integer.toString(UserData.getInstance().getMageArrList().getCurrentHp()));
-
+        if (AllLocalData.getInstance().getInfo2LoginHasCharacters().isEmpty() == false) {
+            nameLabel.setText(AllLocalData.getInstance().getInfo2LoginHasCharacters().get(0).getCharacterName());
+            hpLabel.setText(Integer.toString(AllLocalData.getInstance().getInfo2LoginHasCharacters().get(0).getCurrentHp()));
+        }
     }
 
     @FXML
