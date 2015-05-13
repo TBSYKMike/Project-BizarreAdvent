@@ -5,16 +5,22 @@
  */
 package project.bizzareadvent;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.stage.Stage;
 import org.w3c.dom.UserDataHandler;
 import project.bizzareadvent.SaveLoad.UserData;
 
@@ -56,6 +62,7 @@ public class FXMLAdventureController implements Initializable {
     private boolean deadCharacter = false;
     
     NormalMonster monster;
+    MonsterGenerator generator;
     
     //test arraylist
     ArrayList<Warrior> list = new ArrayList<>();
@@ -70,31 +77,31 @@ public class FXMLAdventureController implements Initializable {
             
             if(randomInt > 2){
                 monster.setBaseHp(monster.getBaseHp() - list.get(0).getBaseDmg());
-                adventureLog.appendText("\nYou strike the monster for " + list.get(0).getCurrentDmg() + " Damage!");
+                adventureLog.appendText("\n\nYou strike the monster for " + list.get(0).getCurrentDmg() + " Damage!");
             }else{
-                adventureLog.appendText("\nYou miss!");
+                adventureLog.appendText("\n\nYou miss!");
             }
         }
         else if(list.get(0).getCurrentAttack() == monster.getBaseDef()){
             
             if(randomInt > 3){
                 monster.setBaseHp(monster.getBaseHp() - list.get(0).getBaseDmg());
-                adventureLog.appendText("\nYou strike the monster for " + list.get(0).getCurrentDmg() + " Damage!");
+                adventureLog.appendText("\n\nYou strike the monster for " + list.get(0).getCurrentDmg() + " Damage!");
             }else{
-                adventureLog.appendText("\nYou miss!");
+                adventureLog.appendText("\n\nYou miss!");
             }
         }else{
             
             if(randomInt > 4){
                 monster.setBaseHp(monster.getBaseHp() - list.get(0).getBaseDmg());
-                adventureLog.appendText("\nYou strike the monster for " + list.get(0).getCurrentDmg() + " Damage!");
+                adventureLog.appendText("\n\nYou strike the monster for " + list.get(0).getCurrentDmg() + " Damage!");
             }else{
-                adventureLog.appendText("\nYou miss!");
+                adventureLog.appendText("\n\nYou miss!");
             }    
         }
         
         if(monster.getBaseHp() <= 0){
-            adventureLog.appendText("\nYou are victorious! You have slain the " + monster.getMonsterType() + ".");
+            adventureLog.appendText("\n\nYou are victorious! You have slain the " + monster.getMonsterType() + ".");
             adventureLog.appendText("\nYou add " + monster.getAmountGold() + " gold to your purse and");
             adventureLog.appendText("\nyou gain " + monster.getAmountScore() + " score.");
             
@@ -124,11 +131,11 @@ public class FXMLAdventureController implements Initializable {
         
         if(randomInt < 50){
             run = true;
-            adventureLog.appendText("\nYour attempt to run away was successful!");
+            adventureLog.appendText("\n\nYour attempt to run away was successful!");
             adventureLog.appendText("\nYou run away like the coward you are.\n");
-            adventureLog.appendText("\nPress continue to enter the world map.");
+            adventureLog.appendText("\n\nPress continue to enter the world map.");
         }else{
-            adventureLog.appendText("\nYour attempt to run away failed!");
+            adventureLog.appendText("\n\nYour attempt to run away failed!");
             monsterAttack();
             run = false;
         }    
@@ -136,8 +143,22 @@ public class FXMLAdventureController implements Initializable {
     
     @FXML
     private void handleButtonContinue(ActionEvent event) {
-        if(run == true){
-            switchScene();
+        if(run == true || stepCounter > 10){
+            try {
+            Node node = (Node) event.getSource();
+            Stage stageLogin = (Stage) node.getScene().getWindow();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLWorldMap.fxml"));
+            Parent root = loader.load();
+
+            Scene scene = new Scene(root);
+            stageLogin.setScene(scene);
+            stageLogin.show();
+
+        } catch (IOException ex) {
+            System.out.println("Scene change error1");
+            ex.printStackTrace();
+        }
         }
         else if(deadCharacter == true){
             
@@ -172,26 +193,26 @@ public class FXMLAdventureController implements Initializable {
         randomInt = randomGenerator.nextInt(100) + 1;
         
         if(stepCounter == 0){
-            adventureLog.appendText("\nYou arrive at the plain of eehh... how does one even pronounce that?!");
+            adventureLog.appendText("\n\nYou arrive at the plain of eehh... how does one even pronounce that?!");
             adventureLog.appendText("\n'Nevermind.. get on with it!'");
             adventureLog.appendText("\nTo the east you spot a crag of purple rocks in a strange formation,");
             adventureLog.appendText("\nto the west a field of grains stretches far and wide.");
             adventureLog.appendText("\nIn front of you a path leads the way, time to go exploring!\n\n");
         }
         else if(stepCounter >= 10){
-            adventureLog.appendText("\nYou have reached the end of this path, there seem to be nothing more to explore.");
+            adventureLog.appendText("\n\nYou have reached the end of this path, there seem to be nothing more to explore.");
             adventureLog.appendText("\n'How boring.'");
-            adventureLog.appendText("\nPress the continue button again to return to the world map.");
+            adventureLog.appendText("\n\nPress the continue button again to return to the world map.");
         }
         else{
             if(randomInt <= 20){
-                adventureLog.appendText("\n");
+                adventureLog.appendText("\n\n");
             }
             else if(randomInt > 20 && randomInt < 60){
-                adventureLog.appendText("\n");
+                adventureLog.appendText("\n\n");
             }
             else if(randomInt >= 60 ){
-                adventureLog.appendText("\n");
+                adventureLog.appendText("\n\n");
             }
         }
         stepCounter++;
@@ -199,26 +220,26 @@ public class FXMLAdventureController implements Initializable {
     
     public void mountains(){
         if(stepCounter == 0){
-            adventureLog.appendText("\n");
+            adventureLog.appendText("\n\n");
             adventureLog.appendText("\n");
             adventureLog.appendText("\n");
             adventureLog.appendText("\n");
             adventureLog.appendText("\n");
         }
         else if(stepCounter >= 10){
-            adventureLog.appendText("\nYou have reached the end of this path, there seems to be nothing more to explore.");
+            adventureLog.appendText("\n\nYou have reached the end of this path, there seems to be nothing more to explore.");
             adventureLog.appendText("\n'How boring.'");
-            adventureLog.appendText("\nPress the continue button again to return to the world map.");
+            adventureLog.appendText("\n\nPress the continue button again to return to the world map.");
         }
         else{
             if(randomInt <= 20){
-                adventureLog.appendText("\n");
+                adventureLog.appendText("\n\n");
             }
             else if(randomInt > 20 && randomInt < 60){
-                adventureLog.appendText("\n");
+                adventureLog.appendText("\n\n");
             }
             else if(randomInt >= 60 ){
-                adventureLog.appendText("\n");
+                adventureLog.appendText("\n\n");
             }
         }
         stepCounter++;
@@ -229,29 +250,29 @@ public class FXMLAdventureController implements Initializable {
         randomInt = randomGenerator.nextInt(100) + 1;
         
         if(stepCounter == 0){
-            adventureLog.appendText("\nYou enter the dark, dark forest of Adabûn.");
+            adventureLog.appendText("\n\nYou enter the dark, dark forest of Adabûn.");
             adventureLog.appendText("\nStrangely shaped trees grow tall as mountains and wide as rivers.");
             adventureLog.appendText("\nYou see nothing but the trees and a small path leading into the center of the forest.");
             adventureLog.appendText("\nThe feeling from you get from this place is very unpleasant.");
             adventureLog.appendText("\nAnywho, you follow the dark path into the forest to continue your journey.\n\n");
         }
         else if(stepCounter >= 10){
-            adventureLog.appendText("\nYou have made it through the forest alive, there seems to be nothing more to explore.");
+            adventureLog.appendText("\n\nYou have made it through the forest alive, there seems to be nothing more to explore.");
             adventureLog.appendText("\n'Oh well.'");
-            adventureLog.appendText("\nPress the continue button again to return to the world map.");
+            adventureLog.appendText("\n\nPress the continue button again to return to the world map.");
         }
         else{
             if(randomInt <= 20){
-                adventureLog.appendText("\nYou look around and see nothing of interest.");
+                adventureLog.appendText("\n\nYou look around and see nothing of interest.");
                 adventureLog.appendText("\n 'Better keep moving'");
             }
             else if(randomInt > 20 && randomInt < 60){
                 generateTreasure();
             }
             else if(randomInt >= 60 ){
-                generateMonster();
+                monster = generator.generateMonster(position);
                 
-                adventureLog.appendText("\nYou encounter a " + monster.getMonsterType());
+                adventureLog.appendText("\n\nYou encounter a " + monster.getMonsterType());
                 adventureLog.appendText("\nIf you wish to fight the monster press the attack button or");
                 adventureLog.appendText("\npress the run button to attempt to run away.");
                 
@@ -266,26 +287,26 @@ public class FXMLAdventureController implements Initializable {
     
     public void swamp(){
         if(stepCounter == 0){
-            adventureLog.appendText("\n");
+            adventureLog.appendText("\n\n");
             adventureLog.appendText("\n");
             adventureLog.appendText("\n");
             adventureLog.appendText("\n");
             adventureLog.appendText("\n");
         }
         else if(stepCounter >= 10){
-            adventureLog.appendText("\nYou have reached the end of this path, there seems to be nothing more to explore.");
+            adventureLog.appendText("\n\nYou have reached the end of this path, there seems to be nothing more to explore.");
             adventureLog.appendText("\n'How boring.'");
-            adventureLog.appendText("\nPress the continue button again to return to the world map.");
+            adventureLog.appendText("\n\nPress the continue button again to return to the world map.");
         }
         else{
             if(randomInt <= 20){
-                adventureLog.appendText("\n");
+                adventureLog.appendText("\n\n");
             }
             else if(randomInt > 20 && randomInt < 60){
-                adventureLog.appendText("\n");
+                adventureLog.appendText("\n\n");
             }
             else if(randomInt >= 60 ){
-                adventureLog.appendText("\n");
+                adventureLog.appendText("\n\n");
             }
         }
         stepCounter++;
@@ -293,52 +314,29 @@ public class FXMLAdventureController implements Initializable {
     
     public void castle(){
         if(stepCounter == 0){
-            adventureLog.appendText("\n");
+            adventureLog.appendText("\n\n");
             adventureLog.appendText("\n");
             adventureLog.appendText("\n");
             adventureLog.appendText("\n");
             adventureLog.appendText("\n");
         }
         else if(stepCounter >= 10){
-            adventureLog.appendText("\nYou have reached the end of this path, there seems to be nothing more to explore.");
+            adventureLog.appendText("\n\nYou have reached the end of this path, there seems to be nothing more to explore.");
             adventureLog.appendText("\n'How boring.'");
-            adventureLog.appendText("\nPress the continue button again to return to the world map.");
+            adventureLog.appendText("\n\nPress the continue button again to return to the world map.");
         }
         else{
             if(randomInt <= 20){
-                adventureLog.appendText("\n");
+                adventureLog.appendText("\n\n");
             }
             else if(randomInt > 20 && randomInt < 60){
-                adventureLog.appendText("\n");
+                adventureLog.appendText("\n\n");
             }
             else if(randomInt >= 60 ){
-                adventureLog.appendText("\n");
+                adventureLog.appendText("\n\n");
             }
         }
         stepCounter++;
-    }
-    
-    public void generateMonster(){
-        randomInt = randomGenerator.nextInt(6);
-        
-        if(randomInt == 0){
-            monster = new NormalMonster(30,4,6,5,30,20,"Spider");
-        }
-        else if(randomInt == 1){
-            monster = new NormalMonster(30,4,6,5,30,20,"Spider");
-        }
-        else if(randomInt == 2){
-            monster = new NormalMonster(30,5,6,5,30,20,"Goblin");
-        }
-        else if(randomInt == 3){
-            monster = new NormalMonster(40,5,8,6,40,20,"Orc");
-        }
-        else if(randomInt == 4){
-            monster = new NormalMonster(50,5,8,8,50,30,"Savannah Lion");
-        }
-        else{
-            monster = new NormalMonster(50,6,9,10,50,50,"Gigantic Spider");
-        }
     }
     
     public void generateTreasure(){
@@ -351,7 +349,7 @@ public class FXMLAdventureController implements Initializable {
         if(randomInt <= 15){
             gold = 50;
             
-            adventureLog.appendText("\nYou stumble upon a chest hidden behind some rocks,");
+            adventureLog.appendText("\n\nYou stumble upon a chest hidden behind some rocks,");
             adventureLog.appendText("\nYou open it and find a mustash made of the purest gold.");
             adventureLog.appendText("\n'It must be worth a fortune!'");
             adventureLog.appendText("\nYou ad " + gold + " gold to your purse.");
@@ -360,7 +358,7 @@ public class FXMLAdventureController implements Initializable {
         else if(randomInt > 15 && randomInt <= 40 ){
             gold = 20;
             
-            adventureLog.appendText("\nYou trip over something and start to curse.");
+            adventureLog.appendText("\n\nYou trip over something and start to curse.");
             adventureLog.appendText("\nYou look behind you to see it was a small jewel encrusted box.");
             adventureLog.appendText("\n'Hot damn!'");
             adventureLog.appendText("\nYou open it to find that it is empty.");
@@ -369,7 +367,7 @@ public class FXMLAdventureController implements Initializable {
         else if(randomInt > 40 && randomInt <= 65){
             gold = 20;
             
-            adventureLog.appendText("\nYou see something shining in the distance.");
+            adventureLog.appendText("\n\nYou see something shining in the distance.");
             adventureLog.appendText("\nYou start to run towards it and find a small pile of gold pieces.");
             adventureLog.appendText("\n'WOHO!'");
             adventureLog.appendText("\nYou ad " + gold + " gold to your purse.");
@@ -377,7 +375,7 @@ public class FXMLAdventureController implements Initializable {
         else if(randomInt > 65 && randomInt <= 85){
             gold = 30;
             
-            adventureLog.appendText("\nYou are walking around admiring the enviroment,");
+            adventureLog.appendText("\n\nYou are walking around admiring the enviroment,");
             adventureLog.appendText("\nwhen all of a sudden something drops on your head.");
             adventureLog.appendText("\n'WTF!'");
             adventureLog.appendText("\nYou look around to see what hit you in the head to find a goldnugget");
@@ -387,7 +385,7 @@ public class FXMLAdventureController implements Initializable {
         else if(randomInt > 85 && randomInt <= 95){
             gold = 50;
             
-            adventureLog.appendText("\nYou hear someone moaning.");
+            adventureLog.appendText("\n\nYou hear someone moaning.");
             adventureLog.appendText("\nYou look around and see an old, fragile and weak man sitting with a bag of gold under his arm.");
             adventureLog.appendText("\n'That looks heavy old man, you need help with that?'");
             adventureLog.appendText("\nThe old man looks up to you with an angry look on his face");
@@ -398,7 +396,7 @@ public class FXMLAdventureController implements Initializable {
         else if(randomInt >= 96){
             gold = 100;
             
-            adventureLog.appendText("\nAn ugly dwarf jumps you from behind and kicks you");
+            adventureLog.appendText("\n\nAn ugly dwarf jumps you from behind and kicks you");
             adventureLog.appendText("\nin the groin and steals some of your gold.");
             adventureLog.appendText("\n'Get rekt noob!'");
             adventureLog.appendText("\nYou lose " + gold + " gold.");
@@ -426,26 +424,26 @@ public class FXMLAdventureController implements Initializable {
             
             if(randomInt > 2){
                 list.get(0).setCurrentHp(list.get(0).getCurrentHp() - monster.getBaseDmg());
-                adventureLog.appendText("\nThe monster strikes you for " + monster.getBaseDmg() + " Damage!");
+                adventureLog.appendText("\n\nThe monster strikes you for " + monster.getBaseDmg() + " Damage!");
             }else{
-                adventureLog.appendText("\nThe monster misses!");
+                adventureLog.appendText("\n\nThe monster misses!");
             }
         }
         else if(monster.getBaseAttack() == list.get(0).getCurrentDef()){
             
             if(randomInt > 3){
                 list.get(0).setCurrentHp(list.get(0).getCurrentHp() - monster.getBaseDmg());
-                adventureLog.appendText("\nThe monster strikes you for " + monster.getBaseDmg() + " Damage!");
+                adventureLog.appendText("\n\nThe monster strikes you for " + monster.getBaseDmg() + " Damage!");
             }else{
-                adventureLog.appendText("\nThe monster misses!");
+                adventureLog.appendText("\n\nThe monster misses!");
             }
         }else{
             
             if(randomInt > 4){
                 list.get(0).setCurrentHp(list.get(0).getCurrentHp() - monster.getBaseDmg());
-                adventureLog.appendText("\nThe monster strikes you for " + monster.getBaseDmg() + " Damage!");
+                adventureLog.appendText("\n\nThe monster strikes you for " + monster.getBaseDmg() + " Damage!");
             }else{
-                adventureLog.appendText("\nThe monster misses!");
+                adventureLog.appendText("\n\nThe monster misses!");
             }    
         }
         
