@@ -193,7 +193,7 @@ public class UserData {
                 charactersArrList.add(   new Rogue   (tempbaseHp, tempbaseDef, tempbaseDmg, tempbaseHp, slot, tempcharacterName , tempcurrentHp, tempcurrentDef, tempcurrentAttack, tempcurrentDmg, tempcurrentArmorUpgrade, tempcurrentWeaponUpgrade, tempcurrentScore, tempcurrentGold));
             }
             else{
-                System.out.println("Error loading slot:"+slot+"is empty");
+                System.out.println("Error No character in slot: "+slot+" ");
             }
         
         }

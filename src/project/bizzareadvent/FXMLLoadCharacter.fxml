@@ -10,11 +10,11 @@
 <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.bizzareadvent.FXMLLoadCharacterController">
    <children>
       <Button layoutX="66.0" layoutY="358.0" mnemonicParsing="false" onAction="#handleButtonActionBack" text="Back" />
-      <Button fx:id="loadSlot1" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="178.0" layoutY="238.0" mnemonicParsing="false" onAction="#handleButtonActionLoadSlot1" text="load Slot1" AnchorPane.topAnchor="238.0" />
-      <Button fx:id="loadSlot2" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="336.0" layoutY="238.0" mnemonicParsing="false" onAction="#handleButtonActionLoadSlot2" text="load Slot2" />
-      <Button fx:id="loadSlot3" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="494.0" layoutY="238.0" mnemonicParsing="false" onAction="#handleButtonActionLoadSlot3" text="load Slot3" />
-      <Button fx:id="buttonConfirmDeletion" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="331.0" layoutY="333.0" mnemonicParsing="false" onAction="#handleButtonActionConfirmDeletion" text="Confirm Load" />
-      <Button fx:id="buttonCancel" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="349.0" layoutY="371.0" mnemonicParsing="false" onAction="#handleButtonActionCancel" text="Cancel" />
-      <ImageView fx:id="chosenCharacter" fitHeight="150.0" fitWidth="200.0" layoutX="271.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="loadSlot1" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="182.0" layoutY="240.0" mnemonicParsing="false" onAction="#handleButtonActionLoadSlot1" text="load Slot1" AnchorPane.topAnchor="240.0" />
+      <Button fx:id="loadSlot2" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="340.0" layoutY="240.0" mnemonicParsing="false" onAction="#handleButtonActionLoadSlot2" text="load Slot2" />
+      <Button fx:id="loadSlot3" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="498.0" layoutY="240.0" mnemonicParsing="false" onAction="#handleButtonActionLoadSlot3" text="load Slot3" />
+      <Button fx:id="buttonConfirmDeletion" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="331.0" layoutY="339.0" mnemonicParsing="false" onAction="#handleButtonActionConfirmDeletion" text="Confirm Load" />
+      <Button fx:id="buttonCancel" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="349.0" layoutY="377.0" mnemonicParsing="false" onAction="#handleButtonActionCancel" text="Cancel" />
+      <ImageView fx:id="chosenCharacter" fitHeight="150.0" fitWidth="200.0" layoutX="275.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

@@ -60,7 +60,7 @@ public class NewGameController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-                loadCharacterImage();
+        loadCharacterImage();
     }
 
     // method when done should check if hero is chosen and name is valid before saving to database and sending to worldmap
@@ -68,131 +68,17 @@ public class NewGameController implements Initializable {
 
         if (instance == null) {
             instance = new NewGameController();
-            
-            
+
         }
 
         return instance;
 
     }
+
     @FXML
     public void handleButtonActionDone(ActionEvent event) {
-        boolean slotEmpty = false;
-        if (chosenCharacter) {
-
-            String charName = characterName.getText();
-            try {
-                if (warriorChosen == true && charName.length() != 0 ) {
-                    boolean controllData = true;
-                    for (int i = 0; i < 3; i++) {
-                        if (AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).getCharacters_idNr() == 0 && controllData) {
-                            AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCharacters_idNr(1);
-                            AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCharacterName(charName);
-                            
-                            
-                            loadSetBaseData(i);  
-                            
-                            
-                            
-                            controllData = false;
-                            slotEmpty = true;
-                        } else {
-                            System.out.println("slot" + (i + 1) + " is not emtpy ");
-
-                        }
-                    }
-                //UserData.getInstance().testSaveFromUSERDATAToALLLOCALDATA();
-
-                //DatabaseServer.getInstance().saveToDB();
-                    //UserData.getInstance().testLoadAllDataFromALLLOCALDATAToUSERDATA();
-                   // DatabaseServer.getInstance().saveToDB();
-                   // UserData.getInstance().testLoadAllDataFromALLLOCALDATAToUSERDATA();
-
-                } else if (mageChosen == true && charName.length() != 0) {
-
-                    boolean controllData = true;
-                    for (int i = 0; i < 3; i++) {
-                        if (AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).getCharacters_idNr() == 0 && controllData) {
-                            AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCharacters_idNr(2);
-                            AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCharacterName(charName);
-                            
-                            loadSetBaseData(i); 
-                            
-                            controllData = false;
-                            slotEmpty = true;
-                        } else {
-                            System.out.println("slot" + (i + 1) + " is not emtpy ");
-
-                        }
-                    }
-               // UserData.getInstance().testSaveFromUSERDATAToALLLOCALDATA();
-
-              //  DatabaseServer.getInstance().saveToDB();
-                    //  UserData.getInstance().testLoadAllDataFromALLLOCALDATAToUSERDATA();
-                } else if (assassinChosen == true && charName.length() != 0 ) {
-
-                    boolean controllData = true;
-                    for (int i = 0; i < 3; i++) {
-                        if (AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).getCharacters_idNr() == 0 && controllData) {
-                            AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCharacters_idNr(3);
-                            AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCharacterName(charName);
-                            
-                            loadSetBaseData(i); 
-                            
-                            controllData = false;
-                            slotEmpty = true;
-                        } else {
-                            System.out.println("slot" + (i + 1) + " is not emtpy ");
-
-                        }
-                    }
-           //     UserData.getInstance().testSaveFromUSERDATAToALLLOCALDATA();
-
-             //   DatabaseServer.getInstance().saveToDB();
-                    //   UserData.getInstance().testLoadAllDataFromALLLOCALDATAToUSERDATA();
-                }
-
-                if (slotEmpty && charName.length() != 0 ) {
-                    DatabaseServer.getInstance().saveToDB();
-                    //UserData.getInstance().testLoadAllDataFromALLLOCALDATAToUSERDATA();
-                    UserData.getInstance().test001LoadCharDataFromALLLOCALDATA();
-                    setLoadSlot();
-                }
-
-            } catch (Exception ex) {
-                System.out.println(ex.getClass() + "new game error");
-            }
-
-            if (slotEmpty) {
-                try {
-                    if (chosenCharacter = true && charName.length() != 0) {
-                        Node node = (Node) event.getSource();
-                        Stage stageLogin = (Stage) node.getScene().getWindow();
-
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLWorldMap.fxml"));
-                        Parent root = loader.load();
-
-                        Scene scene = new Scene(root);
-                        stageLogin.setScene(scene);
-                        stageLogin.show();
-                    } else {
-                        Error1.setText("You have to pick a hero or have a valid name to continue");
-                        
-                    }
-
-                } catch (Exception ex) {
-                    System.out.println("Scene change error1");
-                }
-
-            } else {
-                System.out.println("All Slots are Full AND/OR TextField is Empty");
-                Error1.setText("All Slots are Full");
-            }
-
-        } else {
-            System.out.println("no character selected, FFS select someting!!!!!!!!!!!!!!!!!");
-
-        }
+       
+        createNewCharacter(event, "FXMLWorldMap.fxml");
 
     }
 
@@ -217,9 +103,8 @@ public class NewGameController implements Initializable {
     // methods below for marking hero as chosen
     @FXML
     public void warriorChosen(ActionEvent event) {
+        reset();
         warriorChosen = true;
-        mageChosen = false;
-        assassinChosen = false;
 
         chosenCharacter = true;
         buttonDone.setDisable(false);
@@ -228,9 +113,8 @@ public class NewGameController implements Initializable {
 
     @FXML
     public void mageChosen(ActionEvent event) {
+        reset();
         mageChosen = true;
-        warriorChosen = false;
-        assassinChosen = false;
 
         chosenCharacter = true;
         buttonDone.setDisable(false);
@@ -239,92 +123,163 @@ public class NewGameController implements Initializable {
 
     @FXML
     public void assassinChosen(ActionEvent event) {
+        reset();
         assassinChosen = true;
-        warriorChosen = false;
-        mageChosen = false;
 
         chosenCharacter = true;
         buttonDone.setDisable(false);
         loadCharacterImage();
     }
-    
-    
-    
-    
-    private void loadSetBaseData(int i){
-        if (warriorChosen){
-            
-        AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCurrentAttack(    AllLocalData.getInstance().getInfo3Characters().get(0).getBaseAttack()           );
-        AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCurrentDef(    AllLocalData.getInstance().getInfo3Characters().get(0).getBaseDef()     );
-        AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCurrentDmg(   AllLocalData.getInstance().getInfo3Characters().get(0).getBaseDmg()         );
-        AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCurrentHp(    AllLocalData.getInstance().getInfo3Characters().get(0).getBaseHp()       );
-        }
-        if (mageChosen){
-            
-        AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCurrentAttack(    AllLocalData.getInstance().getInfo3Characters().get(1).getBaseAttack()           );
-        AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCurrentDef(    AllLocalData.getInstance().getInfo3Characters().get(1).getBaseDef()     );
-        AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCurrentDmg(   AllLocalData.getInstance().getInfo3Characters().get(1).getBaseDmg()         );
-        AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCurrentHp(    AllLocalData.getInstance().getInfo3Characters().get(1).getBaseHp()       );
-        }
-        if (assassinChosen){
-            
-        AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCurrentAttack(    AllLocalData.getInstance().getInfo3Characters().get(2).getBaseAttack()           );
-        AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCurrentDef(    AllLocalData.getInstance().getInfo3Characters().get(2).getBaseDef()     );
-        AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCurrentDmg(   AllLocalData.getInstance().getInfo3Characters().get(2).getBaseDmg()         );
-        AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCurrentHp(    AllLocalData.getInstance().getInfo3Characters().get(2).getBaseHp()       );
-        }
-        
+
+    private void reset() {
+        assassinChosen = false;
+        warriorChosen = false;
+        mageChosen = false;
     }
-    
-    
-    private void setLoadSlot(){
-        int slots=0;
-        
+
+    private void loadSetBaseData(int i) {
+        int charType = 0;
+        if (warriorChosen) {
+            charType = 0;
+        }
+        else if (mageChosen) {
+            charType = 1;
+        }
+        else if (assassinChosen) {
+            charType = 2;
+        }
+
+        if (true) {
+            AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCurrentAttack(AllLocalData.getInstance().getInfo3Characters().get(charType).getBaseAttack());
+            AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCurrentDef(AllLocalData.getInstance().getInfo3Characters().get(charType).getBaseDef());
+            AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCurrentDmg(AllLocalData.getInstance().getInfo3Characters().get(charType).getBaseDmg());
+            AllLocalData.getInstance().getInfo2LoginHasCharacters().get(i).setCurrentHp(AllLocalData.getInstance().getInfo3Characters().get(charType).getBaseHp());
+
+        }
+
+    }
+
+    private void setLoadSlot() {
+        int slots = 0;
+
         for (DBTable2LoginHasCharacters test : AllLocalData.getInstance().getInfo2LoginHasCharacters()) {
             if (test.getCharacters_idNr() > 0) {
                 slots++;
                 System.out.println(slots);
             }
         }
-        
-        UserData.getInstance().setArraylistNumber(slots-1);
+
+        UserData.getInstance().setArraylistNumber(slots - 1);
     }
-    
-    
-    
-    
-    
-    
+
     //private Image characterImage = new Image("chosecharacter.bmp", true);
-    private void loadCharacterImage(){
-        
-        
-        
-        
+    private void loadCharacterImage() {
+
         Image characterImage1 = new Image("ms-warrior0.png", true);
         Image characterImage2 = new Image("ms-mage0.png", true);
         Image characterImage3 = new Image("ms-rogue0.png", true);
-       
-        imageWarrior.setImage(  characterImage1 );
-        
-        imageMage.setImage(  characterImage2 );
-        
-        imageRogue.setImage(  characterImage3   );
-        
-        
+
+        imageWarrior.setImage(characterImage1);
+
+        imageMage.setImage(characterImage2);
+
+        imageRogue.setImage(characterImage3);
+
         imageWarrior.setOpacity(0.3);
         imageMage.setOpacity(0.3);
         imageRogue.setOpacity(0.3);
-        
-        
-        if(warriorChosen == true){
+
+        if (warriorChosen == true) {
             imageWarrior.setOpacity(1);
-        }else if(mageChosen == true){
+        } else if (mageChosen == true) {
             imageMage.setOpacity(1);
-        }else if(assassinChosen == true){
+        } else if (assassinChosen == true) {
             imageRogue.setOpacity(1);
         }
-        
+
     }
+
+    private void createNewCharacter(ActionEvent event, String path) {
+
+        int arraySlot = 0;
+        String charName = characterName.getText();
+
+        for (DBTable2LoginHasCharacters test : AllLocalData.getInstance().getInfo2LoginHasCharacters()) {
+            if (test.getCharacters_idNr() > 0) {
+                arraySlot++;
+            }
+        }
+        System.out.println(arraySlot);
+        if (chosenCharacter) {
+            if (charName.length() > 0) {
+                if (arraySlot < 3) {
+                    if (warriorChosen) {
+                        AllLocalData.getInstance().getInfo2LoginHasCharacters().get(arraySlot).setCharacters_idNr(1);
+                    } else if (mageChosen) {
+                        AllLocalData.getInstance().getInfo2LoginHasCharacters().get(arraySlot).setCharacters_idNr(2);
+                    } else if (assassinChosen) {
+                        AllLocalData.getInstance().getInfo2LoginHasCharacters().get(arraySlot).setCharacters_idNr(3);
+                    }
+                    if (true) {
+                        AllLocalData.getInstance().getInfo2LoginHasCharacters().get(arraySlot).setCharacterName(charName);
+                        loadSetBaseData(arraySlot);
+                        
+                        
+                        DatabaseServer.getInstance().saveToDB();
+                        UserData.getInstance().test001LoadCharDataFromALLLOCALDATA();
+                    
+                        
+                        UserData.getInstance().setArraylistNumber(arraySlot);
+                        
+                        loadScene(event, path);
+                    }
+
+                } else {
+                    System.out.println("All Slot Are Full");
+                }
+            } else {
+                System.out.println("no charactername");
+            }
+        } else {
+            System.out.println("No character Chosen");
+        }
+    }
+    
+    
+    
+    
+    
+    
+    private void loadScene(ActionEvent event, String path) {
+        try {
+
+            Node node = (Node) event.getSource();
+            Stage stage1 = (Stage) node.getScene().getWindow();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
+            Parent root = loader.load();
+
+            Scene scene = new Scene(root);
+            stage1.setScene(scene);
+            stage1.show();
+            //stage1.setFullScreen(true);
+            stage1.setResizable(false);
+
+        } catch (Exception ex) {
+            System.out.println("Loading " + path + " error!");
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 }
