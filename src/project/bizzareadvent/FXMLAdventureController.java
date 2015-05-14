@@ -73,48 +73,51 @@ public class FXMLAdventureController implements Initializable {
         
         randomInt = randomGenerator.nextInt(6) + 1;
         
-        if(list.get(0).getCurrentAttack() > monster.getBaseDef()){
-            
-            if(randomInt > 2){
-                monster.setBaseHp(monster.getBaseHp() - list.get(0).getBaseDmg());
-                adventureLog.appendText("\n\nYou strike the monster for " + list.get(0).getCurrentDmg() + " Damage!");
-            }else{
-                adventureLog.appendText("\n\nYou miss!");
-            }
-        }
-        else if(list.get(0).getCurrentAttack() == monster.getBaseDef()){
-            
-            if(randomInt > 3){
-                monster.setBaseHp(monster.getBaseHp() - list.get(0).getBaseDmg());
-                adventureLog.appendText("\n\nYou strike the monster for " + list.get(0).getCurrentDmg() + " Damage!");
-            }else{
-                adventureLog.appendText("\n\nYou miss!");
-            }
-        }else{
-            
-            if(randomInt > 4){
-                monster.setBaseHp(monster.getBaseHp() - list.get(0).getBaseDmg());
-                adventureLog.appendText("\n\nYou strike the monster for " + list.get(0).getCurrentDmg() + " Damage!");
-            }else{
-                adventureLog.appendText("\n\nYou miss!");
-            }    
-        }
+        System.out.println(monster.getBaseHp());
         
         if(monster.getBaseHp() <= 0){
             adventureLog.appendText("\n\nYou are victorious! You have slain the " + monster.getMonsterType() + ".");
             adventureLog.appendText("\nYou add " + monster.getAmountGold() + " gold to your purse and");
             adventureLog.appendText("\nyou gain " + monster.getAmountScore() + " score.");
             
-            list.get(0).setCurrentGold(monster.getAmountGold());
-            list.get(0).setCurrentScore(monster.getAmountScore());
+            list.get(0).setCurrentGold(list.get(0).getCurrentGold() + monster.getAmountGold());
+            list.get(0).setCurrentScore(list.get(0).getCurrentScore() + monster.getAmountScore());
             
             attackButton.setDisable(true);
             secondaryButton.setDisable(true);
             runButton.setDisable(true);
             continueButton.setDisable(false);
         }else{
+            if(list.get(0).getCurrentAttack() > monster.getBaseDef()){
+            
+                if(randomInt > 2){
+                    monster.setBaseHp(monster.getBaseHp() - list.get(0).getCurrentDmg());
+                    adventureLog.appendText("\n\nYou strike the monster for " + list.get(0).getCurrentDmg() + " Damage!");
+                }else{
+                    adventureLog.appendText("\n\nYou miss!");
+                }
+            }
+            else if(list.get(0).getCurrentAttack() == monster.getBaseDef()){
+            
+                if(randomInt > 3){
+                    monster.setBaseHp(monster.getBaseHp() - list.get(0).getCurrentDmg());
+                    adventureLog.appendText("\n\nYou strike the monster for " + list.get(0).getCurrentDmg() + " Damage!");
+                }else{
+                    adventureLog.appendText("\n\nYou miss!");
+                }
+            }else{
+            
+                if(randomInt > 4){
+                    monster.setBaseHp(monster.getBaseHp() - list.get(0).getCurrentDmg());
+                    adventureLog.appendText("\n\nYou strike the monster for " + list.get(0).getCurrentDmg() + " Damage!");
+                }else{
+                    adventureLog.appendText("\n\nYou miss!");
+                }    
+            }
             monsterAttack();
         }
+        
+        showStats();
     }
     
     @FXML
@@ -129,11 +132,16 @@ public class FXMLAdventureController implements Initializable {
 
         randomInt = randomGenerator.nextInt(100);
         
-        if(randomInt < 50){
+        if(randomInt < 51){
             run = true;
             adventureLog.appendText("\n\nYour attempt to run away was successful!");
             adventureLog.appendText("\nYou run away like the coward you are.\n");
             adventureLog.appendText("\n\nPress continue to enter the world map.");
+            
+            attackButton.setDisable(true);
+            secondaryButton.setDisable(true);
+            runButton.setDisable(true);
+            continueButton.setDisable(false);
         }else{
             adventureLog.appendText("\n\nYour attempt to run away failed!");
             monsterAttack();
@@ -270,7 +278,8 @@ public class FXMLAdventureController implements Initializable {
                 generateTreasure();
             }
             else if(randomInt >= 60 ){
-                monster = generator.generateMonster(position);
+                //monster = generator.generateMonster(position);
+                monster = new NormalMonster(200,10,10,10,10,10,"spider");
                 
                 adventureLog.appendText("\n\nYou encounter a " + monster.getMonsterType());
                 adventureLog.appendText("\nIf you wish to fight the monster press the attack button or");
@@ -282,6 +291,8 @@ public class FXMLAdventureController implements Initializable {
                 continueButton.setDisable(true);
             }
         }
+        showStats();
+        
         stepCounter++;
     }
     
@@ -402,6 +413,8 @@ public class FXMLAdventureController implements Initializable {
             adventureLog.appendText("\nYou lose " + gold + " gold.");
            
         }
+        
+        list.get(0).setCurrentGold(list.get(0).getCurrentGold() + gold);
     }
     
     public void secondaryAttackMage(){

@@ -22,7 +22,7 @@ public class MonsterGenerator {
     
     public NormalMonster generateMonster(String position){
         
-        NormalMonster generatedMonster;
+        NormalMonster generatedMonster = new NormalMonster(0,0,0,0,0,0,"");
         
         if(position.equals("plains")){
             generatedMonster = plainsMonsters();
