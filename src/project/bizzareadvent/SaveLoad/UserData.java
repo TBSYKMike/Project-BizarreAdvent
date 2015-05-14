@@ -8,7 +8,7 @@ package project.bizzareadvent.SaveLoad;
 import java.util.ArrayList;
 import project.bizzareadvent.Characters;
 import project.bizzareadvent.Mage;
-import project.bizzareadvent.NewGameController;
+import project.bizzareadvent.FXMLNewGameController;
 import project.bizzareadvent.Rogue;
 import project.bizzareadvent.Warrior;
 
@@ -50,8 +50,8 @@ public class UserData {
 
     public void makeChar(){
         charactersArrList0001.add(new Warrior (100, 10, 10, 8, 1, "WarriorKim", 100, 10, 10, 6, 0, 0, 0, 0));
-        //charactersArrList.add(new Mage(100, 6, 10, 12, 3, NewGameController.getInstance().characterName.getText(), 100, 6, 10, 9, 0, 0, 0, 0));
-        //charactersArrList.add(new Rogue(100, 7, 10, 10, 2, NewGameController.getInstance().characterName.getText(), 100, 7, 10, 10, 0, 0, 0, 0));
+        //charactersArrList.add(new Mage(100, 6, 10, 12, 3, FXMLNewGameController.getInstance().characterName.getText(), 100, 6, 10, 9, 0, 0, 0, 0));
+        //charactersArrList.add(new Rogue(100, 7, 10, 10, 2, FXMLNewGameController.getInstance().characterName.getText(), 100, 7, 10, 10, 0, 0, 0, 0));
         
     
     

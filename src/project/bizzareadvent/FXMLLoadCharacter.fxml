@@ -13,7 +13,7 @@
       <Button fx:id="loadSlot1" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="182.0" layoutY="240.0" mnemonicParsing="false" onAction="#handleButtonActionLoadSlot1" text="load Slot1" AnchorPane.topAnchor="240.0" />
       <Button fx:id="loadSlot2" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="340.0" layoutY="240.0" mnemonicParsing="false" onAction="#handleButtonActionLoadSlot2" text="load Slot2" />
       <Button fx:id="loadSlot3" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="498.0" layoutY="240.0" mnemonicParsing="false" onAction="#handleButtonActionLoadSlot3" text="load Slot3" />
-      <Button fx:id="buttonConfirmDeletion" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="331.0" layoutY="339.0" mnemonicParsing="false" onAction="#handleButtonActionConfirmDeletion" text="Confirm Load" />
+      <Button fx:id="buttonConfirmDeletion" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="331.0" layoutY="339.0" mnemonicParsing="false" onAction="#handleButtonActionConfirmLoad" text="Confirm Load" />
       <Button fx:id="buttonCancel" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="349.0" layoutY="377.0" mnemonicParsing="false" onAction="#handleButtonActionCancel" text="Cancel" />
       <ImageView fx:id="chosenCharacter" fitHeight="150.0" fitWidth="200.0" layoutX="275.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true" />
    </children>

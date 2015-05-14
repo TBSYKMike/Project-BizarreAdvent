@@ -26,7 +26,7 @@ import project.bizzareadvent.SaveLoad.DBTable2LoginHasCharacters;
 import project.bizzareadvent.SaveLoad.DatabaseServer;
 import project.bizzareadvent.SaveLoad.UserData;
 
-public class NewGameController implements Initializable {
+public class FXMLNewGameController implements Initializable {
 
     @FXML
     private Button buttonDone;
@@ -56,7 +56,7 @@ public class NewGameController implements Initializable {
     public boolean warriorChosen = false;
     public boolean mageChosen = false;
     public boolean assassinChosen = false;
-    private static NewGameController instance;
+    private static FXMLNewGameController instance;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -64,10 +64,10 @@ public class NewGameController implements Initializable {
     }
 
     // method when done should check if hero is chosen and name is valid before saving to database and sending to worldmap
-    public static NewGameController getInstance() {
+    public static FXMLNewGameController getInstance() {
 
         if (instance == null) {
-            instance = new NewGameController();
+            instance = new FXMLNewGameController();
 
         }
 

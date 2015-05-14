@@ -112,7 +112,7 @@ public class FXMLLoadCharacterController implements Initializable {
     }
     
     @FXML
-    private void handleButtonActionConfirmDeletion(ActionEvent event) {// Only delete fromlocal saving to server
+    private void handleButtonActionConfirmLoad(ActionEvent event) {// Only delete fromlocal saving to server
         //deleteCharacter();
         //enableButtonSlots();
         disableButtonConfirmCancel();
@@ -149,27 +149,6 @@ public class FXMLLoadCharacterController implements Initializable {
     }
     
 
-    
-    
-    
-    
-    private void deleteCharacter(){
-        if(slot == 1){
-        AllLocalData.getInstance().deleteCharFromSlot(slot);
-        }else if(slot == 2){
-        AllLocalData.getInstance().deleteCharFromSlot(slot);
-        }else if(slot == 3){
-        AllLocalData.getInstance().deleteCharFromSlot(slot);
-        }
-        DatabaseServer.getInstance().saveToDB();
-        //UserData.getInstance().testLoadAllDataFromALLLOCALDATAToUSERDATA();
-        UserData.getInstance().test001LoadCharDataFromALLLOCALDATA();
-    }
-    
-    
-    
-    
-    
     
     
     
