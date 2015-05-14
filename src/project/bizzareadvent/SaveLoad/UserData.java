@@ -8,7 +8,6 @@ package project.bizzareadvent.SaveLoad;
 import java.util.ArrayList;
 import project.bizzareadvent.Characters;
 import project.bizzareadvent.Mage;
-import project.bizzareadvent.FXMLNewGameController;
 import project.bizzareadvent.Rogue;
 import project.bizzareadvent.Warrior;
 
