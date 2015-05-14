@@ -6,9 +6,6 @@
 package project.bizzareadvent.SaveLoad;
 
 import java.util.ArrayList;
-import project.bizzareadvent.Mage;
-import project.bizzareadvent.Rogue;
-import project.bizzareadvent.Warrior;
 
 /**
  *

@@ -58,7 +58,7 @@ public class FXMLDocumentController implements Initializable {
             login = true;
             
             DatabaseServer.getInstance().loadDATAFromDB();
-            DatabaseServer.getInstance().loadDATAFromDB();
+            //DatabaseServer.getInstance().loadDATAFromDB(); //only need once now because there is a loop in the method
         } else {
             System.out.println("failed login");
             labelMessage.setText("failed login");

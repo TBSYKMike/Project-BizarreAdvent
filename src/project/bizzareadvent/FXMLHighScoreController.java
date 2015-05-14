@@ -30,10 +30,10 @@ public class FXMLHighScoreController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        String HighScore = DatabaseServer.getInstance().getHighScore();
-        String Username = DatabaseServer.getInstance().getUsername();
-        textareaHighScore1.setText(HighScore);
-        textareaHighScore2.setText(Username);
+        //String HighScore = DatabaseServer.getInstance().getHighScore();
+        //String Username = DatabaseServer.getInstance().getUsername();
+        //textareaHighScore1.setText(HighScore);
+        //textareaHighScore2.setText(Username);
     }    
     
 }

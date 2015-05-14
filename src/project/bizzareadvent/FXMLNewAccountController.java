@@ -24,6 +24,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import project.bizzareadvent.SaveLoad.DatabaseServer;
 
 /**
  * FXML Controller class
@@ -46,46 +47,38 @@ public class FXMLNewAccountController implements Initializable {
         // TODO
     }
 
-    
-    
     @FXML
     private void handleButtonActionBack(ActionEvent event) {
-        
 
-        
-            try {
+        try {
 
-                Node node = (Node) event.getSource();
-                Stage stageLogin = (Stage) node.getScene().getWindow();
+            Node node = (Node) event.getSource();
+            Stage stageLogin = (Stage) node.getScene().getWindow();
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
-                Parent root = loader.load();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
+            Parent root = loader.load();
 
-                Scene scene = new Scene(root);
-                stageLogin.setScene(scene);
-                stageLogin.show();
+            Scene scene = new Scene(root);
+            stageLogin.setScene(scene);
+            stageLogin.show();
 
-            } catch (IOException ex) {
-                System.out.println("Scene change error1");
-            }
-        
+        } catch (IOException ex) {
+            System.out.println("Scene change error1");
+        }
+
     }
-    
-    
-    
-    
+
     //test of adding new stuff to database
-    private int count;
+    private int countIdNr;
+
     @FXML
     public void handleButtonActionCreate(ActionEvent event) {
 
         boolean createYesNo = true;
 
-        try {
-            Class.forName("com.mysql.jdbc.Driver").newInstance();
-            // String URL = "jdbc:mysql://194.47.47.18:3306/YOUR_DATABASE_NAME?user=YOUR_USER_NAME&password=YOUR_PASSWORD";
-            String URL = "jdbc:mysql://127.0.0.1:3306/gamedb?user=root&password=root";
-            Connection c = DriverManager.getConnection(URL);
+        DatabaseServer.getInstance().connectToDB();
+
+        try ( Connection c = DriverManager.getConnection( DatabaseServer.getInstance().getURL() ) ) {
             Statement st = c.createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM login");
 
@@ -93,16 +86,16 @@ public class FXMLNewAccountController implements Initializable {
             String password1 = textfieldPassword1.getText();
             String password2 = textfieldPassword2.getText();
 
-            if (name0.length()>0 && password1.equals(password2) && password1.length()>0) {
+            if (name0.length() > 0 && password1.equals(password2) && password1.length() > 0) {
 
                 while (rs.next()) {
                     String nameDB = rs.getString("userName");
                     String passwordDB = rs.getString("password");
                     System.out.println("Customer Name: " + nameDB + " \nand customer number " + passwordDB + "\n\n");
-                    count = rs.getInt("idNr");
-                    count++;
-                    
-                    if(nameDB.equalsIgnoreCase(name0)){
+                    countIdNr = rs.getInt("idNr");
+                    countIdNr++;
+
+                    if (nameDB.equalsIgnoreCase(name0)) {
                         createYesNo = false;
                         labelMessage.setText("name exists");
                     }
@@ -110,26 +103,36 @@ public class FXMLNewAccountController implements Initializable {
                 }
 
                 if (createYesNo) {
-                    st.execute("INSERT INTO login (idNr, userName, password) VALUES ('" + count + "', '"+name0+"', '"+password1+"')");
+                    st.execute("INSERT INTO login (idNr, userName, password) VALUES ('" + countIdNr + "', '" + name0 + "', '" + password1 + "')");
+                    //st.execute("INSERT INTO `gamedb`.`login_has_characters` (`Login_idNr`, `charSlot`, `Characters_idNr`, `score`, `characterName`, `armorUpgrade`, `weaponUpgrade`, `currentHp`, `gold`, `currentDmg`, `currentDef`, `currentAttack`) VALUES ('" + countIdNr + "', '1', '0', '0', 'null1', '0', '0', '0', '0', '0', '0', '0');");
+                    //st.execute("INSERT INTO `gamedb`.`login_has_characters` (`Login_idNr`, `charSlot`, `Characters_idNr`, `score`, `characterName`, `armorUpgrade`, `weaponUpgrade`, `currentHp`, `gold`, `currentDmg`, `currentDef`, `currentAttack`) VALUES ('" + countIdNr + "', '2', '0', '0', 'null1', '0', '0', '0', '0', '0', '0', '0');");
+                    //st.execute("INSERT INTO `gamedb`.`login_has_characters` (`Login_idNr`, `charSlot`, `Characters_idNr`, `score`, `characterName`, `armorUpgrade`, `weaponUpgrade`, `currentHp`, `gold`, `currentDmg`, `currentDef`, `currentAttack`) VALUES ('" + countIdNr + "', '3', '0', '0', 'null1', '0', '0', '0', '0', '0', '0', '0');");
+
                     labelMessage.setText("new account created");
                     textfieldUsername.clear();
                     textfieldPassword1.clear();
                     textfieldPassword2.clear();
                     labelMessage.requestFocus();
+                    
+                    textfieldUsername.setDisable(true);
+                    button.setDisable(true);
+                    textfieldPassword1.setDisable(true);
+                    textfieldPassword2.setDisable(true);
+                    
+                    
                 }
-            }
-            else {
+
+            } else {
                 labelMessage.setText("error");
             }
 
             c.close();
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException e) {
+        } catch (SQLException e) {
             System.err.println("ERROR: " + e);
         }
 
     }
-    
-    
+
     @FXML
     public void handleKeyEvent(KeyEvent ke) {
         if (ke.getCode().equals(KeyCode.ENTER)) {
@@ -142,7 +145,6 @@ public class FXMLNewAccountController implements Initializable {
     @FXML
     public void handleMouseEvent(MouseEvent ke) {
 
-         
         labelMessage.setText(null);
 
     }
