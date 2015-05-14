@@ -159,18 +159,7 @@ public class FXMLNewGameController implements Initializable {
 
     }
 
-    private void setLoadSlot() {
-        int slots = 0;
-
-        for (DBTable2LoginHasCharacters test : AllLocalData.getInstance().getInfo2LoginHasCharacters()) {
-            if (test.getCharacters_idNr() > 0) {
-                slots++;
-                System.out.println(slots);
-            }
-        }
-
-        UserData.getInstance().setArraylistNumber(slots - 1);
-    }
+    
 
     //private Image characterImage = new Image("chosecharacter.bmp", true);
     private void loadCharacterImage() {
@@ -236,12 +225,15 @@ public class FXMLNewGameController implements Initializable {
 
                 } else {
                     System.out.println("All Slot Are Full");
+                    Error1.setText("All Slot Are Full");
                 }
             } else {
                 System.out.println("no charactername");
+                Error1.setText("no charactername");
             }
         } else {
             System.out.println("No character Chosen");
+            Error1.setText("No character Chosen");
         }
     }
     

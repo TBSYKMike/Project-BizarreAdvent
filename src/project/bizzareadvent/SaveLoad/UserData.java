@@ -176,21 +176,23 @@ public class UserData {
                 test001loadBaseStatsFromALLLOCALDATA(1);
                 //warriorArrList.add(new Warrior    (baseHp, baseDef, baseAttack, baseDmg, charSlot, characterName, currentHp, currentDef, currentAttack, currentDmg, currentArmorUpgrade, currentWeaponUpgrade, currentScore, currentGold));
                 //warriorArrList.add( new Warrior (100, 100, 100, 100, slot, "warriorname"+slot , 100, 100, 100, 100, 100, 100, 100, 100));
-                charactersArrList.add( new Warrior (tempbaseHp, tempbaseDef, tempbaseDmg, tempbaseHp, slot, tempcharacterName , tempcurrentHp, tempcurrentDef, tempcurrentAttack, tempcurrentDmg, tempcurrentArmorUpgrade, tempcurrentWeaponUpgrade, tempcurrentScore, tempcurrentGold));
+                charactersArrList.add( new Warrior (tempbaseHp, tempbaseDef, tempbaseAttack, tempbaseDmg, slot, tempcharacterName , tempcurrentHp, tempcurrentDef, tempcurrentAttack, tempcurrentDmg, tempcurrentArmorUpgrade, tempcurrentWeaponUpgrade, tempcurrentScore, tempcurrentGold));
+                //public Warrior                    (int baseHp, int baseDef, int baseAttack, int baseDmg, charSlot, characterName, int currentHp, int currentDef, int currentAttack, int currentDmg, int currentArmorUpgrade, int currentWeaponUpgrade, int currentScore, int currentGold)
+            
             }
             else if (  loadFromInfo2.getCharacters_idNr()  ==  2   ){
                 //make if CharID is 1 make MAGE
                 
                 test001loadBaseStatsFromALLLOCALDATA(2);
                 //mageArrList.add(new Mage          (baseHp, baseDef, baseAttack, baseDmg, charSlot, characterName, currentHp, currentDef, currentAttack, currentDmg, currentArmorUpgrade, currentWeaponUpgrade, currentScore, currentGold));
-                charactersArrList.add(    new Mage    (tempbaseHp, tempbaseDef, tempbaseDmg, tempbaseHp, slot, tempcharacterName , tempcurrentHp, tempcurrentDef, tempcurrentAttack, tempcurrentDmg, tempcurrentArmorUpgrade, tempcurrentWeaponUpgrade, tempcurrentScore, tempcurrentGold));
+                charactersArrList.add(    new Mage    (tempbaseHp, tempbaseDef, tempbaseAttack, tempbaseDmg, slot, tempcharacterName , tempcurrentHp, tempcurrentDef, tempcurrentAttack, tempcurrentDmg, tempcurrentArmorUpgrade, tempcurrentWeaponUpgrade, tempcurrentScore, tempcurrentGold));
             }
             else if (  loadFromInfo2.getCharacters_idNr()  ==  3   ){
                 //make if CharID is 1 make ROGUE
                 
                 test001loadBaseStatsFromALLLOCALDATA(3);
                 //rogueArrList.add(new Rogue        (baseHp, baseDef, baseAttack, baseDmg, charSlot, characterName, currentHp, currentDef, currentAttack, currentDmg, currentArmorUpgrade, currentWeaponUpgrade, currentScore, currentGold));
-                charactersArrList.add(   new Rogue   (tempbaseHp, tempbaseDef, tempbaseDmg, tempbaseHp, slot, tempcharacterName , tempcurrentHp, tempcurrentDef, tempcurrentAttack, tempcurrentDmg, tempcurrentArmorUpgrade, tempcurrentWeaponUpgrade, tempcurrentScore, tempcurrentGold));
+                charactersArrList.add(   new Rogue   (tempbaseHp, tempbaseDef, tempbaseAttack, tempbaseDmg, slot, tempcharacterName , tempcurrentHp, tempcurrentDef, tempcurrentAttack, tempcurrentDmg, tempcurrentArmorUpgrade, tempcurrentWeaponUpgrade, tempcurrentScore, tempcurrentGold));
             }
             else{
                 System.out.println("Error No character in slot: "+slot+" ");

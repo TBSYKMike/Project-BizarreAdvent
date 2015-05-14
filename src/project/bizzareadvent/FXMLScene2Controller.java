@@ -56,7 +56,7 @@ public class FXMLScene2Controller implements Initializable {
                 Node node = (Node) event.getSource();
                 Stage stage2 = (Stage) node.getScene().getWindow();
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLLogin.fxml"));
                 Parent root = loader.load();
 
                 Scene scene = new Scene(root);
@@ -119,7 +119,7 @@ public class FXMLScene2Controller implements Initializable {
                 Node node = (Node) event.getSource();
                 Stage stageLogin = (Stage) node.getScene().getWindow();
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("newGame.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLNewGame.fxml"));
                 Parent root = loader.load();
 
                 Scene scene = new Scene(root);
@@ -179,6 +179,24 @@ public class FXMLScene2Controller implements Initializable {
                 Stage stageLogin = (Stage) node.getScene().getWindow();
 
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLLoadCharacter.fxml"));
+                Parent root = loader.load();
+
+                Scene scene = new Scene(root);
+                stageLogin.setScene(scene);
+                stageLogin.show();
+        
+        }catch(IOException ex){
+            System.out.println("Scene change error1rrr");
+        }
+    }
+    
+    @FXML
+    private void handleButtonActionHighScoreScene(ActionEvent event){
+        try{
+                Node node = (Node) event.getSource();
+                Stage stageLogin = (Stage) node.getScene().getWindow();
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLHighScore.fxml"));
                 Parent root = loader.load();
 
                 Scene scene = new Scene(root);

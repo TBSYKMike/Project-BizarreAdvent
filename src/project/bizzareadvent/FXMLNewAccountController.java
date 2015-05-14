@@ -55,7 +55,7 @@ public class FXMLNewAccountController implements Initializable {
             Node node = (Node) event.getSource();
             Stage stageLogin = (Stage) node.getScene().getWindow();
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLLogin.fxml"));
             Parent root = loader.load();
 
             Scene scene = new Scene(root);

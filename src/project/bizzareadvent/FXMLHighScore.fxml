@@ -9,19 +9,20 @@
 
 <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.bizzareadvent.FXMLHighScoreController">
    <children>
-      <TextArea fx:id="textareaHighScore1" layoutX="25.0" layoutY="74.0" prefHeight="300.0" prefWidth="271.0">
+      <TextArea fx:id="textareaHighScore1" layoutX="100.0" layoutY="91.0" prefHeight="300.0" prefWidth="271.0">
          <font>
             <Font size="18.0" />
          </font></TextArea>
-      <Label alignment="CENTER" layoutX="154.0" layoutY="22.0" prefHeight="45.0" prefWidth="293.0" text="High Score">
+      <Label alignment="CENTER" layoutX="229.0" layoutY="39.0" prefHeight="45.0" prefWidth="293.0" text="High Score">
          <font>
             <Font size="30.0" />
          </font>
       </Label>
-      <TextArea fx:id="textareaHighScore2" layoutX="305.0" layoutY="74.0" prefHeight="300.0" prefWidth="271.0">
+      <TextArea fx:id="textareaHighScore2" layoutX="380.0" layoutY="91.0" prefHeight="300.0" prefWidth="271.0">
          <font>
             <Font size="18.0" />
          </font>
       </TextArea>
+      <Button layoutX="354.0" layoutY="436.0" mnemonicParsing="false" onAction="#handleButtonActionBack" text="Back" />
    </children>
 </AnchorPane>

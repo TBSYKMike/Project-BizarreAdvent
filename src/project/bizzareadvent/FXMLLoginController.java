@@ -33,7 +33,7 @@ import project.bizzareadvent.SaveLoad.UserData;
  *
  * @author Mike
  */
-public class FXMLDocumentController implements Initializable {
+public class FXMLLoginController implements Initializable {
 
     @FXML
     private Label labelMessage;

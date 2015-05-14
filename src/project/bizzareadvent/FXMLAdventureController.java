@@ -75,19 +75,7 @@ public class FXMLAdventureController implements Initializable {
         
         System.out.println(monster.getBaseHp());
         
-        if(monster.getBaseHp() <= 0){
-            adventureLog.appendText("\n\nYou are victorious! You have slain the " + monster.getMonsterType() + ".");
-            adventureLog.appendText("\nYou add " + monster.getAmountGold() + " gold to your purse and");
-            adventureLog.appendText("\nyou gain " + monster.getAmountScore() + " score.");
-            
-            list.get(0).setCurrentGold(list.get(0).getCurrentGold() + monster.getAmountGold());
-            list.get(0).setCurrentScore(list.get(0).getCurrentScore() + monster.getAmountScore());
-            
-            attackButton.setDisable(true);
-            secondaryButton.setDisable(true);
-            runButton.setDisable(true);
-            continueButton.setDisable(false);
-        }else{
+        if(monster.getBaseHp() > 0){
             if(list.get(0).getCurrentAttack() > monster.getBaseDef()){
             
                 if(randomInt > 2){
@@ -115,6 +103,19 @@ public class FXMLAdventureController implements Initializable {
                 }    
             }
             monsterAttack();
+        }
+        if(monster.getBaseHp() <= 0){
+            adventureLog.appendText("\n\nYou are victorious! You have slain the " + monster.getMonsterType() + ".");
+            adventureLog.appendText("\nYou add " + monster.getAmountGold() + " gold to your purse and");
+            adventureLog.appendText("\nyou gain " + monster.getAmountScore() + " score.");
+            
+            list.get(0).setCurrentGold(list.get(0).getCurrentGold() + monster.getAmountGold());
+            list.get(0).setCurrentScore(list.get(0).getCurrentScore() + monster.getAmountScore());
+            
+            attackButton.setDisable(true);
+            secondaryButton.setDisable(true);
+            runButton.setDisable(true);
+            continueButton.setDisable(false);
         }
         
         showStats();
@@ -473,7 +474,7 @@ public class FXMLAdventureController implements Initializable {
             adventureLog.appendText("\nrip your lifeless body limb from limb.");
             adventureLog.appendText("\nMaybe it will fashion a nice hat from your body.");
             adventureLog.appendText("\n\nPress continue to enter your score.");
-            
+            // change scene to death scene
         }else{
          
             showStats();
