@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="385.0" prefWidth="603.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.bizzareadvent.NewGameController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.bizzareadvent.NewGameController">
    <children>
       <ImageView fx:id="backGroundImage" fitHeight="385.0" fitWidth="603.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="imageWarrior" fitHeight="213.0" fitWidth="137.0" layoutX="42.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true" />
