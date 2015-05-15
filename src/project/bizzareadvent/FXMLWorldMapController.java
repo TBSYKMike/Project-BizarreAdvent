@@ -201,7 +201,7 @@ public class FXMLWorldMapController implements Initializable {
         updatePosition();
     }
 
-    public void movementAction5(ActionEvent event) {
+    public void movementAction5(MouseEvent event) {
         falseMethod();
         mountainPosition = true;
         adventurePosition = "mountain";
@@ -211,7 +211,7 @@ public class FXMLWorldMapController implements Initializable {
         updatePosition();
     }
 
-    public void movementAction6(ActionEvent event) {
+    public void movementAction6(MouseEvent event) {
         falseMethod();
         castlePosition = true;
         adventurePosition = "castle";
