@@ -75,35 +75,34 @@ public class FXMLAdventureController implements Initializable {
         
         System.out.println(monster.getBaseHp());
         
-        if(monster.getBaseHp() > 0){
-            if(list.get(0).getCurrentAttack() > monster.getBaseDef()){
+        
+        if(list.get(0).getCurrentAttack() > monster.getBaseDef()){
             
-                if(randomInt > 2){
-                    monster.setBaseHp(monster.getBaseHp() - list.get(0).getCurrentDmg());
-                    adventureLog.appendText("\n\nYou strike the monster for " + list.get(0).getCurrentDmg() + " Damage!");
-                }else{
-                    adventureLog.appendText("\n\nYou miss!");
-                }
-            }
-            else if(list.get(0).getCurrentAttack() == monster.getBaseDef()){
-            
-                if(randomInt > 3){
-                    monster.setBaseHp(monster.getBaseHp() - list.get(0).getCurrentDmg());
-                    adventureLog.appendText("\n\nYou strike the monster for " + list.get(0).getCurrentDmg() + " Damage!");
-                }else{
-                    adventureLog.appendText("\n\nYou miss!");
-                }
+            if(randomInt > 2){
+                monster.setBaseHp(monster.getBaseHp() - list.get(0).getCurrentDmg());
+                adventureLog.appendText("\n\nYou strike the monster for " + list.get(0).getCurrentDmg() + " Damage!");
             }else{
-            
-                if(randomInt > 4){
-                    monster.setBaseHp(monster.getBaseHp() - list.get(0).getCurrentDmg());
-                    adventureLog.appendText("\n\nYou strike the monster for " + list.get(0).getCurrentDmg() + " Damage!");
-                }else{
-                    adventureLog.appendText("\n\nYou miss!");
-                }    
+                adventureLog.appendText("\n\nYou miss!");
             }
-            monsterAttack();
         }
+        else if(list.get(0).getCurrentAttack() == monster.getBaseDef()){
+            
+            if(randomInt > 3){
+                monster.setBaseHp(monster.getBaseHp() - list.get(0).getCurrentDmg());
+                adventureLog.appendText("\n\nYou strike the monster for " + list.get(0).getCurrentDmg() + " Damage!");
+            }else{
+                adventureLog.appendText("\n\nYou miss!");
+            }
+        }else{
+            
+            if(randomInt > 4){
+                monster.setBaseHp(monster.getBaseHp() - list.get(0).getCurrentDmg());
+                adventureLog.appendText("\n\nYou strike the monster for " + list.get(0).getCurrentDmg() + " Damage!");
+            }else{
+                adventureLog.appendText("\n\nYou miss!");
+            }    
+        }
+            
         if(monster.getBaseHp() <= 0){
             adventureLog.appendText("\n\nYou are victorious! You have slain the " + monster.getMonsterType() + ".");
             adventureLog.appendText("\nYou add " + monster.getAmountGold() + " gold to your purse and");
@@ -116,6 +115,8 @@ public class FXMLAdventureController implements Initializable {
             secondaryButton.setDisable(true);
             runButton.setDisable(true);
             continueButton.setDisable(false);
+        }else{
+            monsterAttack();
         }
         
         showStats();
@@ -164,10 +165,10 @@ public class FXMLAdventureController implements Initializable {
             stageLogin.setScene(scene);
             stageLogin.show();
 
-        } catch (IOException ex) {
-            System.out.println("Scene change error1");
-            ex.printStackTrace();
-        }
+            } catch (IOException ex) {
+                System.out.println("Scene change error1");
+                ex.printStackTrace();
+            }
         }
         else if(deadCharacter == true){
             
