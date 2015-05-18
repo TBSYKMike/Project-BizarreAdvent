@@ -21,7 +21,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
-import org.w3c.dom.UserDataHandler;
 import project.bizzareadvent.SaveLoad.UserData;
 
 /**
@@ -62,7 +61,6 @@ public class FXMLAdventureController implements Initializable {
     private boolean deadCharacter = false;
     
     NormalMonster monster;
-    MonsterGenerator generator;
     
     //test arraylist
     ArrayList<Warrior> list = new ArrayList<>();
@@ -280,8 +278,8 @@ public class FXMLAdventureController implements Initializable {
                 generateTreasure();
             }
             else if(randomInt >= 60 ){
-                //monster = generator.generateMonster(position);
-                monster = new NormalMonster(200,10,10,10,10,10,"spider");
+                monster = new MonsterGenerator().generateMonster(position);
+                
                 
                 adventureLog.appendText("\n\nYou encounter a " + monster.getMonsterType());
                 adventureLog.appendText("\nIf you wish to fight the monster press the attack button or");
