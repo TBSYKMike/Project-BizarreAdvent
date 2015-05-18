@@ -227,24 +227,37 @@ public class FXMLAdventureController implements Initializable {
     }
     
     public void mountains(){
+        
+        randomInt = randomGenerator.nextInt(100) + 1;
+        
         if(stepCounter == 0){
-            adventureLog.appendText("\n\n");
-            adventureLog.appendText("\n");
-            adventureLog.appendText("\n");
-            adventureLog.appendText("\n");
-            adventureLog.appendText("\n");
+            adventureLog.appendText("\n\nYou have reached the foot of the mountain called Humpelberry.");
+            adventureLog.appendText("\nThe mountain goes up beyond the clouds and you think to yourself.");
+            adventureLog.appendText("\n'Fuck this I ain't going to climb that shit!'");
+            adventureLog.appendText("\nYou look to your left and right and see no other way to continue your journey,");
+            adventureLog.appendText("\nexcept to climb over Humpelberry.");
         }
         else if(stepCounter >= 10){
-            adventureLog.appendText("\n\nYou have reached the end of this path, there seems to be nothing more to explore.");
-            adventureLog.appendText("\n'How boring.'");
+            adventureLog.appendText("\n\nYou have reached the top of the mountain.");
+            adventureLog.appendText("\n'YES, I AM THE BEST!'");
+            adventureLog.appendText("\nYou soon realize that you are only halfway done,");
+            adventureLog.appendText("\nyou must now climb down from Humpelberry.");
+            adventureLog.appendText("\n'FUCK!'");
+            adventureLog.appendText("\nYou look around and spot a dwarf standing next to you.");
+            adventureLog.appendText("\n'Ello there human, would ye like to take the elevator down from Humpelberry?'");
+            adventureLog.appendText("\n'What the fuck?!?!'");
+            adventureLog.appendText("\n'Did ye climb all the way up?'");
+            adventureLog.appendText("\n'Yes, I did.'");
+            adventureLog.appendText("\n'Well ye could 'ave taken the elevator up, would 'ave been much easier hehehe'.");
+            adventureLog.appendText("\nYou fall down onto your knees and start to cry.");
             adventureLog.appendText("\n\nPress the continue button again to return to the world map.");
         }
         else{
             if(randomInt <= 20){
-                adventureLog.appendText("\n\n");
+                
             }
             else if(randomInt > 20 && randomInt < 60){
-                adventureLog.appendText("\n\n");
+                generateTreasure();
             }
             else if(randomInt >= 60 ){
                 adventureLog.appendText("\n\n");
