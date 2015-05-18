@@ -62,6 +62,8 @@ public abstract class Characters extends Creature {
     }
 
     public int getCurrentDef() {
+        currentDef = getBaseDef()+(10*this.getCurrentArmorUpgrade());
+        
         return currentDef;
     }
 
@@ -71,6 +73,7 @@ public abstract class Characters extends Creature {
 
 
     public int getCurrentAttack() {
+        currentAttack = getBaseAttack()+(10*this.getCurrentWeaponUpgrade());
         return currentAttack;
     }
 
@@ -80,6 +83,7 @@ public abstract class Characters extends Creature {
     }
 
     public int getCurrentDmg() {
+        currentDmg = getBaseDmg()+(10*this.getCurrentWeaponUpgrade());
         return currentDmg;
     }
 
