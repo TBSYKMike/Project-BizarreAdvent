@@ -95,6 +95,8 @@ public class FXMLWorldMapController implements Initializable {
         mapSwampPosition.setImage(image2);
         mapMountainPosition.setImage(image2);
         mapCastlePosition.setImage(image2);
+        
+        buttonCity.setDisable(false);
 
         if (AllLocalData.getInstance().getInfo2LoginHasCharacters().isEmpty() == false) {
             nameLabel.setText( UserData.getInstance().getCharactersArrList().getCharacterName() );
@@ -168,6 +170,9 @@ public class FXMLWorldMapController implements Initializable {
         cityPosition = true;
 
         updatePosition();
+        
+        buttonCity.setDisable(false);
+        buttonAdventure.setDisable(true);
     }
 
     public void movementAction2(MouseEvent event) {
@@ -179,6 +184,9 @@ public class FXMLWorldMapController implements Initializable {
 
 
         updatePosition();
+        
+        buttonAdventure.setDisable(false);
+        buttonCity.setDisable(true);
     }
 
     public void movementAction3(MouseEvent event) {
@@ -189,6 +197,9 @@ public class FXMLWorldMapController implements Initializable {
         UserData.getInstance().setAdventurePosition(adventurePosition);
 
         updatePosition();
+        
+        buttonAdventure.setDisable(false);
+        buttonCity.setDisable(true);
     }
 
     public void movementAction4(MouseEvent event) {
@@ -199,6 +210,9 @@ public class FXMLWorldMapController implements Initializable {
         UserData.getInstance().setAdventurePosition(adventurePosition);
 
         updatePosition();
+        
+        buttonAdventure.setDisable(false);
+        buttonCity.setDisable(true);
     }
 
     public void movementAction5(MouseEvent event) {
@@ -209,6 +223,9 @@ public class FXMLWorldMapController implements Initializable {
         UserData.getInstance().setAdventurePosition(adventurePosition);
 
         updatePosition();
+        
+        buttonAdventure.setDisable(false);
+        buttonCity.setDisable(true);
     }
 
     public void movementAction6(MouseEvent event) {
@@ -219,6 +236,9 @@ public class FXMLWorldMapController implements Initializable {
         UserData.getInstance().setAdventurePosition(adventurePosition);
 
         updatePosition();
+        
+        buttonAdventure.setDisable(false);
+        buttonCity.setDisable(true);
     }
 
     public void updatePosition() {
