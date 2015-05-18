@@ -15,7 +15,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import project.bizzareadvent.SaveLoad.AllLocalData;
 import project.bizzareadvent.SaveLoad.DatabaseServer;
 import project.bizzareadvent.SaveLoad.UserData;
 
@@ -29,9 +31,28 @@ public class FXMLCityController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    @FXML
+    private Label nameLabel;
+    @FXML
+    private Label currentHp;
+    @FXML
+    private Label currentAttack;
+    @FXML
+    private Label currentDef;
+    @FXML
+    private Label currentGold;
+    @FXML
+    private Label currentScore;
+    @FXML
+    private Label currentWeaponUpgrade;
+    @FXML
+    private Label currentArmorUpgrade;
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        showStats();
     }
 
     @FXML
@@ -58,12 +79,13 @@ public class FXMLCityController implements Initializable {
         int healingCost = 200;
         int gold = UserData.getInstance().getCharactersArrList().getCurrentGold();
         if ( 200 <= gold && gold > 0) {
-            System.out.println("gega");
+            System.out.println("gega Heal");
             UserData.getInstance().getCharactersArrList().setCurrentGold(  (gold - 200) );
             UserData.getInstance().getCharactersArrList().setCurrentHp(100);
             saveToLocalNDb();
 
         }
+        showStats();
     }
 
     @FXML
@@ -77,6 +99,7 @@ public class FXMLCityController implements Initializable {
             UserData.getInstance().getCharactersArrList().setCurrentWeaponUpgrade(UserData.getInstance().getCharactersArrList().getCurrentWeaponUpgrade() + 1);
             saveToLocalNDb();
         }
+        showStats();
     }
 
     @FXML
@@ -90,11 +113,28 @@ public class FXMLCityController implements Initializable {
             UserData.getInstance().getCharactersArrList().setCurrentArmorUpgrade(UserData.getInstance().getCharactersArrList().getCurrentArmorUpgrade() + 1);
             saveToLocalNDb();
         }
+        showStats();
     }
 
     private void saveToLocalNDb() {
         UserData.getInstance().test001SaveCharDataToALLLOCALDATA();
         DatabaseServer.getInstance().saveToDB();
+    }
+    
+    
+    
+    private void showStats(){
+        if (AllLocalData.getInstance().getInfo2LoginHasCharacters().isEmpty() == false) {
+            nameLabel.setText( UserData.getInstance().getCharactersArrList().getCharacterName() );
+            currentHp.setText( Integer.toString( UserData.getInstance().getCharactersArrList().getCurrentHp() ) );
+            currentAttack.setText( Integer.toString( UserData.getInstance().getCharactersArrList().getCurrentDef()) );
+            currentDef.setText( Integer.toString( UserData.getInstance().getCharactersArrList().getCurrentDef()) );
+            currentGold.setText( Integer.toString( UserData.getInstance().getCharactersArrList().getCurrentGold()) );
+            currentScore.setText( Integer.toString( UserData.getInstance().getCharactersArrList().getCurrentScore()) );
+            currentWeaponUpgrade.setText( Integer.toString( UserData.getInstance().getCharactersArrList().getCurrentWeaponUpgrade()) );
+            currentArmorUpgrade.setText( Integer.toString( UserData.getInstance().getCharactersArrList().getCurrentArmorUpgrade()) );
+            
+        }
     }
 
 }

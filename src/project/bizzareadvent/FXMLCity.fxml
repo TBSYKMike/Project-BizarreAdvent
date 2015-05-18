@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
@@ -12,5 +13,29 @@
       <Button layoutX="546.0" layoutY="153.0" mnemonicParsing="false" onAction="#handleButtonActionWeaponUpgrade" text="Upgrade weapon" />
       <Button layoutX="546.0" layoutY="181.0" mnemonicParsing="false" onAction="#handleButtonActionArmorUpgrade" prefHeight="22.0" prefWidth="99.0" text="Upgrade armor" />
       <Button layoutX="546.0" layoutY="209.0" mnemonicParsing="false" onAction="#handleButtonActionBack" prefHeight="22.0" prefWidth="99.0" text="Back" />
+      <Label fx:id="nameLabel" layoutX="591.0" layoutY="37.0" text="name">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="517.0" layoutY="37.0" text="NAME:">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="currentScore" layoutX="424.0" layoutY="43.0" prefHeight="17.0" prefWidth="81.0" />
+      <Label fx:id="currentGold" layoutX="304.0" layoutY="43.0" prefHeight="17.0" prefWidth="81.0" />
+      <Label fx:id="currentDef" layoutX="205.0" layoutY="43.0" prefHeight="17.0" prefWidth="56.0" />
+      <Label fx:id="currentAttack" layoutX="123.0" layoutY="43.0" prefHeight="17.0" prefWidth="56.0" />
+      <Label fx:id="currentHp" layoutX="42.0" layoutY="43.0" prefHeight="17.0" prefWidth="56.0" />
+      <Label fx:id="scoreLabel" layoutX="385.0" layoutY="43.0" text="SCORE:" />
+      <Label fx:id="goldLabel" layoutX="269.0" layoutY="43.0" text="GOLD:" />
+      <Label fx:id="defensLabel" layoutX="182.0" layoutY="43.0" text="DEF:" />
+      <Label fx:id="attackLabel" layoutX="100.0" layoutY="43.0" text="ATT:" />
+      <Label fx:id="hpLabel" layoutX="24.0" layoutY="43.0" text="HP:" />
+      <Label layoutX="169.0" layoutY="213.0" text="weapon Upgrade" />
+      <Label layoutX="182.0" layoutY="250.0" text="armor upgrade" />
+      <Label fx:id="currentWeaponUpgrade" layoutX="317.0" layoutY="213.0" text="Label" />
+      <Label fx:id="currentArmorUpgrade" layoutX="317.0" layoutY="250.0" text="Label" />
    </children>
 </AnchorPane>
