@@ -32,9 +32,8 @@ public class FXMLCityController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
-    
+    }
+
     @FXML
     public void handleButtonActionBack(ActionEvent event) {
         try {
@@ -52,41 +51,50 @@ public class FXMLCityController implements Initializable {
             System.out.println("Scene change error1");
         }
     }
-    
-    
+
     @FXML
     public void handleButtonActionHeal(ActionEvent event) {
         //check current gold if is enough
-        UserData.getInstance().getCharactersArrList().setCurrentHp(100);
-        saveToLocalNDb();
+        int healingCost = 200;
+        int gold = UserData.getInstance().getCharactersArrList().getCurrentGold();
+        if ( 200 <= gold && gold > 0) {
+            System.out.println("gega");
+            UserData.getInstance().getCharactersArrList().setCurrentGold(  (gold - 200) );
+            UserData.getInstance().getCharactersArrList().setCurrentHp(100);
+            saveToLocalNDb();
+
+        }
     }
-    
+
     @FXML
     public void handleButtonActionWeaponUpgrade(ActionEvent event) {
         //check current gold if is enough
-        UserData.getInstance().getCharactersArrList().setCurrentWeaponUpgrade(   UserData.getInstance().getCharactersArrList().getCurrentWeaponUpgrade()+1   );
-        saveToLocalNDb();
+        int upgradeCost = 500;
+        int gold = UserData.getInstance().getCharactersArrList().getCurrentGold();
+        if (500 <= gold && gold > 0) {
+
+            UserData.getInstance().getCharactersArrList().setCurrentGold(UserData.getInstance().getCharactersArrList().getCurrentGold() - upgradeCost);
+            UserData.getInstance().getCharactersArrList().setCurrentWeaponUpgrade(UserData.getInstance().getCharactersArrList().getCurrentWeaponUpgrade() + 1);
+            saveToLocalNDb();
+        }
     }
-    
+
     @FXML
     public void handleButtonActionArmorUpgrade(ActionEvent event) {
         //check current gold if is enough
-        UserData.getInstance().getCharactersArrList().setCurrentArmorUpgrade(UserData.getInstance().getCharactersArrList().getCurrentArmorUpgrade()+1   );
-        saveToLocalNDb();
+        int upgradeCost = 500;
+        int gold = UserData.getInstance().getCharactersArrList().getCurrentGold();
+        if (500 <= gold && gold > 0) {
+            
+            UserData.getInstance().getCharactersArrList().setCurrentGold(UserData.getInstance().getCharactersArrList().getCurrentGold() - upgradeCost);
+            UserData.getInstance().getCharactersArrList().setCurrentArmorUpgrade(UserData.getInstance().getCharactersArrList().getCurrentArmorUpgrade() + 1);
+            saveToLocalNDb();
+        }
     }
-    
-    private void saveToLocalNDb(){
+
+    private void saveToLocalNDb() {
         UserData.getInstance().test001SaveCharDataToALLLOCALDATA();
         DatabaseServer.getInstance().saveToDB();
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
 }
