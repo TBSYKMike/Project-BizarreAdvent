@@ -101,7 +101,7 @@ public class FXMLWorldMapController implements Initializable {
         if (AllLocalData.getInstance().getInfo2LoginHasCharacters().isEmpty() == false) {
             nameLabel.setText( UserData.getInstance().getCharactersArrList().getCharacterName() );
             currentHp.setText( Integer.toString( UserData.getInstance().getCharactersArrList().getCurrentHp() ) );
-            currentAttack.setText( Integer.toString( UserData.getInstance().getCharactersArrList().getCurrentDef()) );
+            currentAttack.setText( Integer.toString( UserData.getInstance().getCharactersArrList().getCurrentAttack()) );
             currentDef.setText( Integer.toString( UserData.getInstance().getCharactersArrList().getCurrentDef()) );
             currentGold.setText( Integer.toString( UserData.getInstance().getCharactersArrList().getCurrentGold()) );
             currentScore.setText( Integer.toString( UserData.getInstance().getCharactersArrList().getCurrentScore()) );
