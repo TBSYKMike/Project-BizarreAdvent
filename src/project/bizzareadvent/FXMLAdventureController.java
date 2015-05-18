@@ -61,6 +61,7 @@ public class FXMLAdventureController implements Initializable {
     private boolean deadCharacter = false;
     
     NormalMonster monster;
+    TextGenerator textGenerator = new TextGenerator();
     
     //test arraylist
     ArrayList<Characters> list = new ArrayList<>();
@@ -220,13 +221,23 @@ public class FXMLAdventureController implements Initializable {
         }
         else{
             if(randomInt <= 20){
-                adventureLog.appendText("\n\n");
+                generateTreasure();
             }
             else if(randomInt > 20 && randomInt < 60){
-                adventureLog.appendText("\n\n");
+                adventureLog.appendText(textGenerator.generateText(position));
             }
             else if(randomInt >= 60 ){
-                adventureLog.appendText("\n\n");
+                monster = new MonsterGenerator().generateMonster(position);
+                
+                
+                adventureLog.appendText("\n\nYou encounter a " + monster.getMonsterType());
+                adventureLog.appendText("\nIf you wish to fight the monster press the attack button or");
+                adventureLog.appendText("\npress the run button to attempt to run away.");
+                
+                attackButton.setDisable(false);
+                secondaryButton.setDisable(false);
+                runButton.setDisable(false);
+                continueButton.setDisable(true);
             }
         }
         stepCounter++;
@@ -260,13 +271,23 @@ public class FXMLAdventureController implements Initializable {
         }
         else{
             if(randomInt <= 20){
-                
-            }
-            else if(randomInt > 20 && randomInt < 60){
                 generateTreasure();
             }
+            else if(randomInt > 20 && randomInt < 60){
+                adventureLog.appendText(textGenerator.generateText(position));
+            }
             else if(randomInt >= 60 ){
-                adventureLog.appendText("\n\n");
+                monster = new MonsterGenerator().generateMonster(position);
+                
+                
+                adventureLog.appendText("\n\nYou encounter a " + monster.getMonsterType());
+                adventureLog.appendText("\nIf you wish to fight the monster press the attack button or");
+                adventureLog.appendText("\npress the run button to attempt to run away.");
+                
+                attackButton.setDisable(false);
+                secondaryButton.setDisable(false);
+                runButton.setDisable(false);
+                continueButton.setDisable(true);
             }
         }
         stepCounter++;
@@ -290,11 +311,10 @@ public class FXMLAdventureController implements Initializable {
         }
         else{
             if(randomInt <= 20){
-                adventureLog.appendText("\n\nYou look around and see nothing of interest.");
-                adventureLog.appendText("\n 'Better keep moving'");
+                generateTreasure();
             }
             else if(randomInt > 20 && randomInt < 60){
-                generateTreasure();
+                adventureLog.appendText(textGenerator.generateText(position));
             }
             else if(randomInt >= 60 ){
                 monster = new MonsterGenerator().generateMonster(position);
@@ -330,13 +350,23 @@ public class FXMLAdventureController implements Initializable {
         }
         else{
             if(randomInt <= 20){
-                adventureLog.appendText("\n\n");
+                generateTreasure();
             }
             else if(randomInt > 20 && randomInt < 60){
-                adventureLog.appendText("\n\n");
+                adventureLog.appendText(textGenerator.generateText(position));
             }
             else if(randomInt >= 60 ){
-                adventureLog.appendText("\n\n");
+                monster = new MonsterGenerator().generateMonster(position);
+                
+                
+                adventureLog.appendText("\n\nYou encounter a " + monster.getMonsterType());
+                adventureLog.appendText("\nIf you wish to fight the monster press the attack button or");
+                adventureLog.appendText("\npress the run button to attempt to run away.");
+                
+                attackButton.setDisable(false);
+                secondaryButton.setDisable(false);
+                runButton.setDisable(false);
+                continueButton.setDisable(true);
             }
         }
         stepCounter++;
@@ -357,13 +387,23 @@ public class FXMLAdventureController implements Initializable {
         }
         else{
             if(randomInt <= 20){
-                adventureLog.appendText("\n\n");
+                generateTreasure();
             }
             else if(randomInt > 20 && randomInt < 60){
-                adventureLog.appendText("\n\n");
+                adventureLog.appendText(textGenerator.generateText(position));
             }
             else if(randomInt >= 60 ){
-                adventureLog.appendText("\n\n");
+                monster = new MonsterGenerator().generateMonster(position);
+                
+                
+                adventureLog.appendText("\n\nYou encounter a " + monster.getMonsterType());
+                adventureLog.appendText("\nIf you wish to fight the monster press the attack button or");
+                adventureLog.appendText("\npress the run button to attempt to run away.");
+                
+                attackButton.setDisable(false);
+                secondaryButton.setDisable(false);
+                runButton.setDisable(false);
+                continueButton.setDisable(true);
             }
         }
         stepCounter++;
@@ -382,7 +422,7 @@ public class FXMLAdventureController implements Initializable {
             adventureLog.appendText("\n\nYou stumble upon a chest hidden behind some rocks,");
             adventureLog.appendText("\nYou open it and find a mustash made of the purest gold.");
             adventureLog.appendText("\n'It must be worth a fortune!'");
-            adventureLog.appendText("\nYou ad " + gold + " gold to your purse.");
+            adventureLog.appendText("\nYou add " + gold + " gold to your purse.");
     
         }
         else if(randomInt > 15 && randomInt <= 40 ){
@@ -392,7 +432,7 @@ public class FXMLAdventureController implements Initializable {
             adventureLog.appendText("\nYou look behind you to see it was a small jewel encrusted box.");
             adventureLog.appendText("\n'Hot damn!'");
             adventureLog.appendText("\nYou open it to find that it is empty.");
-            adventureLog.appendText("\nYou take it anyway and ad " + gold + " gold to your purse.");
+            adventureLog.appendText("\nYou take it anyway and add " + gold + " gold to your purse.");
         }
         else if(randomInt > 40 && randomInt <= 65){
             gold = 20;
@@ -400,7 +440,7 @@ public class FXMLAdventureController implements Initializable {
             adventureLog.appendText("\n\nYou see something shining in the distance.");
             adventureLog.appendText("\nYou start to run towards it and find a small pile of gold pieces.");
             adventureLog.appendText("\n'WOHO!'");
-            adventureLog.appendText("\nYou ad " + gold + " gold to your purse.");
+            adventureLog.appendText("\nYou add " + gold + " gold to your purse.");
         }
         else if(randomInt > 65 && randomInt <= 85){
             gold = 30;
@@ -410,7 +450,7 @@ public class FXMLAdventureController implements Initializable {
             adventureLog.appendText("\n'WTF!'");
             adventureLog.appendText("\nYou look around to see what hit you in the head to find a goldnugget");
             adventureLog.appendText("\n'Ohhh nice!'");
-            adventureLog.appendText("\nYou ad " + gold + " gold to your purse.");
+            adventureLog.appendText("\nYou add " + gold + " gold to your purse.");
         }
         else if(randomInt > 85 && randomInt <= 95){
             gold = 50;
@@ -421,7 +461,7 @@ public class FXMLAdventureController implements Initializable {
             adventureLog.appendText("\nThe old man looks up to you with an angry look on his face");
             adventureLog.appendText("\n'PISS OFF YOU SILLY CUNT, IT'S MINE, MY OWN, MY PRECIOUS'");
             adventureLog.appendText("\nWithout hesitation you suckerpunch the old man and steal his bag of gold");
-            adventureLog.appendText("\nYou ad " + gold + " gold to your purse.");
+            adventureLog.appendText("\nYou add " + gold + " gold to your purse.");
         }
         else if(randomInt >= 96){
             gold = 100;
