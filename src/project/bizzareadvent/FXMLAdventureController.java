@@ -43,6 +43,10 @@ public class FXMLAdventureController implements Initializable {
     @FXML
     private Label scoreLabel;
     @FXML
+    private Label dmgLabel;
+    @FXML
+    private Label nameLabel;
+    @FXML
     private Button attackButton;
     @FXML
     private Button secondaryButton;
@@ -51,10 +55,9 @@ public class FXMLAdventureController implements Initializable {
     @FXML
     private Button runButton;
     
-    Random randomGenerator = new Random();
-    
     private int stepCounter = 0;
     private int randomInt;
+    private int cooldown = 0;
     
     private String position;
     private boolean run = false;
@@ -62,19 +65,15 @@ public class FXMLAdventureController implements Initializable {
     
     NormalMonster monster;
     TextGenerator textGenerator = new TextGenerator();
+    Random randomGenerator = new Random();
     
-    //test arraylist
     ArrayList<Characters> list = new ArrayList<>();
-    
     
     @FXML
     private void handleButtonAttack(ActionEvent event) {
         
         randomInt = randomGenerator.nextInt(6) + 1;
-        
-        System.out.println(monster.getBaseHp());
-        
-        
+                
         if(list.get(0).getCurrentAttack() > monster.getBaseDef()){
             
             if(randomInt > 2){
@@ -105,7 +104,7 @@ public class FXMLAdventureController implements Initializable {
         if(monster.getBaseHp() <= 0){
             adventureLog.appendText("\n\nYou are victorious! You have slain the " + monster.getMonsterType() + ".");
             adventureLog.appendText("\nYou add " + monster.getAmountGold() + " gold to your purse and");
-            adventureLog.appendText("\nyou gain " + monster.getAmountScore() + " score.");
+            adventureLog.appendText("\ngain " + monster.getAmountScore() + " score.");
             
             list.get(0).setCurrentGold(list.get(0).getCurrentGold() + monster.getAmountGold());
             list.get(0).setCurrentScore(list.get(0).getCurrentScore() + monster.getAmountScore());
@@ -118,11 +117,28 @@ public class FXMLAdventureController implements Initializable {
             monsterAttack();
         }
         
+        if(cooldown >= 5){
+            cooldown = 0;
+            
+            if(monster.getBaseHp() > 0){
+                secondaryButton.setDisable(false);
+            }
+        }else{
+            cooldown += 1;
+        }
+        
         showStats();
     }
     
     @FXML
     private void handleButtonSecondary(ActionEvent event) {
+        
+        cooldown += 1;
+        
+        if(cooldown != 0){
+            secondaryButton.setDisable(true);
+        }
+        
         if (list.get(0) instanceof Warrior) {
             secondaryAttackWarrior();
         }
@@ -131,7 +147,7 @@ public class FXMLAdventureController implements Initializable {
         }
         else if (list.get(0) instanceof Rogue) {
             secondaryAttackAssassin();
-        }    
+        }
         
         showStats();
     }
@@ -162,6 +178,8 @@ public class FXMLAdventureController implements Initializable {
     
     @FXML
     private void handleButtonContinue(ActionEvent event) {
+        
+        cooldown = 0;
         
         if(run == true || stepCounter > 10){
             try {
@@ -202,16 +220,8 @@ public class FXMLAdventureController implements Initializable {
         showStats();
     }
     
-    @FXML
-    private void handleButtonMenu(ActionEvent event) {
-        
-
-        
-    }
-    
     public void plains(){
    
-        
         randomInt = randomGenerator.nextInt(100) + 1;
         
         if(stepCounter == 0){
@@ -235,7 +245,6 @@ public class FXMLAdventureController implements Initializable {
             }
             else if(randomInt >= 60 ){
                 monster = new MonsterGenerator().generateMonster(position);
-                
                 
                 adventureLog.appendText("\n\nYou encounter a " + monster.getMonsterType());
                 adventureLog.appendText("\nIf you wish to fight the monster press the attack button or");
@@ -299,6 +308,7 @@ public class FXMLAdventureController implements Initializable {
                 continueButton.setDisable(true);
             }
         }
+        showStats();
         
         stepCounter++;
     }
@@ -327,8 +337,8 @@ public class FXMLAdventureController implements Initializable {
                 adventureLog.appendText(textGenerator.generateText(position));
             }
             else if(randomInt >= 60 ){
-                monster = new MonsterGenerator().generateMonster(position);
-                
+                //monster = new MonsterGenerator().generateMonster(position);
+                monster = new NormalMonster(2000000,1,1,0,1,1,"testmonster"); //Testmonster
                 
                 adventureLog.appendText("\n\nYou encounter a " + monster.getMonsterType());
                 adventureLog.appendText("\nIf you wish to fight the monster press the attack button or");
@@ -340,11 +350,15 @@ public class FXMLAdventureController implements Initializable {
                 continueButton.setDisable(true);
             }
         }
+        showStats();
         
         stepCounter++;
     }
     
     public void swamp(){
+        
+        randomInt = randomGenerator.nextInt(100) + 1;
+        
         if(stepCounter == 0){
             adventureLog.appendText("\n\n");
             adventureLog.appendText("\n");
@@ -378,11 +392,15 @@ public class FXMLAdventureController implements Initializable {
                 continueButton.setDisable(true);
             }
         }
+        showStats();
         
         stepCounter++;
     }
     
     public void castle(){
+        
+        randomInt = randomGenerator.nextInt(100) + 1;
+        
         if(stepCounter == 0){
             adventureLog.appendText("\n\n");
             adventureLog.appendText("\n");
@@ -416,6 +434,7 @@ public class FXMLAdventureController implements Initializable {
                 continueButton.setDisable(true);
             }
         }
+        showStats();
         
         stepCounter++;
     }
@@ -496,7 +515,31 @@ public class FXMLAdventureController implements Initializable {
     }
     
     public void secondaryAttackAssassin(){
-        System.out.println("Rogue!");
+        
+        int unbuffed = list.get(0).getCurrentDef();
+        
+        if(((Rogue)list.get(0)).castAssassinate()){
+            monster.setBaseHp(0);
+            
+            adventureLog.appendText("\n\nYou strike a mighty blow aimed att a vital point, the monster falls over dead!");
+            adventureLog.appendText("\nYou add " + monster.getAmountGold() + " gold to your purse and");
+            adventureLog.appendText("\ngain " + monster.getAmountScore() + " score.");
+            
+            list.get(0).setCurrentGold(list.get(0).getCurrentGold() + monster.getAmountGold());
+            list.get(0).setCurrentScore(list.get(0).getCurrentScore() + monster.getAmountScore());
+            
+            attackButton.setDisable(true);
+            secondaryButton.setDisable(true);
+            runButton.setDisable(true);
+            continueButton.setDisable(false);
+            
+        }else{
+            adventureLog.appendText("\n\nThe monster dodges your attack!");
+            monsterAttack();
+        }
+        
+        list.get(0).setCurrentDef(unbuffed);
+        showStats();
     }
     
     public void monsterAttack(){
@@ -561,24 +604,14 @@ public class FXMLAdventureController implements Initializable {
         hpLabel.setText(Integer.toString(list.get(0).getCurrentHp()));
         goldLabel.setText(Integer.toString(list.get(0).getCurrentGold()));
         scoreLabel.setText(Integer.toString(list.get(0).getCurrentScore()));
-    }
-    
-    
-    public void switchScene(){
-        
+        dmgLabel.setText(Integer.toString(list.get(0).getCurrentDmg()));
+        nameLabel.setText(list.get(0).getCharacterName());
     }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
         position = UserData.getInstance().getAdventurePosition();
-        
-        
-        //Warrior warr = new Warrior(0,0,0,0,0,"test",0,0,0,0,0,0,0,0); //test
-        
-        //Warrior warr = (Warrior)UserData.getInstance().getCharactersArrList();
-        
-        //list.add(warr);
         
         Characters player = UserData.getInstance().getCharactersArrList();
         

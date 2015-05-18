@@ -28,9 +28,9 @@ public abstract class Characters extends Creature {
         this.charSlot = charSlot;
         this.characterName = characterName;
         this.currentHp = currentHp;
-        this.currentDef = currentDef;
-        this.currentAttack = currentAttack;
-        this.currentDmg = currentDmg;
+        this.currentDef = currentDef+(10*currentArmorUpgrade);
+        this.currentAttack = baseAttack+(10*currentWeaponUpgrade);
+        this.currentDmg = baseDmg+(10*currentWeaponUpgrade);
         this.currentArmorUpgrade = currentArmorUpgrade;
         this.currentWeaponUpgrade = currentWeaponUpgrade;
         this.currentScore = currentScore;
@@ -62,8 +62,6 @@ public abstract class Characters extends Creature {
     }
 
     public int getCurrentDef() {
-        currentDef = getBaseDef()+(10*this.getCurrentArmorUpgrade());
-        
         return currentDef;
     }
 
@@ -73,7 +71,6 @@ public abstract class Characters extends Creature {
 
 
     public int getCurrentAttack() {
-        currentAttack = getBaseAttack()+(10*this.getCurrentWeaponUpgrade());
         return currentAttack;
     }
 
@@ -83,7 +80,6 @@ public abstract class Characters extends Creature {
     }
 
     public int getCurrentDmg() {
-        currentDmg = getBaseDmg()+(10*this.getCurrentWeaponUpgrade());
         return currentDmg;
     }
 
