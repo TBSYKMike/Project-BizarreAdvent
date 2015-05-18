@@ -132,6 +132,8 @@ public class FXMLAdventureController implements Initializable {
         else if (list.get(0) instanceof Rogue) {
             secondaryAttackAssassin();
         }    
+        
+        showStats();
     }
     
     @FXML
@@ -153,11 +155,14 @@ public class FXMLAdventureController implements Initializable {
             adventureLog.appendText("\n\nYour attempt to run away failed!");
             monsterAttack();
             run = false;
-        }    
+        }
+        
+        showStats();
     }
     
     @FXML
     private void handleButtonContinue(ActionEvent event) {
+        
         if(run == true || stepCounter > 10){
             try {
             Node node = (Node) event.getSource();
@@ -193,6 +198,8 @@ public class FXMLAdventureController implements Initializable {
                 castle();
             }
         }
+        
+        showStats();
     }
     
     @FXML
@@ -240,6 +247,8 @@ public class FXMLAdventureController implements Initializable {
                 continueButton.setDisable(true);
             }
         }
+        showStats();
+        
         stepCounter++;
     }
     
@@ -290,6 +299,7 @@ public class FXMLAdventureController implements Initializable {
                 continueButton.setDisable(true);
             }
         }
+        
         stepCounter++;
     }
     
@@ -330,7 +340,6 @@ public class FXMLAdventureController implements Initializable {
                 continueButton.setDisable(true);
             }
         }
-        showStats();
         
         stepCounter++;
     }
@@ -369,6 +378,7 @@ public class FXMLAdventureController implements Initializable {
                 continueButton.setDisable(true);
             }
         }
+        
         stepCounter++;
     }
     
@@ -406,6 +416,7 @@ public class FXMLAdventureController implements Initializable {
                 continueButton.setDisable(true);
             }
         }
+        
         stepCounter++;
     }
     
