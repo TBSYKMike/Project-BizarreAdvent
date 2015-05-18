@@ -6,6 +6,8 @@
 package project.bizzareadvent.SaveLoad;
 
 import java.util.ArrayList;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import project.bizzareadvent.Characters;
 import project.bizzareadvent.Mage;
 import project.bizzareadvent.Rogue;
@@ -274,6 +276,28 @@ public class UserData {
     
     
     
+    private MediaPlayer musicPlayer;
+    MediaPlayer musicPlayer2;
+    MediaPlayer musicPlayer3;
+    MediaPlayer musicPlayer4;
+
+    public void playMusic() {
+        Media audioFile = new Media(getClass().getResource("/musiconloop1.mp3").toString());
+        try {
+            musicPlayer = new MediaPlayer(audioFile);
+            musicPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+            musicPlayer.setVolume(0.7);
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.exit(0);
+        }
+    }
+
+    public MediaPlayer getMusicPlayer() {
+        return musicPlayer;
+    }
+
     
     
     
