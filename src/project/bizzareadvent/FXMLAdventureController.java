@@ -63,7 +63,7 @@ public class FXMLAdventureController implements Initializable {
     NormalMonster monster;
     
     //test arraylist
-    ArrayList<Warrior> list = new ArrayList<>();
+    ArrayList<Characters> list = new ArrayList<>();
     
     
     @FXML
@@ -122,9 +122,15 @@ public class FXMLAdventureController implements Initializable {
     
     @FXML
     private void handleButtonSecondary(ActionEvent event) {
-        
-
-        
+        if (list.get(0) instanceof Warrior) {
+            secondaryAttackWarrior();
+        }
+        else if (list.get(0) instanceof Mage) {
+            secondaryAttackMage();
+        }
+        else if (list.get(0) instanceof Rogue) {
+            secondaryAttackAssassin();
+        }    
     }
     
     @FXML
@@ -431,15 +437,15 @@ public class FXMLAdventureController implements Initializable {
     }
     
     public void secondaryAttackMage(){
-        
+        System.out.println("Mage!");    
     }
     
     public void secondaryAttackWarrior(){
-        
+        System.out.println("Warrior!");    
     }
     
     public void secondaryAttackAssassin(){
-        
+        System.out.println("Rogue!");
     }
     
     public void monsterAttack(){
@@ -519,9 +525,24 @@ public class FXMLAdventureController implements Initializable {
         
         //Warrior warr = new Warrior(0,0,0,0,0,"test",0,0,0,0,0,0,0,0); //test
         
-        Warrior warr = (Warrior)UserData.getInstance().getCharactersArrList();
+        //Warrior warr = (Warrior)UserData.getInstance().getCharactersArrList();
         
-        list.add(warr);
+        //list.add(warr);
+        
+        Characters player = UserData.getInstance().getCharactersArrList();
+        
+        if (player instanceof Warrior) {
+            Warrior hero = (Warrior)player;
+            list.add(hero);
+        }
+        else if (player instanceof Mage) {
+            Mage hero = (Mage)player;
+            list.add(hero);
+        }
+        else if (player instanceof Rogue) {
+            Rogue hero = (Rogue)player;
+            list.add(hero);
+        }
         
         attackButton.setDisable(true);
         secondaryButton.setDisable(true);
