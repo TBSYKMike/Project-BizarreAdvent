@@ -174,7 +174,7 @@ public class FXMLDeleteCharacterController implements Initializable {
             }
         }
         
-        if (slot == 3){
+        if (slot == 0){
             deleteSlot1.setText( "delete Slot1" );
             deleteSlot2.setText( "delete Slot2" );
             deleteSlot3.setText( "delete Slot3" );
@@ -209,7 +209,9 @@ public class FXMLDeleteCharacterController implements Initializable {
         deleteSlot3.setDisable(false);
         }
         
-        
+        deleteSlot1.setDefaultButton(false);
+        deleteSlot2.setDefaultButton(false);
+        deleteSlot3.setDefaultButton(false);
         
         
     }
