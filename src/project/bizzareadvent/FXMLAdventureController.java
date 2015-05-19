@@ -58,6 +58,7 @@ public class FXMLAdventureController implements Initializable {
     private int stepCounter = 0;
     private int randomInt;
     private int cooldown = 0;
+    private int stunCooldown = 0;
     
     private String position;
     private boolean run = false;
@@ -125,6 +126,13 @@ public class FXMLAdventureController implements Initializable {
             }
         }else{
             cooldown += 1;
+        }
+        
+        if(stunCooldown >= 1){
+            stunCooldown = 0;
+            monster.setIsStunned(false);
+        }else{
+            stunCooldown +=1;
         }
         
         showStats();
@@ -511,12 +519,28 @@ public class FXMLAdventureController implements Initializable {
     }
     
     public void secondaryAttackWarrior(){
-        System.out.println("Warrior!");    
+        
+        int previousDmg = list.get(0).getCurrentDmg();
+        
+        if(((Warrior)list.get(0)).castShieldBash()){
+            monster.setIsStunned(true);
+            
+            monster.setBaseHp(monster.getBaseHp() - list.get(0).getCurrentDmg());
+            
+            adventureLog.appendText("\n\nYou bash your shield in the " + monster.getMonsterType() + "s face!");
+            adventureLog.appendText("\nIt takes " + list.get(0).getCurrentDmg() + " damage and is momentarily stunned.");
+        }else{
+            adventureLog.appendText("\n\nYour shield bash misses!");
+            monsterAttack();
+        }
+        
+        list.get(0).setCurrentDmg(previousDmg);
+        showStats();
     }
     
     public void secondaryAttackAssassin(){
         
-        int unbuffed = list.get(0).getCurrentDef();
+        int unbuffedDef = list.get(0).getCurrentDef();
         
         if(((Rogue)list.get(0)).castAssassinate()){
             monster.setBaseHp(0);
@@ -538,7 +562,7 @@ public class FXMLAdventureController implements Initializable {
             monsterAttack();
         }
         
-        list.get(0).setCurrentDef(unbuffed);
+        list.get(0).setCurrentDef(unbuffedDef);
         showStats();
     }
     
@@ -546,31 +570,35 @@ public class FXMLAdventureController implements Initializable {
        
         randomInt = randomGenerator.nextInt(6) + 1;
         
-        if(monster.getBaseAttack() > list.get(0).getCurrentDef()){
+        if(!monster.isIsStunned()){
+            if(monster.getBaseAttack() > list.get(0).getCurrentDef()){
             
-            if(randomInt > 2){
-                list.get(0).setCurrentHp(list.get(0).getCurrentHp() - monster.getBaseDmg());
-                adventureLog.appendText("\n\nThe monster strikes you for " + monster.getBaseDmg() + " Damage!");
-            }else{
-                adventureLog.appendText("\n\nThe monster misses!");
+                if(randomInt > 2){
+                    list.get(0).setCurrentHp(list.get(0).getCurrentHp() - monster.getBaseDmg());
+                    adventureLog.appendText("\n\nThe monster strikes you for " + monster.getBaseDmg() + " Damage!");
+                }else{
+                    adventureLog.appendText("\n\nThe monster misses!");
+                }
             }
-        }
-        else if(monster.getBaseAttack() == list.get(0).getCurrentDef()){
+            else if(monster.getBaseAttack() == list.get(0).getCurrentDef()){
             
-            if(randomInt > 3){
-                list.get(0).setCurrentHp(list.get(0).getCurrentHp() - monster.getBaseDmg());
-                adventureLog.appendText("\n\nThe monster strikes you for " + monster.getBaseDmg() + " Damage!");
+                if(randomInt > 3){
+                    list.get(0).setCurrentHp(list.get(0).getCurrentHp() - monster.getBaseDmg());
+                    adventureLog.appendText("\n\nThe monster strikes you for " + monster.getBaseDmg() + " Damage!");
+                }else{
+                    adventureLog.appendText("\n\nThe monster misses!");
+                }
             }else{
-                adventureLog.appendText("\n\nThe monster misses!");
+            
+                if(randomInt > 4){
+                    list.get(0).setCurrentHp(list.get(0).getCurrentHp() - monster.getBaseDmg());
+                    adventureLog.appendText("\n\nThe monster strikes you for " + monster.getBaseDmg() + " Damage!");
+                }else{
+                    adventureLog.appendText("\n\nThe monster misses!");
+                }       
             }
         }else{
-            
-            if(randomInt > 4){
-                list.get(0).setCurrentHp(list.get(0).getCurrentHp() - monster.getBaseDmg());
-                adventureLog.appendText("\n\nThe monster strikes you for " + monster.getBaseDmg() + " Damage!");
-            }else{
-                adventureLog.appendText("\n\nThe monster misses!");
-            }    
+            adventureLog.appendText("\n\nThe monster is stunned and unable to retaliate!");
         }
         
         if(list.get(0).getCurrentHp() <= 0){

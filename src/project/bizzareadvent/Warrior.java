@@ -5,23 +5,40 @@
  */
 package project.bizzareadvent;
 
+import java.util.Random;
+
 /**
  *
  * @author Jocke
  */
 public class Warrior extends Characters {
-    private int buffedDef;
+    
     private int reducedDmg;
+    private int randInt;
+    Random randGenerator = new Random();
     
     public Warrior(int baseHp, int baseDef, int baseAttack, int baseDmg, int charSlot, String characterName, int currentHp, int currentDef, int currentAttack, int currentDmg, int currentArmorUpgrade, int currentWeaponUpgrade, int currentScore, int currentGold) {
         super(baseHp, baseDef, baseAttack, baseDmg, charSlot, characterName, currentHp, currentDef, currentAttack, currentDmg, currentArmorUpgrade, currentWeaponUpgrade, currentScore, currentGold);
     }
-    public void castShieldBash(){
-        buffedDef = super.getBaseDef() + super.getBaseDef()/2;
+    public boolean castShieldBash(){
+        
+        /*buffedDef = super.getBaseDef() + super.getBaseDef()/2;
         reducedDmg = super.getBaseDmg()/2;
         
+        
+        
         super.setCurrentDef(buffedDef);
+        super.setCurrentDmg(reducedDmg);*/
+        
+        reducedDmg = super.getBaseDmg()/2;
         super.setCurrentDmg(reducedDmg);
         
+        randInt = randGenerator.nextInt(100) + 1;
+        
+        if(randInt <= 60){
+            return true;
+        }else{
+            return false;
+        }
     }
 }

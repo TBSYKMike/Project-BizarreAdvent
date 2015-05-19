@@ -28,7 +28,7 @@ public class Rogue extends Characters {
  
         randInt = randGenerator.nextInt(100) + 1;
         
-        if(randInt <= 5){
+        if(randInt <= 10){
             return true;
         }else{
             return false;
