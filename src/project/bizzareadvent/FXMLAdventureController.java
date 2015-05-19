@@ -337,8 +337,8 @@ public class FXMLAdventureController implements Initializable {
                 adventureLog.appendText(textGenerator.generateText(position));
             }
             else if(randomInt >= 60 ){
-                //monster = new MonsterGenerator().generateMonster(position);
-                monster = new NormalMonster(2000000,1,1,0,1,1,"testmonster"); //Testmonster
+                monster = new MonsterGenerator().generateMonster(position);
+                //monster = new NormalMonster(2000000,1,1,0,1,1,"testmonster"); //Testmonster
                 
                 adventureLog.appendText("\n\nYou encounter a " + monster.getMonsterType());
                 adventureLog.appendText("\nIf you wish to fight the monster press the attack button or");

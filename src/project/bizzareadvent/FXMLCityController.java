@@ -97,6 +97,8 @@ public class FXMLCityController implements Initializable {
 
             UserData.getInstance().getCharactersArrList().setCurrentGold(UserData.getInstance().getCharactersArrList().getCurrentGold() - upgradeCost);
             UserData.getInstance().getCharactersArrList().setCurrentWeaponUpgrade(UserData.getInstance().getCharactersArrList().getCurrentWeaponUpgrade() + 1);
+            UserData.getInstance().getCharactersArrList().setCurrentAttack(UserData.getInstance().getCharactersArrList().getBaseAttack()+(10*UserData.getInstance().getCharactersArrList().getCurrentWeaponUpgrade()));
+            UserData.getInstance().getCharactersArrList().setCurrentDmg(UserData.getInstance().getCharactersArrList().getBaseDmg()+(10*UserData.getInstance().getCharactersArrList().getCurrentWeaponUpgrade()));
             saveToLocalNDb();
         }
         showStats();
@@ -111,6 +113,7 @@ public class FXMLCityController implements Initializable {
             
             UserData.getInstance().getCharactersArrList().setCurrentGold(UserData.getInstance().getCharactersArrList().getCurrentGold() - upgradeCost);
             UserData.getInstance().getCharactersArrList().setCurrentArmorUpgrade(UserData.getInstance().getCharactersArrList().getCurrentArmorUpgrade() + 1);
+            UserData.getInstance().getCharactersArrList().setCurrentDef(UserData.getInstance().getCharactersArrList().getBaseDef()+(10*UserData.getInstance().getCharactersArrList().getCurrentArmorUpgrade()));
             saveToLocalNDb();
         }
         showStats();

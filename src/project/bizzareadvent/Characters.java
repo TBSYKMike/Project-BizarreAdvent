@@ -28,7 +28,7 @@ public abstract class Characters extends Creature {
         this.charSlot = charSlot;
         this.characterName = characterName;
         this.currentHp = currentHp;
-        this.currentDef = currentDef+(10*currentArmorUpgrade);
+        this.currentDef = baseDef+(10*currentArmorUpgrade);
         this.currentAttack = baseAttack+(10*currentWeaponUpgrade);
         this.currentDmg = baseDmg+(10*currentWeaponUpgrade);
         this.currentArmorUpgrade = currentArmorUpgrade;
