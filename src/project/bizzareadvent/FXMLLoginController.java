@@ -27,6 +27,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import project.bizzareadvent.SaveLoad.DatabaseServer;
+import project.bizzareadvent.SaveLoad.MusicSettings;
 import project.bizzareadvent.SaveLoad.UserData;
 
 /**
@@ -113,6 +114,10 @@ public class FXMLLoginController implements Initializable {
         imageView.setImage(image);
         
         
+        
+        MusicSettings.getInstance().readFromFile();
+        
+        MusicSettings.getInstance().playMusic("main");
     }
 
     private boolean checkLogin() {
@@ -149,5 +154,28 @@ public class FXMLLoginController implements Initializable {
         labelMessage.setText(null);
 
     }
+    
+    
+    @FXML
+    private void handleButtonActionSettings(ActionEvent event) {
+        
+            try {
+
+                Node node = (Node) event.getSource();
+                Stage stageNewAccount = (Stage) node.getScene().getWindow();
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLSettings.fxml"));
+                Parent root = loader.load();
+
+                Scene scene = new Scene(root);
+                stageNewAccount.setScene(scene);
+                stageNewAccount.show();
+
+            } catch (IOException ex) {
+                System.out.println("Scene change error1");
+            }
+        
+    }
+    
     
 }

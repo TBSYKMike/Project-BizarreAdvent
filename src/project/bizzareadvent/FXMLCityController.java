@@ -48,6 +48,7 @@ public class FXMLCityController implements Initializable {
     @FXML
     private Label currentArmorUpgrade;
     
+    private int UPGRADE_LIMIT = 10;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -78,7 +79,7 @@ public class FXMLCityController implements Initializable {
         //check current gold if is enough
         int healingCost = 200;
         int gold = UserData.getInstance().getCharactersArrList().getCurrentGold();
-        if ( 200 <= gold && gold > 0) {
+        if ( 200 <= gold && gold > 0  && UserData.getInstance().getCharactersArrList().getCurrentHp() < 100 ) {
             System.out.println("gega Heal");
             UserData.getInstance().getCharactersArrList().setCurrentGold(  (gold - 200) );
             UserData.getInstance().getCharactersArrList().setCurrentHp(100);
@@ -93,7 +94,7 @@ public class FXMLCityController implements Initializable {
         //check current gold if is enough
         int upgradeCost = 500;
         int gold = UserData.getInstance().getCharactersArrList().getCurrentGold();
-        if (500 <= gold && gold > 0) {
+        if (500 <= gold && gold > 0 && UserData.getInstance().getCharactersArrList().getCurrentWeaponUpgrade()<UPGRADE_LIMIT) {
 
             UserData.getInstance().getCharactersArrList().setCurrentGold(UserData.getInstance().getCharactersArrList().getCurrentGold() - upgradeCost);
             UserData.getInstance().getCharactersArrList().setCurrentWeaponUpgrade(UserData.getInstance().getCharactersArrList().getCurrentWeaponUpgrade() + 1);
@@ -109,7 +110,7 @@ public class FXMLCityController implements Initializable {
         //check current gold if is enough
         int upgradeCost = 500;
         int gold = UserData.getInstance().getCharactersArrList().getCurrentGold();
-        if (500 <= gold && gold > 0) {
+        if (500 <= gold && gold > 0 && UserData.getInstance().getCharactersArrList().getCurrentArmorUpgrade()<UPGRADE_LIMIT) {
             
             UserData.getInstance().getCharactersArrList().setCurrentGold(UserData.getInstance().getCharactersArrList().getCurrentGold() - upgradeCost);
             UserData.getInstance().getCharactersArrList().setCurrentArmorUpgrade(UserData.getInstance().getCharactersArrList().getCurrentArmorUpgrade() + 1);

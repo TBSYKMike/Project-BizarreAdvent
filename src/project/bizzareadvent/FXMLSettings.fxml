@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.bizzareadvent.FXMLSettingsController">
+   <children>
+      <Button fx:id="buttonOn" layoutX="337.0" layoutY="225.0" mnemonicParsing="false" onAction="#buttonActionMusicOn" text="On" />
+      <Button fx:id="buttonOff" layoutX="375.0" layoutY="225.0" mnemonicParsing="false" onAction="#buttonActionMusicOff" text="Off" />
+      <Label layoutX="287.0" layoutY="229.0" text="Music" />
+   </children>
+</AnchorPane>
