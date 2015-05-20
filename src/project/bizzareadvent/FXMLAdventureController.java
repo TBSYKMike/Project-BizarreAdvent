@@ -64,6 +64,8 @@ public class FXMLAdventureController implements Initializable {
     private boolean run = false;
     private boolean deadCharacter = false;
     
+    private int previousDmg;
+    
     NormalMonster monster;
     TextGenerator textGenerator = new TextGenerator();
     Random randomGenerator = new Random();
@@ -101,7 +103,13 @@ public class FXMLAdventureController implements Initializable {
                 adventureLog.appendText("\n\nYou miss!");
             }    
         }
-            
+        
+        if(monster.getIsBurned()){
+            int burnDamage = 3;
+            monster.setBaseHp(monster.getBaseHp() - burnDamage);
+            adventureLog.appendText("\n\nThe " + monster.getMonsterType() + " is burning and takes " + burnDamage + " damage!");
+        }
+        
         if(monster.getBaseHp() <= 0){
             adventureLog.appendText("\n\nYou are victorious! You have slain the " + monster.getMonsterType() + ".");
             adventureLog.appendText("\nYou add " + monster.getAmountGold() + " gold to your purse and");
@@ -120,6 +128,7 @@ public class FXMLAdventureController implements Initializable {
         
         if(cooldown >= 5){
             cooldown = 0;
+            monster.setIsBurned(false);
             
             if(monster.getBaseHp() > 0){
                 secondaryButton.setDisable(false);
@@ -224,7 +233,7 @@ public class FXMLAdventureController implements Initializable {
                 castle();
             }
         }
-        
+       
         showStats();
     }
     
@@ -345,8 +354,8 @@ public class FXMLAdventureController implements Initializable {
                 adventureLog.appendText(textGenerator.generateText(position));
             }
             else if(randomInt >= 60 ){
-                monster = new MonsterGenerator().generateMonster(position);
-                //monster = new NormalMonster(2000000,1,1,0,1,1,"testmonster"); //Testmonster
+                //monster = new MonsterGenerator().generateMonster(position);
+                monster = new NormalMonster(2000000,1,1,0,1,1,"testmonster"); //Testmonster
                 
                 adventureLog.appendText("\n\nYou encounter a " + monster.getMonsterType());
                 adventureLog.appendText("\nIf you wish to fight the monster press the attack button or");
@@ -515,12 +524,28 @@ public class FXMLAdventureController implements Initializable {
     }
     
     public void secondaryAttackMage(){
-        System.out.println("Mage!");    
+        
+        previousDmg = list.get(0).getCurrentDmg();
+        
+        if(((Mage)list.get(0)).castFlameBurst()){
+            monster.setIsBurned(true);
+            
+            monster.setBaseHp(monster.getBaseHp() - list.get(0).getCurrentDmg());
+            
+            adventureLog.appendText("\n\nYou cast flame burst and it succesfully hits the " + monster.getMonsterType() + "!");
+            adventureLog.appendText("\nIt deals " + list.get(0).getCurrentDmg() + " damage and applies a periodical burn effect.");
+        }else{
+            adventureLog.appendText("\n\nYour flame burst misses!");
+            monsterAttack();
+        }
+        list.get(0).setCurrentDmg(previousDmg);
+        showStats();
+        
     }
     
     public void secondaryAttackWarrior(){
         
-        int previousDmg = list.get(0).getCurrentDmg();
+        previousDmg = list.get(0).getCurrentDmg();
         
         if(((Warrior)list.get(0)).castShieldBash()){
             monster.setIsStunned(true);
@@ -570,7 +595,7 @@ public class FXMLAdventureController implements Initializable {
        
         randomInt = randomGenerator.nextInt(6) + 1;
         
-        if(!monster.isIsStunned()){
+        if(!monster.getIsStunned()){
             if(monster.getBaseAttack() > list.get(0).getCurrentDef()){
             
                 if(randomInt > 2){
