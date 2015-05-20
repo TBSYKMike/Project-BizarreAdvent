@@ -13,6 +13,7 @@ public abstract class Monster extends Creature {
     private int amountScore;                                                    //How much score they will give
     private int amountGold;                                                     //How much gold they will give
     private boolean isStunned = false;
+    private boolean isBurned = false;
     private String monsterType;
     
     public Monster(int baseHp, int baseDef, int baseAttack, int baseDmg, int amountScore, int amountGold, String monsterType) {
@@ -33,17 +34,20 @@ public abstract class Monster extends Creature {
     public int getAmountGold(){
         return amountGold;
     }
-
-    public boolean isIsStunned() {
+    public boolean getIsStunned(){
         return isStunned;
     }
-    
     public String getMonsterType(){
         return monsterType;
     }
-
     public void setIsStunned(boolean isStunned) {
         this.isStunned = isStunned;
     }
-   
+    public void setIsBurned(boolean isBurned){
+        this.isBurned = isBurned;
+    }
+    public boolean getIsBurned(){
+        return isBurned;
+    }
+    
 }

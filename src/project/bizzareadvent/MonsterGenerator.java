@@ -6,6 +6,7 @@
 package project.bizzareadvent;
 
 import java.util.Random;
+import project.bizzareadvent.SaveLoad.UserData;
 
 /**
  *
@@ -48,22 +49,22 @@ public class MonsterGenerator {
         randomInt = randomGenerator.nextInt(6);
         
         if(randomInt == 0){
-            plainsMonster = new NormalMonster(30,4,6,5,30,20,"Spider");
+            plainsMonster = new NormalMonster(30,5,6,10,20,20,"Spider");
         }
         else if(randomInt == 1){
-            plainsMonster = new NormalMonster(30,4,6,5,30,20,"Spider");
+            plainsMonster = new NormalMonster(20,5,4,10,5,0,"Slime");
         }
         else if(randomInt == 2){
-            plainsMonster = new NormalMonster(30,5,6,5,30,20,"Goblin");
+            plainsMonster = new NormalMonster(25,6,6,8,10,5,"Goblin");
         }
         else if(randomInt == 3){
-            plainsMonster = new NormalMonster(40,5,8,6,40,20,"Orc");
+            plainsMonster = new NormalMonster(45,10,10,13,40,20,"Orc");
         }
         else if(randomInt == 4){
-            plainsMonster = new NormalMonster(50,5,8,8,50,30,"Savannah Lion");
+            plainsMonster = new NormalMonster(55,5,5,15,10,60,"Troll");
         }
         else{
-            plainsMonster = new NormalMonster(50,6,9,10,50,50,"Gigantic Spider");
+            plainsMonster = new NormalMonster(60,6,6,20,50,50,"Man-eating Giraffe ");
         }
         
         return plainsMonster;
@@ -78,19 +79,19 @@ public class MonsterGenerator {
             forestMonster = new NormalMonster(30,4,6,5,30,20,"Spider");
         }
         else if(randomInt == 1){
-            forestMonster = new NormalMonster(30,4,6,5,30,20,"Spider");
+            forestMonster = new NormalMonster(35,5,6,6,30,20,"giant Spider");
         }
         else if(randomInt == 2){
-            forestMonster = new NormalMonster(30,5,6,5,30,20,"Goblin");
+            forestMonster = new NormalMonster(25,6,6,8,10,5,"Goblin");
         }
         else if(randomInt == 3){
-            forestMonster = new NormalMonster(40,5,8,6,40,20,"Orc");
+            forestMonster = new NormalMonster(45,10,10,13,40,20,"Orc");
         }
         else if(randomInt == 4){
-            forestMonster = new NormalMonster(50,5,8,8,50,30,"Savannah Lion");
+            forestMonster = new NormalMonster(55,7,8,20,50,60,"Troll");
         }
         else{
-            forestMonster = new NormalMonster(50,6,9,10,50,50,"Gigantic Spider");
+            forestMonster = new NormalMonster(70,5,14,10,40,70,"Treeman");
         }
         
         return forestMonster;
@@ -105,19 +106,19 @@ public class MonsterGenerator {
             swampMonster = new NormalMonster(30,4,6,5,30,20,"Spider");
         }
         else if(randomInt == 1){
-            swampMonster = new NormalMonster(30,4,6,5,30,20,"Spider");
+            swampMonster = new NormalMonster(20,5,4,10,5,0,"Slime");
         }
         else if(randomInt == 2){
-            swampMonster = new NormalMonster(30,5,6,5,30,20,"Goblin");
+            swampMonster = new NormalMonster(21,5,4,10,5,5,"Ooze");
         }
         else if(randomInt == 3){
-            swampMonster = new NormalMonster(40,5,8,6,40,20,"Orc");
+            swampMonster = new NormalMonster(55,7,8,20,50,60,"Troll");
         }
         else if(randomInt == 4){
-            swampMonster = new NormalMonster(50,5,8,8,50,30,"Savannah Lion");
+            swampMonster = new NormalMonster(80,5,5,10,20,30,"zombie Troll");
         }
         else{
-            swampMonster = new NormalMonster(50,6,9,10,50,50,"Gigantic Spider");
+            swampMonster = new NormalMonster(150,5,5,15,30,100,"zombie Dragon");
         }
         
         return swampMonster;
@@ -129,22 +130,22 @@ public class MonsterGenerator {
         randomInt = randomGenerator.nextInt(6);
         
         if(randomInt == 0){
-            mountainMonster = new NormalMonster(30,4,6,5,30,20,"Spider");
+            mountainMonster = new NormalMonster(25,6,6,8,10,5,"Goblin");
         }
         else if(randomInt == 1){
-            mountainMonster = new NormalMonster(30,4,6,5,30,20,"Spider");
+            mountainMonster = new NormalMonster(25,6,6,8,10,5,"Goblin");
         }
         else if(randomInt == 2){
-            mountainMonster = new NormalMonster(30,5,6,5,30,20,"Goblin");
+            mountainMonster = new NormalMonster(30,6,6,10,8,10,"Hobgoblin");
         }
         else if(randomInt == 3){
-            mountainMonster = new NormalMonster(40,5,8,6,40,20,"Orc");
+            mountainMonster = new NormalMonster(45,10,10,13,40,20,"Orc");
         }
         else if(randomInt == 4){
-            mountainMonster = new NormalMonster(50,5,8,8,50,30,"Savannah Lion");
+            mountainMonster = new NormalMonster(50,14,7,16,10,50,"Orc berserker");
         }
         else{
-            mountainMonster = new NormalMonster(50,6,9,10,50,50,"Gigantic Spider");
+            mountainMonster = new NormalMonster(80,6,6,25,50,50,"Cyclops");
         }
         
         return mountainMonster;
@@ -154,26 +155,26 @@ public class MonsterGenerator {
         
         NormalMonster castleMonster;
         randomInt = randomGenerator.nextInt(6);
-        
-        if(randomInt == 0){
-            castleMonster = new NormalMonster(30,4,6,5,30,20,"Spider");
-        }
-        else if(randomInt == 1){
-            castleMonster = new NormalMonster(30,4,6,5,30,20,"Spider");
-        }
-        else if(randomInt == 2){
-            castleMonster = new NormalMonster(30,5,6,5,30,20,"Goblin");
-        }
-        else if(randomInt == 3){
-            castleMonster = new NormalMonster(40,5,8,6,40,20,"Orc");
-        }
-        else if(randomInt == 4){
-            castleMonster = new NormalMonster(50,5,8,8,50,30,"Savannah Lion");
-        }
-        else{
-            castleMonster = new NormalMonster(50,6,9,10,50,50,"Gigantic Spider");
-        }
-        
-        return castleMonster;
+
+            if(randomInt == 0){
+                castleMonster = new NormalMonster(30,4,6,5,30,20,"Spider");
+            }
+            else if(randomInt == 1){
+                castleMonster = new NormalMonster(35,8,8,12,30,20,"Goblin knight");
+            }
+            else if(randomInt == 2){
+                castleMonster = new NormalMonster(35,8,8,12,30,20,"Goblin knight");
+            }
+            else if(randomInt == 3){
+                castleMonster = new NormalMonster(45,10,10,13,40,20,"Orc");
+            }
+            else if(randomInt == 4){
+                castleMonster = new NormalMonster(70,10,20,20,50,60,"Orc knight");
+            }
+            else{
+                castleMonster = new NormalMonster(250,30,30,30,500,300,"Dragon");
+            }
+            
+            return castleMonster;
     }
 }
