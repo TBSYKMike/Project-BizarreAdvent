@@ -41,6 +41,14 @@ public class FXMLLoginController implements Initializable {
 
     @FXML
     private Label forgotPassword;
+    
+    
+    
+    @FXML
+    private Button buttonExit;
+    
+    
+    
     //***********************************Commit test /Kim**************************
 
     @FXML
@@ -148,6 +156,13 @@ public class FXMLLoginController implements Initializable {
         forgotPassword.setText("Forgot password?");
         labelMessage.setText(null);
 
+    }
+    
+    @FXML
+    public void handleButtonExit(ActionEvent event){
+        Stage stage2 = (Stage) buttonExit.getScene().getWindow();
+        
+        stage2.close();
     }
 
     @FXML

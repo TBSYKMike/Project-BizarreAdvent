@@ -23,5 +23,6 @@
       <PasswordField fx:id="textfieldPassword" layoutX="254.0" layoutY="241.0" onKeyReleased="#handleKeyEvent" onMouseClicked="#handleMouseEvent" promptText="Password" text="password" />
       <Label fx:id="forgotPassword" layoutX="254.0" layoutY="273.0" onMouseClicked="#handleForgottPassword" prefHeight="14.0" prefWidth="241.0" text="Forgot password?" />
       <Button layoutX="329.0" layoutY="358.0" mnemonicParsing="false" onAction="#handleButtonActionSettings" text="Settings" />
+      <Button fx:id="buttonExit" layoutX="341.0" layoutY="406.0" mnemonicParsing="false" onAction="#handleButtonExit" text="Exit" />
     </children>
 </AnchorPane>
