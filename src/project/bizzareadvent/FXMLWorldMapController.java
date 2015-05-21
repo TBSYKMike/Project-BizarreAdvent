@@ -23,6 +23,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import project.bizzareadvent.SaveLoad.AllLocalData;
+import project.bizzareadvent.SaveLoad.MusicSettings;
 import project.bizzareadvent.SaveLoad.UserData;
 
 public class FXMLWorldMapController implements Initializable {
@@ -108,6 +109,7 @@ public class FXMLWorldMapController implements Initializable {
             
             
         }
+        MusicSettings.getInstance().playMusic("main");
     }
 
     @FXML

@@ -24,4 +24,18 @@ public class FXMLGameOverController implements Initializable {
         // TODO
     }    
     
+    
+    
+    
+    private void deleteCharacter(){
+        
+    }
+    
+    private void setToHighScore(){
+        
+    }
+    
+    
+    
+    
 }

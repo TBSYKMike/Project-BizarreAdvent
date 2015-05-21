@@ -24,6 +24,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import project.bizzareadvent.SaveLoad.MusicSettings;
 import project.bizzareadvent.SaveLoad.UserData;
 
 /**
@@ -795,6 +796,11 @@ public class FXMLAdventureController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
+        
+        backgroundImg.setPreserveRatio(false);
+        MusicSettings.getInstance().playMusic(UserData.getInstance().getAdventurePosition());
+        
+        
         position = UserData.getInstance().getAdventurePosition();
 
         if (position.equals("plains")) {

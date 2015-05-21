@@ -38,7 +38,7 @@ public class FXMLLoginController implements Initializable {
 
     @FXML
     private Label labelMessage;
-    
+
     @FXML
     private Label forgotPassword;
     //***********************************Commit test /Kim**************************
@@ -57,7 +57,7 @@ public class FXMLLoginController implements Initializable {
 
         if (checkLogin()) {
             login = true;
-            
+
             DatabaseServer.getInstance().loadDATAFromDB();
             //DatabaseServer.getInstance().loadDATAFromDB(); //only need once now because there is a loop in the method
         } else {
@@ -83,49 +83,45 @@ public class FXMLLoginController implements Initializable {
             }
         }
     }
-    
+
     @FXML
     private void handleButtonActionNewAccount(ActionEvent event) {
-        
-            try {
 
-                Node node = (Node) event.getSource();
-                Stage stageNewAccount = (Stage) node.getScene().getWindow();
+        try {
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLNewAccount.fxml"));
-                Parent root = loader.load();
+            Node node = (Node) event.getSource();
+            Stage stageNewAccount = (Stage) node.getScene().getWindow();
 
-                Scene scene = new Scene(root);
-                stageNewAccount.setScene(scene);
-                stageNewAccount.show();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLNewAccount.fxml"));
+            Parent root = loader.load();
 
-            } catch (IOException ex) {
-                System.out.println("Scene change error1");
-            }
-        
+            Scene scene = new Scene(root);
+            stageNewAccount.setScene(scene);
+            stageNewAccount.show();
+
+        } catch (IOException ex) {
+            System.out.println("Scene change error1");
+        }
+
     }
-    
-    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         File file = new File("src/login_dragon.jpg");
         Image image = new Image(file.toURI().toString());
         imageView.setImage(image);
-        
-        
-        
+
         MusicSettings.getInstance().readFromFile();
-        
+
         MusicSettings.getInstance().playMusic("main");
     }
 
     private boolean checkLogin() {
         boolean correct = false;
         try {
-            
-                    correct = correct = DatabaseServer.getInstance().loginToDB(textfieldUsername.getText(), textfieldPassword.getText());
-                
+
+            correct = correct = DatabaseServer.getInstance().loginToDB(textfieldUsername.getText(), textfieldPassword.getText());
+
         } catch (Exception e) {
             System.err.println("ERROR: " + e);
         }
@@ -142,40 +138,37 @@ public class FXMLLoginController implements Initializable {
     }
 
     @FXML
-    public void handleForgottPassword (){
+    public void handleForgottPassword() {
         forgotPassword.setText("Contact admin at: kim_krok@hotmail.com");
     }
-    
 
     @FXML
     public void handleMouseEvent(MouseEvent ke) {
-        
+
         forgotPassword.setText("Forgot password?");
         labelMessage.setText(null);
 
     }
-    
-    
+
     @FXML
     private void handleButtonActionSettings(ActionEvent event) {
-        
-            try {
 
-                Node node = (Node) event.getSource();
-                Stage stageNewAccount = (Stage) node.getScene().getWindow();
+        try {
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLSettings.fxml"));
-                Parent root = loader.load();
+            Node node = (Node) event.getSource();
+            Stage stageNewAccount = (Stage) node.getScene().getWindow();
 
-                Scene scene = new Scene(root);
-                stageNewAccount.setScene(scene);
-                stageNewAccount.show();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLSettings.fxml"));
+            Parent root = loader.load();
 
-            } catch (IOException ex) {
-                System.out.println("Scene change error1");
-            }
-        
+            Scene scene = new Scene(root);
+            stageNewAccount.setScene(scene);
+            stageNewAccount.show();
+
+        } catch (IOException ex) {
+            System.out.println("Scene change error1");
+        }
+
     }
-    
-    
+
 }

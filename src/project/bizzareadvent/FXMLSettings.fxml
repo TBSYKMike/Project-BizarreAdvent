@@ -11,5 +11,6 @@
       <Button fx:id="buttonOn" layoutX="337.0" layoutY="225.0" mnemonicParsing="false" onAction="#buttonActionMusicOn" text="On" />
       <Button fx:id="buttonOff" layoutX="375.0" layoutY="225.0" mnemonicParsing="false" onAction="#buttonActionMusicOff" text="Off" />
       <Label layoutX="287.0" layoutY="229.0" text="Music" />
+      <Button layoutX="327.0" layoutY="329.0" mnemonicParsing="false" onAction="#handleButtonActionBack" text="Back" />
    </children>
 </AnchorPane>
