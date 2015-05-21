@@ -100,7 +100,7 @@ public class FXMLAdventureController implements Initializable {
     File file11 = new File("src/warrior.jpg");
     Image giraffeImage = new Image(file11.toURI().toString());
 
-    File file12 = new File("src/warrior.jpg");
+    File file12 = new File("src/mage.png");
     Image mageImage = new Image(file12.toURI().toString());
 
     File file13 = new File("src/warrior.jpg");
@@ -109,16 +109,16 @@ public class FXMLAdventureController implements Initializable {
     File file14 = new File("src/warrior.jpg");
     Image rogueImage = new Image(file14.toURI().toString());
 
-    File file15 = new File("src/warrior.jpg");
+    File file15 = new File("src/plains.jpg");
     Image plainsImage = new Image(file15.toURI().toString());
 
-    File file16 = new File("src/warrior.jpg");
+    File file16 = new File("src/forest.jpg");
     Image forestImage = new Image(file16.toURI().toString());
 
     File file17 = new File("src/warrior.jpg");
     Image mountainImage = new Image(file17.toURI().toString());
 
-    File file18 = new File("src/warrior.jpg");
+    File file18 = new File("src/swamp.jpg");
     Image swampImage = new Image(file18.toURI().toString());
 
     File file19 = new File("src/warrior.jpg");
