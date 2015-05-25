@@ -124,11 +124,15 @@ public class FXMLAdventureController implements Initializable {
 
     File file19 = new File("src/warrior.jpg");
     Image castleImage = new Image(file19.toURI().toString());
+    
+    File file20 = new File("src/warrior.jpg");
+    Image bossImage = new Image(file20.toURI().toString());
 
     private int stepCounter = 0;
     private int randomInt;
     private int cooldown = 0;
     private int stunCooldown = 0;
+    private int charge = 4;
 
     private String position;
     private boolean run = false;
@@ -198,29 +202,38 @@ public class FXMLAdventureController implements Initializable {
          } else {
          monsterAttack();
          }*/
-        if (cooldown >= 5) {
-            cooldown = 0;
-            monsterList.get(0).setIsBurned(false);
+        if(monsterList.get(0) instanceof NormalMonster){
+            if (cooldown >= 5) {
+                cooldown = 0;
+                monsterList.get(0).setIsBurned(false);
 
-            if (monsterList.get(0).getBaseHp() > 0) {
-                secondaryButton.setDisable(false);
+                if (monsterList.get(0).getBaseHp() > 0) {
+                    secondaryButton.setDisable(false);
+                }
+            } else {
+                cooldown += 1;
             }
-        } else {
-            cooldown += 1;
-        }
 
-        if (stunCooldown >= 1) {
-            stunCooldown = 0;
-            monsterList.get(0).setIsStunned(false);
-        } else {
-            stunCooldown += 1;
+            if (stunCooldown >= 1) {
+                stunCooldown = 0;
+                monsterList.get(0).setIsStunned(false);
+            } else {
+                stunCooldown += 1;
+            }
         }
-
         if (monsterList.get(0).getBaseHp() <= 0) {
-
+            
+            if(monsterList.get(0) instanceof SpecialMonster){
+                adventureLog.appendText("\n\nYou are victorious! You have slain the Boss!");
+                adventureLog.appendText("\nWhen you press continue this character will be deleted");
+                adventureLog.appendText("\nand its score will be added to the High-score table.");
+                UserData.getInstance().setGameClear(true);
+            } else {
+                adventureLog.appendText("\n\nYou are victorious! You have slain the " + monsterList.get(0).getMonsterType() + ".");
+            }
+                  
             monsterImg.setImage(null);
 
-            adventureLog.appendText("\n\nYou are victorious! You have slain the " + monsterList.get(0).getMonsterType() + ".");
             adventureLog.appendText("\nYou add " + monsterList.get(0).getAmountGold() + " gold to your purse and");
             adventureLog.appendText("\ngain " + monsterList.get(0).getAmountScore() + " score.");
 
@@ -232,8 +245,19 @@ public class FXMLAdventureController implements Initializable {
             runButton.setDisable(true);
             continueButton.setDisable(false);
             monsterList.remove(0);
+            
         } else {
-            monsterAttack();
+            if (monsterList.get(0) instanceof SpecialMonster){
+                randomInt = randomGenerator.nextInt(100) + 1;
+                
+                if(randomInt < 50 || charge < 4){
+                    specialMonsterAttack();
+                }else{
+                    monsterAttack();
+                }
+            }else{
+                monsterAttack();
+            }
         }
 
         showStats();
@@ -304,7 +328,7 @@ public class FXMLAdventureController implements Initializable {
                 System.out.println("Scene change error1");
                 ex.printStackTrace();
             }
-        } else if (deadCharacter == true) {
+        } else if (deadCharacter == true || UserData.getInstance().isGameClear() == true) {
             gameOver(event);
         } else {
             if (position.equals("plains")) {
@@ -500,6 +524,18 @@ public class FXMLAdventureController implements Initializable {
             adventureLog.appendText("\n\nYou have reached the end of this path, there seems to be nothing more to explore.");
             adventureLog.appendText("\n'How boring.'");
             adventureLog.appendText("\n\nPress the continue button again to return to the world map.");
+        }else if (list.get(0).getCurrentArmorUpgrade() >= 10 && list.get(0).getCurrentWeaponUpgrade() >= 10){
+            monsterList.add(new SpecialMonster(2000,105,105,20,5000,0,"BBEG"));
+            
+            adventureLog.appendText("\n\nYou have encountered the final boss!");
+            adventureLog.appendText("\nThis is it, now your mettle shall truly be tested.");
+            adventureLog.appendText("\nThe boss is imune to your secondary attack.");
+            adventureLog.appendText("\nThere is no way to run, your only chance is to fight!");
+
+            attackButton.setDisable(false);
+            secondaryButton.setDisable(true);
+            runButton.setDisable(true);
+            continueButton.setDisable(true);
         } else {
             if (randomInt <= 20) {
                 generateTreasure();
@@ -574,7 +610,7 @@ public class FXMLAdventureController implements Initializable {
             adventureLog.appendText("\nWithout hesitation you suckerpunch the old man and steal his bag of gold");
             adventureLog.appendText("\nYou add " + gold + " gold to your purse.");
         } else if (randomInt >= 96) {
-            gold = 100;
+            gold = -100;
 
             adventureLog.appendText("\n\nAn ugly dwarf jumps you from behind and kicks you");
             adventureLog.appendText("\nin the groin and steals some of your gold.");
@@ -741,11 +777,28 @@ public class FXMLAdventureController implements Initializable {
             adventureLog.appendText("\n\nYou have died. As your spirit leaves your body you can see your enemy");
             adventureLog.appendText("\nrip your lifeless body limb from limb.");
             adventureLog.appendText("\nMaybe it will fashion a nice hat from your body.");
-            adventureLog.appendText("\n\nPress continue to enter your score.");
-            // change scene to death scene
+            adventureLog.appendText("\n\nWhen you press continue this character will be deleted");
+            adventureLog.appendText("\nand its score will be added to the High-score table.");
         } else {
 
             showStats();
+        }
+    }
+    
+    public void specialMonsterAttack(){
+        
+        if (charge <= 0){
+            int specialDamage = ((SpecialMonster) monsterList.get(0)).specialAttack(list.get(0).getCurrentHp());
+            list.get(0).setCurrentHp(list.get(0).getCurrentHp() - specialDamage);
+            adventureLog.appendText("\n\nYou are hit for " + specialDamage + " damage!" );
+            charge = 4;
+        } 
+        else if(charge == 4) {
+            adventureLog.appendText("\n\nThe boss charges its devastating special attack!");
+            charge--;
+        }else{
+            adventureLog.appendText("\n\n" + charge +"..");
+            charge--;
         }
     }
 
@@ -766,7 +819,6 @@ public class FXMLAdventureController implements Initializable {
         } catch (IOException ex) {
             System.out.println("Scene change error1rrr");
         }
-
     }
 
     public void showStats() {
@@ -832,6 +884,9 @@ public class FXMLAdventureController implements Initializable {
         } else if (monsterList.get(0).getMonsterType().equals("Man-eating Giraffe")) {
 
             monsterImg.setImage(giraffeImage);
+        } else if (monsterList.get(0).getMonsterType().equals("BBEG")) {
+
+            monsterImg.setImage(bossImage);
         }
     }
 
