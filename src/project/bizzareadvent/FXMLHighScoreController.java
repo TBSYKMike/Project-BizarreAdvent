@@ -39,6 +39,8 @@ public class FXMLHighScoreController implements Initializable {
     @FXML
     private TextArea textareaHighScore1, textareaHighScore2;
     
+    private String testPrint = "";
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -46,9 +48,38 @@ public class FXMLHighScoreController implements Initializable {
         //String Username = DatabaseServer.getInstance().getUsername();
         //textareaHighScore1.setText(HighScore);
         //textareaHighScore2.setText(Username);
-        String testPrint = "";
         
         
+        
+        
+        textareaHighScore1.setText(testPrint);
+        
+        
+    }    
+    
+    
+    @FXML
+    private void handleButtonActionBack(ActionEvent event) {
+        
+            try {
+
+                Node node = (Node) event.getSource();
+                Stage stage2 = (Stage) node.getScene().getWindow();
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLScene2.fxml"));
+                Parent root = loader.load();
+
+                Scene scene = new Scene(root);
+                stage2.setScene(scene);
+                stage2.show();
+
+            } catch (IOException ex) {
+                System.out.println("Scene change error1");
+            }
+        
+    }
+    
+    private void connection1(){
         DatabaseServer.getInstance().connectToDB();
         try (Connection c = DriverManager.getConnection(DatabaseServer.getInstance().getURL())) {    // sql Commands
             Statement st = c.createStatement();
@@ -78,32 +109,39 @@ public class FXMLHighScoreController implements Initializable {
         } catch (SQLException e) {
             System.err.println("ERROR: " + e);
         }
-        textareaHighScore1.setText(testPrint);
-        
-        
-    }    
-    
-    
-    @FXML
-    private void handleButtonActionBack(ActionEvent event) {
-        
-            try {
-
-                Node node = (Node) event.getSource();
-                Stage stage2 = (Stage) node.getScene().getWindow();
-
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLScene2.fxml"));
-                Parent root = loader.load();
-
-                Scene scene = new Scene(root);
-                stage2.setScene(scene);
-                stage2.show();
-
-            } catch (IOException ex) {
-                System.out.println("Scene change error1");
-            }
-        
     }
+    
+     private void connection2(){
+        DatabaseServer.getInstance().connectToDB();
+        try (Connection c = DriverManager.getConnection(DatabaseServer.getInstance().getURL())) {    // sql Commands
+            Statement st = c.createStatement();
+            ResultSet rs1 = st.executeQuery(
+                "SELECT * \n" +
+                "FROM gamedb.high_score \n" +
+                "ORDER BY score DESC;");
+
+            while (rs1.next()) {
+                //String username = rs1.getString("userName");
+                //String password = rs1.getString("password");
+                //System.out.println("Customer Name: " + name + " \nand customer number " + password + "\n\n");
+                
+                if (rs1.getRow() <= 1000){
+                    System.out.printf( rs1.getRow() + " " + rs1.getString(1) + " " + rs1.getString(2) + " " + rs1.getString(3)  );
+                    testPrint += rs1.getRow() + " " + rs1.getString(1) + " " + rs1.getString(2) + " " + rs1.getString(3) + " \n";
+                }
+            }
+
+            c.close();  // closing connection
+
+            
+
+            
+
+        } catch (SQLException e) {
+            System.err.println("ERROR: " + e);
+        }
+    }
+    
     
     
     

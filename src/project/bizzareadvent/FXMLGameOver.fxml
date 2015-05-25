@@ -9,11 +9,13 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.bizzareadvent.FXMLGameOverController">
    <children>
-      <Label fx:id="labelGameOver" alignment="CENTER" layoutX="152.0" layoutY="91.0" prefHeight="61.0" prefWidth="296.0" text="Game Over">
+      <Label fx:id="labelGameOver" alignment="CENTER" layoutX="19.0" layoutY="90.0" prefHeight="61.0" prefWidth="564.0" text="Game Over">
          <font>
             <Font size="40.0" />
          </font>
       </Label>
-      <Button layoutX="268.0" layoutY="288.0" mnemonicParsing="false" onAction="#buttonActionContinue" text="Continue" />
+      <Button layoutX="269.0" layoutY="290.0" mnemonicParsing="false" onAction="#buttonActionContinue" text="Continue" />
+      <Label fx:id="labelScore" alignment="CENTER" layoutX="19.0" layoutY="192.0" prefHeight="17.0" prefWidth="564.0" text="Score + message" />
+      <Label fx:id="labelThankMessage" alignment="CENTER" layoutX="18.0" layoutY="237.0" prefHeight="17.0" prefWidth="564.0" text="Thank you for playing! May you have better luck next time!" />
    </children>
 </AnchorPane>

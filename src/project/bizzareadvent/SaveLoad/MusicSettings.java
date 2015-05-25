@@ -98,7 +98,8 @@ public class MusicSettings {
         addMusic("/forest1.mp3");           // forest
         addMusic("/swamp1.mp3");       // swamp
         addMusic("/mountain1.mp3");     // mountain
-        addMusic("/castleormaybenot1.mp3");       // castle
+        addMusic("/castleormaybenot1.mp3");       // castle boss
+        addMusic("/castleormaybenot2.mp3");       // castle
     }
 
     private void addMusic(String path) {
@@ -142,7 +143,13 @@ public class MusicSettings {
             } else if (scene.equalsIgnoreCase("mountain")) {
                 musicPlayerArrList.get(5).play();
             } else if (scene.equalsIgnoreCase("castle")) {
-                musicPlayerArrList.get(6).play();
+                int armorUpgrade = UserData.getInstance().getCharactersArrList().getCurrentArmorUpgrade();
+                int weaponUpgrade = UserData.getInstance().getCharactersArrList().getCurrentWeaponUpgrade();
+                if ( armorUpgrade >=10  && weaponUpgrade >= 10 ) {
+                    musicPlayerArrList.get(6).play();
+                }else{
+                    musicPlayerArrList.get(7).play();
+                }
             }
         }else{
             stopAllMusic();

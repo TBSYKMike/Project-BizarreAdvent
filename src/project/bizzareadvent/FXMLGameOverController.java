@@ -34,14 +34,20 @@ public class FXMLGameOverController implements Initializable {
     
     
     @FXML
-    private Label labelGameOver;
+    private Label labelGameOver,labelScore, labelThankMessage;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        String charName = UserData.getInstance().getCharactersArrList().getCharacterName();
+        int charScore = UserData.getInstance().getCharactersArrList().getCurrentScore();
+        
+        String scoreText = charName + "'s score is: " + charScore;
+        
         isDeadOrGameCleared();
         deleteCharacter();
         setToHighScore();
+        labelScore.setText(scoreText);
         
     }    
     
@@ -50,7 +56,7 @@ public class FXMLGameOverController implements Initializable {
         if(UserData.getInstance().isGameClear()){
             labelGameOver.setText( "Game Cleared");
             UserData.getInstance().setGameClear(false);
-            
+            labelThankMessage.setText("Thank you for playing and hope you enjoyed our game!");
         }
         
     }
