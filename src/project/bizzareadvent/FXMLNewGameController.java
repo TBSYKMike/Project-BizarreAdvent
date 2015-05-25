@@ -36,7 +36,7 @@ public class FXMLNewGameController implements Initializable {
     @FXML
     private Button buttonMage;
     @FXML
-    private Button buttonAssassin;
+    private Button buttonRogue;
     @FXML
     private Button buttonBack;
     @FXML

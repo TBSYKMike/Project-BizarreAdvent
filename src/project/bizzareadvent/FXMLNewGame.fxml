@@ -13,7 +13,7 @@
       <ImageView fx:id="imageClass" fitHeight="213.0" fitWidth="137.0" layoutX="119.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true" />
       <Button fx:id="buttonMage" layoutX="344.0" layoutY="324.0" mnemonicParsing="false" onAction="#mageChosen" prefHeight="25.0" prefWidth="66.0" text="Mage" />
       <Button fx:id="buttonWarrior" layoutX="155.0" layoutY="324.0" mnemonicParsing="false" onAction="#warriorChosen" prefHeight="25.0" prefWidth="66.0" text="Warrior" />
-      <Button fx:id="buttonAssassin" layoutX="530.0" layoutY="324.0" mnemonicParsing="false" onAction="#assassinChosen" prefHeight="25.0" prefWidth="66.0" text="Assassin" />
+      <Button fx:id="buttonRogue" layoutX="530.0" layoutY="324.0" mnemonicParsing="false" onAction="#rogueChosen" prefHeight="25.0" prefWidth="66.0" text="Rogue" />
       <TextField fx:id="characterName" layoutX="303.0" layoutY="366.0" promptText="Character Name" />
       <Button fx:id="buttonDone" disable="true" layoutX="345.0" layoutY="400.0" mnemonicParsing="false" onAction="#handleButtonActionDone" prefHeight="25.0" prefWidth="66.0" text="Done" />
       <Button fx:id="buttonBack" layoutX="155.0" layoutY="400.0" mnemonicParsing="false" onAction="#handleButtonActionBack" prefHeight="25.0" prefWidth="66.0" text="Back" />
