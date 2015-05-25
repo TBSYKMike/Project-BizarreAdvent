@@ -136,29 +136,29 @@ public class FXMLAdventureController implements Initializable {
 
     private int previousDmg;
 
-    NormalMonster monster;
     TextGenerator textGenerator = new TextGenerator();
     Random randomGenerator = new Random();
 
     ArrayList<Characters> list = new ArrayList<>();
+    ArrayList<Monster> monsterList = new ArrayList<>();
 
     @FXML
     private void handleButtonAttack(ActionEvent event) {
 
         randomInt = randomGenerator.nextInt(6) + 1;
 
-        if (list.get(0).getCurrentAttack() > monster.getBaseDef()) {
+        if (list.get(0).getCurrentAttack() > monsterList.get(0).getBaseDef()) {
 
             if (randomInt > 2) {
-                monster.setBaseHp(monster.getBaseHp() - list.get(0).getCurrentDmg());
+                monsterList.get(0).setBaseHp(monsterList.get(0).getBaseHp() - list.get(0).getCurrentDmg());
                 adventureLog.appendText("\n\nYou strike the monster for " + list.get(0).getCurrentDmg() + " Damage!");
             } else {
                 adventureLog.appendText("\n\nYou miss!");
             }
-        } else if (list.get(0).getCurrentAttack() == monster.getBaseDef()) {
+        } else if (list.get(0).getCurrentAttack() == monsterList.get(0).getBaseDef()) {
 
             if (randomInt > 3) {
-                monster.setBaseHp(monster.getBaseHp() - list.get(0).getCurrentDmg());
+                monsterList.get(0).setBaseHp(monsterList.get(0).getBaseHp() - list.get(0).getCurrentDmg());
                 adventureLog.appendText("\n\nYou strike the monster for " + list.get(0).getCurrentDmg() + " Damage!");
             } else {
                 adventureLog.appendText("\n\nYou miss!");
@@ -166,42 +166,43 @@ public class FXMLAdventureController implements Initializable {
         } else {
 
             if (randomInt > 4) {
-                monster.setBaseHp(monster.getBaseHp() - list.get(0).getCurrentDmg());
+                monsterList.get(0).setBaseHp(monsterList.get(0).getBaseHp() - list.get(0).getCurrentDmg());
                 adventureLog.appendText("\n\nYou strike the monster for " + list.get(0).getCurrentDmg() + " Damage!");
             } else {
                 adventureLog.appendText("\n\nYou miss!");
             }
         }
 
-        if (monster.getIsBurned()) {
+        if (monsterList.get(0).getIsBurned()) {
             int burnDamage = 3;
-            monster.setBaseHp(monster.getBaseHp() - burnDamage);
-            adventureLog.appendText("\n\nThe " + monster.getMonsterType() + " is burning and takes " + burnDamage + " damage!");
+            monsterList.get(0).setBaseHp(monsterList.get(0).getBaseHp() - burnDamage);
+            adventureLog.appendText("\n\nThe " + monsterList.get(0).getMonsterType() + " is burning and takes " + burnDamage + " damage!");
         }
 
-        if (monster.getBaseHp() <= 0) {
+        /*if (monsterList.get(0).getBaseHp() <= 0) {
 
-            monsterImg.setImage(null);
-            adventureLog.appendText("\n\nYou are victorious! You have slain the " + monster.getMonsterType() + ".");
-            adventureLog.appendText("\nYou add " + monster.getAmountGold() + " gold to your purse and");
-            adventureLog.appendText("\ngain " + monster.getAmountScore() + " score.");
+         monsterImg.setImage(null);
+            
+         adventureLog.appendText("\n\nYou are victorious! You have slain the " + monsterList.get(0).getMonsterType() + ".");
+         adventureLog.appendText("\nYou add " + monsterList.get(0).getAmountGold() + " gold to your purse and");
+         adventureLog.appendText("\ngain " + monsterList.get(0).getAmountScore() + " score.");
 
-            list.get(0).setCurrentGold(list.get(0).getCurrentGold() + monster.getAmountGold());
-            list.get(0).setCurrentScore(list.get(0).getCurrentScore() + monster.getAmountScore());
+         list.get(0).setCurrentGold(list.get(0).getCurrentGold() + monsterList.get(0).getAmountGold());
+         list.get(0).setCurrentScore(list.get(0).getCurrentScore() + monsterList.get(0).getAmountScore());
 
-            attackButton.setDisable(true);
-            secondaryButton.setDisable(true);
-            runButton.setDisable(true);
-            continueButton.setDisable(false);
-        } else {
-            monsterAttack();
-        }
-
+         attackButton.setDisable(true);
+         secondaryButton.setDisable(true);
+         runButton.setDisable(true);
+         continueButton.setDisable(false);
+         monsterList.remove(0);
+         } else {
+         monsterAttack();
+         }*/
         if (cooldown >= 5) {
             cooldown = 0;
-            monster.setIsBurned(false);
+            monsterList.get(0).setIsBurned(false);
 
-            if (monster.getBaseHp() > 0) {
+            if (monsterList.get(0).getBaseHp() > 0) {
                 secondaryButton.setDisable(false);
             }
         } else {
@@ -210,9 +211,29 @@ public class FXMLAdventureController implements Initializable {
 
         if (stunCooldown >= 1) {
             stunCooldown = 0;
-            monster.setIsStunned(false);
+            monsterList.get(0).setIsStunned(false);
         } else {
             stunCooldown += 1;
+        }
+
+        if (monsterList.get(0).getBaseHp() <= 0) {
+
+            monsterImg.setImage(null);
+
+            adventureLog.appendText("\n\nYou are victorious! You have slain the " + monsterList.get(0).getMonsterType() + ".");
+            adventureLog.appendText("\nYou add " + monsterList.get(0).getAmountGold() + " gold to your purse and");
+            adventureLog.appendText("\ngain " + monsterList.get(0).getAmountScore() + " score.");
+
+            list.get(0).setCurrentGold(list.get(0).getCurrentGold() + monsterList.get(0).getAmountGold());
+            list.get(0).setCurrentScore(list.get(0).getCurrentScore() + monsterList.get(0).getAmountScore());
+
+            attackButton.setDisable(true);
+            secondaryButton.setDisable(true);
+            runButton.setDisable(true);
+            continueButton.setDisable(false);
+            monsterList.remove(0);
+        } else {
+            monsterAttack();
         }
 
         showStats();
@@ -322,10 +343,10 @@ public class FXMLAdventureController implements Initializable {
             } else if (randomInt > 20 && randomInt < 60) {
                 adventureLog.appendText(textGenerator.generateText(position));
             } else if (randomInt >= 60) {
-                monster = new MonsterGenerator().generateMonster(position);
+                monsterList.add(new MonsterGenerator().generateMonster(position));
                 monsterImages();
 
-                adventureLog.appendText("\n\nYou encounter a " + monster.getMonsterType());
+                adventureLog.appendText("\n\nYou encounter a " + monsterList.get(0).getMonsterType());
                 adventureLog.appendText("\nIf you wish to fight the monster press the attack button or");
                 adventureLog.appendText("\npress the run button to attempt to run away.");
 
@@ -370,10 +391,10 @@ public class FXMLAdventureController implements Initializable {
             } else if (randomInt > 20 && randomInt < 60) {
                 adventureLog.appendText(textGenerator.generateText(position));
             } else if (randomInt >= 60) {
-                monster = new MonsterGenerator().generateMonster(position);
+                monsterList.add(new MonsterGenerator().generateMonster(position));
                 monsterImages();
 
-                adventureLog.appendText("\n\nYou encounter a " + monster.getMonsterType());
+                adventureLog.appendText("\n\nYou encounter a " + monsterList.get(0).getMonsterType());
                 adventureLog.appendText("\nIf you wish to fight the monster press the attack button or");
                 adventureLog.appendText("\npress the run button to attempt to run away.");
 
@@ -408,11 +429,11 @@ public class FXMLAdventureController implements Initializable {
             } else if (randomInt > 20 && randomInt < 60) {
                 adventureLog.appendText(textGenerator.generateText(position));
             } else if (randomInt >= 60) {
-                monster = new MonsterGenerator().generateMonster(position);
+                monsterList.add(new MonsterGenerator().generateMonster(position));
                 //monster = new NormalMonster(2000000, 1, 1, 0, 1, 1, "testmonster"); //Testmonster
                 monsterImages();
 
-                adventureLog.appendText("\n\nYou encounter a " + monster.getMonsterType());
+                adventureLog.appendText("\n\nYou encounter a " + monsterList.get(0).getMonsterType());
                 adventureLog.appendText("\nIf you wish to fight the monster press the attack button or");
                 adventureLog.appendText("\npress the run button to attempt to run away.");
 
@@ -447,10 +468,10 @@ public class FXMLAdventureController implements Initializable {
             } else if (randomInt > 20 && randomInt < 60) {
                 adventureLog.appendText(textGenerator.generateText(position));
             } else if (randomInt >= 60) {
-                monster = new MonsterGenerator().generateMonster(position);
+                monsterList.add(new MonsterGenerator().generateMonster(position));
                 monsterImages();
 
-                adventureLog.appendText("\n\nYou encounter a " + monster.getMonsterType());
+                adventureLog.appendText("\n\nYou encounter a " + monsterList.get(0).getMonsterType());
                 adventureLog.appendText("\nIf you wish to fight the monster press the attack button or");
                 adventureLog.appendText("\npress the run button to attempt to run away.");
 
@@ -485,10 +506,10 @@ public class FXMLAdventureController implements Initializable {
             } else if (randomInt > 20 && randomInt < 60) {
                 adventureLog.appendText(textGenerator.generateText(position));
             } else if (randomInt >= 60) {
-                monster = new MonsterGenerator().generateMonster(position);
+                monsterList.add(new MonsterGenerator().generateMonster(position));
                 monsterImages();
 
-                adventureLog.appendText("\n\nYou encounter a " + monster.getMonsterType());
+                adventureLog.appendText("\n\nYou encounter a " + monsterList.get(0).getMonsterType());
                 adventureLog.appendText("\nIf you wish to fight the monster press the attack button or");
                 adventureLog.appendText("\npress the run button to attempt to run away.");
 
@@ -570,27 +591,29 @@ public class FXMLAdventureController implements Initializable {
         previousDmg = list.get(0).getCurrentDmg();
 
         if (((Mage) list.get(0)).castFlameBurst()) {
-            monster.setIsBurned(true);
+            monsterList.get(0).setIsBurned(true);
 
-            monster.setBaseHp(monster.getBaseHp() - list.get(0).getCurrentDmg());
+            monsterList.get(0).setBaseHp(monsterList.get(0).getBaseHp() - list.get(0).getCurrentDmg());
 
-            if (monster.getBaseHp() <= 0) {
+            if (monsterList.get(0).getBaseHp() <= 0) {
 
                 monsterImg.setImage(null);
-                adventureLog.appendText("\n\nYou are victorious! You have slain the " + monster.getMonsterType() + ".");
-                adventureLog.appendText("\nYou add " + monster.getAmountGold() + " gold to your purse and");
-                adventureLog.appendText("\ngain " + monster.getAmountScore() + " score.");
 
-                list.get(0).setCurrentGold(list.get(0).getCurrentGold() + monster.getAmountGold());
-                list.get(0).setCurrentScore(list.get(0).getCurrentScore() + monster.getAmountScore());
+                adventureLog.appendText("\n\nYou are victorious! You have slain the " + monsterList.get(0).getMonsterType() + ".");
+                adventureLog.appendText("\nYou add " + monsterList.get(0).getAmountGold() + " gold to your purse and");
+                adventureLog.appendText("\ngain " + monsterList.get(0).getAmountScore() + " score.");
+
+                list.get(0).setCurrentGold(list.get(0).getCurrentGold() + monsterList.get(0).getAmountGold());
+                list.get(0).setCurrentScore(list.get(0).getCurrentScore() + monsterList.get(0).getAmountScore());
 
                 attackButton.setDisable(true);
                 secondaryButton.setDisable(true);
                 runButton.setDisable(true);
                 continueButton.setDisable(false);
+                monsterList.remove(0);
             } else {
 
-                adventureLog.appendText("\n\nYou cast flame burst and it succesfully hits the " + monster.getMonsterType() + "!");
+                adventureLog.appendText("\n\nYou cast flame burst and it succesfully hits the " + monsterList.get(0).getMonsterType() + "!");
                 adventureLog.appendText("\nIt deals " + list.get(0).getCurrentDmg() + " damage and applies a periodical burn effect.");
             }
         } else {
@@ -607,27 +630,29 @@ public class FXMLAdventureController implements Initializable {
         previousDmg = list.get(0).getCurrentDmg();
 
         if (((Warrior) list.get(0)).castShieldBash()) {
-            monster.setIsStunned(true);
+            monsterList.get(0).setIsStunned(true);
 
-            monster.setBaseHp(monster.getBaseHp() - list.get(0).getCurrentDmg());
+            monsterList.get(0).setBaseHp(monsterList.get(0).getBaseHp() - list.get(0).getCurrentDmg());
 
-            if (monster.getBaseHp() <= 0) {
+            if (monsterList.get(0).getBaseHp() <= 0) {
 
                 monsterImg.setImage(null);
-                adventureLog.appendText("\n\nYou are victorious! You have slain the " + monster.getMonsterType() + ".");
-                adventureLog.appendText("\nYou add " + monster.getAmountGold() + " gold to your purse and");
-                adventureLog.appendText("\ngain " + monster.getAmountScore() + " score.");
 
-                list.get(0).setCurrentGold(list.get(0).getCurrentGold() + monster.getAmountGold());
-                list.get(0).setCurrentScore(list.get(0).getCurrentScore() + monster.getAmountScore());
+                adventureLog.appendText("\n\nYou are victorious! You have slain the " + monsterList.get(0).getMonsterType() + ".");
+                adventureLog.appendText("\nYou add " + monsterList.get(0).getAmountGold() + " gold to your purse and");
+                adventureLog.appendText("\ngain " + monsterList.get(0).getAmountScore() + " score.");
+
+                list.get(0).setCurrentGold(list.get(0).getCurrentGold() + monsterList.get(0).getAmountGold());
+                list.get(0).setCurrentScore(list.get(0).getCurrentScore() + monsterList.get(0).getAmountScore());
 
                 attackButton.setDisable(true);
                 secondaryButton.setDisable(true);
                 runButton.setDisable(true);
                 continueButton.setDisable(false);
+                monsterList.remove(0);
             } else {
 
-                adventureLog.appendText("\n\nYou bash your shield in the " + monster.getMonsterType() + "s face!");
+                adventureLog.appendText("\n\nYou bash your shield in the " + monsterList.get(0).getMonsterType() + "s face!");
                 adventureLog.appendText("\nIt takes " + list.get(0).getCurrentDmg() + " damage and is momentarily stunned.");
             }
         } else {
@@ -644,21 +669,22 @@ public class FXMLAdventureController implements Initializable {
         int unbuffedDef = list.get(0).getCurrentDef();
 
         if (((Rogue) list.get(0)).castAssassinate()) {
-            monster.setBaseHp(0);
+            monsterList.get(0).setBaseHp(0);
 
             monsterImg.setImage(null);
 
             adventureLog.appendText("\n\nYou strike a mighty blow aimed att a vital point, the monster falls over dead!");
-            adventureLog.appendText("\nYou add " + monster.getAmountGold() + " gold to your purse and");
-            adventureLog.appendText("\ngain " + monster.getAmountScore() + " score.");
+            adventureLog.appendText("\nYou add " + monsterList.get(0).getAmountGold() + " gold to your purse and");
+            adventureLog.appendText("\ngain " + monsterList.get(0).getAmountScore() + " score.");
 
-            list.get(0).setCurrentGold(list.get(0).getCurrentGold() + monster.getAmountGold());
-            list.get(0).setCurrentScore(list.get(0).getCurrentScore() + monster.getAmountScore());
+            list.get(0).setCurrentGold(list.get(0).getCurrentGold() + monsterList.get(0).getAmountGold());
+            list.get(0).setCurrentScore(list.get(0).getCurrentScore() + monsterList.get(0).getAmountScore());
 
             attackButton.setDisable(true);
             secondaryButton.setDisable(true);
             runButton.setDisable(true);
             continueButton.setDisable(false);
+            monsterList.remove(0);
 
         } else {
             adventureLog.appendText("\n\nThe monster dodges your attack!");
@@ -673,28 +699,28 @@ public class FXMLAdventureController implements Initializable {
 
         randomInt = randomGenerator.nextInt(6) + 1;
 
-        if (!monster.getIsStunned()) {
-            if (monster.getBaseAttack() > list.get(0).getCurrentDef()) {
+        if (!monsterList.get(0).getIsStunned()) {
+            if (monsterList.get(0).getBaseAttack() > list.get(0).getCurrentDef()) {
 
                 if (randomInt > 2) {
-                    list.get(0).setCurrentHp(list.get(0).getCurrentHp() - monster.getBaseDmg());
-                    adventureLog.appendText("\n\nThe monster strikes you for " + monster.getBaseDmg() + " Damage!");
+                    list.get(0).setCurrentHp(list.get(0).getCurrentHp() - monsterList.get(0).getBaseDmg());
+                    adventureLog.appendText("\n\nThe monster strikes you for " + monsterList.get(0).getBaseDmg() + " Damage!");
                 } else {
                     adventureLog.appendText("\n\nThe monster misses!");
                 }
-            } else if (monster.getBaseAttack() == list.get(0).getCurrentDef()) {
+            } else if (monsterList.get(0).getBaseAttack() == list.get(0).getCurrentDef()) {
 
                 if (randomInt > 3) {
-                    list.get(0).setCurrentHp(list.get(0).getCurrentHp() - monster.getBaseDmg());
-                    adventureLog.appendText("\n\nThe monster strikes you for " + monster.getBaseDmg() + " Damage!");
+                    list.get(0).setCurrentHp(list.get(0).getCurrentHp() - monsterList.get(0).getBaseDmg());
+                    adventureLog.appendText("\n\nThe monster strikes you for " + monsterList.get(0).getBaseDmg() + " Damage!");
                 } else {
                     adventureLog.appendText("\n\nThe monster misses!");
                 }
             } else {
 
                 if (randomInt > 4) {
-                    list.get(0).setCurrentHp(list.get(0).getCurrentHp() - monster.getBaseDmg());
-                    adventureLog.appendText("\n\nThe monster strikes you for " + monster.getBaseDmg() + " Damage!");
+                    list.get(0).setCurrentHp(list.get(0).getCurrentHp() - monsterList.get(0).getBaseDmg());
+                    adventureLog.appendText("\n\nThe monster strikes you for " + monsterList.get(0).getBaseDmg() + " Damage!");
                 } else {
                     adventureLog.appendText("\n\nThe monster misses!");
                 }
@@ -724,23 +750,22 @@ public class FXMLAdventureController implements Initializable {
     }
 
     public void gameOver(ActionEvent event) {
-        
-        try{
-                Node node = (Node) event.getSource();
-                Stage stageLogin = (Stage) node.getScene().getWindow();
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLGameOver.fxml"));
-                Parent root = loader.load();
+        try {
+            Node node = (Node) event.getSource();
+            Stage stageLogin = (Stage) node.getScene().getWindow();
 
-                Scene scene = new Scene(root);
-                stageLogin.setScene(scene);
-                stageLogin.show();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLGameOver.fxml"));
+            Parent root = loader.load();
+
+            Scene scene = new Scene(root);
+            stageLogin.setScene(scene);
+            stageLogin.show();
                 //UserData.getInstance().setRememeberLastClass(this.getClass().getName());
-        
-        }catch(IOException ex){
+
+        } catch (IOException ex) {
             System.out.println("Scene change error1rrr");
         }
-        
 
     }
 
@@ -756,55 +781,55 @@ public class FXMLAdventureController implements Initializable {
     }
 
     public void monsterImages() {
-        if (monster.getMonsterType().equals("Spider")) {
+        if (monsterList.get(0).getMonsterType().equals("Spider")) {
 
             monsterImg.setImage(spiderImage);
-        } else if (monster.getMonsterType().equals("giant Spider")) {
+        } else if (monsterList.get(0).getMonsterType().equals("giant Spider")) {
 
             monsterImg.setImage(spiderImage);
-        } else if (monster.getMonsterType().equals("Slime")) {
+        } else if (monsterList.get(0).getMonsterType().equals("Slime")) {
 
             monsterImg.setImage(slimeImage);
-        } else if (monster.getMonsterType().equals("Ooze")) {
+        } else if (monsterList.get(0).getMonsterType().equals("Ooze")) {
 
             monsterImg.setImage(oozeImage);
-        } else if (monster.getMonsterType().equals("Goblin")) {
+        } else if (monsterList.get(0).getMonsterType().equals("Goblin")) {
 
             monsterImg.setImage(goblinImage);
-        } else if (monster.getMonsterType().equals("Hobgoblin")) {
+        } else if (monsterList.get(0).getMonsterType().equals("Hobgoblin")) {
 
             monsterImg.setImage(goblinImage);
-        } else if (monster.getMonsterType().equals("Goblin knight")) {
+        } else if (monsterList.get(0).getMonsterType().equals("Goblin knight")) {
 
             monsterImg.setImage(goblinImage);
-        } else if (monster.getMonsterType().equals("Orc")) {
+        } else if (monsterList.get(0).getMonsterType().equals("Orc")) {
 
             monsterImg.setImage(orcImage);
-        } else if (monster.getMonsterType().equals("Orc berserker")) {
+        } else if (monsterList.get(0).getMonsterType().equals("Orc berserker")) {
 
             monsterImg.setImage(orcImage);
-        } else if (monster.getMonsterType().equals("Orc knight")) {
+        } else if (monsterList.get(0).getMonsterType().equals("Orc knight")) {
 
             monsterImg.setImage(orcImage);
-        } else if (monster.getMonsterType().equals("Troll")) {
+        } else if (monsterList.get(0).getMonsterType().equals("Troll")) {
 
             monsterImg.setImage(trollImage);
-        } else if (monster.getMonsterType().equals("zombie Troll")) {
+        } else if (monsterList.get(0).getMonsterType().equals("zombie Troll")) {
 
             monsterImg.setImage(zombieTrollImage);
-        } else if (monster.getMonsterType().equals("zombie Dragon")) {
+        } else if (monsterList.get(0).getMonsterType().equals("zombie Dragon")) {
 
             monsterImg.setImage(zombieDragonImage);
-        } else if (monster.getMonsterType().equals("Dragon")) {
+        } else if (monsterList.get(0).getMonsterType().equals("Dragon")) {
 
             monsterImg.setImage(dragonImage);
-        } else if (monster.getMonsterType().equals("Cyclops")) {
+        } else if (monsterList.get(0).getMonsterType().equals("Cyclops")) {
 
             monsterImg.setImage(cyclopImage);
-        } else if (monster.getMonsterType().equals("Treeman")) {
+        } else if (monsterList.get(0).getMonsterType().equals("Treeman")) {
 
             monsterImg.setImage(treemanImage);
-        } else if (monster.getMonsterType().equals("Man-eating Giraffe")) {
+        } else if (monsterList.get(0).getMonsterType().equals("Man-eating Giraffe")) {
 
             monsterImg.setImage(giraffeImage);
         }
@@ -813,11 +838,9 @@ public class FXMLAdventureController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        
         backgroundImg.setPreserveRatio(false);
         MusicSettings.getInstance().playMusic(UserData.getInstance().getAdventurePosition());
-        
-        
+
         position = UserData.getInstance().getAdventurePosition();
 
         if (position.equals("plains")) {

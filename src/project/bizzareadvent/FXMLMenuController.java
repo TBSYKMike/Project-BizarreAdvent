@@ -31,7 +31,7 @@ import project.bizzareadvent.SaveLoad.UserData;
  *
  * @author Mike
  */
-public class FXMLScene2Controller implements Initializable {
+public class FXMLMenuController implements Initializable {
     
     @FXML
     private Button buttonBack;

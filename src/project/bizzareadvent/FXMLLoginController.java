@@ -13,7 +13,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import java.sql.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -28,7 +27,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import project.bizzareadvent.SaveLoad.DatabaseServer;
 import project.bizzareadvent.SaveLoad.MusicSettings;
-import project.bizzareadvent.SaveLoad.UserData;
 
 /**
  *
@@ -79,7 +77,7 @@ public class FXMLLoginController implements Initializable {
                 Node node = (Node) event.getSource();
                 Stage stage1 = (Stage) node.getScene().getWindow();
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLScene2.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLMenu.fxml"));
                 Parent root = loader.load();
 
                 Scene scene = new Scene(root);

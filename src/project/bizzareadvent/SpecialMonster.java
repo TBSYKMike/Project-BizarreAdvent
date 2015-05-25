@@ -9,18 +9,19 @@ package project.bizzareadvent;
  *
  * @author Jocke
  */
-public abstract class SpecialMonster extends Monster {
+public class SpecialMonster extends Monster {
 
     public SpecialMonster(int baseHp, int baseDef, int baseAttack, int baseDmg, int amountScore, int amountGold, String monsterType) {
         super(baseHp, baseDef, baseAttack, baseDmg, amountScore, amountGold, monsterType);
     }
 
-
-
-    
-
-    
-
+    public int specialAttack(int characterHP){
+        int damage;
+        
+        damage = characterHP / 2;
+        
+        return damage;
+    }
 }
     
 

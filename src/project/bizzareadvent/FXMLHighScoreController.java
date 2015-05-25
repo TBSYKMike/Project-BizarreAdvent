@@ -109,6 +109,31 @@ public class FXMLHighScoreController implements Initializable {
         } catch (SQLException e) {
             System.err.println("ERROR: " + e);
         }
+        textareaHighScore1.setText(testPrint);
+        
+        
+    }    
+    
+    
+    @FXML
+    private void handleButtonActionBack(ActionEvent event) {
+        
+            try {
+
+                Node node = (Node) event.getSource();
+                Stage stage2 = (Stage) node.getScene().getWindow();
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLMenu.fxml"));
+                Parent root = loader.load();
+
+                Scene scene = new Scene(root);
+                stage2.setScene(scene);
+                stage2.show();
+
+            } catch (IOException ex) {
+                System.out.println("Scene change error1");
+            }
+        
     }
     
      private void connection2(){
