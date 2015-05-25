@@ -19,6 +19,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import project.bizzareadvent.SaveLoad.AllLocalData;
 import project.bizzareadvent.SaveLoad.DatabaseServer;
+import project.bizzareadvent.SaveLoad.MusicSettings;
 import project.bizzareadvent.SaveLoad.UserData;
 
 /**
@@ -42,12 +43,14 @@ public class FXMLGameOverController implements Initializable {
         String charName = UserData.getInstance().getCharactersArrList().getCharacterName();
         int charScore = UserData.getInstance().getCharactersArrList().getCurrentScore();
         
-        String scoreText = charName + "'s score is: " + charScore;
+        String scoreText = charName + "'s final score is: " + charScore;
         
         isDeadOrGameCleared();
         deleteCharacter();
         setToHighScore();
         labelScore.setText(scoreText);
+        
+        MusicSettings.getInstance().playMusic("main");
         
     }    
     
@@ -78,7 +81,7 @@ public class FXMLGameOverController implements Initializable {
                 Node node = (Node) event.getSource();
                 Stage stageLogin = (Stage) node.getScene().getWindow();
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLScene2.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLMenu.fxml"));
                 Parent root = loader.load();
 
                 Scene scene = new Scene(root);
