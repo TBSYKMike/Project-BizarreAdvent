@@ -102,7 +102,7 @@ public class FXMLCityController implements Initializable {
         //check current gold if is enough
         
         int gold = UserData.getInstance().getCharactersArrList().getCurrentGold();
-        if (healingCost <= gold && gold > 0 && UserData.getInstance().getCharactersArrList().getCurrentHp() < healingCost) {
+        if (healingCost <= gold && gold > 0 && UserData.getInstance().getCharactersArrList().getCurrentHp() < 100) {
             System.out.println("gega Heal");
             UserData.getInstance().getCharactersArrList().setCurrentGold((gold - healingCost));
             UserData.getInstance().getCharactersArrList().setCurrentHp(100);
@@ -112,6 +112,11 @@ public class FXMLCityController implements Initializable {
         } else {
             labelWarning.setOpacity(100);
         }
+        
+        if(UserData.getInstance().getCharactersArrList().getCurrentHp() <= 100){
+            labelWarning.setOpacity(0);
+        } 
+        
         showStats();
     }
     
