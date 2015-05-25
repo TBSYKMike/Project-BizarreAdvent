@@ -179,26 +179,25 @@ public class FXMLAdventureController implements Initializable {
             adventureLog.appendText("\n\nThe " + monsterList.get(0).getMonsterType() + " is burning and takes " + burnDamage + " damage!");
         }
 
-        if (monsterList.get(0).getBaseHp() <= 0) {
+        /*if (monsterList.get(0).getBaseHp() <= 0) {
 
-            monsterImg.setImage(null);
+         monsterImg.setImage(null);
             
-            adventureLog.appendText("\n\nYou are victorious! You have slain the " + monsterList.get(0).getMonsterType() + ".");
-            adventureLog.appendText("\nYou add " + monsterList.get(0).getAmountGold() + " gold to your purse and");
-            adventureLog.appendText("\ngain " + monsterList.get(0).getAmountScore() + " score.");
+         adventureLog.appendText("\n\nYou are victorious! You have slain the " + monsterList.get(0).getMonsterType() + ".");
+         adventureLog.appendText("\nYou add " + monsterList.get(0).getAmountGold() + " gold to your purse and");
+         adventureLog.appendText("\ngain " + monsterList.get(0).getAmountScore() + " score.");
 
-            list.get(0).setCurrentGold(list.get(0).getCurrentGold() + monsterList.get(0).getAmountGold());
-            list.get(0).setCurrentScore(list.get(0).getCurrentScore() + monsterList.get(0).getAmountScore());
+         list.get(0).setCurrentGold(list.get(0).getCurrentGold() + monsterList.get(0).getAmountGold());
+         list.get(0).setCurrentScore(list.get(0).getCurrentScore() + monsterList.get(0).getAmountScore());
 
-            attackButton.setDisable(true);
-            secondaryButton.setDisable(true);
-            runButton.setDisable(true);
-            continueButton.setDisable(false);
-            monsterList.remove(0);
-        } else {
-            monsterAttack();
-        }
-
+         attackButton.setDisable(true);
+         secondaryButton.setDisable(true);
+         runButton.setDisable(true);
+         continueButton.setDisable(false);
+         monsterList.remove(0);
+         } else {
+         monsterAttack();
+         }*/
         if (cooldown >= 5) {
             cooldown = 0;
             monsterList.get(0).setIsBurned(false);
@@ -215,6 +214,26 @@ public class FXMLAdventureController implements Initializable {
             monsterList.get(0).setIsStunned(false);
         } else {
             stunCooldown += 1;
+        }
+
+        if (monsterList.get(0).getBaseHp() <= 0) {
+
+            monsterImg.setImage(null);
+
+            adventureLog.appendText("\n\nYou are victorious! You have slain the " + monsterList.get(0).getMonsterType() + ".");
+            adventureLog.appendText("\nYou add " + monsterList.get(0).getAmountGold() + " gold to your purse and");
+            adventureLog.appendText("\ngain " + monsterList.get(0).getAmountScore() + " score.");
+
+            list.get(0).setCurrentGold(list.get(0).getCurrentGold() + monsterList.get(0).getAmountGold());
+            list.get(0).setCurrentScore(list.get(0).getCurrentScore() + monsterList.get(0).getAmountScore());
+
+            attackButton.setDisable(true);
+            secondaryButton.setDisable(true);
+            runButton.setDisable(true);
+            continueButton.setDisable(false);
+            monsterList.remove(0);
+        } else {
+            monsterAttack();
         }
 
         showStats();
@@ -579,7 +598,7 @@ public class FXMLAdventureController implements Initializable {
             if (monsterList.get(0).getBaseHp() <= 0) {
 
                 monsterImg.setImage(null);
-                
+
                 adventureLog.appendText("\n\nYou are victorious! You have slain the " + monsterList.get(0).getMonsterType() + ".");
                 adventureLog.appendText("\nYou add " + monsterList.get(0).getAmountGold() + " gold to your purse and");
                 adventureLog.appendText("\ngain " + monsterList.get(0).getAmountScore() + " score.");
@@ -618,7 +637,7 @@ public class FXMLAdventureController implements Initializable {
             if (monsterList.get(0).getBaseHp() <= 0) {
 
                 monsterImg.setImage(null);
-                
+
                 adventureLog.appendText("\n\nYou are victorious! You have slain the " + monsterList.get(0).getMonsterType() + ".");
                 adventureLog.appendText("\nYou add " + monsterList.get(0).getAmountGold() + " gold to your purse and");
                 adventureLog.appendText("\ngain " + monsterList.get(0).getAmountScore() + " score.");
@@ -653,7 +672,7 @@ public class FXMLAdventureController implements Initializable {
             monsterList.get(0).setBaseHp(0);
 
             monsterImg.setImage(null);
-           
+
             adventureLog.appendText("\n\nYou strike a mighty blow aimed att a vital point, the monster falls over dead!");
             adventureLog.appendText("\nYou add " + monsterList.get(0).getAmountGold() + " gold to your purse and");
             adventureLog.appendText("\ngain " + monsterList.get(0).getAmountScore() + " score.");
@@ -731,23 +750,22 @@ public class FXMLAdventureController implements Initializable {
     }
 
     public void gameOver(ActionEvent event) {
-        
-        try{
-                Node node = (Node) event.getSource();
-                Stage stageLogin = (Stage) node.getScene().getWindow();
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLGameOver.fxml"));
-                Parent root = loader.load();
+        try {
+            Node node = (Node) event.getSource();
+            Stage stageLogin = (Stage) node.getScene().getWindow();
 
-                Scene scene = new Scene(root);
-                stageLogin.setScene(scene);
-                stageLogin.show();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLGameOver.fxml"));
+            Parent root = loader.load();
+
+            Scene scene = new Scene(root);
+            stageLogin.setScene(scene);
+            stageLogin.show();
                 //UserData.getInstance().setRememeberLastClass(this.getClass().getName());
-        
-        }catch(IOException ex){
+
+        } catch (IOException ex) {
             System.out.println("Scene change error1rrr");
         }
-        
 
     }
 
@@ -820,11 +838,9 @@ public class FXMLAdventureController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        
         backgroundImg.setPreserveRatio(false);
         MusicSettings.getInstance().playMusic(UserData.getInstance().getAdventurePosition());
-        
-        
+
         position = UserData.getInstance().getAdventurePosition();
 
         if (position.equals("plains")) {
