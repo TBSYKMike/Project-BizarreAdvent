@@ -7,6 +7,11 @@ package project.bizzareadvent;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -46,8 +51,8 @@ public class FXMLGameOverController implements Initializable {
         String scoreText = charName + "'s final score is: " + charScore;
         
         isDeadOrGameCleared();
-        deleteCharacter();
         setToHighScore();
+        deleteCharacter();
         labelScore.setText(scoreText);
         
         MusicSettings.getInstance().playMusic("main");
@@ -72,7 +77,7 @@ public class FXMLGameOverController implements Initializable {
     }
     
     private void setToHighScore(){
-        
+        connection1();
     }
     
     public void buttonActionContinue(ActionEvent event) {
@@ -95,6 +100,48 @@ public class FXMLGameOverController implements Initializable {
         
 
     }
+    
+    
+    
+    private void connection1(){
+        int counter = 0;
+        
+        String userName = AllLocalData.getInstance().getInfo1Login().get(0).getUserName();
+        String charName = UserData.getInstance().getCharactersArrList().getCharacterName();
+        int score = UserData.getInstance().getCharactersArrList().getCurrentScore();
+        
+        
+        DatabaseServer.getInstance().connectToDB();
+        try (Connection c = DriverManager.getConnection(DatabaseServer.getInstance().getURL())) {    // sql Commands
+            Statement st1 = c.createStatement();
+            ResultSet rs1 = st1.executeQuery(
+                    
+                    "SELECT * \n" +
+                "FROM gamedb.high_score ;");
+                
+            while (rs1.next()) {
+                counter = rs1.getRow();
+            }
+
+            
+            
+            Statement st2 = c.createStatement();
+            st2.execute("INSERT INTO `gamedb`.`high_score` (`idNr`, `userName`, `characterName`, `score`) VALUES ('" + (counter+1) + "', '" + userName + "', '" + charName + "', '" + score + "');");
+            
+            c.close();  // closing connection
+
+            
+
+            
+
+        } catch (SQLException e) {
+            System.err.println("ERROR: " + e);
+        }
+        
+        
+        
+    }    
+    
     
     
 }

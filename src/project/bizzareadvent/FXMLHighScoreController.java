@@ -50,9 +50,7 @@ public class FXMLHighScoreController implements Initializable {
         //textareaHighScore2.setText(Username);
         
         
-        
-        
-        textareaHighScore1.setText(testPrint);
+        connection2("DESC");
         
         
     }    
@@ -80,6 +78,9 @@ public class FXMLHighScoreController implements Initializable {
     }
     
     private void connection1(){
+        
+        testPrint = "";
+        
         DatabaseServer.getInstance().connectToDB();
         try (Connection c = DriverManager.getConnection(DatabaseServer.getInstance().getURL())) {    // sql Commands
             Statement st = c.createStatement();
@@ -117,14 +118,16 @@ public class FXMLHighScoreController implements Initializable {
     
     
     
-     private void connection2(){
+     private void connection2(String ASCorDESC){
+        testPrint = "";
+        
         DatabaseServer.getInstance().connectToDB();
         try (Connection c = DriverManager.getConnection(DatabaseServer.getInstance().getURL())) {    // sql Commands
             Statement st = c.createStatement();
             ResultSet rs1 = st.executeQuery(
                 "SELECT * \n" +
                 "FROM gamedb.high_score \n" +
-                "ORDER BY score DESC;");
+                "ORDER BY score " + ASCorDESC + ";");
 
             while (rs1.next()) {
                 //String username = rs1.getString("userName");
@@ -132,8 +135,8 @@ public class FXMLHighScoreController implements Initializable {
                 //System.out.println("Customer Name: " + name + " \nand customer number " + password + "\n\n");
                 
                 if (rs1.getRow() <= 1000){
-                    System.out.printf( rs1.getRow() + " " + rs1.getString(1) + " " + rs1.getString(2) + " " + rs1.getString(3)  );
-                    testPrint += rs1.getRow() + " " + rs1.getString(1) + " " + rs1.getString(2) + " " + rs1.getString(3) + " \n";
+                    //System.out.printf( rs1.getRow() + " " + rs1.getString(2) + " " + rs1.getString(3) + " " + rs1.getString(4)  );
+                    testPrint += rs1.getRow() + " " + rs1.getString(2) + " " + rs1.getString(3) + " " + rs1.getString(4) + " \n";
                 }
             }
 
@@ -146,9 +149,47 @@ public class FXMLHighScoreController implements Initializable {
         } catch (SQLException e) {
             System.err.println("ERROR: " + e);
         }
+        
+        textareaHighScore1.setText(testPrint);
     }
     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     @FXML
+    private void handleButtonActionHighToLow(ActionEvent event) {
+        
+            connection2("DESC");
+        
+    }
     
+     
+     @FXML
+    private void handleButtonActionLowToHigh(ActionEvent event) {
+        
+            connection2("ASC");
+        
+    }
+     
+     
+     
+     
+     
+     
+     
+     
     
     
 }

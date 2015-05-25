@@ -8,6 +8,7 @@ package project.bizzareadvent;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.DatabaseMetaData;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,6 +24,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import project.bizzareadvent.SaveLoad.AllLocalData;
+import project.bizzareadvent.SaveLoad.DatabaseServer;
 import project.bizzareadvent.SaveLoad.MusicSettings;
 import project.bizzareadvent.SaveLoad.UserData;
 
@@ -114,11 +116,15 @@ public class FXMLWorldMapController implements Initializable {
 
     @FXML
     public void handleButtonActionBack(ActionEvent event) {
+        
+        UserData.getInstance().test001SaveCharDataToALLLOCALDATA();
+        DatabaseServer.getInstance().saveToDB();
+        
         try {
             Node node = (Node) event.getSource();
             Stage stageLogin = (Stage) node.getScene().getWindow();
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLScene2.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLMenu.fxml"));
             Parent root = loader.load();
 
             Scene scene = new Scene(root);

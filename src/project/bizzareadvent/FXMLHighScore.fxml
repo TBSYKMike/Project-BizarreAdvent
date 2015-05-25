@@ -24,5 +24,7 @@
          </font>
       </TextArea>
       <Button layoutX="354.0" layoutY="436.0" mnemonicParsing="false" onAction="#handleButtonActionBack" text="Back" />
+      <Button layoutX="435.0" layoutY="165.0" mnemonicParsing="false" onAction="#handleButtonActionHighToLow" text="High to Low" />
+      <Button layoutX="435.0" layoutY="229.0" mnemonicParsing="false" onAction="#handleButtonActionLowToHigh" text="Low to High" />
    </children>
 </AnchorPane>
