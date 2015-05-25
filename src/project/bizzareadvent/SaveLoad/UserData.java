@@ -276,27 +276,17 @@ public class UserData {
     
     
     
-    private MediaPlayer musicPlayer;
-    MediaPlayer musicPlayer2;
-    MediaPlayer musicPlayer3;
-    MediaPlayer musicPlayer4;
+    private boolean gameClear = false;
 
-    public void playMusic() {
-        Media audioFile = new Media(getClass().getResource("/musiconloop1.mp3").toString());
-        try {
-            musicPlayer = new MediaPlayer(audioFile);
-            musicPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-            musicPlayer.setVolume(0.7);
-
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            System.exit(0);
-        }
+    public boolean isGameClear() {
+        return gameClear;
     }
 
-    public MediaPlayer getMusicPlayer() {
-        return musicPlayer;
+    public void setGameClear(boolean gameClear) {
+        this.gameClear = gameClear;
     }
+    
+    
 
     
     

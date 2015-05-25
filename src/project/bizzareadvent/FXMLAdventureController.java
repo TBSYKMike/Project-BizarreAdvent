@@ -284,7 +284,7 @@ public class FXMLAdventureController implements Initializable {
                 ex.printStackTrace();
             }
         } else if (deadCharacter == true) {
-
+            gameOver(event);
         } else {
             if (position.equals("plains")) {
                 plains();
@@ -723,7 +723,24 @@ public class FXMLAdventureController implements Initializable {
         }
     }
 
-    public void gameOver() {
+    public void gameOver(ActionEvent event) {
+        
+        try{
+                Node node = (Node) event.getSource();
+                Stage stageLogin = (Stage) node.getScene().getWindow();
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLGameOver.fxml"));
+                Parent root = loader.load();
+
+                Scene scene = new Scene(root);
+                stageLogin.setScene(scene);
+                stageLogin.show();
+                //UserData.getInstance().setRememeberLastClass(this.getClass().getName());
+        
+        }catch(IOException ex){
+            System.out.println("Scene change error1rrr");
+        }
+        
 
     }
 
