@@ -76,7 +76,7 @@ public class TextGenerator {
         else if(randomInt > 60 && randomInt <= 80){
             forestText = ("\n\nYou pass by totems and poles with human heads."
                         + "\n'Nope nope nope."
-                        + "\nWith no hesitation you speed up your pace.");
+                        + "\nWithout hesitation you speed up your pace.");
         }
         else{
             forestText = ("\n\nYou feel lost and scared, but not alone."

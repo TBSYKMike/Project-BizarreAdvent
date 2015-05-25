@@ -17,6 +17,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -39,11 +40,9 @@ public class FXMLNewGameController implements Initializable {
     @FXML
     private Button buttonBack;
     @FXML
-    private ImageView imageWarrior;
+    private ImageView imageClass;
     @FXML
-    private ImageView imageMage;
-    @FXML
-    private ImageView imageRogue;
+    private TextArea classInfo;
     @FXML
     private ImageView backGroundImage;
     @FXML
@@ -55,7 +54,7 @@ public class FXMLNewGameController implements Initializable {
     // 3 booleans for marking chosen hero
     public boolean warriorChosen = false;
     public boolean mageChosen = false;
-    public boolean assassinChosen = false;
+    public boolean rogueChosen = false;
     private static FXMLNewGameController instance;
 
     @Override
@@ -122,9 +121,9 @@ public class FXMLNewGameController implements Initializable {
     }
 
     @FXML
-    public void assassinChosen(ActionEvent event) {
+    public void rogueChosen(ActionEvent event) {
         reset();
-        assassinChosen = true;
+        rogueChosen = true;
 
         chosenCharacter = true;
         buttonDone.setDisable(false);
@@ -132,7 +131,7 @@ public class FXMLNewGameController implements Initializable {
     }
 
     private void reset() {
-        assassinChosen = false;
+        rogueChosen = false;
         warriorChosen = false;
         mageChosen = false;
     }
@@ -145,7 +144,7 @@ public class FXMLNewGameController implements Initializable {
         else if (mageChosen) {
             charType = 1;
         }
-        else if (assassinChosen) {
+        else if (rogueChosen) {
             charType = 2;
         }
 
@@ -168,22 +167,42 @@ public class FXMLNewGameController implements Initializable {
         Image characterImage2 = new Image("ms-mage0.png", true);
         Image characterImage3 = new Image("ms-rogue0.png", true);
 
-        imageWarrior.setImage(characterImage1);
-
-        imageMage.setImage(characterImage2);
-
-        imageRogue.setImage(characterImage3);
-
-        imageWarrior.setOpacity(0.3);
-        imageMage.setOpacity(0.3);
-        imageRogue.setOpacity(0.3);
-
         if (warriorChosen == true) {
-            imageWarrior.setOpacity(1);
+            imageClass.setImage(characterImage1);
+            classInfo.setText("You have chosen the Warrior!"
+                            + "\n\nThe warrior uses her melee weapon"
+                            + "\nto slay her foes. With the lowest base damage"
+                            + "\nof the three she compensates with wielding heavy"
+                            + "\narmor and a shield, making her base defence"
+                            + "\nthe highest of the three."
+                            + "\nThe warriors' secondary attack is a shield bash that has"
+                            + "\na chance to stun the enemy for two turns, but only does"
+                            + "\nhalf the damage of a normal attack.");
         } else if (mageChosen == true) {
-            imageMage.setOpacity(1);
-        } else if (assassinChosen == true) {
-            imageRogue.setOpacity(1);
+            imageClass.setImage(characterImage2);
+            classInfo.setText("You have chosen the Mage!"
+                            + "\n\nWearing only a robe, the mages'"
+                            + "\nbase defence is the lowest."
+                            + "\nBut do not let him fool you!"
+                            + "\nInstead he uses powerful magic to overcome"
+                            + "\nhis enemies, causing him to have the"
+                            + "\nhighest base damage."
+                            + "\nThe mages' secondary attack is a spell"
+                            + "\nnamed flame burst. If it hits, the monster"
+                            + "\nwill first take double damage, then it will"
+                            + "\nget a burn effect, making it take a small amount"
+                            + "\nof damage for five turns.");
+        } else if (rogueChosen == true) {
+            imageClass.setImage(characterImage3);
+            classInfo.setText("You have chosen the Rogue!"
+                            + "\n\nWearing leather gear to make him more"
+                            + "\nagile and dual wielding weapons to strike"
+                            + "\nhis enemies. This makes the rogues' base damage"
+                            + "\nand base defence to be inbetween the other two."
+                            + "\nThe rogues' secondary attack is assassinate."
+                            + "\nWhen used it doubles his defence that turn and"
+                            + "\nhas a small chance to kill you enemy in one"
+                            + "\nsingle hit.");
         }
 
     }
@@ -206,7 +225,7 @@ public class FXMLNewGameController implements Initializable {
                         AllLocalData.getInstance().getInfo2LoginHasCharacters().get(arraySlot).setCharacters_idNr(1);
                     } else if (mageChosen) {
                         AllLocalData.getInstance().getInfo2LoginHasCharacters().get(arraySlot).setCharacters_idNr(2);
-                    } else if (assassinChosen) {
+                    } else if (rogueChosen) {
                         AllLocalData.getInstance().getInfo2LoginHasCharacters().get(arraySlot).setCharacters_idNr(3);
                     }
                     if (true) {
