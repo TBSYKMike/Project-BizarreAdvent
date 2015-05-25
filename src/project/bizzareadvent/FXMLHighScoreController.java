@@ -92,7 +92,7 @@ public class FXMLHighScoreController implements Initializable {
                 Node node = (Node) event.getSource();
                 Stage stage2 = (Stage) node.getScene().getWindow();
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLScene2.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLMenu.fxml"));
                 Parent root = loader.load();
 
                 Scene scene = new Scene(root);
