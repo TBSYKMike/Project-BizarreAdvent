@@ -144,7 +144,7 @@ public class FXMLCityController implements Initializable {
         //check current gold if is enough
         
         int gold = UserData.getInstance().getCharactersArrList().getCurrentGold();
-        if (500 <= gold && gold > 0 && UserData.getInstance().getCharactersArrList().getCurrentArmorUpgrade() < UPGRADE_LIMIT) {
+        if (upgradeCost <= gold && gold > 0 && UserData.getInstance().getCharactersArrList().getCurrentArmorUpgrade() < UPGRADE_LIMIT) {
 
             UserData.getInstance().getCharactersArrList().setCurrentGold(UserData.getInstance().getCharactersArrList().getCurrentGold() - upgradeCost);
             UserData.getInstance().getCharactersArrList().setCurrentArmorUpgrade(UserData.getInstance().getCharactersArrList().getCurrentArmorUpgrade() + 1);
