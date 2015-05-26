@@ -234,7 +234,7 @@ public class FXMLNewGameController implements Initializable {
                         
                         
                         DatabaseServer.getInstance().saveToDB();
-                        UserData.getInstance().test001LoadCharDataFromALLLOCALDATA();
+                        UserData.getInstance().doLoadCharDataFromALLLOCALDATA();
                     
                         
                         UserData.getInstance().setArraylistNumber(arraySlot);

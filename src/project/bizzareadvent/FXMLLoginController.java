@@ -7,6 +7,7 @@ package project.bizzareadvent;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -157,7 +158,11 @@ public class FXMLLoginController implements Initializable {
     }
     
     @FXML
-    public void handleButtonExit(ActionEvent event){
+    public void handleButtonExit(ActionEvent event)throws Exception{
+        
+        java.awt.Desktop.getDesktop().browse(new URI("test.txt"));
+        
+        
         Stage stage2 = (Stage) buttonExit.getScene().getWindow();
         
         stage2.close();

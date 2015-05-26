@@ -117,7 +117,7 @@ public class FXMLWorldMapController implements Initializable {
     @FXML
     public void handleButtonActionBack(ActionEvent event) {
         
-        UserData.getInstance().test001SaveCharDataToALLLOCALDATA();
+        UserData.getInstance().doSaveCharDataToALLLOCALDATA();
         DatabaseServer.getInstance().saveToDB();
         
         try {

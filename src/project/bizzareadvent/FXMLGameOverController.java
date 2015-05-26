@@ -73,7 +73,7 @@ public class FXMLGameOverController implements Initializable {
         int charSlot = (UserData.getInstance().getArraylistNumber()+1);
         AllLocalData.getInstance().deleteCharFromSlot( charSlot );
         DatabaseServer.getInstance().saveToDB();
-        UserData.getInstance().test001LoadCharDataFromALLLOCALDATA();
+        UserData.getInstance().doLoadCharDataFromALLLOCALDATA();
     }
     
     private void setToHighScore(){

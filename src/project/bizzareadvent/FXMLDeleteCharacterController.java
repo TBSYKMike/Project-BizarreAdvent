@@ -147,7 +147,7 @@ public class FXMLDeleteCharacterController implements Initializable {
         }
         DatabaseServer.getInstance().saveToDB();
         //UserData.getInstance().testLoadAllDataFromALLLOCALDATAToUSERDATA();
-        UserData.getInstance().test001LoadCharDataFromALLLOCALDATA();
+        UserData.getInstance().doLoadCharDataFromALLLOCALDATA();
     }
     
     

@@ -158,7 +158,7 @@ public class FXMLCityController implements Initializable {
     }
 
     private void saveToLocalNDb() {
-        UserData.getInstance().test001SaveCharDataToALLLOCALDATA();
+        UserData.getInstance().doSaveCharDataToALLLOCALDATA();
         DatabaseServer.getInstance().saveToDB();
     }
 

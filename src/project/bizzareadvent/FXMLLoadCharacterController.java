@@ -117,7 +117,7 @@ public class FXMLLoadCharacterController implements Initializable {
         //enableButtonSlots();
         disableButtonConfirmCancel();
         
-        UserData.getInstance().test001LoadCharDataFromALLLOCALDATA();
+        UserData.getInstance().doLoadCharDataFromALLLOCALDATA();
         
         System.out.println(slot);
         UserData.getInstance().setArraylistNumber((slot-1));
