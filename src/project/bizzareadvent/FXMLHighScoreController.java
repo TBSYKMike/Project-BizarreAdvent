@@ -37,7 +37,7 @@ public class FXMLHighScoreController implements Initializable {
      */
     
     @FXML
-    private TextArea textareaHighScore1, textareaHighScore2;
+    private TextArea textareaHighScore1;
     
     private String testPrint = "";
     

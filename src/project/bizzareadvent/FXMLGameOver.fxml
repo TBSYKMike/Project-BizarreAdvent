@@ -7,15 +7,15 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.bizzareadvent.FXMLGameOverController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.bizzareadvent.FXMLGameOverController">
    <children>
-      <Label fx:id="labelGameOver" alignment="CENTER" layoutX="19.0" layoutY="90.0" prefHeight="61.0" prefWidth="564.0" text="Game Over">
+      <Label fx:id="labelGameOver" alignment="CENTER" layoutX="93.0" layoutY="89.0" prefHeight="61.0" prefWidth="564.0" text="Game Over">
          <font>
             <Font size="40.0" />
          </font>
       </Label>
-      <Button layoutX="269.0" layoutY="290.0" mnemonicParsing="false" onAction="#buttonActionContinue" text="Continue" />
-      <Label fx:id="labelScore" alignment="CENTER" layoutX="19.0" layoutY="192.0" prefHeight="17.0" prefWidth="564.0" text="Score + message" />
-      <Label fx:id="labelThankMessage" alignment="CENTER" layoutX="18.0" layoutY="237.0" prefHeight="17.0" prefWidth="564.0" text="Thank you for playing! May you have better luck next time!" />
+      <Button layoutX="343.0" layoutY="315.0" mnemonicParsing="false" onAction="#buttonActionContinue" text="Continue" />
+      <Label fx:id="labelScore" alignment="CENTER" layoutX="93.0" layoutY="193.0" prefHeight="17.0" prefWidth="564.0" text="Score + message" />
+      <Label fx:id="labelThankMessage" alignment="CENTER" layoutX="93.0" layoutY="250.0" prefHeight="17.0" prefWidth="564.0" text="Thank you for playing! May you have better luck next time!" />
    </children>
 </AnchorPane>
