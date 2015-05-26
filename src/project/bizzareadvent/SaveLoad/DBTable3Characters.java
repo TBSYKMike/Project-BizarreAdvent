@@ -10,7 +10,7 @@ package project.bizzareadvent.SaveLoad;
  * @author Mike
  */
 public class DBTable3Characters {
-    
+
     //**************************************************************************
     //**************************************************************************
     //**************************************************************************
@@ -28,7 +28,6 @@ public class DBTable3Characters {
     //**************************************************************************
     //**************************************************************************
     //**************************************************************************
-    
     private int idNr;
     private String characterType;
     private int baseHp;
@@ -92,9 +91,5 @@ public class DBTable3Characters {
     public void setBaseDef(int baseDef) {
         this.baseDef = baseDef;
     }
-    
-    
-    
-    
-    
+
 }

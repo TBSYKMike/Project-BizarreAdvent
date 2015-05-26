@@ -10,7 +10,7 @@ package project.bizzareadvent.SaveLoad;
  * @author Mike
  */
 public class DBTable2LoginHasCharacters {
-    
+
     //**************************************************************************
     //**************************************************************************
     //**************************************************************************
@@ -28,7 +28,6 @@ public class DBTable2LoginHasCharacters {
     //**************************************************************************
     //**************************************************************************
     //**************************************************************************
-    
     private int Login_idNr;
     private int charSlot;
     private int Characters_idNr;
@@ -152,9 +151,5 @@ public class DBTable2LoginHasCharacters {
     public void setCurrentDef(int currentDef) {
         this.currentDef = currentDef;
     }
-    
-    
-    
-    
-    
+
 }

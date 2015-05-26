@@ -5,17 +5,14 @@
  */
 package project.bizzareadvent.SaveLoad;
 
-import java.io.DataInput;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -86,7 +83,7 @@ public class MusicSettings {
             } catch (IOException ex) {
 
             }
-        }else {
+        } else {
             musicOn = true;
         }
     }
@@ -123,9 +120,9 @@ public class MusicSettings {
     }
 
     public void playMusic(String scene) {
-        
+
         if (musicOn) {
-            
+
             if (musicPlayerArrList.isEmpty()) {
                 loadMusic();
             }
@@ -145,13 +142,13 @@ public class MusicSettings {
             } else if (scene.equalsIgnoreCase("castle")) {
                 int armorUpgrade = UserData.getInstance().getCharactersArrList().getCurrentArmorUpgrade();
                 int weaponUpgrade = UserData.getInstance().getCharactersArrList().getCurrentWeaponUpgrade();
-                if ( armorUpgrade >=10  && weaponUpgrade >= 10 ) {
+                if (armorUpgrade >= 10 && weaponUpgrade >= 10) {
                     musicPlayerArrList.get(6).play();
-                }else{
+                } else {
                     musicPlayerArrList.get(7).play();
                 }
             }
-        }else{
+        } else {
             stopAllMusic();
         }
     }

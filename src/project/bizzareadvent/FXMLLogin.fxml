@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import java.lang.*?>
@@ -24,5 +25,17 @@
       <Label fx:id="forgotPassword" layoutX="254.0" layoutY="273.0" onMouseClicked="#handleForgottPassword" prefHeight="14.0" prefWidth="241.0" text="Forgot password?" />
       <Button layoutX="288.0" layoutY="358.0" mnemonicParsing="false" onAction="#handleButtonActionSettings" prefHeight="25.0" prefWidth="100.0" text="Settings" />
       <Button fx:id="buttonExit" layoutX="288.0" layoutY="406.0" mnemonicParsing="false" onAction="#handleButtonExit" prefHeight="25.0" prefWidth="100.0" text="Exit" />
+      <Label layoutX="130.0" layoutY="61.0" text="Bizarre Adventure">
+         <font>
+            <Font name="Lucida Sans Unicode" size="48.0" />
+         </font>
+         <effect>
+            <Glow level="0.0">
+               <input>
+                  <DropShadow />
+               </input>
+            </Glow>
+         </effect>
+      </Label>
     </children>
 </AnchorPane>

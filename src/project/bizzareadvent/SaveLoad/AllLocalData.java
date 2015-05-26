@@ -72,6 +72,7 @@ public class AllLocalData {
         info3Characters.clear();
         System.out.println(info2LoginHasCharacters.isEmpty());
     }
+
     public void clearStatsData() {
         System.out.println(info2LoginHasCharacters.isEmpty());
         info2LoginHasCharacters.clear();
@@ -82,7 +83,7 @@ public class AllLocalData {
     public void deleteCharFromSlot(int nr) {
         try {
 
-            info2LoginHasCharacters.remove(nr-1);
+            info2LoginHasCharacters.remove(nr - 1);
             for (int i = 0; i < info2LoginHasCharacters.size(); i++) {
                 info2LoginHasCharacters.get(i).setCharSlot((i + 1));
             }

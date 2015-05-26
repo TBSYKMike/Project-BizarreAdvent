@@ -230,25 +230,12 @@ public class DatabaseServer {
         }
     }
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     private String URL;
-    
-    
+
     public String getURL() {
         return URL;
     }
-    
+
     public void connectToDB() {
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -259,7 +246,5 @@ public class DatabaseServer {
             System.err.println("ERROR: " + e);
         }
     }
-
-    
 
 }

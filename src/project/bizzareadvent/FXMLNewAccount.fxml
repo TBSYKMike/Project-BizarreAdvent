@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
@@ -19,5 +20,10 @@
       <Button fx:id="button" layoutX="485.0" layoutY="211.0" onAction="#handleButtonActionCreate" text="Create" />
       <Label fx:id="labelMessage" layoutX="301.0" layoutY="276.0" prefHeight="17.0" prefWidth="149.0" />
       <Button layoutX="350.0" layoutY="315.0" mnemonicParsing="false" onAction="#handleButtonActionBack" text="Back" />
+      <Label layoutX="235.0" layoutY="66.0" text="Create New Account">
+         <font>
+            <Font name="French Script MT" size="45.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
