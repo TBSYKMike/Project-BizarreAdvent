@@ -29,66 +29,63 @@ public class FXMLSettingsController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    
     @FXML
     private Button buttonOn, buttonOff;
-    
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         resetButtons();
-        if (MusicSettings.getInstance().isMusicOn() == true ){
+        if (MusicSettings.getInstance().isMusicOn() == true) {
             buttonOff.setDisable(false);
-        }else {
+        } else {
             buttonOn.setDisable(false);
         }
-        
-        
-    }    
-    
-    private void resetButtons(){
+
+    }
+
+    private void resetButtons() {
         buttonOn.setDisable(true);
         buttonOff.setDisable(true);
     }
-    
-    
+
     @FXML
-    private void buttonActionMusicOn(){
+    private void buttonActionMusicOn() {
         MusicSettings.getInstance().setMusicOnOff(true);
         resetButtons();
         buttonOff.setDisable(false);
         MusicSettings.getInstance().writeToFile();
         MusicSettings.getInstance().playMusic("main");
     }
+
     @FXML
-    private void buttonActionMusicOff(){
+    private void buttonActionMusicOff() {
         MusicSettings.getInstance().setMusicOnOff(false);
         resetButtons();
         buttonOn.setDisable(false);
         MusicSettings.getInstance().writeToFile();
         MusicSettings.getInstance().playMusic("main");
     }
-    
+
     @FXML
     private void handleButtonActionBack(ActionEvent event) {
-        
-            try {
 
-                Node node = (Node) event.getSource();
-                Stage stage2 = (Stage) node.getScene().getWindow();
+        try {
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLLogin.fxml"));
-                Parent root = loader.load();
+            Node node = (Node) event.getSource();
+            Stage stage2 = (Stage) node.getScene().getWindow();
 
-                Scene scene = new Scene(root);
-                stage2.setScene(scene);
-                stage2.show();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLLogin.fxml"));
+            Parent root = loader.load();
 
-            } catch (IOException ex) {
-                System.out.println("Scene change error1");
-            }
-        
+            Scene scene = new Scene(root);
+            stage2.setScene(scene);
+            stage2.show();
+
+        } catch (IOException ex) {
+            System.out.println("Scene change error1");
+        }
+
     }
-    
+
 }

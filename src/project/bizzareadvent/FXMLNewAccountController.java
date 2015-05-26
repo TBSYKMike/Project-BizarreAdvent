@@ -12,7 +12,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import java.sql.*;
-import java.util.ArrayList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -78,7 +77,7 @@ public class FXMLNewAccountController implements Initializable {
 
         DatabaseServer.getInstance().connectToDB();
 
-        try ( Connection c = DriverManager.getConnection( DatabaseServer.getInstance().getURL() ) ) {
+        try (Connection c = DriverManager.getConnection(DatabaseServer.getInstance().getURL())) {
             Statement st = c.createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM login");
 
@@ -113,13 +112,12 @@ public class FXMLNewAccountController implements Initializable {
                     textfieldPassword1.clear();
                     textfieldPassword2.clear();
                     labelMessage.requestFocus();
-                    
+
                     textfieldUsername.setDisable(true);
                     button.setDisable(true);
                     textfieldPassword1.setDisable(true);
                     textfieldPassword2.setDisable(true);
-                    
-                    
+
                 }
 
             } else {

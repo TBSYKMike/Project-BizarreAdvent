@@ -51,19 +51,21 @@ public class FXMLCityController implements Initializable {
 
     @FXML
     private Label labelWarning;
-    
+
     @FXML
     private Button buttonHeal, buttonWeaponUp, buttonArmorUp;
-    
+
     @FXML
     private Label labelHeal, labelWeaponUp, labelArmorUp;
-    
-    
 
     private final int UPGRADE_LIMIT = 10;
-    
-    int healingCost = 50;
-    int upgradeCost = 150;
+
+    private int healingCost = 50;
+    private int upgradeCost = 150;
+
+    private String message1 = "Not enough gold!";
+    private String message2HP = "Health is full!";
+    private String message3Upg = "Upgrade is maxed out!";
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -71,11 +73,10 @@ public class FXMLCityController implements Initializable {
         showStats();
 
         labelWarning.setOpacity(0);
-        
-        labelHeal.setText(Integer.toString(healingCost)+" gold");
-        labelWeaponUp.setText(Integer.toString(upgradeCost)+" gold");
-        labelArmorUp.setText(Integer.toString(upgradeCost)+" gold");
-        
+
+        labelHeal.setText(Integer.toString(healingCost) + " gold");
+        labelWeaponUp.setText(Integer.toString(upgradeCost) + " gold");
+        labelArmorUp.setText(Integer.toString(upgradeCost) + " gold");
 
     }
 
@@ -100,7 +101,7 @@ public class FXMLCityController implements Initializable {
     @FXML
     public void handleButtonActionHeal(ActionEvent event) {
         //check current gold if is enough
-        
+
         int gold = UserData.getInstance().getCharactersArrList().getCurrentGold();
         if (healingCost <= gold && gold > 0 && UserData.getInstance().getCharactersArrList().getCurrentHp() < 100) {
             System.out.println("gega Heal");
@@ -108,22 +109,22 @@ public class FXMLCityController implements Initializable {
             UserData.getInstance().getCharactersArrList().setCurrentHp(100);
             saveToLocalNDb();
             labelWarning.setOpacity(0);
-            
+            labelWarning.setText(message1);
+
+        } else if (UserData.getInstance().getCharactersArrList().getCurrentHp() <= 100) {
+            labelWarning.setOpacity(100);
+            labelWarning.setText(message2HP);
         } else {
             labelWarning.setOpacity(100);
         }
-        
-        if(UserData.getInstance().getCharactersArrList().getCurrentHp() <= 100){
-            labelWarning.setOpacity(0);
-        } 
-        
+
         showStats();
     }
-    
+
     @FXML
     public void handleButtonActionWeaponUpgrade(ActionEvent event) {
         //check current gold if is enough
-        
+
         int gold = UserData.getInstance().getCharactersArrList().getCurrentGold();
         if (upgradeCost <= gold && gold > 0 && UserData.getInstance().getCharactersArrList().getCurrentWeaponUpgrade() < UPGRADE_LIMIT) {
 
@@ -133,6 +134,10 @@ public class FXMLCityController implements Initializable {
             UserData.getInstance().getCharactersArrList().setCurrentDmg(UserData.getInstance().getCharactersArrList().getBaseDmg() + (10 * UserData.getInstance().getCharactersArrList().getCurrentWeaponUpgrade()));
             saveToLocalNDb();
             labelWarning.setOpacity(0);
+            labelWarning.setText(message1);
+        } else if (UserData.getInstance().getCharactersArrList().getCurrentWeaponUpgrade() <= 10) {
+            labelWarning.setOpacity(100);
+            labelWarning.setText(message3Upg);
         } else {
             labelWarning.setOpacity(100);
         }
@@ -142,7 +147,7 @@ public class FXMLCityController implements Initializable {
     @FXML
     public void handleButtonActionArmorUpgrade(ActionEvent event) {
         //check current gold if is enough
-        
+
         int gold = UserData.getInstance().getCharactersArrList().getCurrentGold();
         if (upgradeCost <= gold && gold > 0 && UserData.getInstance().getCharactersArrList().getCurrentArmorUpgrade() < UPGRADE_LIMIT) {
 
@@ -151,6 +156,10 @@ public class FXMLCityController implements Initializable {
             UserData.getInstance().getCharactersArrList().setCurrentDef(UserData.getInstance().getCharactersArrList().getBaseDef() + (10 * UserData.getInstance().getCharactersArrList().getCurrentArmorUpgrade()));
             saveToLocalNDb();
             labelWarning.setOpacity(0);
+            labelWarning.setText(message1);
+        } else if (UserData.getInstance().getCharactersArrList().getCurrentArmorUpgrade() <= 10) {
+            labelWarning.setOpacity(100);
+            labelWarning.setText(message3Upg);
         } else {
             labelWarning.setOpacity(100);
         }

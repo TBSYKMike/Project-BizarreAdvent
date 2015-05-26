@@ -7,7 +7,6 @@ package project.bizzareadvent;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URI;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -40,16 +39,11 @@ public class FXMLLoginController implements Initializable {
 
     @FXML
     private Label forgotPassword;
-    
-    
-    
+
     @FXML
     private Button buttonExit;
-    
-    
-    
-    //***********************************Commit test /Kim**************************
 
+    //***********************************Commit test /Kim**************************
     @FXML
     private TextField textfieldUsername, textfieldPassword;
 
@@ -156,15 +150,12 @@ public class FXMLLoginController implements Initializable {
         labelMessage.setText(null);
 
     }
-    
+
     @FXML
-    public void handleButtonExit(ActionEvent event)throws Exception{
-        
-        java.awt.Desktop.getDesktop().browse(new URI("test.txt"));
-        
-        
+    public void handleButtonExit(ActionEvent event) {
+
         Stage stage2 = (Stage) buttonExit.getScene().getWindow();
-        
+
         stage2.close();
     }
 

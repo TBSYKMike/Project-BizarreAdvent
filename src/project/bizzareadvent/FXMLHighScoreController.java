@@ -24,7 +24,6 @@ import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 import project.bizzareadvent.SaveLoad.DatabaseServer;
 
-
 /**
  * FXML Controller class
  *
@@ -35,12 +34,11 @@ public class FXMLHighScoreController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    
     @FXML
     private TextArea textareaHighScore1;
-    
+
     private String testPrint = "";
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -48,93 +46,82 @@ public class FXMLHighScoreController implements Initializable {
         //String Username = DatabaseServer.getInstance().getUsername();
         //textareaHighScore1.setText(HighScore);
         //textareaHighScore2.setText(Username);
-        
-        
+
         connection2("DESC");
-        
-        
-    }    
-    
-    
+
+    }
+
     @FXML
     private void handleButtonActionBack(ActionEvent event) {
-        
-            try {
 
-                Node node = (Node) event.getSource();
-                Stage stage2 = (Stage) node.getScene().getWindow();
+        try {
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLMenu.fxml"));
-                Parent root = loader.load();
+            Node node = (Node) event.getSource();
+            Stage stage2 = (Stage) node.getScene().getWindow();
 
-                Scene scene = new Scene(root);
-                stage2.setScene(scene);
-                stage2.show();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLMenu.fxml"));
+            Parent root = loader.load();
 
-            } catch (IOException ex) {
-                System.out.println("Scene change error1");
-            }
-        
+            Scene scene = new Scene(root);
+            stage2.setScene(scene);
+            stage2.show();
+
+        } catch (IOException ex) {
+            System.out.println("Scene change error1");
+        }
+
     }
-    
-    private void connection1(){
-        
+
+    private void connection1() {
+
         testPrint = "";
-        
+
         DatabaseServer.getInstance().connectToDB();
         try (Connection c = DriverManager.getConnection(DatabaseServer.getInstance().getURL())) {    // sql Commands
             Statement st = c.createStatement();
             ResultSet rs1 = st.executeQuery(
-                "SELECT gamedb.login.userName, gamedb.login_has_characters.characterName, gamedb.login_has_characters.score\n" +
-                "FROM gamedb.login_has_characters, gamedb.login \n" +
-                "WHERE score > 0 && gamedb.login.idNr = gamedb.login_has_characters.Login_idNr \n" +
-                "ORDER BY score DESC;");
+                    "SELECT gamedb.login.userName, gamedb.login_has_characters.characterName, gamedb.login_has_characters.score\n"
+                    + "FROM gamedb.login_has_characters, gamedb.login \n"
+                    + "WHERE score > 0 && gamedb.login.idNr = gamedb.login_has_characters.Login_idNr \n"
+                    + "ORDER BY score DESC;");
 
             while (rs1.next()) {
                 //String username = rs1.getString("userName");
                 //String password = rs1.getString("password");
                 //System.out.println("Customer Name: " + name + " \nand customer number " + password + "\n\n");
-                
-                if (rs1.getRow() <= 10){
-                    System.out.printf( rs1.getRow() + " " + rs1.getString(1) + " " + rs1.getString(2) + " " + rs1.getString(3)  );
+
+                if (rs1.getRow() <= 10) {
+                    System.out.printf(rs1.getRow() + " " + rs1.getString(1) + " " + rs1.getString(2) + " " + rs1.getString(3));
                     testPrint += rs1.getRow() + " " + rs1.getString(1) + " " + rs1.getString(2) + " " + rs1.getString(3) + " \n";
                 }
             }
 
             c.close();  // closing connection
 
-            
-
-            
-
         } catch (SQLException e) {
             System.err.println("ERROR: " + e);
         }
         textareaHighScore1.setText(testPrint);
-        
-        
-    }    
-    
-    
-    
-    
-     private void connection2(String ASCorDESC){
+
+    }
+
+    private void connection2(String ASCorDESC) {
         testPrint = "";
-        
+
         DatabaseServer.getInstance().connectToDB();
         try (Connection c = DriverManager.getConnection(DatabaseServer.getInstance().getURL())) {    // sql Commands
             Statement st = c.createStatement();
             ResultSet rs1 = st.executeQuery(
-                "SELECT * \n" +
-                "FROM gamedb.high_score \n" +
-                "ORDER BY score " + ASCorDESC + ";");
+                    "SELECT * \n"
+                    + "FROM gamedb.high_score \n"
+                    + "ORDER BY score " + ASCorDESC + ";");
 
             while (rs1.next()) {
                 //String username = rs1.getString("userName");
                 //String password = rs1.getString("password");
                 //System.out.println("Customer Name: " + name + " \nand customer number " + password + "\n\n");
-                
-                if (rs1.getRow() <= 1000){
+
+                if (rs1.getRow() <= 1000) {
                     //System.out.printf( rs1.getRow() + " " + rs1.getString(2) + " " + rs1.getString(3) + " " + rs1.getString(4)  );
                     testPrint += rs1.getRow() + " " + rs1.getString(2) + " " + rs1.getString(3) + " " + rs1.getString(4) + " \n";
                 }
@@ -142,54 +129,25 @@ public class FXMLHighScoreController implements Initializable {
 
             c.close();  // closing connection
 
-            
-
-            
-
         } catch (SQLException e) {
             System.err.println("ERROR: " + e);
         }
-        
+
         textareaHighScore1.setText(testPrint);
     }
-    
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     @FXML
+
+    @FXML
     private void handleButtonActionHighToLow(ActionEvent event) {
-        
-            connection2("DESC");
-        
+
+        connection2("DESC");
+
     }
-    
-     
-     @FXML
+
+    @FXML
     private void handleButtonActionLowToHigh(ActionEvent event) {
-        
-            connection2("ASC");
-        
+
+        connection2("ASC");
+
     }
-     
-     
-     
-     
-     
-     
-     
-     
-    
-    
+
 }

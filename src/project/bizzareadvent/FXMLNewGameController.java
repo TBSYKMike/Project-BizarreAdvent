@@ -76,7 +76,7 @@ public class FXMLNewGameController implements Initializable {
 
     @FXML
     public void handleButtonActionDone(ActionEvent event) {
-       
+
         createNewCharacter(event, "FXMLWorldMap.fxml");
 
     }
@@ -140,11 +140,9 @@ public class FXMLNewGameController implements Initializable {
         int charType = 0;
         if (warriorChosen) {
             charType = 0;
-        }
-        else if (mageChosen) {
+        } else if (mageChosen) {
             charType = 1;
-        }
-        else if (rogueChosen) {
+        } else if (rogueChosen) {
             charType = 2;
         }
 
@@ -158,8 +156,6 @@ public class FXMLNewGameController implements Initializable {
 
     }
 
-    
-
     //private Image characterImage = new Image("chosecharacter.bmp", true);
     private void loadCharacterImage() {
 
@@ -170,39 +166,39 @@ public class FXMLNewGameController implements Initializable {
         if (warriorChosen == true) {
             imageClass.setImage(characterImage1);
             classInfo.setText("You have chosen the Warrior!"
-                            + "\n\nThe warrior uses her melee weapon"
-                            + "\nto slay her foes. With the lowest base damage"
-                            + "\nof the three she compensates with wielding heavy"
-                            + "\narmor and a shield, making her base defence"
-                            + "\nthe highest of the three."
-                            + "\nThe warriors' secondary attack is a shield bash that has"
-                            + "\na chance to stun the enemy for two turns, but only does"
-                            + "\nhalf the damage of a normal attack.");
+                    + "\n\nThe warrior uses her melee weapon"
+                    + "\nto slay her foes. With the lowest base damage"
+                    + "\nof the three she compensates with wielding heavy"
+                    + "\narmor and a shield, making her base defence"
+                    + "\nthe highest of the three."
+                    + "\nThe warriors' secondary attack is a shield bash that has"
+                    + "\na chance to stun the enemy for two turns, but only does"
+                    + "\nhalf the damage of a normal attack.");
         } else if (mageChosen == true) {
             imageClass.setImage(characterImage2);
             classInfo.setText("You have chosen the Mage!"
-                            + "\n\nWearing only a robe, the mages'"
-                            + "\nbase defence is the lowest."
-                            + "\nBut do not let him fool you!"
-                            + "\nInstead he uses powerful magic to overcome"
-                            + "\nhis enemies, causing him to have the"
-                            + "\nhighest base damage."
-                            + "\nThe mages' secondary attack is a spell"
-                            + "\nnamed flame burst. If it hits, the monster"
-                            + "\nwill first take double damage, then it will"
-                            + "\nget a burn effect, making it take a small amount"
-                            + "\nof damage for five turns.");
+                    + "\n\nWearing only a robe, the mages'"
+                    + "\nbase defence is the lowest."
+                    + "\nBut do not let him fool you!"
+                    + "\nInstead he uses powerful magic to overcome"
+                    + "\nhis enemies, causing him to have the"
+                    + "\nhighest base damage."
+                    + "\nThe mages' secondary attack is a spell"
+                    + "\nnamed flame burst. If it hits, the monster"
+                    + "\nwill first take double damage, then it will"
+                    + "\nget a burn effect, making it take a small amount"
+                    + "\nof damage for five turns.");
         } else if (rogueChosen == true) {
             imageClass.setImage(characterImage3);
             classInfo.setText("You have chosen the Rogue!"
-                            + "\n\nWearing leather gear to make him more"
-                            + "\nagile and dual wielding weapons to strike"
-                            + "\nhis enemies. This makes the rogues' base damage"
-                            + "\nand base defence to be inbetween the other two."
-                            + "\nThe rogues' secondary attack is assassinate."
-                            + "\nWhen used it doubles his defence that turn and"
-                            + "\nhas a small chance to kill you enemy in one"
-                            + "\nsingle hit.");
+                    + "\n\nWearing leather gear to make him more"
+                    + "\nagile and dual wielding weapons to strike"
+                    + "\nhis enemies. This makes the rogues' base damage"
+                    + "\nand base defence to be inbetween the other two."
+                    + "\nThe rogues' secondary attack is assassinate."
+                    + "\nWhen used it doubles his defence that turn and"
+                    + "\nhas a small chance to kill you enemy in one"
+                    + "\nsingle hit.");
         }
 
     }
@@ -231,14 +227,12 @@ public class FXMLNewGameController implements Initializable {
                     if (true) {
                         AllLocalData.getInstance().getInfo2LoginHasCharacters().get(arraySlot).setCharacterName(charName);
                         loadSetBaseData(arraySlot);
-                        
-                        
+
                         DatabaseServer.getInstance().saveToDB();
                         UserData.getInstance().doLoadCharDataFromALLLOCALDATA();
-                    
-                        
+
                         UserData.getInstance().setArraylistNumber(arraySlot);
-                        
+
                         loadScene(event, path);
                     }
 
@@ -255,12 +249,7 @@ public class FXMLNewGameController implements Initializable {
             Error1.setText("No character Chosen");
         }
     }
-    
-    
-    
-    
-    
-    
+
     private void loadScene(ActionEvent event, String path) {
         try {
 
@@ -280,17 +269,5 @@ public class FXMLNewGameController implements Initializable {
             System.out.println("Loading " + path + " error!");
         }
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
 }

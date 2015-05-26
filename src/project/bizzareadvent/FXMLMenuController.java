@@ -17,14 +17,11 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-import project.bizzareadvent.SaveLoad.DatabaseServer;
-import project.bizzareadvent.SaveLoad.UserData;
 
 /**
  * FXML Controller class
@@ -32,13 +29,12 @@ import project.bizzareadvent.SaveLoad.UserData;
  * @author Mike
  */
 public class FXMLMenuController implements Initializable {
-    
+
     @FXML
     private Button buttonBack;
     @FXML
     private Button NewGame;
-    @FXML
-    private Button Continue;
+
     @FXML
     private Button Load;
     @FXML
@@ -47,51 +43,49 @@ public class FXMLMenuController implements Initializable {
     private Button Exit;
     @FXML
     private ImageView imageView;
-    
+
     @FXML
     private void handleButtonActionBack(ActionEvent event) {
-        
-            try {
 
-                Node node = (Node) event.getSource();
-                Stage stage2 = (Stage) node.getScene().getWindow();
+        try {
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLLogin.fxml"));
-                Parent root = loader.load();
+            Node node = (Node) event.getSource();
+            Stage stage2 = (Stage) node.getScene().getWindow();
 
-                Scene scene = new Scene(root);
-                stage2.setScene(scene);
-                stage2.show();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLLogin.fxml"));
+            Parent root = loader.load();
 
-            } catch (IOException ex) {
-                System.out.println("Scene change error1");
-            }
-        
+            Scene scene = new Scene(root);
+            stage2.setScene(scene);
+            stage2.show();
+
+        } catch (IOException ex) {
+            System.out.println("Scene change error1");
+        }
+
     }
-    
+
     @FXML
     private void handleButtonActionWorldMap(ActionEvent event) {
-        
-            try {
 
-                Node node = (Node) event.getSource();
-                Stage stage2 = (Stage) node.getScene().getWindow();
+        try {
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLWorldMap.fxml"));
-                Parent root = loader.load();
+            Node node = (Node) event.getSource();
+            Stage stage2 = (Stage) node.getScene().getWindow();
 
-                Scene scene = new Scene(root);
-                stage2.setScene(scene);
-                stage2.show();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLWorldMap.fxml"));
+            Parent root = loader.load();
 
-            } catch (IOException ex) {
-                System.out.println("Scene change error1");
-            }
-        
+            Scene scene = new Scene(root);
+            stage2.setScene(scene);
+            stage2.show();
+
+        } catch (IOException ex) {
+            System.out.println("Scene change error1");
+        }
+
     }
-    
-    
-    
+
     @FXML
     public void handleKeyEvent(KeyEvent ke) {
         if (ke.getCode().equals(KeyCode.ENTER)) {
@@ -99,115 +93,110 @@ public class FXMLMenuController implements Initializable {
             buttonBack.fire();
         }
     }
+
     @FXML
-    public void HandleButtonExit(ActionEvent event){
+    public void HandleButtonExit(ActionEvent event) {
         Stage stage2 = (Stage) Exit.getScene().getWindow();
-        
+
         stage2.close();
     }
-    
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         File file = new File("src/MenuCastle.jpg");
         Image image = new Image(file.toURI().toString());
         imageView.setImage(image);
     }
+
     @FXML
-    private void handleButtonActionNewGame(ActionEvent event){
-        try{
-                Node node = (Node) event.getSource();
-                Stage stageLogin = (Stage) node.getScene().getWindow();
+    private void handleButtonActionNewGame(ActionEvent event) {
+        try {
+            Node node = (Node) event.getSource();
+            Stage stageLogin = (Stage) node.getScene().getWindow();
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLNewGame.fxml"));
-                Parent root = loader.load();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLNewGame.fxml"));
+            Parent root = loader.load();
 
-                Scene scene = new Scene(root);
-                stageLogin.setScene(scene);
-                stageLogin.show();
-        
-        }catch(IOException ex){
+            Scene scene = new Scene(root);
+            stageLogin.setScene(scene);
+            stageLogin.show();
+
+        } catch (IOException ex) {
             System.out.println("Scene change error1");
         }
     }
-    
-    
-    
+
     @FXML
-    private void handleButtonActionChangeTestScene(ActionEvent event){
-        try{
-                Node node = (Node) event.getSource();
-                Stage stageLogin = (Stage) node.getScene().getWindow();
+    private void handleButtonActionChangeTestScene(ActionEvent event) {
+        try {
+            Node node = (Node) event.getSource();
+            Stage stageLogin = (Stage) node.getScene().getWindow();
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("YYFXMLTestingMethods.fxml"));
-                Parent root = loader.load();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("YYFXMLTestingMethods.fxml"));
+            Parent root = loader.load();
 
-                Scene scene = new Scene(root);
-                stageLogin.setScene(scene);
-                stageLogin.show();
+            Scene scene = new Scene(root);
+            stageLogin.setScene(scene);
+            stageLogin.show();
                 //UserData.getInstance().setRememeberLastClass(this.getClass().getName());
-        
-        }catch(IOException ex){
+
+        } catch (IOException ex) {
             System.out.println("Scene change error1rrr");
         }
     }
-    
-    
+
     @FXML
-    private void handleButtonActionDeleteScene(ActionEvent event){
-        try{
-                Node node = (Node) event.getSource();
-                Stage stageLogin = (Stage) node.getScene().getWindow();
+    private void handleButtonActionDeleteScene(ActionEvent event) {
+        try {
+            Node node = (Node) event.getSource();
+            Stage stageLogin = (Stage) node.getScene().getWindow();
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDeleteCharacter.fxml"));
-                Parent root = loader.load();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDeleteCharacter.fxml"));
+            Parent root = loader.load();
 
-                Scene scene = new Scene(root);
-                stageLogin.setScene(scene);
-                stageLogin.show();
-        
-        }catch(IOException ex){
+            Scene scene = new Scene(root);
+            stageLogin.setScene(scene);
+            stageLogin.show();
+
+        } catch (IOException ex) {
             System.out.println("Scene change error1rrr");
         }
     }
-    
-    
+
     @FXML
-    private void handleButtonActionLoadScene(ActionEvent event){
-        try{
-                Node node = (Node) event.getSource();
-                Stage stageLogin = (Stage) node.getScene().getWindow();
+    private void handleButtonActionLoadScene(ActionEvent event) {
+        try {
+            Node node = (Node) event.getSource();
+            Stage stageLogin = (Stage) node.getScene().getWindow();
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLLoadCharacter.fxml"));
-                Parent root = loader.load();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLLoadCharacter.fxml"));
+            Parent root = loader.load();
 
-                Scene scene = new Scene(root);
-                stageLogin.setScene(scene);
-                stageLogin.show();
-        
-        }catch(IOException ex){
+            Scene scene = new Scene(root);
+            stageLogin.setScene(scene);
+            stageLogin.show();
+
+        } catch (IOException ex) {
             System.out.println("Scene change error1rrr");
         }
     }
-    
+
     @FXML
-    private void handleButtonActionHighScoreScene(ActionEvent event){
-        try{
-                Node node = (Node) event.getSource();
-                Stage stageLogin = (Stage) node.getScene().getWindow();
+    private void handleButtonActionHighScoreScene(ActionEvent event) {
+        try {
+            Node node = (Node) event.getSource();
+            Stage stageLogin = (Stage) node.getScene().getWindow();
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLHighScore.fxml"));
-                Parent root = loader.load();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLHighScore.fxml"));
+            Parent root = loader.load();
 
-                Scene scene = new Scene(root);
-                stageLogin.setScene(scene);
-                stageLogin.show();
-        
-        }catch(IOException ex){
+            Scene scene = new Scene(root);
+            stageLogin.setScene(scene);
+            stageLogin.show();
+
+        } catch (IOException ex) {
             System.out.println("Scene change error1rrr");
         }
     }
-    
-    
-    
+
 }
