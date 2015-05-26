@@ -159,17 +159,17 @@ public class FXMLNewGameController implements Initializable {
     //private Image characterImage = new Image("chosecharacter.bmp", true);
     private void loadCharacterImage() {
 
-        Image characterImage1 = new Image("ms-warrior0.png", true);
-        Image characterImage2 = new Image("ms-mage0.png", true);
-        Image characterImage3 = new Image("ms-rogue0.png", true);
+        Image characterImage1 = new Image("warrior.png", true);
+        Image characterImage2 = new Image("mage.png", true);
+        Image characterImage3 = new Image("rogue.png", true);
 
         if (warriorChosen == true) {
             imageClass.setImage(characterImage1);
             classInfo.setText("You have chosen the Warrior!"
-                    + "\n\nThe warrior uses her melee weapon"
-                    + "\nto slay her foes. With the lowest base damage"
-                    + "\nof the three she compensates with wielding heavy"
-                    + "\narmor and a shield, making her base defence"
+                    + "\n\nThe warrior uses his melee weapon"
+                    + "\nto slay his foes. With the lowest base damage"
+                    + "\nof the three he compensates with wielding heavy"
+                    + "\narmor and a shield, making his base defence"
                     + "\nthe highest of the three."
                     + "\nThe warriors' secondary attack is a shield bash that has"
                     + "\na chance to stun the enemy for two turns, but only does"
@@ -191,13 +191,13 @@ public class FXMLNewGameController implements Initializable {
         } else if (rogueChosen == true) {
             imageClass.setImage(characterImage3);
             classInfo.setText("You have chosen the Rogue!"
-                    + "\n\nWearing leather gear to make him more"
+                    + "\n\nWearing leather gear to make her more"
                     + "\nagile and dual wielding weapons to strike"
                     + "\nhis enemies. This makes the rogues' base damage"
                     + "\nand base defence to be inbetween the other two."
                     + "\nThe rogues' secondary attack is assassinate."
-                    + "\nWhen used it doubles his defence that turn and"
-                    + "\nhas a small chance to kill you enemy in one"
+                    + "\nWhen used it doubles her defence that turn and"
+                    + "\nhas a small chance to kill your enemy in one"
                     + "\nsingle hit.");
         }
 

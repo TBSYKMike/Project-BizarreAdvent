@@ -207,7 +207,7 @@ public class FXMLLoadCharacterController implements Initializable {
         buttonCancel.setDisable(true);
     }
 
-    private Image characterImage = new Image("chosecharacter.bmp", true);
+    private Image characterImage;
 
     private void loadCharacterImage(int getSlot) {
         int tempCharID = 0;
@@ -218,13 +218,11 @@ public class FXMLLoadCharacterController implements Initializable {
         }
 
         if (tempCharID == 1) {
-            characterImage = new Image("ms-warrior0.png", true);
+            characterImage = new Image("warrior.png", true);
         } else if (tempCharID == 2) {
-            characterImage = new Image("ms-mage0.png", true);
+            characterImage = new Image("mage.png", true);
         } else if (tempCharID == 3) {
-            characterImage = new Image("ms-rogue0.png", true);
-        } else {
-            characterImage = new Image("chosecharacter.bmp", true);
+            characterImage = new Image("rogue.png", true);
         }
 
         chosenCharacter.setImage(characterImage);

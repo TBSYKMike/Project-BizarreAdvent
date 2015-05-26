@@ -9,28 +9,33 @@
 
 <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.bizzareadvent.FXMLAdventureController">
    <children>
+      <ImageView fitHeight="500.0" fitWidth="750.0" layoutX="1.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../MenuCastle.jpg" />
+         </image>
+      </ImageView>
       <ImageView fx:id="backgroundImg" fitHeight="250.0" fitWidth="718.0" layoutX="16.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true" />
       <TextArea fx:id="adventureLog" layoutX="14.0" layoutY="339.0" prefHeight="150.0" prefWidth="726.0" />
-      <Label layoutX="16.0" layoutY="17.0" prefHeight="14.0" prefWidth="28.0" text="HP:" />
-      <Label layoutX="198.0" layoutY="17.0" prefHeight="14.0" prefWidth="28.0" text="DEF:" />
-      <Label layoutX="101.0" layoutY="17.0" prefHeight="14.0" prefWidth="28.0" text="ATT:" />
-      <Label layoutX="290.0" layoutY="17.0" prefHeight="14.0" prefWidth="36.0" text="GOLD:" />
-      <Label layoutX="402.0" layoutY="17.0" prefHeight="14.0" prefWidth="42.0" text="SCORE:" />
-      <Label fx:id="hpLabel" layoutX="44.0" layoutY="17.0" prefHeight="14.0" prefWidth="42.0" />
-      <Label fx:id="attackLabel" layoutX="135.0" layoutY="17.0" prefHeight="14.0" prefWidth="42.0" />
-      <Label fx:id="defenceLabel" layoutX="232.0" layoutY="17.0" prefHeight="14.0" prefWidth="42.0" />
-      <Label fx:id="goldLabel" layoutX="336.0" layoutY="17.0" prefHeight="14.0" prefWidth="42.0" />
-      <Label fx:id="scoreLabel" layoutX="450.0" layoutY="17.0" prefHeight="14.0" prefWidth="42.0" />
-      <Label layoutX="519.0" layoutY="17.0" text="DMG:" />
-      <Label fx:id="dmgLabel" layoutX="553.0" layoutY="17.0" prefHeight="14.0" prefWidth="42.0" />
-      <Label layoutX="604.0" layoutY="17.0" text="NAME:" />
+      <Label layoutX="16.0" layoutY="17.0" prefHeight="14.0" prefWidth="28.0" text="HP:" textFill="WHITE" />
+      <Label layoutX="198.0" layoutY="17.0" prefHeight="14.0" prefWidth="28.0" text="DEF:" textFill="WHITE" />
+      <Label layoutX="101.0" layoutY="17.0" prefHeight="14.0" prefWidth="28.0" text="ATT:" textFill="WHITE" />
+      <Label layoutX="290.0" layoutY="17.0" prefHeight="14.0" prefWidth="36.0" text="GOLD:" textFill="WHITE" />
+      <Label layoutX="402.0" layoutY="17.0" prefHeight="14.0" prefWidth="42.0" text="SCORE:" textFill="WHITE" />
+      <Label fx:id="hpLabel" layoutX="44.0" layoutY="17.0" prefHeight="14.0" prefWidth="42.0" textFill="WHITE" />
+      <Label fx:id="attackLabel" layoutX="135.0" layoutY="17.0" prefHeight="14.0" prefWidth="42.0" textFill="WHITE" />
+      <Label fx:id="defenceLabel" layoutX="232.0" layoutY="17.0" prefHeight="14.0" prefWidth="42.0" textFill="WHITE" />
+      <Label fx:id="goldLabel" layoutX="336.0" layoutY="17.0" prefHeight="14.0" prefWidth="42.0" textFill="WHITE" />
+      <Label fx:id="scoreLabel" layoutX="450.0" layoutY="17.0" prefHeight="14.0" prefWidth="42.0" textFill="WHITE" />
+      <Label layoutX="519.0" layoutY="17.0" text="DMG:" textFill="WHITE" />
+      <Label fx:id="dmgLabel" layoutX="553.0" layoutY="17.0" prefHeight="14.0" prefWidth="42.0" textFill="WHITE" />
+      <Label layoutX="604.0" layoutY="17.0" text="NAME:" textFill="WHITE" />
       <Label fx:id="scoreLabel11" layoutX="563.0" layoutY="27.0" prefHeight="14.0" prefWidth="42.0" />
       <Button fx:id="runButton" disable="true" layoutX="450.0" layoutY="290.0" mnemonicParsing="false" onAction="#handleButtonRun" prefHeight="40.0" prefWidth="74.0" text="Run" />
       <Button fx:id="continueButton" layoutX="653.0" layoutY="290.0" mnemonicParsing="false" onAction="#handleButtonContinue" prefHeight="40.0" prefWidth="74.0" text="Continue" />
       <Button fx:id="secondaryButton" disable="true" layoutX="232.0" layoutY="290.0" mnemonicParsing="false" onAction="#handleButtonSecondary" prefHeight="40.0" prefWidth="74.0" text="Secondary" />
       <Button fx:id="attackButton" disable="true" layoutX="34.0" layoutY="290.0" mnemonicParsing="false" onAction="#handleButtonAttack" prefHeight="40.0" prefWidth="74.0" text="Attack!" />
-      <Label fx:id="nameLabel" layoutX="645.0" layoutY="17.0" prefHeight="14.0" prefWidth="101.0" />
-      <ImageView fx:id="characterImg" fitHeight="125.0" fitWidth="95.0" layoutX="68.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="monsterImg" fitHeight="175.0" fitWidth="140.0" layoutX="537.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="nameLabel" layoutX="645.0" layoutY="17.0" prefHeight="14.0" prefWidth="101.0" textFill="WHITE" />
+      <ImageView fx:id="characterImg" fitHeight="150.0" fitWidth="140.0" layoutX="38.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="monsterImg" fitHeight="220.0" fitWidth="260.0" layoutX="481.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

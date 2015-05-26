@@ -103,9 +103,9 @@ public class FXMLMenuController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        File file = new File("src/MenuCastle.jpg");
+        /*File file = new File("src/MenuCastle.jpg");
         Image image = new Image(file.toURI().toString());
-        imageView.setImage(image);
+        imageView.setImage(image);*/
     }
 
     @FXML

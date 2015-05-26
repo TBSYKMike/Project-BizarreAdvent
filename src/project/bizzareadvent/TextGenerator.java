@@ -6,7 +6,7 @@ import java.util.Random;
 public class TextGenerator {
     
     Random randomGenerator = new Random();
-    private final int randomInt = randomGenerator.nextInt(100) + 1;
+    private int randomInt;
     
     public String generateText(String position){
         String generateText;
@@ -31,6 +31,8 @@ public class TextGenerator {
     
     private String plainsText(){
         String plainsText;
+        randomInt = randomGenerator.nextInt(100) + 1;
+        
             if(randomInt <= 25){
                 plainsText = ("\n\nYou keep following the path you once started on"
                             + "\nNothing more of interest to be told here, press that continue button.");
@@ -55,6 +57,7 @@ public class TextGenerator {
     
     private String forestText(){
         String forestText;
+        randomInt = randomGenerator.nextInt(100) + 1;
         
         if(randomInt <= 20){
             forestText = ("\n\nYou keep following a path through the forest."
@@ -89,6 +92,7 @@ public class TextGenerator {
     
     private String swampText(){
         String swampText;
+        randomInt = randomGenerator.nextInt(100) + 1;
         
         if(randomInt <= 30){
             swampText = ("\n\nYou keep walking through swamp."
@@ -127,6 +131,7 @@ public class TextGenerator {
     
     private String mountainText(){
         String mountainText;
+        randomInt = randomGenerator.nextInt(100) + 1;
         
         if(randomInt < 6){
             mountainText = ("\n\nYou climb and climb, it seems to be no end to this mountain"
@@ -174,6 +179,7 @@ public class TextGenerator {
     
     private String castleText(){
         String castleText;
+        randomInt = randomGenerator.nextInt(100) + 1;
         
         if(randomInt <= 10){
             castleText = ("\n\nYou keep moving through a long hallway,"

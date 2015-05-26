@@ -108,9 +108,9 @@ public class FXMLLoginController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        File file = new File("src/login_dragon.jpg");
+        /*File file = new File("src/login_dragon.jpg");
         Image image = new Image(file.toURI().toString());
-        imageView.setImage(image);
+        imageView.setImage(image);*/
 
         MusicSettings.getInstance().readFromFile();
 

@@ -95,7 +95,7 @@ public class MusicSettings {
         addMusic("/forest1.mp3");           // forest
         addMusic("/swamp1.mp3");       // swamp
         addMusic("/mountain1.mp3");     // mountain
-        addMusic("/castleormaybenot1.mp3");       // castle boss
+        addMusic("/finalBoss.mp3");       // castle boss
         addMusic("/castleormaybenot2.mp3");       // castle
     }
 

@@ -65,67 +65,61 @@ public class FXMLAdventureController implements Initializable {
     @FXML
     private ImageView monsterImg;
 
-    File file = new File("src/warrior.jpg");
+    File file = new File("src/spider.png");
     Image spiderImage = new Image(file.toURI().toString());
 
-    File file1 = new File("src/warrior.jpg");
+    File file1 = new File("src/slime.png");
     Image slimeImage = new Image(file1.toURI().toString());
 
-    File file2 = new File("src/warrior.jpg");
+    File file2 = new File("src/ooze.png");
     Image oozeImage = new Image(file2.toURI().toString());
 
-    File file3 = new File("src/warrior.jpg");
+    File file3 = new File("src/goblin.png");
     Image goblinImage = new Image(file3.toURI().toString());
 
-    File file4 = new File("src/warrior.jpg");
+    File file4 = new File("src/orc.png");
     Image orcImage = new Image(file4.toURI().toString());
 
-    File file5 = new File("src/warrior.jpg");
+    File file5 = new File("src/troll.png");
     Image trollImage = new Image(file5.toURI().toString());
 
-    File file6 = new File("src/warrior.jpg");
-    Image zombieTrollImage = new Image(file6.toURI().toString());
-
-    File file7 = new File("src/warrior.jpg");
-    Image zombieDragonImage = new Image(file7.toURI().toString());
-
-    File file8 = new File("src/warrior.jpg");
+    File file8 = new File("src/dragon.png");
     Image dragonImage = new Image(file8.toURI().toString());
 
-    File file9 = new File("src/warrior.jpg");
+    File file9 = new File("src/cyclop.png");
     Image cyclopImage = new Image(file9.toURI().toString());
 
-    File file10 = new File("src/warrior.jpg");
+    File file10 = new File("src/treeman.png");
     Image treemanImage = new Image(file10.toURI().toString());
 
-    File file11 = new File("src/warrior.jpg");
-    Image giraffeImage = new Image(file11.toURI().toString());
+    File file11 = new File("src/fluffy.png");
+    Image fluffyImage = new Image(file11.toURI().toString());
 
     File file12 = new File("src/mage.png");
     Image mageImage = new Image(file12.toURI().toString());
 
-    File file13 = new File("src/warrior.jpg");
+    File file13 = new File("src/warrior.png");
     Image warriorImage = new Image(file13.toURI().toString());
 
-    File file14 = new File("src/warrior.jpg");
+    File file14 = new File("src/rogue.png");
     Image rogueImage = new Image(file14.toURI().toString());
 
-    File file15 = new File("src/plains.jpg");
+    File file15 = new File("src/plains.png");
     Image plainsImage = new Image(file15.toURI().toString());
 
-    File file16 = new File("src/forest.jpg");
+    File file16 = new File("src/forest.png");
     Image forestImage = new Image(file16.toURI().toString());
 
-    File file17 = new File("src/warrior.jpg");
+    File file17 = new File("src/mountain.png");
     Image mountainImage = new Image(file17.toURI().toString());
 
-    File file18 = new File("src/swamp.jpg");
+    File file18 = new File("src/swamp.png");
     Image swampImage = new Image(file18.toURI().toString());
 
-    File file19 = new File("src/warrior.jpg");
+    File file19 = new File("src/castle.png");
     Image castleImage = new Image(file19.toURI().toString());
     
-    File file20 = new File("src/warrior.jpg");
+    File file20 = new File("src/george.png");
     Image bossImage = new Image(file20.toURI().toString());
 
     private int stepCounter = 0;
@@ -364,9 +358,9 @@ public class FXMLAdventureController implements Initializable {
         } else {
             if (randomInt <= 20) {
                 generateTreasure();
-            } else if (randomInt > 20 && randomInt < 60) {
+            } else if (randomInt > 20 && randomInt < 40) {
                 adventureLog.appendText(textGenerator.generateText(position));
-            } else if (randomInt >= 60) {
+            } else if (randomInt >= 40) {
                 monsterList.add(new MonsterGenerator().generateMonster(position));
                 monsterImages();
 
@@ -410,9 +404,9 @@ public class FXMLAdventureController implements Initializable {
             adventureLog.appendText("\nYou fall down onto your knees and start to cry.");
             adventureLog.appendText("\n\nPress the continue button again to return to the world map.");
         } else {
-            if (randomInt <= 20) {
+            if (randomInt <= 30) {
                 generateTreasure();
-            } else if (randomInt > 20 && randomInt < 60) {
+            } else if (randomInt > 30 && randomInt < 60) {
                 adventureLog.appendText(textGenerator.generateText(position));
             } else if (randomInt >= 60) {
                 monsterList.add(new MonsterGenerator().generateMonster(position));
@@ -454,7 +448,7 @@ public class FXMLAdventureController implements Initializable {
                 adventureLog.appendText(textGenerator.generateText(position));
             } else if (randomInt >= 60) {
                 monsterList.add(new MonsterGenerator().generateMonster(position));
-                //monster = new NormalMonster(2000000, 1, 1, 0, 1, 1, "testmonster"); //Testmonster
+                //monsterList.add(new NormalMonster(2000000, 1, 1, 0, 1, 1, "testmonster")); //Testmonster
                 monsterImages();
 
                 adventureLog.appendText("\n\nYou encounter a " + monsterList.get(0).getMonsterType());
@@ -477,14 +471,14 @@ public class FXMLAdventureController implements Initializable {
         randomInt = randomGenerator.nextInt(100) + 1;
 
         if (stepCounter == 0) {
-            adventureLog.appendText("\n\n");
-            adventureLog.appendText("\n");
-            adventureLog.appendText("\n");
-            adventureLog.appendText("\n");
-            adventureLog.appendText("\n");
+            adventureLog.appendText("\n\nYou have reached the swamp called the Deep Sorrows.");
+            adventureLog.appendText("\nIt is hard to describe the environment as the fog");
+            adventureLog.appendText("\nlies thick over the swamp.");
+            adventureLog.appendText("\nYou have heard stories about people that have journeyed into");
+            adventureLog.appendText("\nthe swamp never to return. Prepare yourself for the challange ahead!");
         } else if (stepCounter >= 10) {
-            adventureLog.appendText("\n\nYou have reached the end of this path, there seems to be nothing more to explore.");
-            adventureLog.appendText("\n'How boring.'");
+            adventureLog.appendText("\n\nYou have made it through the Deep Sorrows alive.");
+            adventureLog.appendText("\nWere you just lucky or were the stories just old wives tales?");
             adventureLog.appendText("\n\nPress the continue button again to return to the world map.");
         } else {
             if (randomInt <= 20) {
@@ -515,19 +509,19 @@ public class FXMLAdventureController implements Initializable {
         randomInt = randomGenerator.nextInt(100) + 1;
 
         if (stepCounter == 0) {
-            adventureLog.appendText("\n\n");
-            adventureLog.appendText("\n");
-            adventureLog.appendText("\n");
-            adventureLog.appendText("\n");
-            adventureLog.appendText("\n");
+            adventureLog.appendText("\n\nYou find yourself standing in front of a huge, dark castle.");
+            adventureLog.appendText("\n'Wow!'");
+            adventureLog.appendText("\nMany a brave adventurer has tried to best this behemoth of a building.");
+            adventureLog.appendText("\nDare you enter this fortress of eternal doom, pain and sorrow?");
         } else if (stepCounter >= 10) {
-            adventureLog.appendText("\n\nYou have reached the end of this path, there seems to be nothing more to explore.");
+            adventureLog.appendText("\n\nYou have reached the end of this path, there seems to be nothing more to explore in the castle.");
             adventureLog.appendText("\n'How boring.'");
             adventureLog.appendText("\n\nPress the continue button again to return to the world map.");
         }else if (list.get(0).getCurrentArmorUpgrade() >= 10 && list.get(0).getCurrentWeaponUpgrade() >= 10){
-            monsterList.add(new SpecialMonster(2000,105,105,20,5000,0,"BBEG"));
+            monsterList.add(new SpecialMonster(2000,105,110,10,5000,0,"George"));
+            monsterImages();
             
-            adventureLog.appendText("\n\nYou have encountered the final boss!");
+            adventureLog.appendText("\n\nYou have encountered the final boss, George!");
             adventureLog.appendText("\nThis is it, now your mettle shall truly be tested.");
             adventureLog.appendText("\nThe boss is imune to your secondary attack.");
             adventureLog.appendText("\nThere is no way to run, your only chance is to fight!");
@@ -651,6 +645,7 @@ public class FXMLAdventureController implements Initializable {
 
                 adventureLog.appendText("\n\nYou cast flame burst and it succesfully hits the " + monsterList.get(0).getMonsterType() + "!");
                 adventureLog.appendText("\nIt deals " + list.get(0).getCurrentDmg() + " damage and applies a periodical burn effect.");
+                monsterAttack();
             }
         } else {
             adventureLog.appendText("\n\nYour flame burst misses!");
@@ -690,6 +685,7 @@ public class FXMLAdventureController implements Initializable {
 
                 adventureLog.appendText("\n\nYou bash your shield in the " + monsterList.get(0).getMonsterType() + "s face!");
                 adventureLog.appendText("\nIt takes " + list.get(0).getCurrentDmg() + " damage and is momentarily stunned.");
+                monsterAttack();
             }
         } else {
             adventureLog.appendText("\n\nYour shield bash misses!");
@@ -794,7 +790,7 @@ public class FXMLAdventureController implements Initializable {
             charge = 4;
         } 
         else if(charge == 4) {
-            adventureLog.appendText("\n\nThe boss charges its devastating special attack!");
+            adventureLog.appendText("\n\nGeorge charges his devastating special attack!");
             charge--;
         }else{
             adventureLog.appendText("\n\n" + charge +"..");
@@ -845,13 +841,13 @@ public class FXMLAdventureController implements Initializable {
         } else if (monsterList.get(0).getMonsterType().equals("Ooze")) {
 
             monsterImg.setImage(oozeImage);
-        } else if (monsterList.get(0).getMonsterType().equals("Goblin")) {
+        } else if (monsterList.get(0).getMonsterType().equals("giant Goblin")) {
 
             monsterImg.setImage(goblinImage);
-        } else if (monsterList.get(0).getMonsterType().equals("Hobgoblin")) {
+        } else if (monsterList.get(0).getMonsterType().equals("giant Hobgoblin")) {
 
             monsterImg.setImage(goblinImage);
-        } else if (monsterList.get(0).getMonsterType().equals("Goblin knight")) {
+        } else if (monsterList.get(0).getMonsterType().equals("giant Goblin knight")) {
 
             monsterImg.setImage(goblinImage);
         } else if (monsterList.get(0).getMonsterType().equals("Orc")) {
@@ -866,12 +862,6 @@ public class FXMLAdventureController implements Initializable {
         } else if (monsterList.get(0).getMonsterType().equals("Troll")) {
 
             monsterImg.setImage(trollImage);
-        } else if (monsterList.get(0).getMonsterType().equals("zombie Troll")) {
-
-            monsterImg.setImage(zombieTrollImage);
-        } else if (monsterList.get(0).getMonsterType().equals("zombie Dragon")) {
-
-            monsterImg.setImage(zombieDragonImage);
         } else if (monsterList.get(0).getMonsterType().equals("Dragon")) {
 
             monsterImg.setImage(dragonImage);
@@ -881,10 +871,10 @@ public class FXMLAdventureController implements Initializable {
         } else if (monsterList.get(0).getMonsterType().equals("Treeman")) {
 
             monsterImg.setImage(treemanImage);
-        } else if (monsterList.get(0).getMonsterType().equals("Man-eating Giraffe")) {
+        } else if (monsterList.get(0).getMonsterType().equals("Fluffy")) {
 
-            monsterImg.setImage(giraffeImage);
-        } else if (monsterList.get(0).getMonsterType().equals("BBEG")) {
+            monsterImg.setImage(fluffyImage);
+        } else if (monsterList.get(0).getMonsterType().equals("George")) {
 
             monsterImg.setImage(bossImage);
         }
@@ -903,7 +893,7 @@ public class FXMLAdventureController implements Initializable {
         } else if (position.equals("forest")) {
             backgroundImg.setImage(forestImage);
         } else if (position.equals("mountain")) {
-            backgroundImg.setImage(mountainImage);
+            backgroundImg.setImage(mountainImage);  
         } else if (position.equals("swamp")) {
             backgroundImg.setImage(swampImage);
         } else {

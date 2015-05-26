@@ -10,17 +10,25 @@
 
 <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.bizzareadvent.FXMLMenuController">
    <children>
-      <ImageView fx:id="imageView" fitHeight="500.0" fitWidth="750.0" pickOnBounds="true" />
-      <Label layoutX="295.0" layoutY="72.0" text="Menu">
-         <font>
-            <Font size="64.0" />
-         </font>
-      </Label>
+      <ImageView fx:id="imageView" fitHeight="500.0" fitWidth="750.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../MenuCastle.jpg" />
+         </image></ImageView>
       <Button fx:id="buttonBack" layoutX="78.0" layoutY="408.0" mnemonicParsing="false" onAction="#handleButtonActionBack" onKeyPressed="#handleKeyEvent" prefHeight="25.0" prefWidth="75.0" text="Log Out" />
       <Button layoutX="315.0" layoutY="358.0" mnemonicParsing="false" onAction="#handleButtonActionHighScoreScene" prefHeight="25.0" prefWidth="120.0" text="High Score" />
       <Button layoutX="315.0" layoutY="295.0" mnemonicParsing="false" onAction="#handleButtonActionLoadScene" prefHeight="25.0" prefWidth="120.0" text="Load" />
       <Button layoutX="315.0" layoutY="262.0" mnemonicParsing="false" onAction="#handleButtonActionNewGame" prefHeight="25.0" prefWidth="120.0" text="New Game" />
       <Button fx:id="Exit" layoutX="315.0" layoutY="389.0" mnemonicParsing="false" onAction="#HandleButtonExit" prefHeight="25.0" prefWidth="120.0" text="Exit" />
       <Button layoutX="315.0" layoutY="326.0" mnemonicParsing="false" onAction="#handleButtonActionDeleteScene" prefHeight="25.0" prefWidth="120.0" text="Delete Scene" />
+      <ImageView fitHeight="276.0" fitWidth="361.0" layoutX="153.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../bizzarelogo.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="292.0" layoutY="148.0" prefHeight="74.0" prefWidth="327.0" text="Adventure" textFill="#fff200">
+         <font>
+            <Font name="Segoe Script" size="53.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

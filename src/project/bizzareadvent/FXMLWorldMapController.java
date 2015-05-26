@@ -84,10 +84,10 @@ public class FXMLWorldMapController implements Initializable {
 
     private String adventurePosition;
 
-    File file = new File("src/warrior.jpg");
+    File file = new File("src/warriorMap.png");
     Image image = new Image(file.toURI().toString());
 
-    File file2 = new File("src/possiblePosition.jpg");
+    File file2 = new File("src/possiblePosition.png");
     Image image2 = new Image(file2.toURI().toString());
 
     @Override
