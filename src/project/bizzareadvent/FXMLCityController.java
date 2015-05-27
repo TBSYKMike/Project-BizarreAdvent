@@ -111,7 +111,7 @@ public class FXMLCityController implements Initializable {
             labelWarning.setOpacity(0);
             labelWarning.setText(message1);
 
-        } else if (UserData.getInstance().getCharactersArrList().getCurrentHp() <= 100) {
+        } else if (UserData.getInstance().getCharactersArrList().getCurrentHp() >= 100) {
             labelWarning.setOpacity(100);
             labelWarning.setText(message2HP);
         } else {
@@ -135,7 +135,7 @@ public class FXMLCityController implements Initializable {
             saveToLocalNDb();
             labelWarning.setOpacity(0);
             labelWarning.setText(message1);
-        } else if (UserData.getInstance().getCharactersArrList().getCurrentWeaponUpgrade() <= 10) {
+        } else if (UserData.getInstance().getCharactersArrList().getCurrentWeaponUpgrade() >= UPGRADE_LIMIT) {
             labelWarning.setOpacity(100);
             labelWarning.setText(message3Upg);
         } else {
@@ -157,7 +157,7 @@ public class FXMLCityController implements Initializable {
             saveToLocalNDb();
             labelWarning.setOpacity(0);
             labelWarning.setText(message1);
-        } else if (UserData.getInstance().getCharactersArrList().getCurrentArmorUpgrade() <= 10) {
+        } else if (UserData.getInstance().getCharactersArrList().getCurrentArmorUpgrade() >= UPGRADE_LIMIT) {
             labelWarning.setOpacity(100);
             labelWarning.setText(message3Upg);
         } else {
