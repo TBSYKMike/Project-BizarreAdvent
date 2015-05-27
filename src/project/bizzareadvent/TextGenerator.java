@@ -35,22 +35,22 @@ public class TextGenerator {
         
             if(randomInt <= 25){
                 plainsText = ("\n\nYou keep following the path you once started on"
-                            + "\nNothing more of interest to be told here, press that continue button.");
+                            + "\nNothing more of interest to be told here, press that continue button!");
             }
             else if(randomInt > 25 && randomInt <= 50){
-                plainsText = ("\n\nYou pass more purple rocks that has strange formations."
-                            + "\nYou giggle as you pass the rocks as the formations amuse you.");
+                plainsText = ("\n\nYou pass more of those strange purple rocks."
+                            + "\nYou giggle as you pass them as the formations amuse you.");
             }
             else if(randomInt > 50 && randomInt <=75){
                 plainsText = ("\n\nYou take a look around."
                             + "\nNothing, there is nothing as far as your eyes can see."
-                            + "\nBetter just keep moving.");
+                            + "\nBetter keep moving.");
             }
             else{
                 plainsText = ("\n\nYou walk through a field,"
-                            + "\nfield of grains."
+                            + "\na field of grains."
                             + "\n'Boy, this was a boring adventure.'"
-                            + "\nWell just press that continue button and be on with it.");
+                            + "\nWell just press that continue button and get on with it.");
             }
         return plainsText;
     }
@@ -60,21 +60,21 @@ public class TextGenerator {
         randomInt = randomGenerator.nextInt(100) + 1;
         
         if(randomInt <= 20){
-            forestText = ("\n\nYou keep following a path through the forest."
-                        + "\nIt is abit quiet, almost to quiet.");
+            forestText = ("\n\nYou keep on following the path through the forest."
+                        + "\nIt is a bit quiet, almost to quiet.");
         }
         else if(randomInt > 20 && randomInt <= 40){
-            forestText = ("\n\nYou stop a moment, trying to figure out which direction you should take."
-                        + "\nIt all looks the same, trees there, trees over there and trees over here."
-                        + "\nAfter minutes thinking you just take a direction and hope for the best.");
+            forestText = ("\n\nYou stop for a moment, trying to figure out which direction you should take."
+                        + "\nIt all looks the same, trees here, trees there, trees everywhere."
+                        + "\nAfter a minute of thinking you just pick a direction and hope for the best.");
         }
         else if(randomInt > 40 && randomInt <= 60){
             forestText = ("\n\nIt is so dark it is hard for you to see anything."
                         + "\nAll of a sudden you get stuck in something,"
                         + "\nand that something is a spiderweb."
                         + "\nYou panic, trying to get loose."
-                        + "\nA few seconds of struggle you are free."
-                        + "\nBetter get out of here quick before anything unpleasent comes.");
+                        + "\nA few seconds of struggle laterand  you are free."
+                        + "\nBetter get out of here quick before anything unpleasent comes your way.");
         }
         else if(randomInt > 60 && randomInt <= 80){
             forestText = ("\n\nYou pass by totems and poles with human heads."
@@ -83,8 +83,8 @@ public class TextGenerator {
         }
         else{
             forestText = ("\n\nYou feel lost and scared, but not alone."
-                        + "\nYou can spot eyes glowing here and there, lurking at the trees."
-                        + "\nDo wonder what kind of creatures that live here in the forest of Adabûn.");
+                        + "\nYou can spot eyes glowing here and there, lurking in the trees."
+                        + "\nYou wonder what kind of creatures that live here in the forest of Adabûn.");
         }
         
         return forestText;
@@ -95,24 +95,24 @@ public class TextGenerator {
         randomInt = randomGenerator.nextInt(100) + 1;
         
         if(randomInt <= 30){
-            swampText = ("\n\nYou keep walking through swamp."
+            swampText = ("\n\nYou keep on walking through the swamp."
                         + "\n'Ugh this is so disgusting!'"
                         + "\nYou are wet and cold but you need to keep moving.");
         }
         else if(randomInt > 30 && randomInt <= 50){
-            swampText = ("\n\nYou struggle to make your way through the swamp,"
-                        + "\nstumble over what seems to be roots or fallen trees."
+            swampText = ("\n\nYou struggle to make your way through the swamp"
+                        + "\nand stumble over what seems to be roots or fallen trees."
                         + "\nHard to tell as your vision is restricted by the fog");
             
         }
         else if(randomInt > 50 && randomInt <= 70){
             swampText = ("\n\nDead trees and rotten animal corpses,"
                         + "\nconsumed by the swamp."
-                        + "\nHopefully you wont face the same faith"
+                        + "\nHopefully you wont face the same fate"
                         + "\nas you travel through it.");
         }
         else if(randomInt > 70 && randomInt < 90){
-            swampText = ("\n\nYou hear screams as you walk."
+            swampText = ("\n\nYou hear voices as you walk."
                         + "\nCalling for you."
                         + "\nYou think for yourself"
                         + "\n'I must help!'"
@@ -134,7 +134,7 @@ public class TextGenerator {
         randomInt = randomGenerator.nextInt(100) + 1;
         
         if(randomInt < 6){
-            mountainText = ("\n\nYou climb and climb, it seems to be no end to this mountain"
+            mountainText = ("\n\nYou climb and climb, there seems to be no end to this mountain"
                             + "\n'I don't want to climb anymore!'"
                             + "\nYou have to continue."
                             + "\n'I'm not going to climb one millimeter more!'"
@@ -183,7 +183,7 @@ public class TextGenerator {
         
         if(randomInt <= 10){
             castleText = ("\n\nYou keep moving through a long hallway,"
-                        + "\nit's lit up with torches and has a funky smell to it."
+                        + "\nit is lit up with torches and has a funky smell to it."
                         + "\nYou have reached the end of the hallway and proceed through a door.");
         }
         else if(randomInt > 10 && randomInt <= 20){
@@ -193,11 +193,11 @@ public class TextGenerator {
                         + "\nYou have seen enough of this room and you decide to go back through the door you came.");
         }
         else if(randomInt > 20 && randomInt <= 30){
-            castleText = ("\n\nYou enter a large room, with long tables, alot of chairs, paintings on the walls"
+            castleText = ("\n\nYou enter a large room, with long tables, a lot of chairs, paintings on the walls"
                         + "\nand an open fireplace."
-                        + "\nIt is a dining hall!"
+                        + "\nIt the dining hall!"
                         + "\nYou look around and find some food laying on the tables."
-                        + "\nYou take some food and sit down next to the fireplace for abit,"
+                        + "\nYou take some food and sit down next to the fireplace for a bit,"
                         + "\nbefore you continue to explore more of the castle.");
         }
         else if(randomInt > 30 && randomInt <= 40){

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
@@ -8,9 +10,17 @@
 
 <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.bizzareadvent.FXMLSettingsController">
    <children>
+      <ImageView fitHeight="500.0" fitWidth="750.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../MenuCastle.jpg" />
+         </image>
+      </ImageView>
       <Button fx:id="buttonOn" layoutX="337.0" layoutY="225.0" mnemonicParsing="false" onAction="#buttonActionMusicOn" text="On" />
       <Button fx:id="buttonOff" layoutX="375.0" layoutY="225.0" mnemonicParsing="false" onAction="#buttonActionMusicOff" text="Off" />
-      <Label layoutX="287.0" layoutY="229.0" text="Music" />
+      <Label layoutX="275.0" layoutY="223.0" text="Music" textFill="WHITE">
+         <font>
+            <Font size="21.0" />
+         </font></Label>
       <Button layoutX="327.0" layoutY="329.0" mnemonicParsing="false" onAction="#handleButtonActionBack" text="Back" />
    </children>
 </AnchorPane>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -9,11 +10,16 @@
 
 <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.bizzareadvent.FXMLHighScoreController">
    <children>
+      <ImageView fitHeight="500.0" fitWidth="750.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../MenuCastle.jpg" />
+         </image>
+      </ImageView>
       <TextArea fx:id="textareaHighScore1" editable="false" layoutX="197.0" layoutY="91.0" prefHeight="300.0" prefWidth="356.0">
          <font>
             <Font size="18.0" />
          </font></TextArea>
-      <Label alignment="CENTER" layoutX="229.0" layoutY="39.0" prefHeight="45.0" prefWidth="293.0" text="High Score">
+      <Label alignment="CENTER" layoutX="229.0" layoutY="39.0" prefHeight="45.0" prefWidth="293.0" text="High Score" textFill="WHITE">
          <font>
             <Font size="30.0" />
          </font>

@@ -9,7 +9,10 @@
 
 <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.bizzareadvent.FXMLNewGameController">
    <children>
-      <ImageView fx:id="backGroundImage" fitHeight="500.0" fitWidth="750.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="backGroundImage" fitHeight="500.0" fitWidth="750.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../MenuCastle.jpg" />
+         </image></ImageView>
       <ImageView fx:id="imageClass" fitHeight="213.0" fitWidth="137.0" layoutX="119.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true" />
       <Button fx:id="buttonMage" layoutX="344.0" layoutY="324.0" mnemonicParsing="false" onAction="#mageChosen" prefHeight="25.0" prefWidth="66.0" text="Mage" />
       <Button fx:id="buttonWarrior" layoutX="155.0" layoutY="324.0" mnemonicParsing="false" onAction="#warriorChosen" prefHeight="25.0" prefWidth="66.0" text="Warrior" />
