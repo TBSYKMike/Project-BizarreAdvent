@@ -60,7 +60,7 @@ public class MonsterGenerator {
         else if(randomInt > 54 && randomInt <= 72){
             plainsMonster = new NormalMonster(45,10,10,13,40,20,"Orc");
         }
-        else if(randomInt > 72 && randomInt <= 90){
+        else if(randomInt > 72 && randomInt <= 97){
             plainsMonster = new NormalMonster(55,5,5,15,10,60,"Troll");
         }
         else{

@@ -9,6 +9,11 @@
 
 <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.bizzareadvent.FXMLDeleteCharacterController">
    <children>
+      <ImageView fitHeight="500.0" fitWidth="756.0" layoutX="-2.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../MenuCastle.jpg" />
+         </image>
+      </ImageView>
       <Button layoutX="66.0" layoutY="358.0" mnemonicParsing="false" onAction="#handleButtonActionBack" text="Back" />
       <Button fx:id="deleteSlot1" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="98.0" layoutY="278.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#delslot1" prefHeight="25.0" prefWidth="150.0" text="delete Slot1" AnchorPane.topAnchor="278.0" />
       <Button fx:id="deleteSlot2" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="300.0" layoutY="278.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#delslot2" prefHeight="25.0" prefWidth="150.0" text="delete Slot2" />

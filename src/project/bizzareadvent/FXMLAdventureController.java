@@ -177,25 +177,6 @@ public class FXMLAdventureController implements Initializable {
             adventureLog.appendText("\n\nThe " + monsterList.get(0).getMonsterType() + " is burning and takes " + burnDamage + " damage!");
         }
 
-        /*if (monsterList.get(0).getBaseHp() <= 0) {
-
-         monsterImg.setImage(null);
-            
-         adventureLog.appendText("\n\nYou are victorious! You have slain the " + monsterList.get(0).getMonsterType() + ".");
-         adventureLog.appendText("\nYou add " + monsterList.get(0).getAmountGold() + " gold to your purse and");
-         adventureLog.appendText("\ngain " + monsterList.get(0).getAmountScore() + " score.");
-
-         list.get(0).setCurrentGold(list.get(0).getCurrentGold() + monsterList.get(0).getAmountGold());
-         list.get(0).setCurrentScore(list.get(0).getCurrentScore() + monsterList.get(0).getAmountScore());
-
-         attackButton.setDisable(true);
-         secondaryButton.setDisable(true);
-         runButton.setDisable(true);
-         continueButton.setDisable(false);
-         monsterList.remove(0);
-         } else {
-         monsterAttack();
-         }*/
         if(monsterList.get(0) instanceof NormalMonster){
             if (cooldown >= 5) {
                 cooldown = 0;
@@ -523,7 +504,7 @@ public class FXMLAdventureController implements Initializable {
             
             adventureLog.appendText("\n\nYou have encountered the final boss, George!");
             adventureLog.appendText("\nThis is it, now your mettle shall truly be tested.");
-            adventureLog.appendText("\nThe boss is imune to your secondary attack.");
+            adventureLog.appendText("\nThe boss is immune to your secondary attack.");
             adventureLog.appendText("\nThere is no way to run, your only chance is to fight!");
 
             attackButton.setDisable(false);
