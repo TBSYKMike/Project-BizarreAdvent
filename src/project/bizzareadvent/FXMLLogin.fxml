@@ -34,10 +34,10 @@
       <TextField fx:id="textfieldUsername" layoutX="237.0" layoutY="266.0" onKeyReleased="#handleKeyEvent" onMouseClicked="#handleMouseEvent" promptText="Username" text="username" />
       <PasswordField fx:id="textfieldPassword" layoutX="237.0" layoutY="302.0" onKeyReleased="#handleKeyEvent" onMouseClicked="#handleMouseEvent" promptText="Password" text="password" />
       <Label fx:id="forgotPassword" layoutX="237.0" layoutY="340.0" onMouseClicked="#handleForgottPassword" prefHeight="14.0" prefWidth="241.0" text="Forgot password?" textFill="#f8f8f8" />
-      <Button layoutX="307.0" layoutY="401.0" mnemonicParsing="false" onAction="#handleButtonActionSettings" prefHeight="25.0" prefWidth="100.0" text="Settings" />
+      <Button layoutX="307.0" layoutY="414.0" mnemonicParsing="false" onAction="#handleButtonActionSettings" prefHeight="25.0" prefWidth="100.0" text="Settings" />
         <Button fx:id="button" layoutX="403.0" layoutY="265.0" onAction="#handleButtonActionLogin" prefHeight="25.0" prefWidth="100.0" text="Log-in" />
-      <Button fx:id="buttonExit" layoutX="307.0" layoutY="438.0" mnemonicParsing="false" onAction="#handleButtonExit" prefHeight="25.0" prefWidth="100.0" text="Exit" />
+      <Button fx:id="buttonExit" layoutX="307.0" layoutY="451.0" mnemonicParsing="false" onAction="#handleButtonExit" prefHeight="25.0" prefWidth="100.0" text="Exit" />
       <Button layoutX="403.0" layoutY="301.0" mnemonicParsing="false" onAction="#handleButtonActionNewAccount" prefHeight="25.0" prefWidth="100.0" text="New Account" />
-      <Button layoutX="427.0" layoutY="401.0" mnemonicParsing="false" onAction="#handleButtonActionHelp" prefHeight="25.0" prefWidth="100.0" text="Help Manual" />
+      <Button layoutX="308.0" layoutY="379.0" mnemonicParsing="false" onAction="#handleButtonActionHelp" prefHeight="25.0" prefWidth="100.0" text="Help Manual" />
     </children>
 </AnchorPane>
