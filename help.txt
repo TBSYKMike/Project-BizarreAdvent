@@ -1,0 +1,114 @@
+﻿LOG-IN:
+
+Log-in: enter your current account info and press the log-in button.
+
+New Account: press the new account button if you dont have an account or wish to create a new one.
+
+Exit: press to exit the game.
+
+
+
+
+MENU:
+
+New game: press this if you dont have a character or if you want to add another to your account.
+Load: press this to load the current existing character(s).
+Delete character: press this to choose to delete the current existing character(s).
+High Score: press this to see the global high score.
+Exit: press to exit the game.
+Log Out: press this to return to LOGIN.
+
+
+
+
+NEW GAME:
+Select the character you want to create and
+choose a name.
+Press done to continue to the game.
+
+Press back to go back to menu.
+
+
+
+
+LOAD:
+Select an existing character and
+press confirm load to continue to the game
+or press cancel to re-select.
+
+Press back to go back to menu.
+
+
+
+
+HIGH SCORE:
+Press high to low to sort from higest to lowest scores.
+Press low to high to sort from lowest to higest scores.
+
+Press back to go back to menu.
+
+
+
+
+WORLD MAP:
+Select something in world map and press city or go to go forth
+
+Press menu to go back to menu.
+
+
+
+
+CITY:
+Press heal to get full health points for 50gold.
+
+Press upgrade weapon to upgrade your attack and damage for 150 gold.
+
+Press upgrade armor to upgrade your defense for 150 gold.
+
+Press Back to go to World map.
+
+
+
+
+Adventure:
+Press Continue to for next event.
+Either a monster, a random event or a trasure will be generated.
+
+Press attack to attack monster
+or press secondary to use your secondary attack. The secondary attack has 5 turns of cooldown.
+
+Press run to attempt to run away and return to world map. 
+50% chance of success, if failed the monster strikes you.
+
+
+
+Characters:
+
+Warrior: The warriors base stats are:
+         Attack: 10 Defence: 10 Damage: 8
+
+The secondary attack has a 60% chance to hit and if 
+it does the enemy will take half the normal amount of damage 
+and be stunned for two turns.
+
+Mage: The mages base stats are:
+      Attack: 10 Defence: 6 Damage: 12
+
+The secondary attack has a 50% chance to hit and if
+it does the enemy takes double the normal amount of damage
+and will take 3 damage each turn for 5 turns.
+
+Rogue: The rogues base stats are:
+       Attack: 10 Defence: 7 Damage: 10
+
+The secondary attack doubles your defence for a turn and has a 10% chance to one-shot
+the enemy.
+ 
+
+
+
+
+
+
+
+

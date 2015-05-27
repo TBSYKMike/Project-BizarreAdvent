@@ -7,8 +7,12 @@ package project.bizzareadvent;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -180,4 +184,18 @@ public class FXMLLoginController implements Initializable {
 
     }
 
+    
+   
+    @FXML
+    private void handleButtonActionHelp(ActionEvent event) throws IOException {
+
+        try {
+
+            java.awt.Desktop.getDesktop().browse(new URI("help.txt"));
+            
+        } catch (URISyntaxException ex) {
+            Logger.getLogger(FXMLLoginController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
 }

@@ -38,5 +38,6 @@
         <Button fx:id="button" layoutX="403.0" layoutY="265.0" onAction="#handleButtonActionLogin" prefHeight="25.0" prefWidth="100.0" text="Log-in" />
       <Button fx:id="buttonExit" layoutX="307.0" layoutY="438.0" mnemonicParsing="false" onAction="#handleButtonExit" prefHeight="25.0" prefWidth="100.0" text="Exit" />
       <Button layoutX="403.0" layoutY="301.0" mnemonicParsing="false" onAction="#handleButtonActionNewAccount" prefHeight="25.0" prefWidth="100.0" text="New Account" />
+      <Button layoutX="427.0" layoutY="401.0" mnemonicParsing="false" onAction="#handleButtonActionHelp" prefHeight="25.0" prefWidth="100.0" text="Help Manual" />
     </children>
 </AnchorPane>
